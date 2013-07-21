@@ -27,26 +27,6 @@ function show_bar($text, $used, $limit, $id) {
 	echo $text;
 }
 
-function CMD_ALL_USER_SHOW($tabla){
-	$tabla = str_replace(' / unlimited', '', $tabla);
-	$tabla = preg_replace("/<tr\s*><td align=right colspan=(.+)><a class=toptext href=\'\?view=advanced\'>(.+)<\/a><\/td ><\/tr >/", '', $tabla);
-	$tabla = preg_replace("/<tr\s*><td align=right colspan=(.+)><a class=toptext href=\'\?\'>Clear Search Filter<\/a><\/td ><\/tr >/", '', $tabla);
-	$tabla = preg_replace("/<(script|SCRIPT)[\s\S]*?>[\s|\S]*?<\/(script|SCRIPT)>/", "", $tabla);
-	//$tabla = preg_replace("/(.*)<a(.+)href=\"javascript:selectAll\(\'select\'\);\">Select<\/a>(.*)/", "$1<input type=\"checkbox\" class=\"checkAll\">$3", $tabla);
-	$tabla = str_replace("<a class=listtitle href=\"javascript:selectAll('select');\">Select</a>", "<input type=\"checkbox\" class=\"checkAll\">", $tabla);
-	return $tabla;
-}
-
-function CMD_RESELLER_SHOW($tabla){
-	$tabla = str_replace(' / unlimited', '', $tabla);
-	$tabla = preg_replace("/<tr\s*><td align=right colspan=(.+)><a class=toptext href=\'\?view=advanced\'>(.+)<\/a><\/td ><\/tr >/", '', $tabla);
-	$tabla = preg_replace("/<tr\s*><td align=right colspan=(.+)><a class=toptext href=\'\?\'>Clear Search Filter<\/a><\/td ><\/tr >/", '', $tabla);
-	$tabla = preg_replace("/<(script|SCRIPT)[\s\S]*?>[\s|\S]*?<\/(script|SCRIPT)>/", "", $tabla);
-	//$tabla = preg_replace("/(.*)<a(.+)href=\"javascript:selectAll\(\'select\'\);\">Select<\/a>(.*)/", "$1<input type=\"checkbox\" class=\"checkAll\">$3", $tabla);
-	$tabla = str_replace("<a class=listtitle href=\"javascript:selectAll('select');\">Select</a>", "<input type=\"checkbox\" class=\"checkAll\">", $tabla);
-	return $tabla;
-}
-
 // 根据不同系统取得CPU相关信息
 switch(PHP_OS) {
 	case "Linux":
@@ -124,63 +104,5 @@ function getDomainsList() {
         }
     }
     return $ret;
-}
-
-// 获取用户状态
-function getDateCreated() {
-    global $ts;
-    $ret = array();
-    $r = $ts -> api_get("/CMD_API_SHOW_USER_CONFIG");
-    parse_str($r, $ret);
-	$datecreated = date('Y-m-d',strtotime($ret['date_created']));
-	//$datecreated = $ret['date_created'];
-    return $datecreated;
-}
-
-class tsclass {
-
-    function api_get($cmd, $post=false) {
-        if (is_array($post)) {
-            $is_post = true;
-            $str = '';
-            foreach ($post as $var => $value) {
-                if (strlen($str) > 0)
-                    $str .= '&';
-                $str .= $var . '=' . urlencode($value);
-            }
-            $post = $str;
-        } else {
-            $is_post = false;
-        }
-        $headers = array();
-        $headers['Host'] = '127.0.0.1:' . $_ENV['SERVER_PORT'];
-        $headers['Cookie'] = 'session=' . $_ENV['SESSION_ID'] . '; key=' . $_ENV['SESSION_KEY'];
-        if ($is_post) {
-            $headers['Content-type'] = 'application/x-www-form-urlencoded';
-            $headers['Content-length'] = strlen($post);
-        }
-        $send = ($is_post ? 'POST ' : 'GET ') . $cmd . " HTTP/1.1\r\n";
-        foreach ($headers as $var => $value)
-            $send .= $var . ': ' . $value . "\r\n";
-        $send .= "\r\n";
-        if ($is_post && strlen($post) > 0)
-            $send .= $post . "\r\n\r\n";
-        if ($_ENV["SSL"] == 1) {
-            $sIP = 'ssl://127.0.0.1';
-        } else {
-            $sIP = '127.0.0.1';
-        }
-        $res = @fsockopen($sIP, $_SERVER['SERVER_PORT'], &$sock_errno, &$sock_errstr, 2);
-        if ($sock_errno || $sock_errstr)
-            return false;
-        fputs($res, $send, strlen($send));
-        $result = '';
-        while (!feof($res))
-            $result .= fgets($res, 32768);
-        @fclose($res);
-        $data = explode("\r\n\r\n", $result, 2);
-        return $data[1];
-    }
-
 }
 ?>
