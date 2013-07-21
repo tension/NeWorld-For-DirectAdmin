@@ -1,0 +1,23 @@
+|LF_STANDARD|
+|?TREE=&raquo; <a class=tree href="/CMD_LOG_VIEWER">`LANG_LOG_VIEWER`</a>|
+|?HELP_SECTION=`ADMIN_HELPER`|
+|HTM_HEADER_FULL|
+
+<table class=list cellpadding=3 cellspacing=1>
+<tr><td class=listtitle colspan=2>|LANG_SELECT_LOG|</td></tr>
+<form action="/CMD_LOG_VIEWER" method="GET">
+<tr><td class=list align=right>|LANG_LOG_FILE|</td><td class=list>|FILES|</td></tr>
+<tr><td class=list2 align=right>|LANG_NUM_LINES|</td><td class=list2><input type=text name=lines value="|LINES|" size=4> |LANG_ZERO_FOR_ENTIRE|</td></tr>
+<tr><td class=list align=right>|LANG_OUTPUT_TYPE|</td><td class=list><input type=radio name=type value=textarea checked>|LANG_TEXT_AREA|<br>
+                                                  <input type=radio name=type value=raw>|LANG_RAW|</td></tr>
+<tr><td class=list2 align=right>|LANG_GREP|</td><td class=list2><input type=text size=32 value="|GREPVAL|" name=grep> <input type=checkbox name=invert_grep value="yes" |INVERTCHECKED|>|LANG_INVERT| &nbsp;<input type=checkbox name=ignore_case value="yes" |CASECHECKED|>|LANG_IGNORE_CASE|</td>
+<tr><td class=listtitle colspan=2 align=right><input type=submit value="|LANG_SHOW_LOG|"</td></tr>
+</form>
+</table>
+<br>
+<center>
+<textarea cols=120 rows=25 wrap=off>|LOGDATA|</textarea>
+</center>
+
+|HTM_FOOTER_FULL|
+

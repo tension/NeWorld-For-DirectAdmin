@@ -1,0 +1,41 @@
+|LF_STANDARD|
+|LF_SSL|
+|?TREE=&raquo; <a class=tree href="/CMD_SHOW_DOMAIN?domain=`domain`">`domain`</a> &raquo; <a class=tree href="/CMD_SSL?DOMAIN=`domain`">`LANG_SSL`</a> &raquo; `LANG_CREATE_CSR`|
+|?HELP_SECTION=`USER_HELPER`/ssl.html#install|
+|HTM_USER_TOP|
+<script language="javascript">
+function copyCertificate(text)
+{
+	text.focus();
+	text.select();
+	if (document.all)
+	{
+		therange = text.createTextRange();
+		therange.execCommand("Copy");
+		alert('|LANG_CERT_COPIED|');
+	}
+}
+</script>
+
+<table class=list cellpadding=3 cellspacing=1>
+<tr><td class=listtitle>|LANG_SSL_CSR|</td></tr>
+|*if NOTICE!=""|
+<tr><td class=listwrap><b>|NOTICE|</b></td></tr>
+|*endif|
+<tr><td class=listwrap>|LANG_HERE_IS_CSR|</td></tr>
+
+<form name=info>
+<tr><td class=list align=center>
+	<textarea style="font-family: courier new; width: 480px;" name=request rows=16>|REQUEST|</textarea>
+</td></tr>
+<tr><td class=listtitle align=center><input type=button value="|LANG_COPY_TO|" onClick="copyCertificate(document.info.request)"> |LANG_IE_ONLY|</td></tr>
+</form>
+</table>
+
+|*if USERTYPE="admin"|
+|LANG_ADMIN_SAVE_KEY|
+|*endif|
+
+|HTM_USER_BOTTOM|
+
+

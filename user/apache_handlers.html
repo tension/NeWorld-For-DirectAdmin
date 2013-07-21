@@ -1,0 +1,25 @@
+|LF_STANDARD|
+|?TREE=&raquo; <a class=tree href="/CMD_SHOW_DOMAIN?domain=`DOMAIN`">`DOMAIN`</a> &raquo; <a class=tree href="/CMD_HANDLERS?DOMAIN=`DOMAIN`">`LANG_APCHE_HANDLERS`</a>|
+|?HELP_SECTION=`USER_HELPER`/misc.html#handlers|
+|HTM_USER_TOP|
+
+<table class=list style="width: 50%" cellpadding=3 cellspacing=1>
+<tr><td class=listtitle colspan=4>|LANG_ADD_HANDLER|</td></tr>
+<tr>
+	<form action="/CMD_HANDLERS" method="POST">
+	<input type=hidden name=domain value="|DOMAIN|">
+	<input type=hidden name=action value="add">
+	<td class=list>|LANG_HANDLER|:</td>
+	<td class=list><input type=text name=name></td>
+	<td class=list>|LANG_EXTENSION|:</td>
+	<td class=list><input type=text name=extension size=5></td>
+</tr>
+<tr><td class=listtitle colspan=4 align=right><input type=submit value="|LANG_ADD|"></td></form></tr>
+</table>
+<br>
+<b>|LANG_USER_HANDLERS|</b><br>
+|HANDLERS|
+<br>
+<a href="/CMD_HANDLERS?action=system&domain=|DOMAIN|">|LANG_LIST_OF_SYSTEM_HANDLERS|</a><br><br>
+
+|HTM_USER_BOTTOM|

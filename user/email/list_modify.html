@@ -1,0 +1,67 @@
+|LF_STANDARD|
+|LF_LIST|
+|?TREE=&raquo; <a class=tree href="/CMD_SHOW_DOMAIN?domain=`DOMAIN`">`DOMAIN`</a> &raquo; <a class=tree href="/CMD_EMAIL_LIST?DOMAIN=`DOMAIN`">`LANG_LISTS`</a> &raquo; <a class=tree href="/CMD_EMAIL_LIST?action=view&name=`name`&DOMAIN=`DOMAIN`">`LANG_VIEW_LIST`</a> &raquo; <a class=tree href="/CMD_EMAIL_LIST?action=modify&name=`name`&DOMAIN=`DOMAIN`">`LANG_MOD_LIST`</a>|
+|?HELP_SECTION=`USER_HELPER`/email.html#majordomo|
+|HTM_USER_TOP|
+
+<table class=list cellpadding=3 cellspacing=1>
+	<form name=info action="CMD_EMAIL_LIST" method="post">
+		<input type=hidden name=action value=save>
+		<input type=hidden name=domain value="|DOMAIN|">
+		<input type=hidden name=name value="|name|">
+
+		<tr><td class=listtitle colspan=4>|LANG_MOD_LIST|: <b>|name|@|DOMAIN|</b></td></tr>
+
+
+		<tr><td class=list>|LANG_ADMIN_PASS|</td><td class=list><input type=text size=16 name=admin_passwd value="|admin_passwd|"></td>
+			<td class=list>|LANG_APP_PASS|</td><td class=list><input type=text size=16 name=approve_passwd value="|approve_passwd|"></td></tr>
+		<tr><td class=list>|LANG_REPLY_TO|</td><td class=list><input type=text size=16 name=reply_to value="|reply_to|"></td>
+			<td class=list>|LANG_ADMINISTRIVIA|</td><td class=list>|administrivia|</td></tr>
+		<tr><td class=list>|LANG_DESC|</td><td class=list colspan=3><input type=text size=65 name=description maxlength=50 value="|description|"></td></tr>
+
+		<tr><td class=list>|LANG_D_ISSUE|</td><td class=list><input type=text size=16 name=digest_issue value="|digest_issue|"></td>
+			<td class=list>|LANG_D_VOLUME|</td><td class=list><input type=text size=16 name=digest_volume value="|digest_volume|"></td></tr>
+
+		<tr><td class=list>|LANG_D_MAXDAYS|</td><td class=list><input type=text size=16 name=digest_maxdays value="|digest_maxdays|"></td>
+			<td class=list>|LANG_D_MAXLINES|</td><td class=list><input type=text size=16 name=digest_maxlines value="|digest_maxlines|"></td></tr>
+
+		<tr><td class=list>|LANG_GET_A|</td><td class=list>|get_access|</td>
+			<td class=list>|LANG_INDEX_A|</td><td class=list>|index_access|</td></tr>
+		<tr><td class=list>|LANG_INFO_A|</td><td class=list>|info_access|</td>
+			<td class=list>|LANG_INTRO_A|</td><td class=list>|intro_access|</td></tr>
+		<tr><td class=list>|LANG_WHICH_A|</td><td class=list>|which_access|</td>
+			<td class=list>|LANG_WHO_A|</td><td class=list>|who_access|</td></tr>
+
+		<tr><td class=list>|LANG_WELCOME|</td><td class=list>|welcome|</td>
+			<td class=list>|LANG_MUNG|</td><td class=list>|mungedomain|</td></tr>
+
+		<tr><td class=list>|LANG_MODERATE|</td><td class=list>|moderate|</td>
+			<td class=list>|LANG_MODERATOR|</td><td class=list><input type=text size=16 name=moderator value="|moderator|"></td></tr>
+
+
+		<tr><td class=list>|LANG_PREC|</td><td class=list><input type=text size=16 name=precedence value="|precedence|"></td>
+			<td class=list>|LANG_PURGE|</td><td class=list>|purge_received|</td></tr>
+		<tr><td class=list>|LANG_RESTRICT_POST|</td><td class=list><input type=text size=16 name=restrict_post value="|restrict_post|"></td>
+			<td class=list>|LANG_STRIP|</td><td class=list>|strip|</td></tr>
+
+		<tr><td class=list>|LANG_SUB_PRE|</td><td class=list><input type=text size=16 name=subject_prefix value="|subject_prefix|"></td>
+			<td class=list>|LANG_MAX_L|</td><td class=list><input type=text size=16 name=maxlength value="|maxlength|"></td></tr>
+
+		<tr><td class=list>|LANG_SUB_POL|</td><td class=list>|subscribe_policy|</td>
+			<td class=list>|LANG_UNSUB_POL|</td><td class=list>|unsubscribe_policy|</td></tr>
+
+		<tr><td class=list colspan=4 align=center>|LANG_LIST_INFO|<br><textarea	rows=5 cols=70 name=info>|info|</textarea></td></tr>
+
+		<tr><td class=list colspan=4 align=center>|LANG_TABOO_BODY|<br><textarea		rows=5 cols=70 name=taboo_body>|taboo_body|</textarea></td></tr>
+		<tr><td class=list colspan=4 align=center>|LANG_TABOO_HEAD|<br><textarea	rows=5 cols=70 name=taboo_headers>|taboo_headers|</textarea></td></tr>
+		<tr><td class=list colspan=4 align=center>|LANG_MESS_FOOT|<br><textarea	rows=5 cols=70 name=message_footer>|message_footer|</textarea></td></tr>
+		<tr><td class=list colspan=4 align=center>|LANG_MESS_FRONT|<br><textarea	rows=5 cols=70 name=message_fronter>|message_fronter|</textarea></td></tr>
+		<tr><td class=list colspan=4 align=center>|LANG_MESS_HEAD|<br><textarea	rows=5 cols=70 name=message_headers>|message_headers|</textarea></td></tr>
+
+		<tr><td class=listtitle colspan=4 align=right>
+			<input type=submit value="|LANG_SAVE|"> <input type=reset value="|LANG_RESET|">
+		</td></tr>
+	</form>
+</table>
+
+|HTM_USER_BOTTOM|

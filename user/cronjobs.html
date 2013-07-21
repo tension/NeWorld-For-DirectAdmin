@@ -1,0 +1,63 @@
+|LF_STANDARD|
+|?TREE=&raquo; <a class=tree href="/CMD_CRON_JOBS">`LANG_CRON_JOBS`</a>|
+|?HELP_SECTION=`USER_HELPER`/misc.html#cron|
+|HTM_HEADER_FULL|
+
+<script language="Javascript">
+<!--
+function preventEmail()
+{
+	with (document.info)
+	{
+		command.value = command.value + ' >/dev/null 2>&1';
+		prevent.disabled = true;
+	}
+}
+// -->
+</script>
+
+|LANG_VALID_CRON|<br>
+|LANG_EXACT_TIMES|<br>
+|LANG_DASH|<br>
+|LANG_INTERVALS|<br>
+|LANG_COMBINE|<br>
+|LANG_NO_SPACES|<br><br>
+|LANG_CURRENT_TIME|: |TIME|
+<table class=list  cellpadding=3 cellspacing=1>
+<form name=info action='/CMD_CRON_JOBS' method='POST'>
+<input type=hidden name=action value="create">
+<tr><td class=listtitle colspan=3>|LANG_CREATE_NEW_CRON|</td></tr>
+<tr><td class=list>|LANG_MINUTE|</td><td class=list><input type=text size=8 name=minute value=*></td><td class=list>0-59</td></tr>
+<tr><td class=list>|LANG_HOUR|</td><td class=list><input type=text size=8 name=hour value=*></td><td class=list>0-23</td></tr>
+<tr><td class=list>|LANG_DAY_OF_MONTH|</td><td class=list><input type=text size=8 name=dayofmonth value=*></td><td class=list>1-31</td></tr>
+<tr><td class=list>|LANG_MONTH|</td><td class=list><input type=text size=8 name=month value=*></td><td class=list>1-12</td></tr>
+<tr><td class=list>|LANG_DAY_OF_WEEK|</td><td class=list><input type=text size=8 name=dayofweek value=*></td><td class=list>0-7 (0 or 7 = |LANG_SUNDAY|)</td></tr>
+<tr><td class=list>|LANG_COMMAND|</td><td class=list><input type=text size=35 name=command value='/home/|USERNAME|/'></td>
+	<td class=list>
+	<input type=button name=prevent value="|LANG_PREVENT_EMAIL|" onClick='preventEmail()'>
+	</td>
+</tr>
+<tr><td colspan=3 class=listtitle align=right><input type=submit value="|LANG_ADD|"></td></tr>
+</form>
+</table>
+
+|CRONJOBS|
+
+
+<br>
+<table class=list  cellpadding=3 cellspacing=1>
+<form action='/CMD_CRON_JOBS' method='POST'>
+<input type=hidden name="action" value="saveemail">
+<tr><td class=listtitle colspan=2>|LANG_SEND_OUTPUT_TO|</td></tr>
+<tr><td class=list align=left>|LANG_EMAIL|</td><td class=list><input type=text name=email size=48 value="|MAILTO|"></td></tr>
+<tr><td class=listtitle colspan=2 align=right><input type=submit value="|LANG_SAVE|"></td></tr>
+</form>
+</table>
+|LANG_VALID_EMAIL|: <i>|USERNAME|</i>, |LANG_OR_BLANK_FIELD|.
+<br><br>
+<b>|LANG_SAMPLE_CRON|</b>:<br>
+/usr/local/bin/php /home/|USERNAME|/domains/domain.com/public_html/script.php<br>
+/usr/local/bin/curl --silent http://www.domain.com/cron.php > /dev/null<br>
+|*if OS_TYPE="FreeBSD"|/usr/local/bin/wget -O /dev/null http://www.domain.com/cron.php<br>|*else|/usr/bin/wget -O /dev/null http://www.domain.com/cron.php<br>|*endif|
+
+|HTM_FOOTER_FULL|

@@ -1,0 +1,105 @@
+|LF_STANDARD|
+|LF_CREATE|
+|?TREE=&raquo; <a class=tree href="/CMD_USER_SHOW">`LANG_SHOW_USERS`</a> &raquo; <a class=tree href="/HTM_ACCOUNT_USER_CREATE">`LANG_CREATE_USER`</a>|
+|?HELP_SECTION=`RESELLER_HELPER`/create.html|
+|HTM_RESELLER_TOP|
+
+<script language="Javascript">
+<!--
+
+|HTM_JAVASCRIPT|
+
+function setText( textfld, checkbx) {
+	if (checkbx.checked)
+		textfld.disabled = true;
+	if (!checkbx.checked)
+		textfld.disabled = false;
+}
+
+function setTexts() {
+	with (document.reseller) {
+		if (sharedip.checked) ip.disabled = true;
+		if (uquota.checked) quota.disabled = true;
+		if (ubandwidth.checked) bandwidth.disabled = true;
+		if (undomains.checked) ndomains.disabled = true;
+		if (unsqldbs.checked) nsqldbs.disabled = true;
+	}
+}
+
+function formOK() {
+	with (document.reseller) {
+		if (checkName() && checkPass() && checkDomain() && checkEmail())
+			return true;
+	}
+	return false;
+}
+
+function showUserMessage() {
+	var message = window.open("CMD_EDIT_USER_MESSAGE","message","width=740,height=520,scrollbars=no,resizable=yes");
+}
+
+// -->
+</script>
+
+	<div class="span8 offset2">
+		<form class="form-horizontal" name="reseller" action="CMD_ACCOUNT_USER" method="post" onSubmit="return formOK()">
+			<input type="hidden" name="action" value="create">
+			<h5>|LANG_CREATE_USER|</h5>
+		    <div class="control-group">
+			    <label class="control-label" for="username">|LANG_USERNAME|</label>
+			    <div class="controls">
+			    <input type="text" id="username" placeholder="|LANG_USERNAME|" name="username" maxlength="|MAX_USERNAME_LENGTH|" onChange="checkName()">
+			    </div>
+		    </div>
+		    <div class="control-group">
+			    <label class="control-label" for="email">|LANG_EMAIL|</label>
+			    <div class="controls">
+			    <input type="text" id="email" placeholder="|LANG_EMAIL|" name="email" onChange="checkEmail()">
+			    </div>
+		    </div>
+		    <div class="control-group">
+			    <label class="control-label" for="passwd">|LANG_ENTER_PASS|</label>
+			    <div class="controls">
+			    <input type="password" id="passwd" placeholder="|LANG_ENTER_PASS|" name="passwd"> <button type="button" class="btn" onClick="randomPass()">|LANG_RANDOM|</button>
+			    </div>
+		    </div>
+		    <div class="control-group">
+			    <label class="control-label" for="passwd2">|LANG_RE-ENTER_PASS|</label>
+			    <div class="controls">
+			    <input type="password" id="passwd2" placeholder="|LANG_RE-ENTER_PASS|" name="passwd2" onChange="checkPass()">
+			    </div>
+		    </div>
+		    <div class="control-group">
+			    <label class="control-label" for="domain">|LANG_DOMAIN|</label>
+			    <div class="controls">
+			    <input type="text" id="domain" placeholder="|LANG_DOMAIN|" name="domain" onChange="checkDomain()">
+			    </div>
+		    </div>
+		    <div class="control-group">
+			    <label class="control-label" for="package">|LANG_USE_USER_PACK|</label>
+			    <div class="controls">
+			    |PACKAGES|
+			    </div>
+		    </div>
+		    <div class="control-group">
+			    <label class="control-label" for="package">|LANG_IP|</label>
+			    <div class="controls">
+			    |IPSELECT|
+			    </div>
+		    </div>
+		    <div class="control-group">
+			    <label class="control-label" for="package">|LANG_EMAIL_NOTIFY|</label>
+			    <div class="controls">
+			    	<label class="checkbox">
+			    		<input type="checkbox" value="yes" name="notify" checked="checked"> <a href="javascript:showUserMessage();">|LANG_EDIT_USER_MESS|</a>
+			    	</label>
+			    </div>
+		    </div>
+		    <div class="control-group" style="text-align: right;">
+				    <button type="submit" class="btn" name="customize">|LANG_CUSTOMIZE|</button>
+				    <button type="submit" class="btn" name="add">|LANG_SUBMIT|</button>
+		    </div>
+	    </form>
+	</div>
+
+|HTM_RESELLER_BOTTOM|

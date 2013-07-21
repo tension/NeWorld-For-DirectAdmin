@@ -1,0 +1,99 @@
+|LF_STANDARD|
+|LF_CREATE|
+|?TREE=&raquo; <a class=tree href="/CMD_MANAGE_USER_PACKAGES">`LANG_MANAGE_USER_PACK`</a> &raquo; <a class=tree href="/CMD_SHOW_USER_PACKAGE?package=`PACKAGENAME`">`LANG_MANAGE` `PACKAGENAME`</a>|
+|?HELP_SECTION=`RESELLER_HELPER`/packages.html|
+|HTM_RESELLER_TOP|
+<script language="Javascript">
+<!--
+
+function setText(inputid,checkbx)
+{
+	var textfld = document.getElementById(inputid);
+	if (checkbx.checked)
+		textfld.disabled = true;
+	if (!checkbx.checked)
+		textfld.disabled = false;
+}
+
+// -->
+</script>
+
+<table class=list cellpadding=3 cellspacing=1>
+	<form name=package action='/CMD_MANAGE_USER_PACKAGES' method='POST'>
+	<tr ><td class=listtitle colspan=3>|LANG_USER_PACK|: |PACKAGENAME|</td ></tr >
+
+		<tr ><td class=list>|LANG_BANDWIDTH| |LANG_MB|</td ><td class=list><input type=text id="bandwidth" name=bandwidth value="|BANDWIDTH|"></td ><td class=list style="width: 65%"><input type="checkbox" name="ubandwidth" value="ON" onClick='setText("bandwidth",this)' |BANDWIDTHCHECKED|>|LANG_UNLIMITED|</td></tr>
+		<tr ><td class=list2>|LANG_DISK_SPACE| |LANG_MB|</td ><td class=list2><input type=text id="quota" name=quota value="|QUOTA|"></td ><td class=list2><input type="checkbox" name="uquota" value="ON" onClick='setText("quota",this)' |QUOTACHECKED|>|LANG_UNLIMITED|</td></tr >
+		<tr ><td class=list>|LANG_DOMAINS|</td ><td class=list><input type=text id="vdomains" name=vdomains value="|VDOMAINS|"></td ><td class=list><input type="checkbox" name="uvdomains" value="ON" onClick='setText("vdomains",this)' |VDOMAINSCHECKED|>|LANG_UNLIMITED|</td></tr >
+		<tr ><td class=list2>|LANG_SUBDOMAINS|</td ><td class=list2><input type=text id="nsubdomains" name=nsubdomains value="|NSUBDOMAINS|"></td ><td class=list2><input type="checkbox" name="unsubdomains" value="ON" onClick='setText("nsubdomains",this)' |NSUBDOMAINSCHECKED|>|LANG_UNLIMITED|</td></tr >
+
+		<tr ><td class=list>|LANG_EMAIL_ACCOUNTS|</td ><td class=list><input type=text id="nemails" name=nemails value="|NEMAILS|"></td ><td class=list><input type="checkbox" name="unemails" value="ON" onClick='setText("nemails",this)' |NEMAILSCHECKED|>|LANG_UNLIMITED|</td></tr >
+		<tr ><td class=list2>|LANG_EMAIL_FORWARDERS|</td ><td class=list2><input type=text id="nemailf" name=nemailf value="|NEMAILF|"></td ><td class=list2><input type="checkbox" name="unemailf" value="ON" onClick='setText("nemailf",this)' |NEMAILFCHECKED|>|LANG_UNLIMITED|</td></tr >
+		<tr ><td class=list>|LANG_MAILING_LISTS|</td ><td class=list><input type=text id="nemailml" name=nemailml value="|NEMAILML|"></td ><td class=list><input type="checkbox" name="unemailml" value="ON" onClick='setText("nemailml",this)' |NEMAILMLCHECKED|>|LANG_UNLIMITED|</td></tr >
+		<tr ><td class=list2>|LANG_AUTO_RESPONDERS|</td ><td class=list2><input type=text id="nemailr" name=nemailr value="|NEMAILR|"></td ><td class=list2><input type="checkbox" name="unemailr" value="ON" onClick='setText("nemailr",this)' |NEMAILRCHECKED|>|LANG_UNLIMITED|</td></tr >
+
+		<tr ><td class=list>|LANG_MYSQL_DBS|</td ><td class=list><input type=text id="mysql" name=mysql value="|MYSQL|"></td ><td class=list><input type="checkbox" name="umysql" value="ON" onClick='setText("mysql",this)' |MYSQLCHECKED|>|LANG_UNLIMITED|</td></tr >
+
+		<tr ><td class=list2>|LANG_DOMAIN_PTRS|</td ><td class=list2><input type=text id="domainptr" name=domainptr value="|DOMAINPTR|"></td><td class=list2><input type="checkbox" name="udomainptr" value="ON" onClick='setText("domainptr",this)' |DOMAINPTRCHECKED|>|LANG_UNLIMITED|</td></tr >
+
+		<tr ><td class=list>|LANG_FTP_ACCOUNTS|</td ><td class=list><input type=text id="ftp" name=ftp value="|FTP|"></td ><td class=list><input type="checkbox" name="uftp" value="ON" onClick='setText("ftp",this)' |FTPCHECKED|>|LANG_UNLIMITED|</td></tr >
+|*if RESELLERAFTP="ON"|
+		<tr ><td class=list2>|LANG_ANON_FTP_ACCOUNTS|</td ><td class=list2 align=center><input type=checkbox name=aftp value="ON" |AFTPCHECKED|></td ><td class=list2></td></tr >
+|*endif|
+|*if RESELLERCGI="ON"|
+		<tr><td class=list>|LANG_CGI| |LANG_ACCESS|</td><td class=list align=center><input type=checkbox name=cgi value="ON" |CGICHECKED|></td><td class=list></td></tr>
+|*endif|
+|*if RESELLERPHP="ON"|
+		<tr><td class=list2>|LANG_PHP| |LANG_ACCESS|</td><td class=list2 align=center><input type=checkbox name=php value="ON" |PHPCHECKED|></td><td class=list2></td></tr>
+|*endif|
+|*if RESELLERSPAM="ON"|
+		<tr><td class=list>|LANG_SPAM|</td><td class=list align=center><input type=checkbox name=spam value="ON" |SPAMCHECKED|></td><td class=list></td></tr>
+|*endif|
+|*if RESELLERCATCHALL="ON"|
+		<tr><td class=list2>|LANG_CATCHALL|</td>		<td class=list2 align=center><input type=checkbox name=catchall value="ON" |CATCHALLCHECKED|></td><td class=list2></td></tr>
+|*endif|
+|*if RESELLERSSL="ON"|
+		<tr><td class=list>|LANG_SSL| |LANG_ACCESS|</td><td class=list align=center><input type=checkbox name=ssl value="ON" |SSLCHECKED|></td>		<td class=list></td></tr>
+|*endif|
+|*if RESELLERUSERSSH="ON"|
+		<tr><td class=list2>|LANG_SSH| |LANG_ACCESS|</td><td class=list2 align=center><input type=checkbox name=ssh value="ON" |SSHCHECKED|></td>	<td class=list2></td></tr>
+|*endif|
+|*if RESELLERCRON="ON"|
+		<tr><td class=list>|LANG_CRON_JOBS|</td>		<td class=list align=center><input type=checkbox name=cron value="ON" |CRONCHECKED|></td>	<td class=list></td></tr>
+|*endif|
+|*if RESELLERSYSINFO="ON"|
+		<tr><td class=list2>|LANG_SYSTEM_INFO|</td>		<td class=list2 align=center><input type=checkbox name=sysinfo value="ON" |SYSINFOCHECKED|></td><td class=list2></td></tr>
+|*endif|
+|*if RESELLERLOGINKEYS="ON"|
+		<tr><td class=list>|LANG_LOGIN_KEYS|</td>		<td class=list align=center><input type=checkbox name=login_keys value="ON" |LOGINKEYSCHECKED|></td><td class=list></td></tr>
+|*endif|
+|*if RESELLERDNSCONTROL="ON"|
+		<tr><td class=list2>|LANG_DNS_CONTROL|</td>		<td class=list2 align=center><input type=checkbox name=dnscontrol value="ON" |DNSCONTROLCHECKED|></td><td class=list2></td></tr>
+|*endif|
+		<tr><td class=list>|LANG_SUSPEND_AT_LIMIT|</td>	<td class=list align=center><input type=checkbox name=suspend_at_limit value="ON" |SUSPENDATLIMITCHECKED|></td><td class=list></td></tr>
+
+		<tr><td class=list2>|LANG_SKIN|</td>			<td class=list2 align=center>|SKINS|</td>			<td class=list2></td></tr>
+		<tr><td class=list>|LANG_LANGUAGE|</td>			<td class=list align=center>|LANGUAGESELECT|</td>	<td class=list></td></tr>
+
+|*if CUSTOM_ITEM_1|
+		<tr><td class=list2>|CUSTOM_ITEM_1_STR|</td>	<td class=list2 align=center>|CUSTOM_ITEM_1|</td>	<td class=list2>|CUSTOM_ITEM_1_DESC|</td></tr>
+|*endif|
+|*if CUSTOM_ITEM_2|
+		<tr><td class=list>|CUSTOM_ITEM_2_STR|</td>		<td class=list align=center>|CUSTOM_ITEM_2|</td>	<td class=list>|CUSTOM_ITEM_2_DESC|</td></tr>
+|*endif|
+|*if CUSTOM_ITEM_3|
+		<tr><td class=list2>|CUSTOM_ITEM_3_STR|</td>	<td class=list2 align=center>|CUSTOM_ITEM_3|</td>	<td class=list2>|CUSTOM_ITEM_3_DESC|</td></tr>
+|*endif|
+|*if CUSTOM_ITEM_4|
+		<tr><td class=list>|CUSTOM_ITEM_4_STR|</td>		<td class=list align=center>|CUSTOM_ITEM_4|</td>	<td class=list>|CUSTOM_ITEM_4_DESC|</td></tr>
+|*endif|
+|*if CUSTOM_ITEM_5|
+		<tr><td class=list2>|CUSTOM_ITEM_5_STR|</td>	<td class=list2 align=center>|CUSTOM_ITEM_5|</td>	<td class=list2>|CUSTOM_ITEM_5_DESC|</td></tr>
+|*endif|
+
+	<tr ><td class=listtitle align=right colspan=3>|LANG_PACK_NAME|: <input type=text name=packagename value="|PACKAGENAME|"> <input type=submit value='|LANG_SAVE|' name=add> <input type=submit value='|LANG_CANCEL|' name=cancel></td ></tr >
+	</form>
+</table >
+
+
+|HTM_RESELLER_BOTTOM|

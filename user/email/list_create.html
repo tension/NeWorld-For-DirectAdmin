@@ -1,0 +1,22 @@
+|LF_STANDARD|
+|LF_LIST|
+|?TREE=&raquo; <a class=tree href="/CMD_SHOW_DOMAIN?domain=`DOMAIN`">`DOMAIN`</a> &raquo; <a class=tree href="/CMD_EMAIL_LIST?DOMAIN=`DOMAIN`">`LANG_LISTS`</a> &raquo; <a class=tree href="/HTM_EMAIL_LIST_CREATE?DOMAIN=`DOMAIN`">`LANG_CREATE_LIST`</a>|
+|?HELP_SECTION=`USER_HELPER`/email.html#majordomo|
+|HTM_USER_TOP|
+
+<table class=list cellpadding=3 cellspacing=1>
+	<form name=info action="CMD_EMAIL_LIST" method="post">
+		<input type=hidden name=action value=create>
+		<input type=hidden name=domain value="|DOMAIN|">
+
+		<tr><td class=listtitle colspan=2>|LANG_CREATE_LIST|</td></tr>
+
+		<tr><td class=list>|LANG_LIST_NAME|</td><td class=list><input type=text name=name size=20>@|DOMAIN|</td></tr>
+
+		<tr><td class=listtitle colspan=3 align=right>
+			<input type=submit name=create value="|LANG_CREATE|">
+		</td></tr>
+	</form>
+</table>
+
+|HTM_USER_BOTTOM|

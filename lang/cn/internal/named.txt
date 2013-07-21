@@ -1,0 +1,9 @@
+1=User added to named.conf file successfully
+2=Script output
+3=Domain has already been deleted. It wasn't in the named.conf file
+4=Unable to read zone file to increase serial
+5=Unable to write zone file to increase serial
+6=Unable to save dns zone: named-zonecheck returned:
+7=Warning from named-zonecheck:
+8=Added record <b>%s %s %s</b> to satisfy <b>%s NS %s</b>
+9=Please check the zone for %s to ensure the nameserver A records are correct.

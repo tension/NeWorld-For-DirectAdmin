@@ -1,0 +1,34 @@
+|LF_STANDARD|
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=|LANG_ENCODING|">
+<title>|LANG_DU_D|
+|*if user|
+|user|
+|*else|
+|USERNAME|
+|*endif|
+</title>
+<style type="text/css">
+|CSS_STYLE|
+</style>
+</head>
+<body>
+<form action=? method=GET>
+<input type=checkbox name="hidezero" value="1" |*if hidezero="1"|checked|*endif|>|LANG_HIDE_ZERO|<br>
+<input type=checkbox name="hide_duplicate_count" value="1" |*if hide_duplicate_count="1"|checked|*endif|>|LANG_HIDE_NOT_COUNTED| <a href="javascript:alert('|LANG_EXPLANATION|');">(?)</a><br>
+<input type=hidden name="sort1" value="|sort1|">
+<input type=hidden name="ipp" value="|ipp|">
+<input type=submit value="|LANG_UPDATE|">
+|*if user|<input type=hidden name="user" value="|user|">|*endif|
+<center>
+|TABLE|
+<br>
+|*if DU_NOTICE!=""|
+<b>|DU_NOTICE|</b><br><br>
+|*endif|
+<a href="javascript:self.close();">|LANG_CLOSE|</a>
+</center>
+</form>
+</body>
+</html>

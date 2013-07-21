@@ -1,0 +1,119 @@
+|*if HAVE_SHOW_BLOCKED_IPS_SH="1"|
+|?BODY=onLoad="sizeTheDiv();"|
+|*endif|
+|LF_STANDARD|
+|?TREE=&raquo; <a class=tree href="/CMD_BRUTE_FORCE_MONITOR">`LANG_BRUTE_FORCE_MONITOR`</a>|
+|?HELP_SECTION=`ADMIN_HELPER`|
+|HTM_HEADER_FULL|
+
+|*if LOG_SCANNING!="ON"|
+|LANG_LOG_SCANNING_OFF|
+<br><br>
+|*endif|
+
+<b>|LANG_FAILED_LOGINS|</b> - |LANG_CLICK_IP_TO_FILTER|
+
+
+<form name=tableform action='CMD_BRUTE_FORCE_MONITOR' method=POST>
+<input type=hidden name=action value="skiplist">
+
+|?HEIGHT=150px|
+|*if NUM_IPS>"4"|
+|?HEIGHT=250px|
+|*endif|
+<table cellpadding=0 cellspacing=0 style="border: 1px solid grey;">
+<tr><td>
+        <div style="overflow: auto; height: |HEIGHT|; width: 1060px;">
+        <table cellpadding=0 cellspacing=0>
+        <tr><td valign=top>
+        |IPLOGINFAILURES|
+        </td>
+        <td width=30%>&nbsp;</td>
+        <td valign=top>
+        |USERLOGINFAILURES|
+        </td></tr></table>
+        </div>
+</td></tr>
+
+<tr><td colspan=3 class=listtitle align=center>
+
+|*if HAVE_BLOCK_SH="1"|
+<input type='button' value='|LANG_BLOCK_IPS|' onclick="if (confirm('|LANG_ARE_YOU_SURE_BLOCK|')){document.tableform.action.value = 'block_ips';document.tableform.submit();}">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>|</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+|*endif|
+<input type=text name="skip_value" placeholder="|LANG_OPTIONAL_IP|" title="|LANG_OPTIONAL_IP|" size=24><a target=_blank class=listtitle href="http://www.directadmin.com/features.php?id=1252">?</a>
+<input type=submit value="|LANG_ADD_TO_SKIP|"> |LANG_COMMENTS|:<input type=text name=comments size=32>
+</td></tr>
+</form>
+</table>
+|*if sort1dir|
+<a href='?sort1=-1'>|LANG_CLEAR_SEARCH_FILTER|</a>
+|*endif|
+
+
+
+|LOGINFAILURES|
+
+<br><br>
+<hr width=50%>
+
+<br>
+<b>|LANG_SKIP_LIST|</b>
+|SKIPLIST|
+
+
+|*if HAVE_SHOW_BLOCKED_IPS_SH="1"|
+<br>
+<form name=tableform5 action='CMD_BRUTE_FORCE_MONITOR' method=POST>
+<input type=hidden name=action value="unblock">
+<b>|LANG_BLOCKED_IPS|</b>
+<div id="blockedipsdiv" style="overflow: auto; height: 450px; width: 300px; border: 1px solid grey;">
+|BLOCKED_IPS|
+</div>
+|*endif|
+|*if HAVE_UNBLOCK_SH="1"|
+<table id="blockbuttontable" class=list style='width: 50%' cellpadding=3 cellspacing=1>
+<tr><td class=listtitle align='right' colspan='5'> <input type='submit' value='|LANG_UNBLOCK|' name=unblock></td ></tr>
+</table>
+</form>
+|*endif|
+|*if HAVE_SHOW_BLOCKED_IPS_SH="1"|
+<script type="text/javascript">
+<!--
+function sizeTheDiv()
+{
+	var tblwidth=document.getElementById('blockedipstable').offsetWidth;
+	if (tblwidth>0)
+	{
+		if (tblwidth < 300)
+		{
+			tblwidth = 300;
+			document.getElementById('blockedipstable').style.width=tblwidth;
+		}
+
+		document.getElementById('blockedipsdiv').style.width=tblwidth+19;
+		if (document.getElementById('blockbuttontable'))
+			document.getElementById('blockbuttontable').style.width=tblwidth+21;
+	}
+}
+sizeTheDiv();
+// -->
+</script>
+|*endif|
+
+
+<br>
+|*if IP_LIMIT="0"|
+|LANG_IP_ZERO|
+|*else|
+|LANG_IP_VALUE|
+|*endif|<br>
+
+|*if USER_LIMIT="0"|
+|LANG_USER_ZERO|
+|*else|
+|LANG_USER_VALUE|
+|*endif|<br>
+
+
+|HTM_FOOTER_FULL|

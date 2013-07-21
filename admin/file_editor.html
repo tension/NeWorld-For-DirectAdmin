@@ -1,0 +1,44 @@
+|LF_STANDARD|
+|?TREE=&raquo; <a class=tree href="/CMD_ADMIN_FILE_EDITOR">`LANG_FILE_EDITOR`</a>|
+|?HELP_SECTION=`ADMIN_HELPER`|
+|HTM_HEADER_FULL|
+
+|*if SAVED="yes"|
+<br>
+<center><b>|file| |LANG_FILE_SAVED|</b></center>
+<br>
+|*endif|
+
+<table class=list cellpadding=3 cellspacing=1>
+<tr><td class=listtitle colspan=2>|LANG_FILE_EDITOR|</td></tr>
+<form action="/CMD_ADMIN_FILE_EDITOR" method="GET">
+<tr><td class=list align=right>|LANG_SELECT_FILE_TO_EDIT|</td><td class=list>|FILES| <input type=submit value="|LANG_SHOW_FILE|"></td></tr>
+</form>
+<form action="/CMD_ADMIN_FILE_EDITOR" method="POST">
+<input type=hidden name=file value="|file|">
+<input type=hidden name=action value="save">
+<tr><td class=list colspan=2 align=center>
+<textarea cols=120 rows=35 name=text wrap=off |SAVE_ENABLE| |READONLY|>|FILEDATA|</textarea>
+</td></tr>
+<tr><td class=listtitle colspan=2 align=right>
+
+|*if REQUIRE_ROOT_AUTH="yes"|
+<input type=hidden name="authenticate" value="yes">
+|LANG_FILE_IS_SECURE|: <input type=password name="rootpass"> <input type=submit value="|LANG_AUTHENTICATE|"><br>
+|*endif|
+
+|*if file|
+|file|
+|*endif|
+
+|*if REQUIRE_ROOT_AUTH!="yes"|
+<input type=submit value="|LANG_SAVE|" |SAVE_ENABLE|>
+|*endif|
+
+</td></tr>
+</form>
+</table>
+
+
+|HTM_FOOTER_FULL|
+

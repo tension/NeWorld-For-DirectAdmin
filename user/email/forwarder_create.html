@@ -1,0 +1,23 @@
+|LF_STANDARD|
+|LF_FORWARDER|
+|?TREE=&raquo; <a class=tree href="/CMD_SHOW_DOMAIN?domain=`DOMAIN`">`DOMAIN`</a> &raquo; <a class=tree href="/CMD_EMAIL_FORWARDER?DOMAIN=`DOMAIN`">`LANG_FORWARDERS`</a> &raquo; <a class=tree href="/HTM_EMAIL_FORWARDER_CREATE?DOMAIN=`DOMAIN`">`LANG_CREATE_FORWARD`</a>|
+|?HELP_SECTION=`USER_HELPER`/email.html#forwarders|
+|HTM_USER_TOP|
+
+<table class=list cellpadding=3 cellspacing=1>
+	<form name=info action="CMD_EMAIL_FORWARDER" method="post">
+		<input type=hidden name=action value=create>
+		<input type=hidden name=domain value="|DOMAIN|">
+
+		<tr><td class=listtitle colspan=2>|LANG_CREATE_FORWARD|</td></tr>
+
+		<tr><td class=list>|LANG_FORWARD_NAME|</td><td class=list><input type=text name=user size=12>@|DOMAIN|</td></tr>
+		<tr><td class=list>|LANG_DEST|</td><td class=list><input type=text name=email size=32> |LANG_WHERE_YOU_WANT|</td></tr>
+		<tr><td class=list colspan=2>|LANG_FWD_NOTE|</td></tr>
+		<tr><td class=listtitle colspan=3 align=right>
+			<input type=submit name=create value="|LANG_CREATE|">
+		</td></tr>
+	</form>
+</table>
+
+|HTM_USER_BOTTOM|

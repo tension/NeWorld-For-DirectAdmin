@@ -1,0 +1,37 @@
+|LF_STANDARD|
+|LF_FTP|
+|?TREE=&raquo; <a class=tree href="/CMD_SHOW_DOMAIN?domain=`DOMAIN`">`DOMAIN`</a> &raquo; <a class=tree href="/CMD_FTP?DOMAIN=`DOMAIN`">`LANG_FTP_SETUP`</a> &raquo; <a class=tree href="/CMD_FTP_SHOW?DOMAIN=`DOMAIN`&user=`user`">`LANG_MODIFY` `user`</a>|
+|?HELP_SECTION=`USER_HELPER`/ftp.html#mod|
+|HTM_USER_TOP|
+
+<script language="Javascript">
+<!--
+
+|HTM_JAVASCRIPT|
+
+// -->
+</script>
+
+<table class=list cellpadding=3 cellspacing=1>
+	<form name=reseller action="CMD_FTP" method="post">
+		<input type=hidden name=action value=modify>
+		<input type=hidden name=domain value="|DOMAIN|">
+		<input type=hidden name=user value="|USER|">
+		|SYSTEMUSERHIDDEN|
+
+		<tr><td class=listtitle colspan=3>|LANG_MODIFY_FTP|</td></tr>
+
+		<tr><td class=list>|LANG_FTP_USERNAME|</td><td class=list colspan=2>|FULLUSER|</td></tr>
+		<tr><td class=list>|LANG_ENTER_PASS|:</td><td class=list colspan=2><input type=password name=passwd size=16> <input type=button value="|LANG_RANDOM|" onClick="randomPass(); reseller.random.value=reseller.passwd.value"> <input type=text name=random value="|LANG_FTP_SAVE_PASSWORD|" size=16></td></tr>
+		<tr><td class=list>|LANG_RE-ENTER_PASS|:</td><td class=list colspan=2><input type=password name=passwd2 size=16></td></tr>
+		<tr><td class=list>|LANG_DOMAIN|:</td><td class=list align=center><input type=radio name=type value="domain" |DOMAINCHECKED|></td><td class=listwrap>|LANG_DOMAIN_USER|</td></tr>
+		<tr><td class=list>|LANG_FTP|:</td><td class=list align=center><input type=radio name=type value="ftp" |FTPCHECKED|></td><td class=listwrap>|LANG_FTP_USER|</td></tr>
+		<tr><td class=list>|LANG_USER|:</td><td class=list align=center><input type=radio name=type value="user" |USERCHECKED|></td><td class=listwrap>|LANG_USER_USER|</td></tr>
+		<tr><td class=list>|LANG_CUSTOM|:</td><td class=list align=center><input type=radio name=type value="custom" |CUSTOMCHECKED|></td><td class=listwrap><input type=text size=48 name=custom_val value="|CUSTOM_PATH|"></td></tr>
+		<tr><td class=listtitle colspan=3 align=right>
+			<input type=submit name=create value="|LANG_MODIFY|"> <input type=reset value="|LANG_RESET|">
+		</td></tr>
+	</form>
+</table>
+
+|HTM_USER_BOTTOM|

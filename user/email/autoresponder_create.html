@@ -1,0 +1,25 @@
+|LF_STANDARD|
+|LF_AUTO_RESPONDER|
+|?TREE=&raquo; <a class=tree href="/CMD_SHOW_DOMAIN?domain=`DOMAIN`">`DOMAIN`</a> &raquo; <a class=tree href="/CMD_EMAIL_AUTORESPONDER?DOMAIN=`DOMAIN`">`LANG_AUTO_RESPONDERS`</a> &raquo; <a class=tree href="/HTM_EMAIL_AUTORESPONDER_CREATE?DOMAIN=`DOMAIN`">`LANG_CREATE_AUTO`</a>|
+|?HELP_SECTION=`USER_HELPER`/email.html#auto|
+|HTM_USER_TOP|
+
+<table class=list cellpadding=3 cellspacing=1>
+	<form name=info action="CMD_EMAIL_AUTORESPONDER" method="post">
+		<input type=hidden name=action value=create>
+		<input type=hidden name=domain value="|DOMAIN|">
+
+		<tr><td class=listtitle colspan=2>|LANG_CREATE_AUTO_MESS|</td></tr>
+
+		<tr><td class=list>|LANG_RESP_ADDR|</td><td class=list><input type=text name=user>@|DOMAIN|</td></tr>
+		<tr><td class=list>|LANG_RESP_MESS|</td><td class=list align=center><textarea rows=15 cols=60 name=text></textarea></td></tr>
+
+		<tr><td class=list><input type=checkbox name=cc value="ON">|LANG_RESP_CC_TO|</td><td class=list><input type=text name=email></td></tr>
+
+		<tr><td class=listtitle colspan=3 align=right>
+			<input type=submit name=create value="|LANG_CREATE|">
+		</td></tr>
+	</form>
+</table>
+
+|HTM_USER_BOTTOM|

@@ -1,0 +1,105 @@
+|?TREE=&raquo; <a class=tree href="/CMD_SHOW_DOMAIN?domain=`DOMAIN`">`DOMAIN`</a> &raquo; <a class=tree href="/CMD_SPAMASSASSIN?domain=`DOMAIN`">`LANG_SPAM_SETUP`</a>|
+|?HELP_SECTION=`USER_HELPER`/email.html#spamassassin|
+|HTM_USER_TOP|
+
+<center><b>|LANG_SPAM_SETUP|</b></center><br>
+
+|*if SA_ENABLED="yes"|
+|LANG_SA_ENABLED|
+<form action="/CMD_SPAMASSASSIN" method="POST">
+<input type=hidden name=action value="disable">
+<input type=hidden name=domain value="|domain|">
+<input type=submit value="|LANG_DISABLE|"></form>
+|*else|
+|LANG_SA_DISABLED|
+|*endif|
+
+<form action="/CMD_SPAMASSASSIN" method="POST">
+<input type=hidden name=action value="save">
+<input type=hidden name=domain value="|domain|">
+
+<table class=list cellpadding=3 cellspacing=1>
+<tr><td class=listtitle colspan=2>|LANG_WHERE_TO_GO|</td></tr>
+<tr><td class=list align=center><input type=radio name=where value="inbox" |WHERE_INBOX|></td><td class=list>|LANG_TO_RECIPIENT|</td></tr>
+<tr><td class=list2 align=center><input type=radio name=where value="spamfolder" |WHERE_FOLDER|></td><td class=list2>|LANG_TO_FOLDER|</td></tr>
+<tr><td class=list align=center><input type=radio name=where value="userspamfolder" |WHERE_USERFOLDER|></td><td class=list>|LANG_TO_USER_FOLDER|</td></tr>
+<tr><td class=list2 align=center><input type=radio name=where value="delete" |WHERE_DELETE|></td><td class=list2>|LANG_DELETE_SPAM|</td></tr>
+<tr><td colspan=2>&nbsp;</td></tr>
+
+<tr><td class=listtitle colspan=2>|LANG_SCORE_THRESH|</td></tr>
+<tr><td class=list colspan=2>|LANG_LOW_THRESH_DESC|
+|LANG_HIGH_THRESH_DESC|</td></tr>
+<tr><td class=list2 align=center><input type=radio name=required_hits value="5.0" |required_hits_5.0|></td><td class=list2>|LANG_LOW_THRESH| (5.0)</td></tr>
+<tr><td class=list align=center><input type=radio name=required_hits value="7.5" |required_hits_7.5|></td><td class=list>|LANG_MED_THRESH| (7.5)</td></tr>
+<tr><td class=list2 align=center><input type=radio name=required_hits value="10.0" |required_hits_10.0|></td><td class=list2>|LANG_HIGH_THRESH| (10.0)</td></tr>
+<tr><td class=list align=center><input type=radio name=required_hits value="custom" |required_hits_custom|></td><td class=list>|LANG_CUSTOM_THRESH|: <input type=text name=required_hits_custom size=4 value="|required_hits|"></td></tr>
+<tr><td colspan=2>&nbsp;</td></tr>
+
+<tr><td class=listtitle colspan=2>|LANG_DELETE_HS_SPAM|</td></tr>
+<tr><td class=list align=center><input type=radio name=high_score_block value="yes" |high_score_block_yes|></td><td class=list>|LANG_YES_DELETE_HS_SPAM| <input type=text name=high_score value="|high_score|" maxlength=2 size=2> |LANG_1_99_NO_DEC|</td></tr>
+<tr><td class=list2 align=center><input type=radio name=high_score_block value="no" |high_score_block_no|></td><td class=list2>|LANG_NO_DO_NOT_DEL_HSS|</td></tr>
+<tr><td colspan=2>&nbsp;</td></tr>
+
+<tr><td class=listtitle colspan=2>|LANG_REWRITE_SUBJECT|</td></tr>
+<tr><td class=list align=center><input type=radio name=rewrite_subject value="1" |rewrite_subject_1|></td><td class=list>|LANG_YES_SET_SUBJECT|: <input type=text name=subject_tag value="|subject_tag|"></td></tr>
+<tr><td class=list2 align=center><input type=radio name=rewrite_subject value="0" |rewrite_subject_0|></td><td class=list2>|LANG_NO_LEAVE_SUBJECT|</td></tr>
+<tr><td colspan=2>&nbsp;</td></tr>
+
+<tr><td class=listtitle colspan=2>|LANG_HOW_DELIV|</td></tr>
+<tr><td class=list colspan=2>|LANG_DELIV_1|
+|LANG_DELIV_2|
+|LANG_DELIV_3|</td></tr>
+<tr><td class=list2 align=center><input type=radio name=report_safe value="0" |report_safe_0|></td><td class=list2>|LANG_ATTACH_1|</td></tr>
+<tr><td class=list align=center><input type=radio name=report_safe value="1" |report_safe_1|></td><td class=list>|LANG_ATTACH_2|</td></tr>
+<tr><td class=list2 align=center><input type=radio name=report_safe value="2" |report_safe_2|></td><td class=list2>|LANG_ATTACH_3|</td></tr>
+<tr><td colspan=2>&nbsp;</td></tr>
+
+<tr><td class=listtitle colspan=2>|LANG_EMAIL_BL|</td></tr>
+<tr><td class=list colspan=2>|LANG_LIST_OF_BLOCKED|
+|LANG_TAGGED_AS_SPAM|
+|LANG_ONE_EMAIL|
+|LANG_EG_DOMAIN|</td></tr>
+<tr><td class=list>&nbsp;</td><td class=list><textarea name=blacklist_from cols=40 rows=10>|blacklist_from|</textarea></td></tr>
+<tr><td colspan=2>&nbsp;</td></tr>
+
+<tr><td class=listtitle colspan=2>|LANG_EMAIL_WL|</td></tr>
+<tr><td class=list colspan=2>|LANG_THROUGH|
+|LANG_SAME_FORMAT|</td></tr>
+<tr><td class=list>&nbsp;</td><td class=list><textarea name=whitelist_from cols=40 rows=10>|whitelist_from|</textarea></td></tr>
+<tr><td colspan=2>&nbsp;</td></tr>
+
+<tr><td colspan=2 align=center><input type=submit value="|LANG_SAVE|"></td></tr>
+</table>
+
+</form>
+
+<hr width=50%>
+<br><center>
+<a href="/CMD_FILE_MANAGER/.spamassassin/user_prefs?action=edit">|LANG_MANUALLY_EDIT|</a><br>
+<br>
+<hr width=50%><br>
+
+|LANG_THIS_BUTTON|
+<form name=tableform action='/CMD_FILE_MANAGER/' method='POST'>
+<input type=hidden name=select0 value="/.spamassassin/auto-whitelist">
+<input type=hidden name=select1 value="/.spamassassin/bayes_seen">
+<input type=hidden name=select2 value="/.spamassassin/bayes_journal">
+<input type=hidden name=select3 value="/.spamassassin/bayes_toks">
+<input type=hidden name=action value="multiple">
+<input type=hidden name=button value="delete">
+<input type=hidden name=overwrite value="no">
+<input type=hidden name=path value="/.spamassassin">
+<input type=submit value="|LANG_DELETE_BAYES|">
+</form>
+
+
+
+
+</center>
+
+
+
+
+
+
+|HTM_USER_BOTTOM|

@@ -1,0 +1,103 @@
+|LF_STANDARD|
+
+<script language="javascript">
+function doSearch(type) {
+	if (document.searchform)
+		with (document.searchform) {
+			if (type == 'user') {
+				value1.value=value.value
+				value7.value='';
+			} else {
+				value7.value=value.value
+				value1.value='';
+			}
+
+			submit();
+		}
+}
+</script>
+<div class="search">
+	<form action="/CMD_USER_SHOW" method="GET" name="searchform" onSubmit="doSearch('default');">
+		<input type="hidden" name="comparison1" value="contains">
+		<input type="hidden" name="comparison7" value="contains">
+		<input type="hidden" name="value1" value="">
+		<input type="hidden" name="value7" value="">
+		<div class="input-append">
+			<input class="span3" type="text" name="value" value="|LANG_CONTAINS|" onClick="this.select()">
+			<button class="btn" type="button" onClick="doSearch('domain')">|LANG_DOMAIN|</button>
+			<button class="btn" type="button" onClick="doSearch('user')">|LANG_USER|</button>
+		</div>
+	</form>
+</div>
+<script language="javascript">
+if (document.searchform) {
+	with (document.searchform) {
+		value.focus();
+		value.select();
+	}
+}
+function showUserMessage() {
+	var message = window.open("CMD_EDIT_USER_MESSAGE","message","width=740,height=520,scrollbars=no,resizable=yes");
+}
+</script>
+
+
+			<div class="span12 listbox">
+				<h5>基本设置</h5>
+				<ul>
+					<li><a href="/CMD_USER_SHOW"><img src="IMG_SKIN_ADMIN_004" alt="" />|LANG_LIST_USERS|</a></li>
+					<li><a href="/HTM_ACCOUNT_USER_CREATE"><img src="IMG_SKIN_ADMIN_001" alt="" />|LANG_ADD_NEW_USER|</a></li>
+					<li><a href="/CMD_SHOW_USER_PACKAGE"><img src="IMG_SKIN_ADMIN_033" alt="" />|LANG_ADD_PACKAGE|</a></li>
+					<li><a href="/CMD_MANAGE_USER_PACKAGES"><img src="IMG_SKIN_ADMIN_009" alt="" />|LANG_LIST_PACKAGES|</a></li>
+					<li><a href="javascript:showUserMessage();"><img src="IMG_SKIN_ADMIN_015" alt="" />|LANG_EDIT_USER_MESS|</a></li>
+					<li><a href="/HTM_USER_PASSWD"><img src="IMG_SKIN_ADMIN_007" alt="" />|LANG_CHANGE_PASSWORDS|</a></li>
+				</ul>
+			</div>
+			
+			<div class="span12 listbox">
+				<h5>扩展功能</h5>
+				<ul>
+					<li><a href="/CMD_TICKET_MANAGE"><img src="IMG_SKIN_ADMIN_013" alt="" />|LANG_MANAGE_TICKETS| (|NEWTICKETS| |LANG_NEW|)</a></li>
+					<li><a href="/CMD_TICKET_CREATE?TYPE=Message&amp;who=all"><img src="IMG_SKIN_ADMIN_036" alt="" />|LANG_MESSSAGE_ALL_USERS|</a></li>
+					<li><a href="/CMD_TICKET_CREATE?TYPE=Ticket"><img src="IMG_SKIN_ADMIN_037" alt="" />|LANG_CONTACT_ADMIN|</a></li>
+					<li><a href="/CMD_SYSTEM_INFO"><img src="IMG_SKIN_ADMIN_019" alt="" />|LANG_SYSTEM_INFO|</a></li>
+					<li><a href="/CMD_NAME_SERVER"><img src="IMG_SKIN_ADMIN_032" alt="" />|LANG_NAMESERVERS|</a></li>
+				</ul>
+			</div>
+			
+			<div class="span12 listbox">
+				<h5>代理商工具</h5>
+				<ul>
+					<li><a href="/CMD_RESELLER_STATS"><img src="IMG_SKIN_ADMIN_005" alt="" />|LANG_RESELLER_STATS|</a></li>
+					<li><a href="/CMD_IP_CONFIG"><img src="IMG_SKIN_ADMIN_022" alt="" />|LANG_IP_MANAGER|</a></li>
+					<li><a href="/CMD_SKINS"><img src="IMG_SKIN_ADMIN_028" alt="" />|LANG_SKIN_MANAGER|</a></li>
+					<li><a href="/CMD_USER_BACKUP"><img src="IMG_SKIN_ADMIN_011" alt="" />|LANG_USER_BACKUPS|</a></li>
+|$|PHP|
+<?php
+$data = <<<END
+|PLUGIN_0_RESELLER_TXT|
+END;
+if (strlen($data) > 1)
+{
+echo <<<END
+<li>|PLUGIN_0_RESELLER_TXT|</li>
+<li>|PLUGIN_1_RESELLER_TXT|</li>
+<li>|PLUGIN_4_RESELLER_TXT|</li>
+END;
+}
+
+$data = <<<END
+|PLUGIN_2_RESELLER_TXT|
+END;
+if (strlen($data) > 1)
+{
+echo <<<END
+<li>|PLUGIN_2_RESELLER_TXT|</li>
+<li>|PLUGIN_3_RESELLER_TXT|</li>
+<li>|PLUGIN_5_RESELLER_TXT|</li>
+END;
+}
+?>
+DONE|
+		</ul>
+			</div>

@@ -1,0 +1,77 @@
+|LF_STANDARD|
+|?TREE=&raquo; <a class=tree href="/CMD_RESELLER_SHOW">`LANG_SHOW_RESELLER`</a> &raquo; <a class=tree href="/HTM_ACCOUNT_RESELLER_CREATE">`LANG_CREATE_RES`</a>|
+|?HELP_SECTION=`ADMIN_HELPER`/creater.html|
+|HTM_ADMIN_TOP|
+
+<script language="Javascript">
+<!--
+
+|HTM_JAVASCRIPT|
+
+function setText( textfld, checkbx)
+{
+	if (checkbx.checked)
+		textfld.disabled = true;
+	if (!checkbx.checked)
+		textfld.disabled = false;
+}
+
+function setTexts()
+{
+	with (document.reseller)
+	{
+		if (sharedip.checked) ip.disabled = true;
+		if (uquota.checked) quota.disabled = true;
+		if (ubandwidth.checked) bandwidth.disabled = true;
+		if (undomains.checked) ndomains.disabled = true;
+		if (unsqldbs.checked) nsqldbs.disabled = true;
+	}
+}
+
+function formOK()
+{
+	with (document.reseller)
+	{
+		if (checkName() && checkPass() && checkDomain() && checkEmail())
+			return true;
+	}
+	return false;
+}
+
+function showResellerMessage()
+{
+	var message = window.open("CMD_EDIT_RESELLER_MESSAGE","message","width=740,height=520,scrollbars=no,resizable=yes");
+}
+
+// -->
+</script>
+
+
+	<table class=list cellpadding=3 cellspacing=1>
+		<form name=reseller action="CMD_ACCOUNT_RESELLER" method="post" onSubmit="return formOK()">
+			<input type=hidden name=action value=create>
+
+			<tr ><td class=listtitle colspan=3>|LANG_CREATE_RES|</td ></tr >
+
+			<tr><td class=list>|LANG_USERNAME|:</td><td class=list><input type=text name=username size=32 maxlength=|MAX_USERNAME_LENGTH| onChange="checkName()"></td></tr>
+			<tr><td class=list>|LANG_EMAIL|:</td><td class=list><input type=text name=email size=32 onChange="checkEmail()"></td></tr>
+			<tr><td class=list>|LANG_ENTER_PASS|</td><td class=list><input type=password name=passwd size=32> <input type=button value="|LANG_RANDOM|" onClick="randomPass()"></td></tr>
+			<tr><td class=list>|LANG_RE-ENTER_PASS|:</td><td class=list><input type=password name=passwd2 size=32 onChange="checkPass()"></td></tr>
+			<tr><td class=list>|LANG_DOMAIN|:</td><td class=list><input type=text name=domain size=32 onChange="checkDomain()"></td></tr>
+			<tr><td class=list>|LANG_USE_RES_PACK|:</td><td class=list>|PACKAGES| &nbsp;&nbsp;&nbsp;|FREEIPS| |LANG_FREE_IPS|</td></tr>
+			<tr><td class=list>|LANG_ACCOUNT_IP|:</td><td class=list>
+				<select class=selectclass name=ip>
+				<option selected value=shared>|LANG_SHARED_SERVER|</option>
+				<option value=sharedreseller>|LANG_SHARED_RES|</option>
+				<option value=assign>|LANG_ASSIGNED|</option>
+				</select >
+			</td></tr>
+			<tr><td class=list>|LANG_EMAIL_NOTIFY|:</td><td class=list><input type=checkbox name=notify value="yes" checked> <a href="javascript:showResellerMessage();">|LANG_EDIT_RES_MESS|</a></td></tr>
+			<tr><td class=listtitle colspan=2 align=right>
+				<input type=submit name=customize value="|LANG_CUSTOMIZE|">
+				<input type=submit name=add value="|LANG_SUBMIT|">
+			  </td></tr>
+		</form>
+	</table>
+
+|HTM_ADMIN_BOTTOM|

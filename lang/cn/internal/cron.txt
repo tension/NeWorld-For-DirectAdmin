@@ -1,0 +1,15 @@
+1=To add a cron job, you require all of the following: minute, hour, dayofmonth, month, dayofweek and command
+2=The times must formatted like one of the following (eg. hour, no spaces):<br>*<br>1<br>1-5<br>0-23/2<br>1,2,3,13,22<br>0-4,8-12
+3=The command cannot contain any newline characters
+4=Minute
+5=Hour
+6=Day of<br>Month
+7=Month
+8=Day of<br>Week
+9=Command
+10=Save
+11=Edit
+12=Delete
+13=Select
+14=User
+15=Invalid E-Mail address. DirectAdmin login username also allowed

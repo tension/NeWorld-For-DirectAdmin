@@ -1,0 +1,68 @@
+|?TREE=&raquo; <a class=tree href="/CMD_SHOW_DOMAIN?domain=`DOMAIN`">`DOMAIN`</a> &raquo; <a class=tree href="/CMD_EMAIL_FILTER?DOMAIN=`DOMAIN`">`LANG_EMAIL_FILTERS`</a>|
+|?HELP_SECTION=`USER_HELPER`/email.html#filters|
+|HTM_USER_TOP|
+<table class=list  cellpadding=3 cellspacing=1>
+
+<tr><td class=listtitle colspan=3><b>|LANG_EMAIL_FILTERS|</b></td></tr>
+
+<form action='/CMD_EMAIL_FILTER' method='POST'>
+	<input type=hidden name=action value=add>
+	<input type=hidden name=domain value="|DOMAIN|">
+	<input type=hidden name=type value="email">
+	<tr><td class=list>|LANG_BLOCK_EMAIL|</td><td class=list><input type=text name=value></td>
+	<td class=list align=center><input type=submit name=add value="|LANG_BLOCK|" ></td></tr>
+</form>
+
+<form action='/CMD_EMAIL_FILTER' method='POST'>
+	<input type=hidden name=action value=add>
+	<input type=hidden name=domain value="|DOMAIN|">
+	<input type=hidden name=type value="domain">
+	<tr><td class=list>|LANG_BLOCK_DOMAIN|</td><td class=list><input type=text name=value></td>
+	<td class=list align=center><input type=submit name=add value="|LANG_BLOCK|" ></td></tr>
+</form>
+
+<form action='/CMD_EMAIL_FILTER' method='POST'>
+	<input type=hidden name=action value=add>
+	<input type=hidden name=domain value="|DOMAIN|">
+	<input type=hidden name=type value="word">
+	<tr><td class=list>|LANG_BLOCK_WORD|</td><td class=list><input type=text name=value></td>
+	<td class=list align=center><input type=submit name=add value="|LANG_BLOCK|" ></td></tr>
+</form>
+
+<form action='/CMD_EMAIL_FILTER' method='POST'>
+	<input type=hidden name=action value=add>
+	<input type=hidden name=domain value="|DOMAIN|">
+	<input type=hidden name=type value="size">
+	<tr><td class=list>|LANG_BLOCK_SIZE|</td><td class=list><input type=text name=value>|LANG_KB|</td>
+	<td class=list align=center><input type=submit name=add value="|LANG_BLOCK|" ></td></tr>
+</form>
+
+<form action='/CMD_EMAIL_FILTER' method='POST'>
+	<input type=hidden name=action value=adult>
+	<input type=hidden name=domain value="|DOMAIN|">
+	<tr><td class=list colspan=2>|LANG_BLOCK_ADULT| <b>|STATE|</b></td>
+	<td class=list align=center><input type=submit name=add value="|ADULT|" ></td></tr>
+</form>
+
+<form action='/CMD_EMAIL_FILTER' method='POST'>
+	<input type=hidden name=action value=action>
+	<input type=hidden name=domain value="|DOMAIN|">
+	<tr><td class=list colspan=2>
+		|LANG_ACTION_FILTER|:&nbsp;&nbsp;&nbsp;&nbsp;
+		<input type=radio name=value value="drop" |DROP_CHECKED|> |LANG_ACTION_DROP|
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<input type=radio name=value value="email" |EMAIL_CHECKED|> |LANG_ACTION_TO_SPAM|
+	</td>
+	<td class=list align=center><input type=submit name=add value="|LANG_SAVE|" ></td></tr>
+</form>
+
+</table>
+
+|FILTERS|
+
+<br>
+|LANG_WORD_WARNING|
+
+
+
+|HTM_USER_BOTTOM|

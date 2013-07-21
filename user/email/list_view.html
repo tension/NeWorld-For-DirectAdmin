@@ -1,0 +1,26 @@
+|LF_STANDARD|
+|LF_LIST|
+|?TREE=&raquo; <a class=tree href="/CMD_SHOW_DOMAIN?domain=`DOMAIN`">`DOMAIN`</a> &raquo; <a class=tree href="/CMD_EMAIL_LIST?DOMAIN=`DOMAIN`">`LANG_LISTS`</a> &raquo; <a class=tree href="/CMD_EMAIL_LIST?action=view&name=`name`&DOMAIN=`DOMAIN`">`LANG_VIEW_LIST`</a>|
+|?HELP_SECTION=`USER_HELPER`/email.html#majordomo|
+|HTM_USER_TOP|
+
+|LANG_CHANGE_1| <a href="/CMD_EMAIL_LIST?action=modify&name=|name|&DOMAIN=|DOMAIN|">|LANG_CHANGE_2|</a><br>
+
+<table cellspacing=1 cellpadding=3 class=list>
+<form action="/CMD_EMAIL_LIST" method="POST">
+<input type=hidden name=domain value="|DOMAIN|">
+<input type=hidden name=name value="|name|">
+<input type=hidden name=action value="add">
+<tr><td class=listtitle colspan=2>|LANG_ADD_EMAIL|</td></tr>
+<tr><td class=list><input type=radio checked name=type value="list">|LANG_ADD_TO| |name|</td>
+	<td class=list><input type=radio name=type value="digest">|LANG_ADD_TO| |name|-digest</td></tr>
+<tr><td class=list align=right>|LANG_EMAIL|:</td><td class=list><input type=text size=50 name=email></td></tr>
+<tr><td class=listtitle colspan=2 align=right><input type=submit value="|LANG_ADD|"></td></tr>
+</form>
+</table>
+
+|SUBSCRIBERS|
+
+|SUBSCRIBERS_DIGEST|
+
+|HTM_USER_BOTTOM|

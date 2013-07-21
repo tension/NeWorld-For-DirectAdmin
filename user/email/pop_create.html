@@ -1,0 +1,37 @@
+|LF_STANDARD|
+|LF_POP|
+|?TREE=&raquo; <a class=tree href="/CMD_SHOW_DOMAIN?domain=`DOMAIN`">`DOMAIN`</a> &raquo; <a class=tree href="/CMD_EMAIL_POP?DOMAIN=`DOMAIN`">`LANG_POP_ACCOUNTS`</a> &raquo; <a class=tree href="/HTM_EMAIL_POP_CREATE?DOMAIN=`DOMAIN`">`LANG_POP_CREATE`</a>|
+|?HELP_SECTION=`USER_HELPER`/email.html#pop3|
+|HTM_USER_TOP|
+
+<script language="Javascript">
+<!--
+
+|HTM_JAVASCRIPT|
+
+// -->
+</script>
+
+|?POP_QUOTA=0|
+|*if DEFAULT_POP_QUOTA|
+|?POP_QUOTA=`DEFAULT_POP_QUOTA`|
+|*endif|
+
+<table class=list cellpadding=3 cellspacing=1>
+	<form name=reseller action="CMD_EMAIL_POP" method="post">
+		<input type=hidden name=action value=create>
+		<input type=hidden name=domain value="|DOMAIN|">
+
+		<tr><td class=listtitle colspan=2>|LANG_POP_CREATE|</td></tr>
+
+		<tr><td class=list>|LANG_POP_USERNAME|</td><td class=list><input type=text name=user size=16>@|DOMAIN|</td></tr>
+		<tr><td class=list>|LANG_ENTER_PASS|:</td><td class=list><input type=password name=passwd size=16> <input type=button value="|LANG_RANDOM|" onClick="randomPass()"></td></tr>
+		<tr><td class=list>|LANG_RE-ENTER_PASS|:</td><td class=list><input type=password name=passwd2 size=16></td></tr>
+		<tr><td class=list>|LANG_EMAIL_QUOTA|</td><td class=list><input type=text name=quota size=16 value="|POP_QUOTA|">|LANG_ZERO_UNLIMITED|</td></tr>
+		<tr><td class=listtitle colspan=3 align=right>
+			<input type=submit name=create value="|LANG_CREATE|">
+		</td></tr>
+	</form>
+</table>
+
+|HTM_USER_BOTTOM|

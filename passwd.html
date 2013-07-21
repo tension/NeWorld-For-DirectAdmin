@@ -1,0 +1,64 @@
+|LF_STANDARD|
+|?TREE=&raquo; <a class=tree href="/HTM_PASSWD">`LANG_CHANGE_YOUR_PASS`</a>|
+|?HELP_SECTION=`USER_HELPER`/gettingstarted.html#password|
+|HTM_USER_TOP|
+<div class="span6 offset3" style="margin-top: 12%;">
+	<form action="CMD_PASSWD" method="post" class="form-horizontal">
+		<input type="hidden" name="options" value="yes">
+	
+		<div class="control-group">
+			<label class="control-label" for="oldpass">|LANG_ENTER_OLD_PASS|</label>
+			<div class="controls">
+				<input type="password" name="oldpass" id="oldpass" placeholder="|LANG_ENTER_OLD_PASS|">
+			</div>
+		</div>
+	
+		<div class="control-group">
+			<label class="control-label" for="passwd">|LANG_ENTER_PASS|</label>
+			<div class="controls">
+				<input type="password" name="passwd" id="passwd" placeholder="|LANG_ENTER_PASS|" onkeyup="CreateRatePasswdReq(this,'3');">
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<div class="controls">
+				<script type="text/javascript" src="/IMG_SKIN_JS"></script>
+			    <div style="margin-right: 1em;" class="fl">
+					<table width="200" cellspacing="0" cellpadding="0" border="0" style="margin-top: 15px;margin-right: 1em;float: left;" id="passwdBar">
+						<tr>
+							<td id="posBar" style="width:135px;padding:0;border-right:0;height:5px;background:#e5e9eb;"></td>
+							<td id="negBar" style="padding:0;border-right:0;height:5px;background:#e5e9eb;"></td>
+						</tr>
+					</table>
+					<p id="passwdRating" style="float: left;">&nbsp;</p>
+				</div>
+			</div>
+		</div>
+	
+		<div class="control-group">
+			<label class="control-label" for="passwd2">|LANG_RE-ENTER_PASS|</label>
+			<div class="controls">
+				<input type="password" name="passwd2" id="passwd2" placeholder="|LANG_RE-ENTER_PASS|">
+			</div>
+		</div>
+		
+		
+
+		<div class="control-group">
+			<div class="controls">
+		      	<label class="checkbox"><input type="checkbox" name="system" value="yes" checked>|LANG_PASS_DA|</label>
+		      	<label class="checkbox"><input type="checkbox" name="ftp" value="yes" checked>|LANG_PASS_FTP|</label>
+		      	<label class="checkbox"><input type="checkbox" name="database" value="yes">|LANG_PASS_DB|</label>
+		    </div>
+		</div>
+		
+		<hr />
+		
+		<p style="float: right;"><button type="submit" class="btn btn-success" data-loading-text="Loading...">确认更改</button></p>
+	
+		  <div class="clear"></div><!-- /clear -->
+	</form>
+	
+</div>
+
+|HTM_USER_BOTTOM|

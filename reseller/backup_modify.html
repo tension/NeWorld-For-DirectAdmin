@@ -1,0 +1,135 @@
+|LF_STANDARD|
+|?TREE=&raquo; <a class=tree href="/CMD_USER_BACKUP">`LANG_MANAGE_USER_BACKUPS`</a> &raquo; `LANG_MODIFY_BACKUP`|
+|?HELP_SECTION=`RESELLER_HELPER`|
+|HTM_HEADER_FULL|
+
+<style>
+.step { white-space: nowrap; border: 1px solid light gray;}
+</style>
+
+<table class=list cellspacing=6 cellpadding=8>
+<tr><td align=center colspan=3><b>|LANG_MODIFY_BACKUP|</b></td></tr>
+<form name=tableform1 action="/CMD_USER_BACKUP" method="POST">
+<input type=hidden name=action value="modify">
+<input type=hidden name=id value="|id|">
+<tr>
+	<td class=step valign=top>
+			<div>|LANG_STEP_1|: <b>|LANG_WHO|</b></div>
+			<table width=100% cellspacing=1 cellpadding=0>
+				<tr><td bgcolor="#C0C0C0"> </td></tr>
+				<tr><td height=5> </td></tr>
+			</table>
+
+			<table cellpadding=0 cellspacing=1>
+			<tr>
+				<td class=listtitle align=center>
+					<input type=radio name=who value="all" |WHO_ALL_CHECKED|>
+				</td>
+				<td class=listtitle>
+					- |LANG_ALL_USERS|
+				</td>
+			</tr>
+			<tr>
+				<td class=listtitle align=center>
+					<input type=radio name=who value="except" |WHO_EXCEPT_CHECKED|>
+				</td>
+				<td class=listtitle>
+					- |LANG_ALL_USERS| |LANG_EXCEPT_USERS|
+				</td>
+			</tr>
+			<tr>
+				<td class=listtitle align=center>
+					<input type=radio name=who value="selected" |WHO_SELECT_CHECKED|>
+				</td>
+				<td class=listtitle>
+					- |LANG_SELECTED_USERS|
+				</td>
+			</tr>
+			<tr><td></td>
+				<td>
+					<div style="overflow: auto; height: 160px; width: 150px;">
+					|USERS|
+					</div>
+				</td>
+			</tr>
+			<tr><td class=listtitle><input type=checkbox name="skip_suspended" value="yes" |SKIP_SUSPENDED_CHECKED|></td>
+				<td class=listtitle>
+					- |LANG_SKIP_SUSPENDED|
+				</td>
+			</tr>
+			</table>
+	</td>
+	<td class=step valign=top>
+			<div>|LANG_STEP_2|: <b>|LANG_WHEN|</b></div>
+			<table width=100% cellspacing=1 cellpadding=0>
+				<tr><td bgcolor="#C0C0C0"> </td></tr>
+				<tr><td height=5> </td></tr>
+			</table>
+			<table cellpadding=0 cellspacing=1>
+			<tr>
+				<td class=listtitle>
+					<input type=radio name=when value="cron" checked>
+				</td>
+				<td class=listtitle>
+					- |LANG_CRON_SCHED|
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>
+					<table class=list cellpadding=0 cellspacing=1>
+					<tr><td class=list align=right>|LANG_MINUTE|: </td><td class=list><input type=text size=2 name=minute value="|minute|"></td><td class=list>0-59</td></tr>
+					<tr><td class=list align=right>|LANG_HOUR|: </td><td class=list><input type=text size=2 name=hour value="|hour|"></td><td class=list>0-23</td></tr>
+					<tr><td class=list align=right>|LANG_DAY_OF_MONTH|: </td><td class=list><input type=text size=2 name=dayofmonth value="|dayofmonth|"></td><td class=list>1-31</td></tr>
+					<tr><td class=list align=right>|LANG_MONTH|: </td><td class=list><input type=text size=2 name=month value="|month|"></td><td class=list>1-12</td></tr>
+					<tr><td class=list align=right>|LANG_DAY_OF_WEEK|: </td><td class=list><input type=text size=2 name=dayofweek value="|dayofweek|"></td><td class=list>0-7</td></tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+
+
+	</td>
+	<td class=step valign=top>
+			<div>|LANG_STEP_3|: <b>|LANG_WHERE|</b></div>
+			<table width=100% cellspacing=1 cellpadding=0>
+				<tr><td bgcolor="#C0C0C0"> </td></tr>
+				<tr><td height=5> </td></tr>
+			</table>
+				<table cellpadding=0 cellspacing=1>
+				<tr>
+					<td class=listtitle><input type=radio name=where value="local" |LOCAL_CHECKED|></td>
+					<td class=listtitle> - |LANG_LOCAL|: ~/|USERNAME|/|USER_BACKUPS_DIR|/</td>
+				</tr>
+				<tr>
+					<td class=listtitle>
+						<input type=radio name=where value="ftp" |FTP_CHECKED|>
+					</td>
+					<td class=listtitle>
+						- |LANG_FTP|
+					</tr>
+				</tr>
+				<tr><td></td>
+					<td>
+						<table cellpadding=0 cellspacing=1>
+							<tr><td class=list align=right>|LANG_IP|:</td><td class=list><input type=text name=ftp_ip value="|ftp_ip|"></td></tr>
+							<tr><td class=list align=right>|LANG_USERNAME|:</td><td class=list><input type=text name=ftp_username value="|ftp_username|"></td></tr>
+							<tr><td class=list align=right>|LANG_PASSWORD|:</td><td class=list><input type=password name=ftp_password value="|ftp_password_plain|"></td></tr>
+							<tr><td class=list align=right>|LANG_REMOTE_PATH|:</td><td class=list><input type=text name=ftp_path value="|ftp_path|"></td></tr>
+							<tr><td class=list align=right>|LANG_REMOTE_PORT|:</td><td class=list><input type=text name=ftp_port value="|ftp_port|"></td></tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+
+
+	</td>
+</tr>
+<tr>
+<td colspan=3 align=right>|LANG_STEP_4|: <input type=submit value="|LANG_SAVE|"></td>
+</tr>
+</form>
+</table>
+
+
+|HTM_FOOTER_FULL|

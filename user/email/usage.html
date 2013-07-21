@@ -1,0 +1,27 @@
+|?TREE=&raquo; <a class=tree href="/CMD_SHOW_DOMAIN?domain=`DOMAIN`">`DOMAIN`</a> &raquo; <a class=tree href="/CMD_EMAIL_USAGE?DOMAIN=`DOMAIN`">`LANG_EMAIL_USAGE`</a>|
+|?HELP_SECTION=`USER_HELPER`/email.html#email_usage|
+|HTM_HEADER_FULL|
+
+<b>|LANG_EMAIL_USAGE|</b>
+<br><br>
+
+|LANG_SHOW_USAGE|:
+<form name=whichfile action=? method=GET>
+<input type=hidden name='domain' value='|DOMAIN|'>
+<input type=radio name=which value="today" onClick="document.whichfile.submit();" |TODAY_CHECKED|> |LANG_TODAY|
+&nbsp;&nbsp;&nbsp;&nbsp;
+<input type=radio name=which value="both" onClick="document.whichfile.submit();" |BOTH_CHECKED|> |LANG_THIS_MONTH|
+&nbsp;&nbsp;&nbsp;&nbsp;
+<input type=radio name=which value="past" onClick="document.whichfile.submit();" |PAST_CHECKED|> |LANG_THIS_MONTH_EXCLUDING|
+</form>
+
+|EMAIL_STATS|
+|LANG_COUNT_NOTE|
+|EMAIL_USAGE|
+
+<br>
+|LANG_SENDER_NOTE|<br>
+|LANG_AUTH_NOTE|<br>
+|LANG_PATH_NOTE|<br>
+
+|HTM_FOOTER_FULL|

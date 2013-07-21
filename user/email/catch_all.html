@@ -1,0 +1,26 @@
+|?TREE=&raquo; <a class=tree href="/CMD_SHOW_DOMAIN?domain=`DOMAIN`">`DOMAIN`</a> &raquo; <a class=tree href="/CMD_EMAIL_CATCH_ALL?DOMAIN=`DOMAIN`">`LANG_SET_CATCH`</a>|
+|?HELP_SECTION=`USER_HELPER`/email.html#catchall|
+|HTM_USER_TOP|
+
+
+|*if USERCATCHALL="OFF"|
+	|LANG_CATCHALL_DISABLED|
+|*else|
+|LANG_THIS_EMAIL|
+
+<table class=list cellpadding=3 cellspacing=1>
+	<form name=info action="CMD_EMAIL_CATCH_ALL" method="post">
+		<input type=hidden name=domain value="|DOMAIN|">
+
+		<tr><td class=listtitle colspan=3>|LANG_SET_CATCH|</td></tr>
+		<tr title="|LANG_FAIL_EXPLANATION|"><td class=list>|LANG_FAIL|</td><td class=list align=center><input type=radio name=catch value=":fail:" |FAILCHECKED|></td><td class=list>|LANG_SENDER|</td></tr>
+		<tr title="|LANG_DROPPED_EXPLANATION|"><td class=list>|LANG_IGNORE|</td><td class=list align=center><input type=radio name=catch value=":blackhole:" |BHCHECKED| onClick="javascript:alert('|LANG_DROPPED_EXPLANATION|');"></td><td class=list>|LANG_DROPPED|</td></tr>
+		<tr><td class=list>|LANG_ADDR|</td><td class=list align=center><input type=radio name=catch value="address" |ADDRESSCHECKED|></td><td class=list>|POPLIST|</td></tr>
+		<tr><td class=listtitle colspan=3 align=right>
+			<input type=submit name=update value="|LANG_UPDATE|">
+		</td></tr>
+	</form>
+</table>
+|*endif|
+
+|HTM_USER_BOTTOM|

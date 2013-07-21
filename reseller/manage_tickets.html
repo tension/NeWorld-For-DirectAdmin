@@ -1,0 +1,27 @@
+|LF_STANDARD|
+|?TREE=&raquo; <a class=tree href="/CMD_TICKET_MANAGE">`LANG_MANAGE_TICKETS`</a>|
+|?HELP_SECTION=`RESELLER_HELPER`/messagesystem.html|
+|HTM_RESELLER_TOP|
+
+<a href="CMD_TICKET_CREATE?TYPE=Message">|LANG_SEND_MESS|</a><br>
+<a href="CMD_TICKET_MANAGE?action=closed">|LANG_VIEW_CLOSED||NEWCLOSED|</a><br>
+
+
+|TICKETS|
+
+<table class=list cellpadding=3 cellspacing=1>
+<tr><td class=listtitle colspan=3>|LANG_TICK_OPTIONS|</td></tr>
+<form action="CMD_TICKET_MANAGE" method="post">
+	<input type=hidden name=action value="active">
+	<tr><td class=list><input type=checkbox name=active value="yes" |ACTIVECHECKED|></td><td class=list>|LANG_TICK_ENABLED| <input type=text size=30 name=html value="|HTML|"></td>
+	<td class=list><input type=submit name=save value="|LANG_SAVE|"></td></tr>
+</form>
+
+<form action="CMD_TICKET_MANAGE" method="post">
+	<input type=hidden name=action value="email">
+	<tr><td class=list><input type=checkbox name=ON value="yes" |EMAILCHECKED|></td><td class=list>|LANG_EMAIL_TO| <input type=text name=email value="|EMAIL|"></td>
+	<td class=list><input type=submit name=save value="|LANG_SAVE|"></td></tr>
+</form>
+</table>
+
+|HTM_RESELLER_BOTTOM|

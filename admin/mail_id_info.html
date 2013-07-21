@@ -1,0 +1,26 @@
+|LF_STANDARD|
+|LF_MAIL_QUEUE|
+|?TREE=&raquo; <a class=tree href="/CMD_MAIL_QUEUE">`LANG_MAIL_QUEUE_ADMIN`</a> &raquo; <a class=tree href="/CMD_MAIL_QUEUE?id=`id`">`LANG_VIEW` `id`</a>|
+|?HELP_SECTION=`ADMIN_HELPER`|
+|HTM_HEADER_FULL|
+
+<form action='/CMD_MAIL_QUEUE' method='POST'>
+<input type=hidden name=action value="select">
+<input type=hidden name=select0 value="|id|">
+<input type=submit value='|LANG_THAW|' name=thaw>
+<input type=submit value='|LANG_FREEZE|' name=freeze>
+<input type=submit value='|LANG_RETRY|' name=retry>
+<input type=submit value='|LANG_BOUNCE|' name=bounce>
+<input type=submit value='|LANG_DELETE|' name=delete>
+</form>
+
+<table class=list cellpadding=3 cellspacing=1>
+<tr><td class=listtitle>|LANG_EMAIL_HEADERS|</td></tr>
+<tr><td class=list align=center><textarea style="FONT-FAMILY: courier, courier-new" wrap=off readonly cols=120 rows=10>|HEADERS|</textarea></td></tr>
+<tr><td class=listtitle>|LANG_EMAIL_BODY|</td></tr>
+<tr><td class=list align=center><textarea style="FONT-FAMILY: courier, courier-new" wrap=off readonly cols=120 rows=20>|EMAIL_BODY|</textarea></td></tr>
+<tr><td class=listtitle>|LANG_LOG|</td></tr>
+<tr><td class=list align=center><textarea style="FONT-FAMILY: courier, courier-new" wrap=off readonly cols=120 rows=10>|LOGS|</textarea></td></tr>
+</table>
+
+|HTM_FOOTER_FULL|

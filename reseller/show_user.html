@@ -1,0 +1,77 @@
+|LF_STANDARD|
+|LF_CREATE|
+|?TREE=&raquo; <a class=tree href="/CMD_USER_SHOW">`LANG_SHOW_USERS`</a> &raquo; <a class=tree href="/CMD_SHOW_USER?user=`user`">`LANG_USER` `user`</a>|
+|?HELP_SECTION=`RESELLER_HELPER`/modify.html|
+|HTM_HEADER_FULL|
+
+<b>|LANG_DETAILS| &raquo; |user|</b><br>
+<br>
+<table width="100%" cellpadding="5" cellspacing="0">
+	<tr>
+		<form action="CMD_LOGIN" method="POST">
+		<td align="center">
+			<input type="hidden" name="username" value="|USERNAME|\||user|">
+			<button class="btn" type="submit">|LANG_LOGIN_AS| |user|</button>
+		</td>
+		</form>
+		<td align="center">
+			<a href="#" class="btn" type="submit" onClick="location.href='CMD_MODIFY_USER?user=|user|'">|LANG_MODIFY_USER| |user|</a>
+		</td>
+		<form name="tableform" action="CMD_SELECT_USERS" method="GET">
+		<td align="center">
+				<input type="hidden" name="select0" value="|user|">
+				<button type="submit" name="delete" class="btn btn-danger">|LANG_DELETE_USER| |user|</button>
+		</td>
+		</form>
+	</tr>
+	<tr>
+		<form action="CMD_SELECT_USERS" method="GET">
+		<td align="center">
+				<input type="hidden" name="select0" value="|user|">
+				<input type="hidden" name="location" value="CMD_SHOW_USER?user=|user|">
+				<button type="submit" name="dosuspend" class="btn btn-warning">|LANG_SUSPEND|</button>
+		</td>
+		</form>
+		<form action="CMD_SELECT_USERS" method="GET">
+		<td align="center">
+				<input type="hidden" name="select0" value="|user|">
+				<input type="hidden" name="location" value="CMD_SHOW_USER?user=|user|">
+				<button type="submit" name="dounsuspend" class="btn btn-success">|LANG_UNSUSPEND|</button>
+		</td>
+		</form>
+	</tr>
+</table>
+|DOMAINS|
+|STATS|
+
+<script language="Javascript">
+<!--
+function showUserMessage() {
+	var message = window.open("CMD_EDIT_USER_MESSAGE","message","width=740,height=480,scrollbars=no,resizable=yes");
+}
+// -->
+</script>
+
+<table class=list cellpadding=3 cellspacing=1>
+<form action="/CMD_RESEND_EMAIL" method="POST">
+<input type=hidden name=user value=|user|>
+<tr><td class=listtitle>|LANG_RESEND_WELCOME_EMAIL|</td></tr>
+<tr><td class=list align=center>|LANG_SEND_TO|: <input type=text name=email value="|USER_EMAIL|">
+	<input type=checkbox name=newpass value="yes">|LANG_RANDOM_PASS|
+	<input type=submit value="|LANG_SEND|">&nbsp;&nbsp;&nbsp;&nbsp;
+	<a href="javascript:showUserMessage();">|LANG_EDIT_USER_MESS|</a>
+</td></tr>
+</form>
+</table>
+
+<table class=list cellpadding=3 cellspacing=1>
+<tr><td class=listtitle>|LANG_USER_COMMENTS|</td></tr>
+<form action="CMD_COMMENTS" method="POST">
+<input type=hidden name=user value="|user|">
+<input type=hidden name=location value="CMD_SHOW_USER">
+<tr><td class=list align=center><textarea rows=15 cols=80 name=comments>|COMMENTS|</textarea></td></tr>
+<tr><td class=listtitle align=right><input type=submit value="|LANG_SAVE_COMMENTS|"></td></tr>
+</form>
+</table>
+
+|HTM_FOOTER_FULL|

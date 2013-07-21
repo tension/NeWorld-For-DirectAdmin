@@ -1,0 +1,24 @@
+|LF_STANDARD|
+|?TREE=&raquo; <a class=tree href="/CMD_SHOW_DOMAIN?domain=`DOMAIN`">`DOMAIN`</a> &raquo; <a class=tree href="/CMD_REDIRECT?DOMAIN=`DOMAIN`">`LANG_SITE_REDIRECTS`</a>|
+|?HELP_SECTION=`USER_HELPER`/misc.html#redirect|
+|HTM_USER_TOP|
+
+<table class=list cellpadding=3 cellspacing=1>
+<form name=info action='/CMD_REDIRECT' method='POST'>
+<input type=hidden name=domain value="|DOMAIN|">
+<input type=hidden name=action value="add">
+<tr><td class=listtitle colspan=2>|LANG_ADD_NEW_REDIRECT|</td></tr>
+<tr><td class=list>|LANG_LOCAL_URL|</td><td class=list>|DOMAIN|<input type=text name=from value="/"> |LANG_EG_REDIRECT|</td></tr>
+<tr><td class=list>|LANG_REDIRECT_TYPE|</td><td class=list><select name=type>
+<option value="301">301 - |LANG_PERMANENT|</option>
+<option value="302" selected>302 - |LANG_TEMPORARY|</option>
+<option value="303">303 - |LANG_REPLACED|</option>
+</select></td></tr>
+<tr><td class=list>|LANG_DESTINATION_URL|</td><td class=list><input type=text name=to value="http://"> |LANG_EG_DOMAIN|</td></tr>
+<tr><td class=listtitle align=right colspan=2><input type=submit value="|LANG_SAVE|"></td></tr>
+</form>
+</table>
+
+|REDIRECTS|
+
+|HTM_USER_BOTTOM|

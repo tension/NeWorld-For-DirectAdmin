@@ -1,0 +1,13 @@
+|*if user|
+|?TREE=&raquo; <a class=tree href="/CMD_SHOW_RESELLER?user=`user`">`LANG_STATS_FOR` `user`</a> &raquo; <a class=tree href="/CMD_RESELLER_HISTORY?user=`user`">`LANG_RESELLER_HISTORY`</a>|
+|*else|
+|?TREE=&raquo; <a class=tree href="/CMD_RESELLER_STATS">`LANG_STATS_FOR` `USERNAME`</a> &raquo; <a class=tree href="/CMD_RESELLER_HISTORY">`LANG_RESELLER_HISTORY`</a>|
+|*endif|
+
+|?HELP_SECTION=`RESELLER_HELPER`/rstats.html#history|
+|HTM_RESELLER_TOP|
+
+<b>|LANG_RESELLER_HISTORY|</b><br>
+
+|HISTORY|
+|HTM_RESELLER_BOTTOM|

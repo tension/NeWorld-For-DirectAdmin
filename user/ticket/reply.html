@@ -1,0 +1,28 @@
+|LF_STANDARD|
+|LF_TICKET|
+|?TREE=&raquo; <a class=tree href="/CMD_TICKET">`LANG_MESS_SYS`</a> &raquo; <a class=tree href="/CMD_TICKET?action=view&number=`number`&type=ticket">`LANG_VIEW` `type` `number`</a> &raquo; <a class=tree href="/HTM_TICKET_REPLY?number=`number`&action=`action`&subject=`subject`&user=`user`&priority=`priority`">`LANG_REPLY_TO`</a>|
+|?HELP_SECTION=`USER_HELPER`/gettingstarted.html#ticket|
+|HTM_HEADER_FULL|
+
+<table class=list cellpadding=3 cellspacing=1>
+	<tr><td class=listtitle colspan=2>|LANG_ADD_REPLY|</td></tr>
+
+	<form name=info action="CMD_TICKET" method="post">
+		<input type=hidden name=action value="|action|">
+		<input type=hidden name=type value="reply">
+		<input type=hidden name=number value="|number|">
+		<input type=hidden name=user value="|user|">
+		<input type=hidden name=subject value="|subject|">
+		<input type=hidden name=priority value="|priority|">
+
+	<tr><td class=list>|LANG_SUBJECT|</td><td class=list>|subject|</td></tr>
+	<tr><td class=list>|LANG_MESSAGE|</td><td class=list><textarea name=message rows=16 cols=65></textarea></td></tr>
+
+	<tr><td class=listtitle colspan=2 align=right>
+		<input type=submit name=submit value="|LANG_SAVE|">
+	</td></tr>
+	</form>
+
+</table>
+
+|HTM_FOOTER_FULL|

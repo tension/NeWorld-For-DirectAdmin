@@ -1,0 +1,18 @@
+|LF_STANDARD|
+|?TREE=&raquo; <a class=tree href="/CMD_TICKET">`LANG_MESS_SYS`</a>|
+|?HELP_SECTION=`USER_HELPER`/gettingstarted.html#ticket|
+|HTM_HEADER_FULL|
+
+<a href="CMD_TICKET_CREATE?TYPE=Ticket">|LANG_CREATE_TICKET|</a><br>
+<a href="CMD_TICKET?action=closed">|LANG_VIEW_CLOSED_TICKETS||NEWCLOSED|</a><br>
+
+|TICKETS|
+|MESSAGES|
+
+<form action="CMD_TICKET" method="post">
+	<input type=hidden name=action value="email">
+	<input type=checkbox name=ON value="yes" |EMAILCHECKED|> |LANG_EMAIL_TO| <input type=text name=email value="|EMAIL|">
+	<input type=submit name=save value="|LANG_SAVE|">
+</form>
+
+|HTM_FOOTER_FULL|

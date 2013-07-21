@@ -1,0 +1,50 @@
+|?TREE=&raquo; <a class=tree href="/CMD_SHOW_DOMAIN?domain=`domain`">`domain`</a> &raquo; <a class=tree href="/CMD_USER_STATS?domain=`domain`">`LANG_STATS_FOR` `USERNAME`</a>|
+|?HELP_SECTION=`USER_HELPER`/stats.html|
+|HTM_HEADER|
+|HTM_HEADER_WIDE|
+<b>|LANG_DETAILS_FOR| |USERNAME|</b><br><br>
+<a href="/CMD_FILE_MANAGER/domains/|domain|/logs">|LANG_APACHE_LOGS|</a><br>
+<a href="/CMD_USER_HISTORY?domain=|domain|">|LANG_USER_HISTORY|</a><br>
+
+<table class=list cellpadding=3 cellspacing=1>
+<tr>
+	<td class=listtitle>|LANG_LOG_TYPE|</td><td class=listtitle>|LANG_FULL_LOG|</td><td class=listtitle>|LANG_LAST_LINES|</td>
+</tr>
+<tr>
+	<td class=list>
+		|LANG_APACHE_USAGE|
+	</td>
+	<td class=list>
+		<a href="/CMD_SHOW_LOG?domain=|domain|&type=log">|LANG_FULL_USAGE|</a>
+	</td>
+	<td class=list>
+		<a href="/CMD_SHOW_LOG?domain=|domain|&type=log&lines=10">|LANG_10_LINES|</a>&nbsp;&nbsp;
+		<a href="/CMD_SHOW_LOG?domain=|domain|&type=log&lines=100">|LANG_100_LINES|</a>
+	</td>
+</tr>
+<tr>
+	<td class=list>
+		|LANG_APACHE_ERROR|
+	</td>
+	<td class=list>
+		<a href="/CMD_SHOW_LOG?domain=|domain|&type=error">|LANG_FULL_ERROR|</a>
+	</td>
+	<td class=list>
+		<a href="/CMD_SHOW_LOG?domain=|domain|&type=error&lines=10">|LANG_10_LINES|</a>&nbsp;&nbsp;
+		<a href="/CMD_SHOW_LOG?domain=|domain|&type=error&lines=100">|LANG_100_LINES|</a>
+	</td>
+</tr>
+</table>
+
+|DOMAINS|
+
+<br>
+<span style="COLOR: red;">|LANG_WEBALIZER|</span>
+<br><br>
+|LANG_NOTE|
+<br><br>
+
+|STATS|
+<center><b>|RESULT|</b></center>
+|HTM_FOOTER_WIDE|
+|HTM_FOOTER|

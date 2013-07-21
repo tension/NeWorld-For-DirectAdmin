@@ -1,0 +1,42 @@
+|LF_STANDARD|
+|?TREE=&raquo; <a class=tree href="/CMD_DNS_ADMIN">`LANG_DNS_ADMIN`</a>|
+|?HELP_SECTION=`ADMIN_HELPER`/dnsadmin.html|
+|HTM_ADMIN_TOP|
+
+<b>|LANG_SELECT_DNS|</b><br>
+
+<br>
+<table class=list cellpadding=3 cellspacing=1>
+<form action="" method="GET">
+<tr><td class=listtitle>
+|LANG_SHOW_DOMAINS_THAT|
+<select class=selectclass name=comparison1>
+<option value="none">--</option >
+<option value="equals">|LANG_EQUAL|</option >
+<option value="contains">|LANG_CONTAIN|</option >
+<option selected value="startswith">|LANG_START_WITH|</option >
+</select>
+<input type=text size=12 class=inputclass name=value1>
+<input type=hidden name=sort1 value="1">
+<input type=hidden name=sort1dir value="1">
+<input type=hidden name=ipp value="50">
+<input type=submit value="|LANG_SEARCH|"></td></tr>
+</form>
+</table>
+
+|TABLE|
+
+<table class=list cellpadding=3 cellspacing=1>
+<form action="/CMD_DNS_ADMIN" method="POST">
+<input type=hidden name=action value="create">
+<tr><td class=listtitle colspan=2>|LANG_ADD_ZONE|</td></tr>
+<tr><td class=list align=right>|LANG_DOMAIN_NAME|</td><td class=list><input type=text name=domain></td></tr>
+<tr><td class=list align=right>|LANG_IP_ADDRESS|</td><td class=list><input type=text name=ip></td></tr>
+<tr><td class=list align=right>|LANG_NAME_SERVER_1|</td><td class=list><input type=text name=ns1></td></tr>
+<tr><td class=list align=right>|LANG_NAME_SERVER_2|</td><td class=list><input type=text name=ns2></td></tr>
+<tr><td class=listtitle colspan=2 align=right><input type=checkbox name=reverse value="yes">|LANG_REVERSE|&nbsp;&nbsp;&nbsp;<input type=submit value="|LANG_ADD|"></td></tr>
+</form>
+</table>
+
+
+|HTM_ADMIN_BOTTOM|

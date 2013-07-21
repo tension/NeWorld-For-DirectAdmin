@@ -1,0 +1,153 @@
+|LF_STANDARD|
+
+<script language="Javascript">
+<!--
+
+function trimit(strobj) {
+	var str = strobj.value
+	while (str.substring(0,1) == ' ') {
+		str = str.substring(1, str.length);
+	}
+	while (str.substring(str.length-1, str.length) == ' ') {
+		str = str.substring(0,str.length-1);
+	}
+
+	strobj.value = str;
+
+	return true;
+}
+
+function doSearch(type) {
+	if (document.searchform)
+		with (document.searchform) {
+			trimit(value);
+
+			if (type == 'user') {
+				value1.value=value.value
+				value8.value='';
+			} else {
+				value8.value=value.value.toLowerCase();
+				value1.value='';
+			}
+
+			submit();
+		}
+}
+
+// -->
+</script>
+
+<div class="search">
+	<form action="/CMD_ALL_USER_SHOW" method="GET" name="searchform" onSubmit="doSearch('default');">
+		<input type="hidden" name="comparison1" value="contains">
+		<input type="hidden" name="comparison8" value="contains">
+		<input type="hidden" name="sort1" value="1">
+		<input type="hidden" name="value1" value="">
+		<input type="hidden" name="value8" value="">
+		<div class="input-append">
+			<input class="span3" type="text" name="value" value="|LANG_CONTAINS|" size=14 onClick="this.select()">
+			<button class="btn" type="button" onClick="doSearch('domain')">|LANG_DOMAIN|</button>
+			<button class="btn" type="button" onClick="doSearch('user')">|LANG_USER|</button>
+		</div>
+	</form>
+</div>
+
+<script language="javascript">
+if (document.searchform) {
+	with (document.searchform) {
+		value.focus();
+		value.select();
+	}
+}
+</script>
+
+	<div class="span5 listbox">
+		<h5>用户管理</h5>
+		<ul>
+			<li><a href="/CMD_ALL_USER_SHOW"><img src="IMG_SKIN_ADMIN_004" alt="" />|LANG_SHOW_ALL_USERS|</a></li>
+			<li><a href="/CMD_USER_SHOW"><img src="IMG_SKIN_ADMIN_006" alt="" />|LANG_ADM_USERS|</a></li>
+			<li><a href="/CMD_RESELLER_SHOW"><img src="IMG_SKIN_ADMIN_005" alt="" />|LANG_LIST_RESELLERS|</a></li>
+			<li><a href="/HTM_ACCOUNT_USER_CREATE"><img src="IMG_SKIN_ADMIN_001" alt="" />|LANG_ADD_USER|</a></li>
+			<li><a href="/HTM_ACCOUNT_ADMIN_CREATE"><img src="IMG_SKIN_ADMIN_003" alt="" />|LANG_CREATE_ADMIN|</a></li>
+			<li><a href="/HTM_ACCOUNT_RESELLER_CREATE"><img src="IMG_SKIN_ADMIN_002" alt="" />|LANG_CREATE_RESELLER|</a></li>
+			<li><a href="/CMD_MANAGE_RESELLER_PACKAGES"><img src="IMG_SKIN_ADMIN_009" alt="" />|LANG_RESELLER_PACKAGES|</a></li>
+			<li><a href="/CMD_ADMIN_SHOW"><img src="IMG_SKIN_ADMIN_008" alt="" />|LANG_LIST_ADMINS|</a></li>
+			<li><a href="/HTM_USER_PASSWD"><img src="IMG_SKIN_ADMIN_007" alt="" />|LANG_CHANGE_PASS|</a></li>
+		</ul>
+	</div>
+			
+	<div class="span5 offset1 listbox">
+		<h5>管理工具</h5>
+		<ul>
+			<li><a href="/CMD_ADMIN_BACKUP"><img src="IMG_SKIN_ADMIN_010" alt="" />|LANG_ADMIN_BACKUPS|</a></li>
+			<li><a href="/CMD_SYSTEM_BACKUP"><img src="IMG_SKIN_ADMIN_011" alt="" />|LANG_SYS_BACKUP|</a></li>
+			<li><a href="/CMD_MOVE_USERS"><img src="IMG_SKIN_ADMIN_012" alt="" />|LANG_MOVE_USERS|</a></li>
+			<li><a href="/CMD_ADMIN_FILE_EDITOR"><img src="IMG_SKIN_ADMIN_013" alt="" />|LANG_FILE_EDITOR|</a></li>
+			<li><a href="/CMD_DNS_ADMIN"><img src="IMG_SKIN_ADMIN_014" alt="" />|LANG_DNS_ADMIN|</a></li>
+			<li><a href="/CMD_TICKET_MANAGE"><img src="IMG_SKIN_ADMIN_015" alt="" />|LANG_MANAGE_TICKETS|</a></li>
+			<li><a href="/CMD_ADMIN_SETTINGS"><img src="IMG_SKIN_ADMIN_016" alt="" />|LANG_ADMIN_SETTINGS|</a></li>
+			<li><a href="/CMD_LICENSE"><img src="IMG_SKIN_ADMIN_017" alt="" />|LANG_LICENSE_UPDATES|</a></li>
+			<li><a href="/CMD_ADMIN_CRON_JOBS"><img src="IMG_SKIN_ADMIN_018" alt="" />|LANG_ADMIN_CRON_JOBS|</a></li>
+		</ul>
+	</div>
+			
+	<div class="span5 listbox">
+		<h5>扩展功能</h5>
+		<ul>
+			<li><a href="/CMD_SYSTEM_INFO"><img src="IMG_SKIN_ADMIN_019" alt="" />|LANG_SYSTEM_INFO|</a></li>
+			<li><a href="/CMD_SHOW_SERVICES"><img src="IMG_SKIN_ADMIN_020" alt="" />|LANG_SERVICE_MONITOR|</a></li>
+			<li><a href="/CMD_LOG_VIEWER"><img src="IMG_SKIN_ADMIN_021" alt="" />|LANG_LOG_VIEWER|</a></li>
+			<li><a href="/CMD_IP_MANAGER"><img src="IMG_SKIN_ADMIN_022" alt="" />|LANG_IP_MANAGEMENT|</a></li>
+			<li><a href="/CMD_MAIL_QUEUE?sort1=2"><img src="IMG_SKIN_ADMIN_023" alt="" />|LANG_MAIL_Q_ADMIN|</a></li>
+			<li><a href="/CMD_MULTI_SERVER"><img src="IMG_SKIN_ADMIN_024" alt="" />|LANG_MULTI_SERVER|</a></li>
+			<li><a href="/CMD_ADMIN_STATS"><img src="IMG_SKIN_ADMIN_025" alt="" />|LANG_COMPLETE_USAGE_STATS|</a></li>
+			|?PMSORT=-9||*if OS_TYPE="FreeBSD"||?PMSORT=-10||*endif|
+			<li><a href="/CMD_PROCESS_MONITOR?sort1=|PMSORT|"><img src="IMG_SKIN_ADMIN_026" alt="" />|LANG_PROCESS_MONITOR|</a></li>
+		</ul>
+	</div>
+			
+	<div class="span5 offset1 listbox">
+		<h5>服务器管理</h5>
+		<ul>
+			<li><a href="/CMD_PLUGIN_MANAGER"><img src="IMG_SKIN_ADMIN_027" alt="" />|LANG_PLUGIN_MANAGER|</a></li>
+			<li><a href="/CMD_SKINS"><img src="IMG_SKIN_ADMIN_028" alt="" />|LANG_SKIN_MANAGER|</a></li>
+			<li><a href="/CMD_CUSTOM_HTTPD"><img src="IMG_SKIN_ADMIN_029" alt="" />|LANG_CUSTOM_HTTPD|</a></li>
+			<li><a href="/CMD_PHP_SAFE_MODE"><img src="IMG_SKIN_ADMIN_030" alt="" />|LANG_PHP_SAFEMODE|</a></li>
+			<li><a href="/CMD_BRUTE_FORCE_MONITOR?sort1=-1"><img src="IMG_SKIN_ADMIN_031" alt="" />|LANG_BRUTE_FORCE_MONITOR|</a></li>
+			<li><a href="/HTM_ALL_DOMAINS"><img src="IMG_SKIN_ADMIN_032" alt="" />|LANG_SHOW_ALL_DOMAINS|</a></li>
+|$|PHP|
+<?php
+$data = <<<END
+|PLUGIN_0_ADMIN_TXT|
+END;
+if (strlen($data) > 1) {
+echo <<<END
+<li>|PLUGIN_0_ADMIN_TXT|</li>
+|PLUGIN_2_ADMIN_TXT|
+|PLUGIN_4_ADMIN_TXT|
+END;
+}
+
+$data = <<<END
+|PLUGIN_1_ADMIN_TXT|
+END;
+if (strlen($data) > 1) {
+echo <<<END
+<li>|PLUGIN_1_ADMIN_TXT|</li>
+|PLUGIN_3_ADMIN_TXT|
+|PLUGIN_5_ADMIN_TXT|
+END;
+}
+?>
+DONE|
+		</ul>
+	</div>
+
+
+
+
+
+
+
+
+

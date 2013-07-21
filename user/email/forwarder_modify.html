@@ -1,0 +1,22 @@
+|LF_STANDARD|
+|LF_FORWARDER|
+|?TREE=&raquo; <a class=tree href="/CMD_SHOW_DOMAIN?domain=`DOMAIN`">`DOMAIN`</a> &raquo; <a class=tree href="/CMD_EMAIL_FORWARDER?DOMAIN=`DOMAIN`">`LANG_FORWARDERS`</a> &raquo; <a class=tree href="/CMD_EMAIL_FORWARDER_MODIFY?DOMAIN=`DOMAIN`&user=`user`">`LANG_MODIFY` `user`</a>|
+|?HELP_SECTION=`USER_HELPER`/email.html#forwarders|
+|HTM_USER_TOP|
+
+<table class=list cellpadding=3 cellspacing=1>
+	<form name=info action="CMD_EMAIL_FORWARDER" method="post">
+		<input type=hidden name=action value=modify>
+		<input type=hidden name=domain value="|DOMAIN|">
+		<input type=hidden name=user value="|FORWARDERNAME|">
+
+		<tr><td class=listtitle colspan=2>|LANG_MOD_FORWARD|</td></tr>
+		<tr><td class=list>|LANG_FORWARD_NAME|</td><td class=list>|FORWARDERNAME|@|DOMAIN|</td></tr>
+		<tr><td class=list>|LANG_DEST|</td><td class=list><input type=text name=email value="|FORWARDEREMAIL|" size=32> |LANG_WHERE_YOU_WANT|</td></tr>
+		<tr><td class=listtitle colspan=3 align=right>
+			<input type=submit name=update value="|LANG_MODIFY|">
+		</td></tr>
+	</form>
+</table>
+
+|HTM_USER_BOTTOM|

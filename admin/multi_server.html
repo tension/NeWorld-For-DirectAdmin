@@ -1,0 +1,41 @@
+|LF_STANDARD|
+|?TREE=&raquo; <a class=tree href="/CMD_MULTI_SERVER">`LANG_MULTI_SERVER`</a>|
+|?HELP_SECTION=`ADMIN_HELPER`|
+|HTM_HEADER_FULL|
+
+<form action="/CMD_MULTI_SERVER" method="POST">
+<input type=hidden name=action value="onoff">
+|*if CLUSTER_ON="yes"|
+|LANG_MULTI_IS_ON| &nbsp;&nbsp;&nbsp; <input type=submit name=off value="|LANG_TURN_OFF|">
+|*else|
+|LANG_MULTI_IS_OFF| &nbsp;&nbsp;&nbsp; <input type=submit name=on value="|LANG_TURN_ON|">
+|*endif|
+</form><b>|LANG_LIST_OF_SERVERS|</b>
+|TABLE|
+
+<br>
+
+<table class=list cellpadding=3 cellspacing=1>
+<form action="/CMD_MULTI_SERVER" method=POST>
+<input type=hidden name=action value=add>
+<tr><td class=listtitle colspan=5>|LANG_ADD_REMOTE_SERVER|<//td></tr>
+<tr>
+	<td class=list>|LANG_IP|: <input type=text name=ip size=15></td>
+	<td class=list>|LANG_PORT|: <input type=text name=port size=4 value="2222"></td>
+	<td class=list>|LANG_SSL|: <input type=checkbox name=ssl value=yes size=4></td>
+	<td class=list>|LANG_USERNAME|: <input type=text name=user size=8></td>
+	<td class=list>|LANG_PASSWORD|: <input type=password name=passwd size=8></td>
+</tr>
+<tr><td class=listtitle align=right colspan=5><input type=submit value="|LANG_ADD|"><//td></tr>
+</form>
+</table>
+
+<br>
+<table cellpadding=1 cellspacing=1>
+|LANG_SSL_DESCRIPTION|
+|LANG_ZONE_TRANSFER_DESCRIPTION|
+|LANG_DOMAIN_CHECK_DESCRIPTION|
+</table>
+
+|HTM_FOOTER_FULL|
+

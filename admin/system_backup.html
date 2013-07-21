@@ -1,0 +1,91 @@
+|LF_STANDARD|
+|LF_BACKUPS|
+|?TREE=&raquo; <a class=tree href="/CMD_SYSTEM_BACKUP">`LANG_SYSTEM_BACKUP`</a>|
+|?HELP_SECTION=`ADMIN_HELPER`|
+|HTM_HEADER|
+|HTM_HEADER_WIDE|
+
+<table class=list cellspacing=1 cellpadding=3>
+<form action="/CMD_SYSTEM_BACKUP" method="POST">
+<input type=hidden name=action value="now">
+<tr><td class=listtitle><b>|LANG_RUN_SYS_BK|</b> - |LANG_ON_PER_DAY|</td></tr>
+<tr><td class=list align=center><input type=submit value="|LANG_RUN_NOW|"></td></tr>
+<tr><td class=list align=center><a href="/CMD_SYSTEM_BACKUP/status.log.txt">|LANG_VIEW_LOG|</a><br>|LOG_TIME|</td></tr>
+</form>
+</table>
+<table class=list cellspacing=1 cellpadding=3>
+<form action="/CMD_SYSTEM_BACKUP" method="POST">
+<input type=hidden name=action value="when">
+<tr><td class=listtitle colspan=10><b>|LANG_CRON_SCHEDULE|</b></td></tr>
+<tr><td class=list align=right>|LANG_MINUTE|</td><td class=list><input type=text name=minute value="|MINUTE|" size=2></td>
+	<td class=list2 align=right>|LANG_HOUR|</td><td class=list2><input type=text name=hour value="|HOUR|" size=2></td>
+<td class=list align=right>|LANG_DAY_OF_MONTH|</td><td class=list><input type=text name=dayofmonth value="|DAY|" size=2></td>
+	<td class=list2 align=right>|LANG_MONTH|</td><td class=list2><input type=text name=month value="|MONTH|" size=2></td>
+	<td class=list align=right>|LANG_DAY_OF_WEEK|</td><td class=list><input type=text name=dayofweek value="|DAYOFWEEK|" size=2></td></tr>
+
+<tr><td class=listtitle colspan=10 align=right>|LANG_USE_CRON|<input type=checkbox name=use_cron value="yes" |CRON|>&nbsp;&nbsp;&nbsp;<input type=submit value="|LANG_SAVE|"></td></tr>
+</form>
+</table>
+<br>
+<table class=list cellspacing=1 cellpadding=3>
+<form action="/CMD_SYSTEM_BACKUP" method="POST">
+<input type=hidden name=action value="setting">
+<tr><td class=listtitle colspan=2><b>|LANG_CONFIGURE_FULL_SYSTEM_BACKUP|</b></td></tr>
+
+<tr><td class=list width=50%>|LANG_BACKUP_PATH|</td><td class=list><input type=text name="BACKUP_PATH" value="|BACKUP_PATH|" size=32></td></tr>
+<td class=list2>|LANG_MIN_DISK_SPACE|</td><td class=list2><input type=text name="MIN_DISK" value="|MIN_DISK|" size=4> on partition |MOUNT_POINT|</td></tr>
+<tr>
+	<td class=list><input type=checkbox name="ADD_USERS_TO_LIST" value="yes" |ADD_USERS_TO_LIST|>
+	|LANG_ADD_USERS|</td>
+	<td class=list>&nbsp;</td>
+</tr>
+<tr>
+	<td class=list2><input type=checkbox name="HTTP_BK" value="yes" |HTTP_BK|>
+	|LANG_BACKUP_HTTP_CONFIG|</td>
+	<td class=list2><input type=checkbox name="BIND_BK" value="yes" |BIND_BK|>
+	|LANG_BACKUP_BIND_CONFIG|</td>
+</tr>
+<tr>
+	<td class=list><input type=checkbox name="MYSQL_BK" value="yes" |MYSQL_BK|>
+	|LANG_BACKUP_MYSQL_CONFIG|</td>
+	<td class=list><input type=checkbox name="CUSTOM_BK" value="yes" |CUSTOM_BK|>
+	|LANG_BACKUP_DIRS_FILES|</td>
+</tr>
+
+<tr><td class=listtitle colspan=4>|LANG_USE_REMOTE_TRANSFER|&nbsp;<input type=checkbox name="USE_RTRANS" value="yes" |USE_RTRANS|></td></tr>
+<tr><td class=list>|LANG_REMOTE_TRANSFER_METHOD|</td><td class=list>|RTRANS_SELECT| &nbsp;&nbsp;&nbsp;&nbsp;<a href="/CMD_SYSTEM_BACKUP/id_dsa.pub">|LANG_DOWNLOAD_ID_DSA|</a></td></tr>
+<tr><td class=list2>|LANG_DEL_AFTER_RTRANS|</td><td class=list2><input type=checkbox name="DEL_AFTERTRANS" value="yes" |DEL_AFTERTRANS|></td></tr>
+<tr><td class=list>|LANG_FILE_BY_FILE|</td><td class=list><input type=checkbox name="FBF_RTRANS" value="yes" |FBF_RTRANS|> |LANG_FILE_BY_FILE_COMMENT|</td></tr>
+<tr><td class=list2 align=right>|LANG_REMOTE_HOST|</td><td class=list2><input type=text name="FTP_HOST" value="|FTP_HOST|"></td></tr>
+<tr><td class=list align=right>|LANG_REMOTE_USER|</td><td class=list><input type=text name="FTP_USER" value="|FTP_USER|"></td></tr>
+<tr><td class=list2 align=right>|LANG_REMOTE_PASS|</td><td class=list2><input type=password name="FTP_PASS" value="|FTP_PASS|"></td></tr>
+<tr><td class=list align=right>|LANG_REMOTE_PATH|</td><td class=list><input type=text name="FTP_RPATH" value="|FTP_RPATH|"></td></tr>
+
+
+<tr><td class=listtitle colspan=2 align=right><input type=submit value="|LANG_SAVE|"></td></tr>
+</form>
+
+<tr>
+	<td class=list>
+		<div style="overflow: auto; height: 160px; width: 100%;">|BACKUP_DIRECTORIES|
+		<form action="/CMD_SYSTEM_BACKUP" method="POST"></div>
+			<input type=hidden name=action value="adddirectory">
+			<input type=text name=directory> <input type=submit value="|LANG_ADD_DIRECTORY|">
+		
+	</td></form><td class=list>
+		<div style="overflow: auto; height: 160px; width: 100%;">|BACKUP_FILES|
+		<form action="/CMD_SYSTEM_BACKUP" method="POST"></div>
+			<input type=hidden name=action value="addfile">
+			<input type=text name=file> <input type=submit value="|LANG_ADD_FILE|">
+	</td></form>
+</tr>
+<tr>
+	<td class=listtitle colspan=2 align=right>&nbsp;</td></tr>
+
+</form>
+</table>
+<br><br><br>
+
+|HTM_FOOTER_WIDE|
+|HTM_FOOTER|
+

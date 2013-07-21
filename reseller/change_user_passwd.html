@@ -1,0 +1,45 @@
+|LF_STANDARD|
+|?TREE=&raquo; <a class=tree href="/CMD_USER_SHOW">`LANG_SHOW_USERS`</a> &raquo; <a class=tree href="/HTM_USER_PASSWD">`LANG_CHANGE_PASS`</a>|
+|?HELP_SECTION=`RESELLER_HELPER`/userpass.html|
+|HTM_RESELLER_TOP|
+
+|*if AJAX="1"|
+<script language="Javascript" src="HTM_LIVESEARCH"></script>
+|*endif|
+
+<br><br><br>
+	<center>
+			<table class=list style="width: 50%" cellpadding=3 cellspacing=1>
+			<tr><td class=listtitle colspan=2 align=center>|LANG_CHANGE_PASS|</td></tr>
+      		<form name=reseller action="CMD_USER_PASSWD" method="post">
+|*if AJAX="1"|
+      		<tr><td class=list>|LANG_USERNAME|:</td>
+      			<td class=list>
+					<input type=text name=username onkeydown="showResult(this.value, 'CMD_AJAX_USERS')" onblur="hideit(1, 'CMD_AJAX_USERS')" autocomplete="off">
+					<div id="livecontainer"><div id="livesearch"></div></div>
+				</td></tr>
+
+
+|*else|
+			<tr><td class=list>|LANG_USERNAME|:</td><td class=list><input type=text name=username></td></tr>
+|*endif|
+      		<tr><td class=list>|LANG_ENTER_PASS|:</td><td class=list><input type=password name=passwd></td></tr>
+			<tr><td class=list>|LANG_RE-ENTER_PASS|:</td><td class=list><input type=password name=passwd2></td></tr>
+			<tr><td class=listtitle colspan=2 align=right>
+                <p align="center"><input type=submit value="|LANG_SUBMIT|"></p>
+              </td></tr>
+			</form>
+			</table>
+|*if AJAX="1"|
+	|LANG_AJAX_HOWTO|
+	<script type="text/javascript">
+		setLoaded();
+	</script>
+|*endif|
+
+	</center>
+<br><br><br>
+
+
+
+|HTM_RESELLER_BOTTOM|

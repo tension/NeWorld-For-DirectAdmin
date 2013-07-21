@@ -1,0 +1,105 @@
+|LF_STANDARD|
+|?TREE=&raquo; <a class=tree href="/CMD_SHOW_DOMAIN?domain=`DOMAIN`">`DOMAIN`</a> &raquo; <a class=tree href="/CMD_SSL?DOMAIN=`DOMAIN`">`LANG_SSL`</a>|
+|?HELP_SECTION=`USER_HELPER`/ssl.html|
+|HTM_USER_TOP|
+
+<script language="javascript">
+function copyCertificate(text)
+{
+	text.focus();
+	text.select();
+	if (document.all)
+	{
+		therange = text.createTextRange();
+		therange.execCommand("Copy");
+		alert('|LANG_CERT_COPIED|');
+	}
+}
+
+function pasteCertificate(text)
+{
+	text.focus();
+	text.select();
+
+	if (document.all)
+	{
+		document.execCommand("Paste");
+
+		with (document.info)
+		for (var i=0; i < elements.length; i++)
+			if (elements[i].type == 'radio')
+				if ( (elements[i].name == "type") && (elements[i].value == "paste")  )
+				{
+					elements[i].checked = true;
+				}
+	}
+}
+
+function setRequest(onoff)
+{
+	if (document.info)
+	{
+		with (document.info)
+		{
+			for (var i=0; i < elements.length; i++)
+				if (elements[i].type == 'radio')
+					if ( elements[i].name == "request" )
+					{
+						if (onoff == 'on')
+							elements[i].disabled = false;
+						else
+							elements[i].disabled = true;
+					}
+		}
+	}
+}
+
+</script>
+<b>|RESULT|</b><br>
+
+|*if SSL_ON="yes"|
+|LANG_SSL_ENABLED|
+|*else|
+|LANG_SSL_DISABLED|
+|*endif|
+<a href="/CMD_ADDITIONAL_DOMAINS?action=view&domain=|domain|">|LANG_SSL_HERE|</a>.
+
+
+<table class=list cellpadding=3 cellspacing=1>
+	<tr><td class=listtitle colspan=3>|LANG_SSL_CERTS|</td></tr>
+
+	<form name=info action="CMD_SSL" method="post">
+		<input type=hidden name=domain value="|DOMAIN|">
+		<input type=hidden name=action value="save">
+
+	<tr><td class=list align=center><input type=radio name=type value="server" |SERVERCHECKED| onClick="setRequest('off');"></td><td class=listtitle colspan=2>|LANG_USE_SERVERS|</td></tr>
+	<tr><td class=list>&nbsp;</td><td class=list colspan=2>|LANG_USE_SHARED|</td></tr>
+
+	<tr><td class=list align=center><input type=radio name=type value="create" onClick="setRequest('on');"></td><td class=listtitle colspan=2><input type=radio name=request value="no" checked disabled>|LANG_CREATE_SELF_SIGNED| &nbsp;&nbsp; <input type=radio name=request value="yes" disabled>|LANG_CREATE_CSR|</td></tr>
+	<tr><td class=list>&nbsp;</td><td class=list>|LANG_COUNTRY|</td><td class=list><input type=input name=country size=2 maxlength=2></td></tr>
+	<tr><td class=list>&nbsp;</td><td class=list>|LANG_STATE|</td><td class=list><input type=input name=province></td></tr>
+	<tr><td class=list>&nbsp;</td><td class=list>|LANG_CITY|</td><td class=list><input type=input name=city></td></tr>
+	<tr><td class=list>&nbsp;</td><td class=list>|LANG_COMPANY|</td><td class=list><input type=input name=company></td></tr>
+	<tr><td class=list>&nbsp;</td><td class=list>|LANG_COMPANY_DIV|</td><td class=list><input type=input name=division></td></tr>
+	<tr><td class=list>&nbsp;</td><td class=list>|LANG_COMMON_NAME|</td><td class=list><input type=input name=name value="www.|DOMAIN|"></td></tr>
+	<tr><td class=list>&nbsp;</td><td class=list>|LANG_EMAIL|</td><td class=list><input type=input name=email></td></tr>
+	<tr><td class=list>&nbsp;</td><td class=list>|LANG_KEYSIZE|</td><td class=list><select class=selectclass name=keysize><option selected>1024</option><option selected>2048</option></select></td></tr>
+	<tr><td class=list align=center><input type=radio name=type value="paste" |PASTECHECKED| onClick="setRequest('off');"></td><td class=listtitle colspan=2>|LANG_PASTE|</td></tr>
+	<tr><td class=list>&nbsp;</td>
+		<td class=list align=center colspan=2>
+			<textarea style="font-family: courier new; width: 480px;" name=certificate rows=16>|KEY||CERTIFICATE|</textarea><br>
+			<input type=button value="|LANG_PASTE_FROM|" onClick="pasteCertificate(document.info.certificate)">
+			<input type=button value="|LANG_COPY_TO|" onClick="copyCertificate(document.info.certificate)"> |LANG_IE_ONLY|
+		</td>
+	</tr>
+	<tr><td class=listtitle colspan=3 align=right>
+		<input type=submit name=submit value="|LANG_SAVE|">
+	</td></tr>
+	</form>
+
+</table>
+<br>
+<a href="/CMD_SSL?DOMAIN=|DOMAIN|&view=cacert">|LANG_CLICK_HERE|<br><br>
+
+|LANG_NOTE|
+|HTM_USER_BOTTOM|

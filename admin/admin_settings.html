@@ -1,0 +1,333 @@
+|LF_STANDARD|
+|?TREE=&raquo; <a class=tree href="/CMD_ADMIN_SETTINGS">`LANG_ADMIN_SETTINGS`</a>|
+|?HELP_SECTION=`ADMIN_HELPER`/settings.html|
+|HTM_ADMIN_TOP|
+
+<table class=list cellpadding=3 cellspacing=1>
+<tr><td class=listtitle colspan=2>|LANG_ADMIN_SETTINGS|</td></tr>
+<form action="CMD_ADMIN_SETTINGS" method="post">
+	<input type=hidden name=action value="save">
+	<tr>
+		<td class=list>
+			<input type=checkbox name=service_email_active value="yes" |SERVICESEMAILCHECKED|>
+		</td>
+		<td class=list>
+			|LANG_ADMIN_NOTIFY|
+		</td>
+	</tr>
+        <tr>
+                <td class=list>
+                        <input type=checkbox name=oversell value="yes" |OVERSELLCHECKED|>
+                </td>
+                <td class=list>
+                        |LANG_OVERSELL|
+                </td>
+        </tr>
+        <tr>
+                <td class=list>
+                        <input type=checkbox name=suspend value="yes" |SUSPENDRESELLERCHECKED|>
+                </td>
+                <td class=list>
+                        |LANG_SUSPEND_RES|
+                </td>
+        </tr>
+        <tr>
+                <td class=list>
+                        <input type=checkbox name=user_backup value="yes" |USERBACKUPCHECKED|>
+                </td>
+                <td class=list>
+                        |LANG_RESELLER_BACKUP|
+                </td>
+        </tr>
+
+
+        <tr>
+                <td class=list>
+                        <input type=checkbox name=auto_update value="yes" |AUTOUPDATECHECKED|>
+                </td>
+                <td class=list>
+                        |LANG_USE_UPDATER|
+                </td>
+        </tr>
+
+
+	<tr>
+		<td class=list>
+			<input type=checkbox name=demo_user value="yes" |DEMOUSERCHECKED|>
+		</td>
+		<td class=list>
+			|LANG_DEMO_USER|: <b>demo_user</b> |LANG_PASSWORD| : <b>demo</b>
+		</td>
+	</tr>
+
+	<tr>
+		<td class=list>
+			<input type=checkbox name=demo_reseller value="yes" |DEMORESELLERCHECKED|>
+		</td>
+		<td class=list>
+			|LANG_DEMO_RESELLER|: <b>demo_reseller</b> |LANG_PASSWORD| : <b>demo</b>
+		</td>
+	</tr>
+
+	<tr>
+		<td class=list>
+			<input type=checkbox name=demo_admin value="yes" |DEMOADMINCHECKED|>
+		</td>
+		<td class=list>
+			|LANG_DEMO_ADMIN|: <b>demo_admin</b> |LANG_PASSWORD| : <b>demo</b>
+		</td>
+	</tr>
+	<tr>
+		<td class=list>
+			&nbsp;
+		</td>
+		<td class=list>
+			|LANG_USERS_LESS_THAN| <input type=text name=backup_threshold value="|BACKUP_THRESHOLD|" size=2>|LANG_TO_CREATE_BACKUPS|
+		</td>
+	</tr>
+	<tr>
+		<td class=listtitle colspan=2 align=right>
+			<input type=submit name=save value="|LANG_SAVE|">
+		</tr>
+	</tr>
+</form>
+</table>
+<br>
+
+<table class=list cellpadding=3 cellspacing=1>
+<tr><td class=listtitle colspan=2>|LANG_SERVER_SETTINGS|</td></tr>
+<form action="CMD_ADMIN_SETTINGS" method="post">
+        <input type=hidden name=action value="config">
+        <tr>
+                <td class=list>
+                        |LANG_SERVER_HOSTNAME|
+                </td>
+                <td class=list>
+                        <input type=text name=servername value="|SERVERNAME|" size=32>
+                </td>
+        </tr>
+        <tr>
+                <td class=list>
+                        |LANG_NS1|
+                </td>
+                <td class=list>
+                        <input type=text name=ns1 value="|NS1|" size=32>
+                </td>
+        </tr>
+        <tr>
+                <td class=list>
+                        |LANG_NS2|
+                </td>
+                <td class=list>
+                        <input type=text name=ns2 value="|NS2|" size=32>
+                </td>
+        </tr>
+        <tr>
+                <td class=list>
+                        |LANG_TIMEOUT|
+                </td>
+                <td class=list>
+                        <input type=text name=timeout value="|TIMEOUT|" size=32>
+                </td>
+        </tr>
+        <tr>
+                <td class=list>
+                        |LANG_SESSION_TIME|
+                </td>
+                <td class=list>
+                        <input type=text name=session_minutes value="|SESSION_MINUTES|" size=32>
+                </td>
+        </tr>
+        <tr>
+                <td class=list>
+                        |LANG_MAX_UPLOAD|
+                </td>
+                <td class=list>
+                        <input type=text name=maxfilesize value="|MAXFILE|" size=32>
+                </td>
+        </tr>
+        <tr>
+                <td class=list>
+                        |LANG_KEEP_LOGS|
+                </td>
+                <td class=list>
+                        <input type=text name=logs_to_keep value="|LOGSTOKEEP|" size=32>
+                </td>
+        </tr>
+        <tr>
+                <td class=list>
+                        |LANG_SKIN_DOC_ROOT|
+                </td>
+                <td class=list>
+                        <input type=text name=demodocsroot value="|DEMODOCSROOT|" size=32>
+                </td>
+        </tr>
+|*if USE_DOVECOT="yes"|
+		<tr>
+				<td class=list>
+						|LANG_PURGE_SPAMBOX|
+				</td>
+				<td class=list>
+						|LANG_PURGE_AFTER| <input type=text name=purge_spam_days value="|PURGE_SPAM_DAYS|" size=2 maxlength=3> |LANG_PURGE_DAYS|
+				</td>
+		</tr>
+|*endif|
+		<tr>
+				<td class=list>
+						|LANG_WARN_ADMINS_AT| <input type=text name=partition_usage_threshold size=2 value="|PART_THRESH|">|LANG_PERC_PARTITION_USAGE|
+				</td>
+				<td class=list>
+						|LANG_CHECK_EVERY|: &nbsp;<input type=radio name=check_partitions value="1" |PARTMINUTECHECKED|>|LANG_MINUTE| &nbsp;<input type=radio name=check_partitions value="2" |PARTDAYCHECKED|>|LANG_DAY| &nbsp;<input type=radio name=check_partitions value="0" |PARTNEVERCHECKED|>|LANG_NEVER|
+				</td>
+		</tr>
+
+
+
+		<tr>
+				<td class=listtitle colspan=2>
+					|LANG_SECURITY|
+				</td>
+		</tr>
+        <tr>
+        		<td class=list>
+        				|LANG_LOST_PASSWORD_RECOVERY|
+        		</td>
+        		<td class=list>
+        				<input type=radio name=lost_password value="yes" |LOST_PW_YES|>|LANG_YES|&nbsp;&nbsp;&nbsp;<input type=radio name=lost_password value="no" |LOST_PW_NO|>|LANG_NO|
+        		</td>
+        </tr>
+		<tr>
+				<td class="list top-border">
+						|LANG_BLACKLIST_IP|
+				</td>
+				<td class="list top-border">
+						<input type=checkbox name=bruteforce value="yes" |BRUTEFORCECHECKED|>
+						&nbsp;&nbsp;|LANG_BLACKLIST_AFTER| <input type=text name=brutecount value="|BRUTECOUNT|" size=4> |LANG_LOGIN_ATTEMPTS| <a target=_blank href="http://help.directadmin.com/item.php?id=404">(?)</a>
+				</td>
+		</tr>
+		<tr>
+				<td class=list>
+						|LANG_PREVENT_LOCAL_BLACKLIST|
+				</td>
+				<td class=list>
+						<input type=checkbox name=exempt_local_block value="yes" |LOCALEXEMPTCHECKED|>
+				</td>
+		</tr>
+		<tr>
+				<td class=list>
+						|LANG_TIME_BEFORE_RESET|
+				</td>
+				<td class=list>
+						<input type=text name=brute_force_time_limit value="|BRUTE_FORCE_TIME_LIMIT|" size=4> |LANG_SECONDS_AFTER_LAST| &nbsp;&nbsp;<a target=_blank href="http://www.directadmin.com/features.php?id=1013">(?)</a>
+				</td>
+		</tr>
+		<tr>
+				<td class=list>
+						|LANG_REMOVE_IP_AFTER|
+				</td>
+				<td class=list>
+						<input type=text name=clear_blacklist_ip_time value="|CLEAR_BLACKLIST_IP_TIME|" size=4> |LANG_REMOVE_MINUTES|
+				</td>
+		</tr>
+
+
+
+		<tr>
+				<td class="list top-border">
+						Parse service logs for brute force attacks
+				</td>
+				<td class="list top-border">
+						<input type=radio name=brute_force_log_scanner value="yes" |BRUTEFORCELOGSCANNER_YES|>|LANG_YES|&nbsp;&nbsp;&nbsp;<input type=radio name=brute_force_log_scanner value="no" |BRUTEFORCELOGSCANNER_NO|>|LANG_NO|
+						&nbsp;&nbsp;<a target=_blank href="http://www.directadmin.com/features.php?id=1227">(?)</a>
+						&nbsp;&nbsp;<a href="CMD_BRUTE_FORCE_MONITOR">View Log</a>
+				</td>
+		</tr>
+		<tr>
+				<td class=list>
+						Notify Admins after an IP has
+				</td>
+				<td class=list>
+						<input type=text name=ip_brutecount value="|IP_LOGIN_FAILURE_THRESHOLD|" size=4> login failures on any account.
+				</td>
+		</tr>
+		<tr>
+				<td class=list>
+						Notify Admins after a User has
+				</td>
+				<td class=list>
+						<input type=text name=user_brutecount value="|USER_LOGIN_FAILURE_THRESHOLD|" size=4> login failures from any IP.
+				</td>
+		</tr>
+		<tr>
+				<td class=list>
+						Reset count of IP/User failed attempts
+				</td>
+				<td class=list>
+						<input type=text name=clear_brute_log_time value="|CLEAR_BRUTE_LOG_TIME|" size=4> hours after last attempt.
+				</td>
+		</tr>
+		<tr>
+				<td class=list>
+						Clear failed login attempts from log
+				</td>
+				<td class=list>
+						<input type=text name=clear_brute_log_entry_time value="|CLEAR_BRUTE_LOG_ENTRY_TIME|" size=4> days after entry was made.
+				</td>
+		</tr>
+
+
+
+		<tr>
+				<td class="list top-border">
+						|LANG_DIFF_PASS_ENF|
+				</td>
+				<td class="list top-border">
+						<input type=radio name=enforce_difficult_passwords value="yes" |DIFFICULT_PW_YES|>|LANG_YES|&nbsp;&nbsp;&nbsp;<input type=radio name=enforce_difficult_passwords value="no" |DIFFICULT_PW_NO|>|LANG_NO| &nbsp;&nbsp;<a target=_blank href="http://www.directadmin.com/features.php?id=910">(?)</a>
+				</td>
+		</tr>
+
+		<tr>
+				<td class="list top-border">
+						|LANG_CHECK_SUB_CREATION|
+				</td>
+				<td class="list top-border">
+						<input type=radio name=check_subdomain_owner value="yes" |CHECK_SD_YES|>|LANG_YES|&nbsp;&nbsp;&nbsp;<input type=radio name=check_subdomain_owner value="no" |CHECK_SD_NO|>|LANG_NO| &nbsp;&nbsp;<a target=_blank href="http://www.directadmin.com/features.php?id=925">(?)</a>
+				</td>
+		</tr>
+
+
+
+
+		<tr>
+				<td class=listtitle colspan=2>
+					|LANG_EMAIL|
+				</td>
+		</tr>
+		<tr>
+				<td class=list>
+						|LANG_EMAIL_LIMIT|
+				</td>
+				<td class=list>
+						<input type=text name=virtual_limit value="|VIRTUAL_LIMIT|" size=4> &nbsp;&nbsp;<a target=_blank href="http://www.directadmin.com/features.php?id=1175">(?)</a>
+				</td>
+		</tr>
+		<tr>
+				<td class=list>
+						|LANG_RBL_BLOCKING|
+				</td>
+				<td class=list>
+						<input type=radio name=rbl_enabled value="yes" |CHECK_RBL_YES|>|LANG_YES|&nbsp;&nbsp;&nbsp;<input type=radio name=rbl_enabled value="no" |CHECK_RBL_NO|>|LANG_NO| &nbsp;&nbsp;<a target=_blank href="http://www.directadmin.com/features.php?id=1181">(?)</a>
+				</td>
+		</tr>
+
+
+        <tr>
+                <td class=listtitle colspan=2 align=right>
+                        <input type=submit name=save value="|LANG_SAVE|">
+                </td>
+        </tr>
+</form>
+</table>
+
+
+|HTM_ADMIN_BOTTOM|

@@ -1,0 +1,46 @@
+|LF_STANDARD|
+|?TREE=&raquo; <a class=tree href="/CMD_ADMIN_SHOW">`LANG_SHOW_ADMINS`</a> &raquo; <a class=tree href="/HTM_ACCOUNT_ADMIN_CREATE">`LANG_CREATE_ADMIN`</a>|
+|?HELP_SECTION=`ADMIN_HELPER`/createa.html|
+|HTM_ADMIN_TOP|
+
+<script language="Javascript">
+<!--
+
+|HTM_JAVASCRIPT|
+
+function showAdminMessage()
+{
+	var message = window.open("CMD_EDIT_ADMIN_MESSAGE","message","width=740,height=520,scrollbars=no,resizable=yes");
+}
+
+function formOK()
+{
+	with (document.reseller)
+	{
+		if (checkName() && checkPass() && checkEmail())
+			return true;
+	}
+	return false;
+}
+
+// -->
+</script>
+
+		<center>
+      		<table class=list style="width: 50%" cellpadding=3 cellspacing=1>
+      		<tr><td class=listtitle colspan=2 align=center>|LANG_CREATE_ADMIN_ACCOUNT|</td></tr>
+      		<form name=reseller action="CMD_ACCOUNT_ADMIN" method="post" onSubmit="return formOK()">
+      		<input type=hidden name=action value=create>
+      		<tr><td class=list>|LANG_USERNAME|:</td><td class=list><input type=text name=username maxlength=|MAX_USERNAME_LENGTH| onChange="checkName()"></td></tr>
+      		<tr><td class=list>|LANG_EMAIL|:</td><td class=list><input type=text name=email onChange="checkEmail()"></td></tr>
+      		<tr><td class=list>|LANG_ENTER_PASS|:</td><td class=list><input type=password name=passwd> <input type=button value="|LANG_RANDOM|" onClick="randomPass()"></td></tr>
+			<tr><td class=list>|LANG_RE-ENTER_PASS|:</td><td class=list><input type=password name=passwd2 onChange="checkPass()"></td></tr>
+			<tr><td class=list>|LANG_EMAIL_NOTIFICATION|:</td><td class=list><input type=checkbox value="yes" name=notify checked> <a href="javascript:showAdminMessage();">|LANG_EDIT_ADMIN_MESSAGE|</a></td></tr>
+
+			<tr><td td class=listtitle colspan=3 align=right>
+                <input type=submit value="|LANG_SUBMIT|">
+              </td></tr>
+			</form>
+			</table>
+		</center>
+|HTM_ADMIN_BOTTOM|

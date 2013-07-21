@@ -1,0 +1,20 @@
+|?TREE=&raquo; <a class=tree href="/CMD_MANAGE_USER_PACKAGES">`LANG_MANAGE_SKINS`</a>|
+|?HELP_SECTION=`RESELLER_HELPER`/skins.html|
+|HTM_RESELLER_TOP|
+
+|SKINS|
+
+<table style="width: 75%" class=list cellpadding=3 cellspacing=1>
+	<form name=uploadform action="CMD_SKINS" enctype="multipart/form-data" method="POST">
+	<input type="hidden" name="MAX_FILE_SIZE" value="10485760">
+	<input type="hidden" name="action" value="upload">
+	<tr><td class=listtitle colspan=2>|LANG_UPLOAD_SKIN|</td></tr>
+	<tr><td class=list>|LANG_FILE|:</td><td class=list><input type=file name="file" size=40></td></tr>
+	<tr><td class=list>|LANG_SKIN_NAME|:</td><td class=list><input type=text name="name" size=40></td></tr>
+	<tr><td class=listtitle align=right colspan=2>|SERVERSKIN|&nbsp;<input type=submit name=save value="|LANG_UPLOAD|"></td></tr>
+	</form>
+</table>
+
+|LANG_CURRENTLY_USING| <b>|SKIN|</b>
+
+|HTM_RESELLER_BOTTOM|

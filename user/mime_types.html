@@ -1,0 +1,26 @@
+|LF_STANDARD|
+|?TREE=&raquo; <a class=tree href="/CMD_SHOW_DOMAIN?domain=`DOMAIN`">`DOMAIN`</a> &raquo; <a class=tree href="/CMD_MIME_TYPES?DOMAIN=`DOMAIN`">`LANG_MIME_TYPES`</a>|
+|?HELP_SECTION=`USER_HELPER`/misc.html#mime|
+|HTM_USER_TOP|
+
+<table class=list style="width: 50%" cellpadding=3 cellspacing=1>
+<tr><td class=listtitle colspan=4>|LANG_ADD_MIME_TYPE|</td></tr>
+<tr>
+	<form action="/CMD_MIME_TYPES" method="POST">
+	<input type=hidden name=domain value="|DOMAIN|">
+	<input type=hidden name=action value="add">
+	<td class=list>|LANG_MIME_TYPE|:</td>
+	<td class=list><input type=text name=name></td>
+	<td class=list>|LANG_EXTENSION|:</td>
+	<td class=list><input type=text name=extension size=5></td>
+</tr>
+<tr><td class=listtitle colspan=4 align=right><input type=submit value="|LANG_ADD|"></td></form></tr>
+</table>
+<br>
+<b>|LANG_USER_MIME_TYPES|</b><br>
+|MIMETYPES|
+<br>
+<a href="/CMD_MIME_TYPES?action=system&domain=|DOMAIN|">|LANG_LIST_SYSTEM_MIMES|</a><br><br>
+
+
+|HTM_USER_BOTTOM|

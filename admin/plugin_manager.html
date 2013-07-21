@@ -1,0 +1,28 @@
+|LF_STANDARD|
+|?TREE=&raquo; <a class=tree href="/CMD_PLUGIN_MANAGER">`LANG_PLUGING_MANAGER`</a>|
+|?HELP_SECTION=`ADMIN_HELPER`|
+|HTM_HEADER|
+|HTM_HEADER_WIDE|
+
+<br>
+
+|PLUGINS|
+
+<br>
+<table class=list cellspacing=1 cellpadding=5>
+<form action="/CMD_PLUGIN_MANAGER" enctype="multipart/form-data" method="POST">
+<input type="hidden" name="MAX_FILE_SIZE" value="10485760">
+<input type=hidden name=action value="add">
+<tr><td class=listtitle colspan=2><b>|LANG_ADD_PLUGIN|</b> - |LANG_SELECT_UP_METH|</td></tr>
+
+<tr><td class=list><input type=radio name=type value="url" checked>|LANG_URL|</td><td class=list> <input type=text name=url size=32 value="http://"> |LANG_ENTER_URL|</td></tr>
+<tr><td class=list><input type=radio name=type value="file">|LANG_FILE|</td><td class=list> <input type=file name=file1 size=32> |LANG_UPLOAD_FROM_LOC|</td></tr>
+
+<tr><td class=listtitle colspan=2 align=right><b>|LANG_PASSWORD|</b>: <input type=password name=passwd size=10>&nbsp;&nbsp;&nbsp;<input type=checkbox name=install value="yes" checked> |LANG_INSTALL_AFTER_UP|&nbsp;&nbsp;&nbsp;<input type=submit value="|LANG_ADD_PLUGIN|"></td></tr>
+</form>
+</table>
+<br><br><br>
+
+|HTM_FOOTER_WIDE|
+|HTM_FOOTER|
+

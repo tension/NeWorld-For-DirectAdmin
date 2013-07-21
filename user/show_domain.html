@@ -1,0 +1,113 @@
+|?TREE=&raquo; <a class="tree" href="/CMD_SHOW_DOMAIN?domain=`domain`">`domain`</a>|
+|?HELP_SECTION=`USER_HELPER`|
+|HTM_USER_TOP|
+
+	<ul class="alert">
+		<script src="http://www.elinkhost.com/notice/?num=3"></script>
+	</ul>
+
+      	<div class="span5 listbox">
+      		<h5>站点管理</h5>
+			<ul>
+          		<li><a href="/CMD_ADDITIONAL_DOMAINS?domain=|domain|"><img src="IMG_SKIN_ADMIN_032" alt="" />|LANG_DOMAIN_SETUP|</a></li>
+|*if NUSERSUBDOMAINSMAX!="0"|
+			    <li><a href="/CMD_SUBDOMAIN?domain=|domain|"><img src="IMG_SKIN_ADMIN_046" alt="" />|LANG_SUBDOMAIN_MANAGEMENT|</a></li>
+|*endif|
+|*if USERPOINTERSMAX!="0"|
+                <li><a href="/CMD_DOMAIN_POINTER?domain=|domain|"><img src="IMG_SKIN_ADMIN_044" alt="" />|LANG_DOMAIN_POINTERS|</a></li>
+|*endif|
+
+			    <li><a href="/CMD_REDIRECT?domain=|domain|"><img src="IMG_SKIN_ADMIN_045" alt="" />|LANG_SITE_REDIRECTION|</a></li>
+|*if USERDATABASEMAX!="0"|
+				<li><a href="/CMD_DB?domain=|domain|"><img src="IMG_SKIN_ADMIN_043" alt="" />|LANG_MYSQL_MANAGEMENT|</a></li>
+|*endif|
+|*if USERFTPMAX!="0"|
+			    <li><a href="/CMD_FTP?domain=|domain|"><img src="IMG_SKIN_ADMIN_047" alt="" />|LANG_FTP_MANAGEMENT|</a></li>
+|*endif|
+			    <li><a href="/CMD_PERL_MODULES?domain=|domain|"><img src="IMG_SKIN_ADMIN_051" alt="" />|LANG_INSTALLED_PERL_MODULES|</a></li>
+
+			    <li><a href="/HTM_ERROR_PAGES?domain=|domain|"><img src="IMG_SKIN_ADMIN_050" alt="" />|LANG_CUSTOM_ERROR_PAGES|</a></li> 
+|*if USERDNSCONTROL="ON"|
+				<li><a href="/CMD_DNS_CONTROL?domain=|domain|"><img src="IMG_SKIN_ADMIN_014" alt="" />|LANG_DNS_MANAGEMENT|</a></li>
+|*endif|
+			</ul>
+        </div>
+	
+		<div class="span5 offset1 listbox">
+      		<h5>账户管理</h5>
+			<ul>
+				<li><a href="/CMD_USER_STATS?domain=|domain|"><img src="IMG_SKIN_ADMIN_021" alt="" />|LANG_SITE_SUM_STATS_LOGS|</a></li>
+				<li><a href="/CMD_FILE_MANAGER?domain=|domain|"><img src="IMG_SKIN_ADMIN_047" alt="" />|LANG_FILE_MANAGER|</a></li>
+				<li><a href="http://|domain|/phpmyadmin" target="_blank"><img src="IMG_SKIN_ADMIN_042" alt="" />phpMyAdmin</a></li>
+				<li><a href="/HTM_PASSWD?domain=|domain|"><img src="IMG_SKIN_ADMIN_007" alt="" />|LANG_CHANGE_PASSWORD|</a></li>
+          		<li><a href="/CMD_LOGIN_HISTORY?domain=|domain|"><img src="IMG_SKIN_ADMIN_061" alt="" />|LANG_LOGIN_HISTORY|</a></li>
+          		<li><a href="/CMD_TICKET?domain=|domain|"><img src="IMG_SKIN_ADMIN_062" alt="" />|LANG_SUPPORT_CENTER|</a></li>
+|*if USERSYSINFO="ON"|
+			    <li><a href="/CMD_SYSTEM_INFO?domain=|domain|"><img src="IMG_SKIN_ADMIN_019" alt="" />|LANG_SERVER_INFO|</a></li>
+|*endif|
+          		<li><a href="/CMD_SITE_BACKUP?domain=|domain|"><img src="IMG_SKIN_ADMIN_010" alt="" />|LANG_CREATE_RESTORE_BACKUPS|</a></li>
+				<li><a href="/CMD_PROTECTED_DIRECTORIES?domain=|domain|"><img src="IMG_SKIN_ADMIN_040" alt="" />|LANG_PASS_PROC_DIRS|</a></li>
+			</ul>
+        </div>
+
+        <div class="span5 listbox">
+        	<h5>其他管理</h5>
+			<ul>
+|*if USERCRON="ON"|
+				<li><a href="/CMD_CRON_JOBS?domain=|domain|"><img src="IMG_SKIN_ADMIN_018" alt="" />|LANG_CRONJOBS|</a></li>
+|*endif|
+				<li><a href="/CMD_MIME_TYPES?domain=|domain|"><img src="IMG_SKIN_ADMIN_049" alt="" />|LANG_MIMETYPES|</a></li>
+				<li><a href="/CMD_HANDLERS?domain=|domain|"><img src="IMG_SKIN_ADMIN_039" alt="" />|LANG_APACHE_HANDLERS|</a></li>
+
+|*if USERSSL="ON"|
+				<li><a href="/CMD_SSL?domain=|domain|"><img src="IMG_SKIN_ADMIN_038" alt="" />|LANG_SSL_CERTS|</a></li>
+|*endif|
+				
+			</ul>
+        </div>
+
+		<div class="span5 offset1 listbox">
+        	<h5>邮件管理</h5>
+			<ul>
+|*if USEREMAILMAX!="0"|
+				<li><a href="/CMD_EMAIL_POP?domain=|domain|"><img src="IMG_SKIN_ADMIN_052" alt="" />|LANG_POP_EMAIL_ACCOUNTS|</a></li>
+|*endif|
+|*if USERCATCHALL="ON"|
+			    <li><a href="/CMD_EMAIL_CATCH_ALL?domain=|domain|"><img src="IMG_SKIN_ADMIN_053" alt="" />|LANG_CATCH_ALL_EMAIL|</a></li>
+|*endif|
+|*if USERFORWARDERMAX!="0"|
+				<li><a href="/CMD_EMAIL_FORWARDER?domain=|domain|"><img src="IMG_SKIN_ADMIN_054" alt="" />|LANG_CATCH_ALL_EMAIL|</a></li>
+|*endif|
+|*if USERRESPONDERMAX!="0"|
+                <li><a href="/CMD_EMAIL_AUTORESPONDER?domain=|domain|"><img src="IMG_SKIN_ADMIN_055" alt="" />|LANG_FORWARDERS|</a></li>
+|*endif|
+|*if USEREMAILMAX!="0"|
+			    <li><a href="/CMD_EMAIL_VACATION?domain=|domain|"><img src="IMG_SKIN_ADMIN_056" alt="" />|LANG_VAC_MESSAGES|</a></li>
+|*endif|
+|*if USERSPAM="OFF"|
+			    <li><a href="/CMD_SPAMASSASSIN?domain=|domain|"><img src="IMG_SKIN_ADMIN_057" alt="" />|LANG_SPAMASSASSIN|</a></li>
+|*endif|
+|*if USERMLISTMAX!="0"|
+				<li><a href="/CMD_EMAIL_LIST?domain=|domain|"><img src="IMG_SKIN_ADMIN_058" alt="" />|LANG_MAILING_LISTS|</a></li>
+|*endif|
+	|?SHOW_LINKS=yes|
+|*if USEREMAILMAX!="0"|
+				<li><a href="/CMD_EMAIL_FILTER?domain=|domain|"><img src="IMG_SKIN_ADMIN_059" alt="" />|LANG_SPAM_FILTERS|</a></li>
+|*else|
+	|?SHOW_LINKS=no|
+|*endif|
+|*if HIDE_WEBMAIL_LINKS="yes"|
+	|?SHOW_LINKS=no|
+|*endif|
+|$|PHP|
+<?
+if ("|SHOW_LINKS|" == "yes") {
+	if (file_exists("/var/www/html/webmail")) {
+		echo "<li><a href=\"http://|HOSTNAME|/webmail\" target=\"_blank\">|LANG_WEBMAIL_UEBI|</a></li>\n";
+	}
+}
+?>
+DONE|
+            </ul>
+		</div>
+|HTM_USER_BOTTOM|

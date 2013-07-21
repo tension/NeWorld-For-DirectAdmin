@@ -1,0 +1,107 @@
+|LF_STANDARD|
+|LF_JS|
+|?TREE=&raquo; <a class=tree href="/HTM_ADD_DOMAIN">`LANG_CREATE_DOMAIN`</a>|
+|?HELP_SECTION=`USER_HELPER`/misc.html#domains|
+|HTM_USER_TOP|
+
+<script language="Javascript">
+<!--
+
+var shortDomain='|LANG_SHORT_DOMAIN|';
+var domainNeedsDot='|LANG_DOMAIN_DOT|';
+var invalidDomain='|LANG_INVALID_DOMAIN|';
+
+function setText( textfld, checkbx)
+{
+	if (checkbx.checked)
+		textfld.disabled = true;
+	if (!checkbx.checked)
+		textfld.disabled = false;
+}
+
+function domainOK(domain)
+{
+	var ch;
+	var i;
+	var dotCount = 0;
+
+	if (domain.length < 3)
+	{
+		alert(shortDomain);
+		return 0;
+	}
+
+	if (domain.charAt(domain.length-1) == '.')
+	{
+		alert(invalidDomain);
+		return 0;
+	}
+
+	for (i=0; i<domain.length; i++)
+	{
+		if ((ch = domain.charAt(i)) == '.') dotCount++;
+	}
+
+	if (dotCount == 0)
+	{
+		alert(domainNeedsDot);
+		return 0;
+	}
+
+	return 1;
+}
+
+function checkDomain()
+{
+	with (document.info)
+	{
+		if (!domainOK(domain.value))
+		{
+			domain.focus();
+			domain.select();
+			return 0;
+		}
+	}
+	return 1;
+}
+
+function formOK()
+{
+	with (document.info)
+	{
+		if (checkDomain())
+			return true;
+	}
+	return false;
+}
+
+function submitForm()
+{
+	document.info.create.disabled = true;
+	document.info.submit();
+}
+
+// -->
+</script>
+
+<table class=list cellpadding=3 cellspacing=1>
+	<form name=info action="/CMD_DOMAIN" method="post" onSubmit="return formOK()">
+		<input type=hidden name=action value=create>
+
+		<tr ><td class=listtitle colspan=2>|LANG_CREATE_DOMAIN|</td ></tr >
+
+		<tr><td class=list>|LANG_DOMAIN|:</td><td class=list><input type=text name=domain size=32 value="domain.com" onFocus="this.select();" onChange="checkDomain()"></td></tr>
+		<tr><td class=list>|LANG_BANDWIDTH|</td><td class=list><input type=text name=bandwidth value="1000" disabled><input type="checkbox" name="ubandwidth" value="unlimited" checked onClick='setText( document.info.bandwidth,this)' >|LANG_SAME_AS_MAIN|</td ></tr>
+		<tr><td class=list>|LANG_DISK_SPACE|</td><td class=list><input type=text name=quota value="0" disabled><input type="checkbox" name="uquota" value="unlimited" checked onClick='setText( document.info.quota,this)' >|LANG_SAME_AS_MAIN|</td ></tr>
+		<tr><td class=list>|LANG_SECURE_SSL|</td><td class=list><input type="checkbox" name=ssl value="ON"> |LANG_IGNORED|</td></tr>
+		<tr><td class=list>|LANG_CGI| |LANG_ACCESS|</td><td class=list><input type="checkbox" name=cgi value="ON" checked> |LANG_IGNORED|</td></tr>
+		<tr><td class=list>|LANG_PHP| |LANG_ACCESS|</td><td class=list><input type="checkbox" name=php value="ON" checked> |LANG_IGNORED|</td></tr>
+		<tr><td class=listtitle colspan=3 align=right>
+			<input type=button name=create value="|LANG_CREATE|" onClick="if (formOK()) {submitForm();}">
+		</td></tr>
+	</form>
+</table>
+
+<br>|LANG_NO_CAPS|
+
+|HTM_USER_BOTTOM|

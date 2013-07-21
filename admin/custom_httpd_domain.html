@@ -1,0 +1,56 @@
+|LF_STANDARD|
+|?TREE=&raquo; <a class=tree href="/CMD_CUSTOM_HTTPD">`LANG_CUST_HTTPD_CONF`</a> &raquo; <a class=tree href="/CMD_CUSTOM_HTTPD?domain=`domain`">`domain`|
+|?HELP_SECTION=`ADMIN_HELPER`|
+|HTM_ADMIN_TOP|
+
+<table class=list>
+<form action="/CMD_CUSTOM_HTTPD" method="POST">
+<input type=hidden name=domain value="|domain|">
+<tr>
+	<td class=listtitle>|LANG_CUST_FOR| <b>|domain|</b></td>
+</tr>
+<tr>
+	<td class=list align=center>|LANG_WARNING|<br><textarea cols=80 rows=10 wrap=off name=config>|CONFIG|</textarea></td>
+</tr>
+<tr>
+	<td class=list align=center>
+		|LANG_AVAIL_TOKENS|:<br>
+		&#124;DOMAIN&#124;,
+		&#124;IP&#124;,
+		&#124;HOME&#124;,
+		&#124;ADMIN&#124;,
+		&#124;DOCROOT&#124;,
+		&#124;USER&#124;,
+		&#124;GROUP&#124;,
+		&#124;CERT&#124;,
+		&#124;KEY&#124;,<br>
+		&#124;HOSTNAME&#124;,
+		&#124;SAFE_MODE&#124;,
+		&#124;OPEN_BASEDIR&#124;,
+		&#124;CREATOR&#124;,
+		&#124;BANDWIDTH&#124;,
+		&#124;QUOTA&#124;
+	</td>
+</tr>
+<tr>
+	<td class=listtitle align=right><input type=submit value="|LANG_SAVE|"></td>
+</tr>
+<form>
+</table>
+
+<table class=list>
+<tr>
+	<td class=listtitle>
+		|LANG_HTTPD_CONTENTS_FOR| |domain|
+	</td>
+</tr>
+<tr>
+	<td class=list align=center>
+		<textarea cols=80 rows=20 wrap=off readonly>|HTTPD|</textarea>
+	</td>
+</tr>
+</table>
+
+
+|HTM_ADMIN_BOTTOM|
+

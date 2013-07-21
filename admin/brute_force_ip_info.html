@@ -1,0 +1,29 @@
+|LF_STANDARD|
+|?TREE=&raquo; <a class=tree href="/CMD_BRUTE_FORCE_MONITOR">`LANG_BRUTE_FORCE_MONITOR`</a>|
+|?HELP_SECTION=`ADMIN_HELPER`|
+|HTM_HEADER_FULL|
+
+
+<b>|LANG_IP_INFO|</b> |LANG_ON| |BLOCK_IP|<br>
+
+<textarea cols=125 rows=30 readonly>|IPINFO|</textarea>
+<br><br>
+
+|*if HAVE_BLOCK_SH="1"|
+<table class=list cellpadding=3 cellspacing=1>
+<form name=blockform action='?' method='POST'>
+	<input type='hidden' name='ip' value='|BLOCK_IP|'>
+	<input type='hidden' name='action' value='block'>
+
+<tr><td class=listtitle>|LANG_SCRIPT_FOUND|</td></tr>
+<tr><td class=list align=center>
+	<input type='button' value='|LANG_BLOCK_THIS_IP|' onclick="if (confirm('|LANG_ARE_YOU_SURE_IP| |BLOCK_IP|')){document.blockform.submit();}">
+</td></tr></tr>
+</form>
+</table>
+|*else|
+|LANG_NO_SCRIPT_FOUND|
+<a target=_blank href="http://www.directadmin.com/features.php?id=1229">http://www.directadmin.com/features.php?id=1229</a>
+|*endif|
+
+|HTM_FOOTER_FULL|

@@ -1,0 +1,26 @@
+|LF_STANDARD|
+|?TREE=&raquo; <a class=tree href="/CMD_SHOW_DOMAIN?domain=`DOMAIN`">`DOMAIN`</a> &raquo; <a class=tree href="/CMD_FRONTPAGE?DOMAIN=`DOMAIN`">`LANG_FP_EXT`</a>|
+|?HELP_SECTION=`USER_HELPER`/frontpage.html|
+|HTM_USER_TOP|
+
+<table class=list cellpadding=3 cellspacing=1>
+	<tr><td class=listtitle colspan=2>|LANG_FP_EXT|</td></tr>
+
+	<tr><td class=list>|LANG_STATUS|:</td><td class=list>|FPSTATUS|</td></tr>
+	<tr><td class=list>|LANG_USERNAME|:</td><td class=list>|USER|</td></tr>
+
+	<form name=info action="CMD_FRONTPAGE" method="post">
+		<input type=hidden name=domain value="|DOMAIN|">
+		<input type=hidden name=action value="onoff">
+	<tr><td class=list>|LANG_SYSTEM_PASS|:</td><td class=list><input type=password name=passwd> |LANG_REQUIRED|</td></tr>
+	<tr><td class=listtitle colspan=2 align=right>
+		<input type=Submit name=ON value="|LANG_ENABLE|">
+		<input type=Submit name=OFF value="|LANG_DISABLE|">
+	</td></tr>
+	</form>
+
+</table>
+<br>
+<center><a target=_blank href='http://www.|DOMAIN|/_vti_bin/_vti_adm/fpadmcgi.exe'>|LANG_FRONTPAGE_ADMIN|</a><br></center>
+
+|HTM_USER_BOTTOM|

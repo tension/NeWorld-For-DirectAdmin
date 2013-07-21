@@ -1,0 +1,20 @@
+|LF_TICKET|
+|?TREE=&raquo; <a class=tree href="/CMD_TICKET">`LANG_MESS_SYS`</a> &raquo; <a class=tree href="/CMD_TICKET?action=`action`&number=`number`&type=`type`">`LANG_VIEW` `type` `number`</a>|
+|?HELP_SECTION=`USER_HELPER`/gettingstarted.html#ticket|
+|HTM_HEADER_FULL|
+
+|REPLYBUTTON|
+
+|TICKETMESSAGES|
+
+|*if type="message"|
+<form name=tableform2 action='/CMD_TICKET' method='POST'>
+<input type=hidden name=action value="multiple">
+<input type=hidden name=select0 value="|number|">
+<p width=100% align=right><input type=submit name=delete value="|LANG_DELETE|"></p>
+</form>
+|*endif|
+
+|REPLYBUTTON|
+
+|HTM_FOOTER_FULL|

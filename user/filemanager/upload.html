@@ -1,0 +1,61 @@
+|?TREE=&raquo; <a class=tree href="/CMD_FILE_MANAGER">`LANG_FILEMANAGER`</a> &raquo; <a class=tree href="/CMD_FILE_MANAGER`path`">`path`</a>|
+|?HELP_SECTION=`USER_HELPER`/filemanager.html#upload|
+|HTM_HEADER_FULL|
+
+<script language="Javascript">
+<!--
+function is_a_number(num)
+{
+	var checker = /^([0-9])+$/;
+	if (checker.test(num)) return 1;
+	else return 0;
+}
+
+function uploadMultipleFiles(num)
+{
+	if (num.length == 0) return;
+
+	if (!is_a_number(num))
+		alert('|LANG_NOT_A_NUMBER|');
+	else
+	{
+		file_window = window.open("","files","width=500, height=400, resizable=yes, scrollbars=yes");
+		file_window.focus();
+
+		file_window.document.writeln("<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=|LANG_ENCODING|\"><title>|LANG_MULTIPLE|</title><link rel=Stylesheet href=\"/CSS_STYLE\"></head><body>");
+		file_window.document.writeln("<form action=\"CMD_FILE_MANAGER\" ENCTYPE=\"multipart/form-data\" method=\"POST\">");
+		file_window.document.writeln("<table class=list cellpadding=3 cellspacing=1>");
+		file_window.document.writeln("<tr><td class=listtitle colspan=2>|LANG_SELECT_FILES|</td></tr>");
+		file_window.document.writeln("<input type=hidden name=\"MAX_FILE_SIZE\" value=\"|MAX_FILE_SIZE|\">");
+		file_window.document.writeln("<input type=hidden name=\"action\" value=\"upload\">");
+		file_window.document.writeln("<input type=hidden name=\"path\" value=\"|path|\">");
+
+		for (var i=0; i<num; i++)
+		{
+			file_window.document.writeln("\t<tr><td class=list align=right>" + (i+1) + ":</td><td class=list align=center><input type=file name=\"file" + i + "\" size=35></td></tr>");
+
+		}
+
+		file_window.document.writeln("<tr><td class=listtitle colspan=2 align=right><input type=submit value=\"|LANG_UP_FILES|\"></td></tr>");
+		file_window.document.writeln("</table></form></body></html>");
+	}
+}
+
+// -->
+</script>
+
+<table class=list cellpadding=3 cellspacing=1>
+<tr><td class=listtitle colspan=4>|LANG_UP_TO| <b>|path|</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|LANG_MAX_SIZE| : |MAX_FILE_SIZE_STR|</td></tr>
+	<form name=uploadform action="/CMD_FILE_MANAGER" enctype="multipart/form-data" method="POST">
+		<input type="hidden" name="MAX_FILE_SIZE" value="|MAX_FILE_SIZE|">
+		<input type=hidden name="action" value="upload">
+		<input type=hidden name="path" value="|path|">
+<tr><td class=list colspan=2>1: <input type=file name="file1" size=40></td><td class=list colspan=2>5: <input type=file name="file5" size=40></td></tr>
+<tr><td class=list colspan=2>2: <input type=file name="file2" size=40></td><td class=list colspan=2>6: <input type=file name="file6" size=40></td></tr>
+<tr><td class=list colspan=2>3: <input type=file name="file3" size=40></td><td class=list colspan=2>7: <input type=file name="file7" size=40></td></tr>
+<tr><td class=list colspan=2>4: <input type=file name="file4" size=40></td><td class=list colspan=2>8: <input type=file name="file8" size=40></td></tr>
+<tr><td class=listtitle colspan=4 align=center><input type=submit value="|LANG_UP_FILES|"> <input type=button value="|LANG_UP_MORE|" onClick="uploadMultipleFiles(prompt('|LANG_HOW_MANY|', '10'));"></td></tr>
+	</form>
+</table>
+
+|HTM_FOOTER_FULL|

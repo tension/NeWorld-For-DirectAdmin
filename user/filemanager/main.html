@@ -1,0 +1,37 @@
+|LF_STANDARD|
+|?TREE=&raquo; <a class=tree href="/CMD_FILE_MANAGER">`LANG_FILEMANAGER`</a> &raquo; <a class=tree href="/CMD_FILE_MANAGER`path`">`path`</a>|
+|?HELP_SECTION=`USER_HELPER`/filemanager.html|
+
+|HTM_HEADER_FULL|
+
+|DIRECTORYLIST|
+|LANG_TO_MOVE|
+<br>
+<table class=list cellpadding=3 cellspacing=1>
+<tr><td class=listtitle colspan=4>|LANG_TOOLS|</td></tr>
+<tr>
+<form name=folderform action="/CMD_FILE_MANAGER" method="POST"><input type=hidden name=action value="folder"><input type=hidden name="path" value="|path|">
+	<td class=list>|LANG_NEW_FOLDER|</td><td class=list><input type=text name=name size=15> <input type=submit value="|LANG_CREATE|"></td>
+</form>
+<form name=fileform action="/CMD_FILE_MANAGER" method="POST"><input type=hidden name=action value="file"><input type=hidden name="path" value="|path|">
+<td class=list>|LANG_NEW_FILE|</td><td class=list><input type=text name=name size=15> <input type=submit name=file value="|LANG_CREATE|"><input type=checkbox name=template value="yes"><font style="FONT-SIZE: 6pt;">|LANG_TEMPLATE|</font></td>
+</form>
+</tr>
+<tr><td class=list colspan=4 align=center><input type=button value="|LANG_UPLOAD_TO_HERE|" onClick="location.href='/HTM_FILE_UPLOAD?path=|path|'"> ( |path| )</td></tr>
+<tr>
+	<form action="/CMD_FILE_MANAGER" method="POST">
+	<input type=hidden name=action value="compress">
+	<input type=hidden name=path value="|path|">
+	<td class=list colspan=4 align=center>|LANG_COMPRESS| |path|/<input type=text size=8 name=file>
+|*if HAVE_ZIP="yes"|
+	.<select name=type><option selected>tar.gz</option><option>zip</option></select>
+|*else|
+	.tar.gz
+|*endif|
+	<input type=submit value="|LANG_CREATE|"></td>
+	</form>
+</tr>
+</table>
+
+|HTM_FOOTER_FULL|
+

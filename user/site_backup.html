@@ -1,0 +1,56 @@
+|LF_STANDARD|
+|?TREE=&raquo; <a class=tree href="/CMD_SHOW_DOMAIN?domain=`domain`">`domain`</a> &raquo; <a class=tree href="/CMD_SITE_BACKUP?domain=`domain`">`LANG_SITE_BACKUP`</a>|
+|?HELP_SECTION=`USER_HELPER`/backup.html|
+|HTM_USER_TOP|
+
+<b>|LANG_BACKUP_ALL_DOMAINS|</b><br>
+
+<table class=list cellpadding=3 cellspacing=1>
+<form name=tableform1 action="/CMD_SITE_BACKUP" method="POST">
+	<input type=hidden name=domain value="|domain|">
+	<input type=hidden name=action value="backup">
+	<input type=hidden name="form_version" value="2">
+	<tr><td class=listtitle colspan=2>|LANG_SELECT_ITEMS|</td></tr>
+
+	<tr><td class=list colspan=2><b>|LANG_WEB_DATA|</b></td></tr>
+	<tr><td class=list>|LANG_DOMAINS_DIR|</td>		<td class=list><input type=checkbox name=select0 value="domain" checked></td></tr>
+	<tr><td class=list>|LANG_SUBDOMAIN_LIST|</td>	<td class=list><input type=checkbox name=select1 value="subdomain" checked></td></tr>
+
+	<tr><td class=list colspan=2><b>|LANG_EMAIL|</b></td></tr>
+	<tr><td class=list>|LANG_POP_ACCOUNTS|</td>												<td class=list><input type=checkbox name=select2 value="email" checked></td></tr>
+	<tr><td class=list>|LANG_FOWARDERS|</td>												<td class=list><input type=checkbox name=select3 value="forwarder" checked></td></tr>
+	<tr><td class=list>|LANG_AUTORESPONDERS|</td>											<td class=list><input type=checkbox name=select4 value="autoresponder" checked></td></tr>
+	<tr><td class=list>|LANG_VAC_MESSAGES|</td>												<td class=list><input type=checkbox name=select5 value="vacation" checked></td></tr>
+	<tr><td class=list>|LANG_MAILING_LISTS_INCLUDE|</td>									<td class=list><input type=checkbox name=select6 value="list" checked></td></tr>
+	<tr><td class=list>|LANG_EMAIL_SETTINGS|</td>											<td class=list><input type=checkbox name=select7 value="emailsettings" checked></td></tr>
+
+	<tr><td class=list colspan=2><b>|LANG_FTP|</b></td></tr>
+	<tr><td class=list>|LANG_FTP_ACCOUNTS|</td>												<td class=list><input type=checkbox name=select8 value="ftp" checked></td></tr>
+	<tr><td class=list>|LANG_FTP_SETTINGS|</td>												<td class=list><input type=checkbox name=select9 value="ftpsettings" checked></td></tr>
+
+	<tr><td class=list colspan=2><b>|LANG_DATABASES|</b></td></tr>
+	<tr><td class=list>|LANG_DBS_INCLUDE|</td>												<td class=list><input type=checkbox name="select10" value="database" checked onClick='document.tableform1.select11.checked = this.checked;'></td></tr>
+	<tr><td class=list>|LANG_DB_DATA|</td>													<td class=list><input type=checkbox name="select11" value="database_data" checked onClick='if (this.checked == true) { document.tableform1.select10.checked = true; }'></td></tr>
+	<tr><td class=listtitle colspan=2 align=right><input type=submit value="|LANG_CREATE_BACKUP|"></td></tr>
+</form>
+</table>
+
+<br>
+<center>
+<b>|RESULT|</b><br>
+<br>
+<a href="/CMD_FILE_MANAGER/backups">|LANG_CLICK_FOR_BACKUPS|</a><br>
+<br>
+<table class=list cellpadding=3 cellspacing=1>
+<form action="/CMD_SITE_BACKUP" method="POST">
+<input type=hidden name=domain value="|domain|">
+<input type=hidden name=action value="view">
+<input type=hidden name="form_version" value="2">
+<tr><td class=listtitle>|LANG_SELECT_FILE|</td></tr>
+<tr><td class=list align=center>|FILES|</td></tr>
+<tr><td class=listtitle align=right><input type=submit value="|LANG_SELECT_RESTORE_OPS|"></td></tr>
+</form>
+
+</table>
+
+|HTM_USER_BOTTOM|

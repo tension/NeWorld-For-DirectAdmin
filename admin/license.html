@@ -1,0 +1,40 @@
+|?TREE=&raquo; <a class=tree href="/CMD_LICENSE">`LANG_LICE_UP`</a>|
+|?HELP_SECTION=`ADMIN_HELPER`/license.html|
+|HTM_ADMIN_TOP|
+
+<table cellspacing=1 cellpadding=3 class=list>
+<tr><td class=listtitle colspan=2>|LANG_LICE_VALS|</a></td></tr>
+<tr><td class=list>|LANG_LICE_IP|</td><td class=list>|ip|</td></tr>
+<tr><td class=list2>|LANG_LICE_NAME|</td><td class=list2>|name|</td></tr>
+<tr><td class=list>|LANG_LID|</td><td class=list>|lid|</td></tr>
+<tr><td class=list2>|LANG_CID|</td><td class=list2>|uid|</td></tr>
+
+|*if internal="Y"|
+<tr><td class=list>|LANG_LTYPE|</td><td class=list style='white-space: normal;'>|LANG_INTERNAL|</td></tr>
+|*endif|
+|*if internal="N"|
+<tr><td class=list>|LANG_LTYPE|</td><td class=list style='white-space: normal;'>|LANG_EXTERNAL|</td></tr>
+|*endif|
+
+<tr><td class=list2>|LANG_VALID_AFTER|</td><td class=list2>|start_string|</td></tr>
+<tr><td class=list>|LANG_VALID_UNTIL|</td><td class=list>|expiry_string|</td></tr>
+|*if portioned="Y"|
+<tr><td class=list>|LANG_PORTIONED_LICENSE|</td><td class=list style='white-space: normal;'>|LANG_PORTIONED_EXPLANATION| |true_expiry_string|</td></tr>
+|*endif|
+
+<tr><td class=list2>|LANG_CURRENT_TIME|</td><td class=list2>|TIME|</td></tr>
+<tr><td class=list>|LANG_TIME_REM|</td><td class=list>|remaining|</td></tr>
+<tr><td class=list2>|LANG_LAST_UP|</td><td class=list2>|license_change|</td></tr>
+<tr><td class=list align=center colspan=2><a href="/CMD_LICENSE?update=license">|LANG_UP_LICE|</a></td></tr>
+
+<tr><td class=listtitle colspan=2>|LANG_DA_VALS|</a></td></tr>
+<tr><td class=list>|LANG_COMPILED_FOR|</td><td class=list>|OS_NAME|</td></tr>
+<tr><td class=list2>|LANG_COMPILE_DATE|</td><td class=list2>|compile_time|</td></tr>
+<tr><td class=list>|LANG_SERVER_VER|</td><td class=list>|version|</td></tr>
+<tr><td class=list2>|LANG_CURRENT_VER|</td><td class=list2>|currentversion|</td></tr>
+<tr><td class=list>|LANG_LAST_UP|</td><td class=list>|software_change|</td></tr>
+<tr><td class=list2>|LANG_LAST_RESTART|</td><td class=list2>|startup_time|</td></tr>
+<tr><td class=list align=center colspan=2><a href="/CMD_LICENSE?update=program">|LANG_UPDATE_DA|</a></td></tr>
+</table>
+
+|HTM_ADMIN_BOTTOM|

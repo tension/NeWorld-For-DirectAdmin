@@ -1,0 +1,47 @@
+|LF_STANDARD|
+|HTM_FOOTER_BAR_1|
+		<div class="rightView">
+			
+			<div class="module">
+				<h5>基本信息</h5>
+				<ul>
+|$|PHP|
+<?php
+$d="|domain|";
+if ($d == "" || $d[0] == '|') { exit(0);}
+?>
+<li class="bold">当前域名: |domain|</li>
+DONE|
+					<li><a href="/CMD_TICKET">技术消息</a> <span class="badge badge-info">|NEWMESSAGES|</span></li>
+					<li>|LANG_DISK_SPACE| |RESELLERQUOTA| |LANG_MB| / |RESELLERQUOTAMAX|</li>
+					<li>|LANG_BANDWIDTH| |RESELLERBANDWIDTHGIG| |LANG_GB| / |RESELLERBANDWIDTHMAXGIG|</li>
+					<li>邮件 |RESELLEREMAIL| / |RESELLEREMAILMAX|</li>
+					<li>FTP |USERFTP| / |RESELLERFTPMAX|</li>
+					<li>数据库 |RESELLERDATABASE| / |RESELLERDATABASEMAX|</li>
+					<li>站点 |RESELLERDOMAINS| / |RESELLERDOMAINSMAX|</li>
+					<li>用户 |RESELLERUSERS|</li>
+				</ul>
+			</div><!-- /module -->
+			
+			<div class="module">
+				<h5>服务器状态</h5>
+				<ul>
+|$|PHP|
+<?php
+include |ROOT|."inc/functions.php";
+?>
+					<li>Apache：<?php echo getPortStatus('|HOSTNAME|','80'); ?></li>
+					<li>MySQL：<?php echo getPortStatus('|HOSTNAME|','3306'); ?></li>
+					<li>FTP：<?php echo getPortStatus('|HOSTNAME|','21'); ?></li>
+					<li>PHP：<span class="badge badge-info"><?php echo PHP_VERSION; ?></span></li>
+					<li>Zend：<span class="badge badge-info"><?php echo zend_version(); ?></span></li>
+					<li>MySQL：<span class="badge badge-info"><?php echo mysql_get_client_info(); ?></span></li>
+					<li>upTime：<span class="badge badge-info"><?php echo $sysInfo['uptime']; ?></span></li>
+DONE|
+
+				</ul>
+			</div><!-- /module -->
+	
+		</div>
+|HTM_FOOTER_BAR_2|
+|HTM_FOOTER|

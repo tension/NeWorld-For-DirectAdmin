@@ -1,0 +1,16 @@
+|?TREE=&raquo; <a class=tree href="/CMD_FILE_MANAGER">`LANG_FILEMANAGER`</a> &raquo; <a class=tree href="/CMD_FILE_MANAGER`path`">`path`</a>|
+|?HELP_SECTION=`USER_HELPER`/filemanager.html#copy|
+|HTM_USER_TOP|
+<center>
+<table class=list style='width: 50%' cellpadding=3 cellspacing=1>
+<form name=info action='/CMD_FILE_MANAGER' method='POST'>
+<input type=hidden name=action value="copy">
+<input type=hidden name=path value="|path|">
+<input type=hidden name=old value="|FILENAME|">
+<tr ><td class=listtitle colspan=2>|LANG_COPY_1| |FILENAME| |LANG_COPY_2|:</td ></tr>
+<tr><td class=list align=center><input type=text name=filename value="|FILENAME|"></td><td class=list><input type=checkbox name=overwrite value="yes">|LANG_OVERWRITE|</td></tr>
+<tr><td class=listtitle colspan=2 align=right><input type=submit value="|LANG_COPY|"></td ></tr >
+</form></table>
+</center>
+
+|HTM_USER_BOTTOM|

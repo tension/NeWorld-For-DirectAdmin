@@ -1,0 +1,105 @@
+|LF_LOGIN_KEYS|
+|?TREE=&raquo; <a class=tree href="CMD_LOGIN_KEYS">`LANG_LOGIN_KEYS`</a> &raquo; <a class=tree href="CMD_LOGIN_KEYS?action=show_create">`LANG_CREATE_NEW_LOGIN_KEY`</a>|
+|HTM_HEADER_FULL|
+
+<script language="Javascript">
+<!--
+
+|?HASH_LEN=64|
+
+|HTM_JAVASCRIPT|
+
+function create_key()
+{
+	num_pass_tries++;
+
+	if (num_pass_tries >= 20)
+	{
+		alert("Unable to generate a key with a number, upper and lower case characters in it. Tried 20 times");
+		return "error1";
+	}
+
+	var length = |HASH_LEN|;
+	var chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+
+	var pass = "";
+	var i=0;
+
+	for (i=0; i<length; i++)
+	{
+		pass = pass + random_char(chars);
+	}
+
+	//this basically just says "ok, we need a number" so it recursivly tries again.
+	if (!has_number(pass) || !has_lower_case(pass) || !has_upper_case(pass))
+	{
+		return random_pass();
+	}
+
+	return pass;
+}
+
+function create_random_key()
+{
+	with (document.tableform)
+	{
+		key.value = create_key();
+		key2.value = key.value;
+	}
+
+	num_pass_tries = 0;
+}
+
+// -->
+</script>
+
+
+<table class='list' cellpadding=3 cellspacing=1>
+	<form name=tableform action="CMD_LOGIN_KEYS" method="post">
+		<input type=hidden name="action" value="create">
+
+		<tr><td class=listtitle colspan=3><b>|LANG_CREATE_NEW_LOGIN_KEY|</b></td></tr>
+
+		<tr><td class=list>|LANG_KEY_NAME|:</td><td class=list colspan=2><input type=text name=keyname size=16 maxlength=32> |LANG_KEY_DEFINITION| (a-zA-Z0-9)</td></tr>
+		<tr><td class=list2>|LANG_KEY_VALUE|:</td><td class=list2 colspan=2><input type=password name=key size=|HASH_LEN| maxlength=|HASH_LEN|> <input type=button value="|LANG_RANDOM|" onClick="create_random_key()"></td></tr>
+		<tr><td class=list>|LANG_RE_ENTER_KEY|:</td><td class=list colspan=2><input type=password name=key2 size=|HASH_LEN| maxlength=|HASH_LEN|></td></tr>
+		<tr><td class=list2>|LANG_EXPIRES_ON|:</td><td class=list2 colspan=2>
+			<input type=checkbox name=never_expires value="yes"> |LANG_NEVER| &nbsp;&nbsp;&nbsp;
+			|HOUR|:|MINUTE|, |MONTH||DAY||YEAR|
+		</td></tr>
+		<tr><td class=list>|LANG_USES|:</td><td class=list colspan=2><input type=text size=3 name="max_uses" value="1"> |LANG_USES_EXPLANATION|</td></tr>
+		<tr><td class=list2>|LANG_CLEAR_KEY|:</td>
+			<td class=list2 colspan=2><input type=checkbox name="clear_key" value="yes"> |LANG_AUTO_DELETE|</td>
+		</tr>
+		<tr><td class=list>|LANG_ALLOW_HTM|:</td><td class=list colspan=2><input type=checkbox name="allow_htm" value="yes"> |LANG_ALLOW_HTM_EXPLANATION|</td></tr>
+
+		<tr><td class=list2 valign=top>|LANG_COMMANDS|:</td>
+			<td class=list2 colspan=2>
+				<div style="overflow: auto; height: 350px; width: 640px;">
+					<table cellpadding=0 cellspacing=0 width=100%>
+						<tr>
+							<td>|ALLOW_COMMANDS|</td>
+							<td>|DENY_COMMANDS|</td>
+						</tr>
+					</table>
+				</div>
+			</td>
+		</tr>
+		<tr><td class=list valign=top>|LANG_ALLOWED_IPS|:</td>
+			<td class=list valign=top width=220>
+				<textarea name=ips cols=30 rows=3></textarea>
+			</td>
+			<td class=list valign=top>|LANG_IPS_EXPLANATION|</td>
+		</tr>
+		<tr><td class=list2>|LANG_CURRENT_PASSWORD|:</td><td class=list2 colspan=2><input type=password name=passwd size=16></td></tr>
+		<tr><td class=listtitle colspan=3 align=right>
+			<input type=submit name=create value="|LANG_CREATE|">
+		</td></tr>
+	</form>
+</table>
+
+|LANG_LOGIN_KEYS_RULES|
+<br><br>
+|LANG_ALL_USER_WARNING|
+
+|HTM_FOOTER_FULL|

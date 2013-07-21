@@ -1,0 +1,33 @@
+|LF_STANDARD|
+|LF_POP|
+|?TREE=&raquo; <a class=tree href="/CMD_SHOW_DOMAIN?domain=`DOMAIN`">`DOMAIN`</a> &raquo; <a class=tree href="/CMD_EMAIL_POP?DOMAIN=`DOMAIN`">`LANG_POP_ACCOUNTS`</a> &raquo; <a class=tree href="/HTM_EMAIL_POP_MODIFY?DOMAIN=`DOMAIN`&USER=`USER`">`LANG_MODIFY` `USER`</a>|
+|?HELP_SECTION=`USER_HELPER`/email.html#pop3|
+|HTM_USER_TOP|
+
+<script language="Javascript">
+<!--
+
+|HTM_JAVASCRIPT|
+
+// -->
+</script>
+
+<table class=list cellpadding=3 cellspacing=1>
+	<form name=reseller action="CMD_EMAIL_POP" method="post">
+		<input type=hidden name=action value=modify>
+		<input type=hidden name=domain value="|DOMAIN|">
+		<input type=hidden name=user value="|USER|">
+
+		<tr><td class=listtitle colspan=2>|LANG_POP_MODIFY|</td></tr>
+
+		<tr><td class=list>|LANG_POP_USERNAME|</td><td class=list><input type=text name=newuser value="|USER|" size=16>@|DOMAIN|</td></tr>
+		<tr><td class=list>|LANG_NEW_PASS|</td><td class=list><input type=password name=passwd size=16> |LANG_LEAVE_BLANK|</td></tr>
+		<tr><td class=list>|LANG_RE-ENTER_PASS|:</td><td class=list><input type=password name=passwd2 size=16> <input type=button value="|LANG_RANDOM|" onClick="randomPass()"></td></tr>
+		<tr><td class=list>|LANG_EMAIL_QUOTA|</td><td class=list><input type=text name=quota size=16 value="|QUOTA|"> |LANG_ZERO_UNLIMITED|</td></tr>
+		<tr><td class=listtitle colspan=3 align=right>
+			<input type=submit name=update value="|LANG_MODIFY|">
+		</td></tr>
+	</form>
+</table>
+
+|HTM_USER_BOTTOM|

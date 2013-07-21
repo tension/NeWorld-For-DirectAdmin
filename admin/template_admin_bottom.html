@@ -1,0 +1,35 @@
+|HTM_FOOTER_BAR_1|
+
+		<div class="rightView">
+			
+			<div class="module">
+				<h5>基本信息</h5>
+				<ul>
+					<li>|LANG_DISK_SPACE| |ADMINQUOTA|</li>
+					<li>|LANG_BANDWIDTH| |ADMINBANDWIDTHGIG|</li>
+	        		<li>|LANG_DOMAINS| |ADMINDOMAINS|</li>
+	        		<li>|LANG_USERS| |ADMINUSERS|</li>
+	        		<li>|LANG_RESELLERS| |ADMINRESELLERS|</li>
+				</ul>
+			</div>
+			
+			<div class="module">
+				<h5>服务器信息</h5>
+				<ul>
+|$|PHP|
+<?php
+include |ROOT|."inc/functions.php";
+?>
+<li>系统负载：<span class="badge badge-info"><?php echo $sysInfo['loadAvg'];?></span></li>
+<li>共有内存：<span class="badge badge-info"><?php echo $sysInfo['memTotal'];?>M</span></li>
+<li>已用内存：<span class="badge badge-info"><?php echo $sysInfo['memUsed'];?>M</span></li>
+<li>空闲内存：<span class="badge badge-info"><?php echo $sysInfo['memFree'];?>M</span></li>
+<li>运行时间：<span class="badge badge-info"><?php echo $sysInfo['uptime']; ?></span></li>
+DONE|
+	
+				</ul>
+			</div><!-- /module -->
+			
+		</div>
+|HTM_FOOTER_BAR_2|
+|HTM_FOOTER|

@@ -1,0 +1,71 @@
+|LF_STANDARD|
+|LF_SSL|
+|?TREE=&raquo; <a class=tree href="/CMD_SHOW_DOMAIN?domain=`DOMAIN`">`DOMAIN`</a> &raquo; <a class=tree href="/CMD_SSL?DOMAIN=`DOMAIN`">`LANG_SSL`</a> &raquo; <a class=tree href="/CMD_SSL?DOMAIN=`DOMAIN`&view=cacert">`LANG_CA_SSL`</a>|
+|?HELP_SECTION=`USER_HELPER`/ssl.html|
+|HTM_USER_TOP|
+
+<script language="javascript">
+function copyCertificate(text)
+{
+	text.focus();
+	text.select();
+	if (document.all)
+	{
+		therange = text.createTextRange();
+		therange.execCommand("Copy");
+		alert('|LANG_CERT_COPIED|');
+	}
+}
+
+function pasteCertificate(text)
+{
+	text.focus();
+	text.select();
+
+	if (document.all)
+	{
+		document.execCommand("Paste");
+
+		with (document.info)
+		for (var i=0; i < elements.length; i++)
+			if (elements[i].type == 'radio')
+				if ( (elements[i].name == "type") && (elements[i].value == "paste")  )
+				{
+					elements[i].checked = true;
+				}
+	}
+}
+
+</script>
+
+<b>|RESULT|</b><br>
+
+<table class=list cellpadding=3 cellspacing=1>
+	<tr><td class=listtitle>|LANG_CA_CERT|</td></tr>
+
+	<form name=info action="CMD_SSL" method="post">
+		<input type=hidden name=domain value="|DOMAIN|">
+		<input type=hidden name=action value="save">
+		<input type=hidden name=type value="cacert">
+	<tr>
+		<td class=list align=center>
+			<input type=checkbox name=active value="yes" |CHECKED|> |LANG_USE_CA|
+		</td>
+	</tr>
+
+	<tr>
+		<td class=list align=center>
+			<textarea style="font-family: courier new; width: 480px;" name=cacert rows=16>|CACERT|</textarea><br>
+			<input type=button value="|LANG_PASTE_FROM|" onClick="pasteCertificate(document.info.cacert)">
+			<input type=button value="|LANG_COPY_TO|" onClick="copyCertificate(document.info.cacert)"> |LANG_IE_ONLY|
+		</td>
+	</tr>
+	<tr><td class=listtitle align=right>
+		<input type=submit name=submit value="|LANG_SAVE|">
+	</td></tr>
+	</form>
+
+</table>
+
+
+|HTM_USER_BOTTOM|

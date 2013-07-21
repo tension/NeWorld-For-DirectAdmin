@@ -1,0 +1,63 @@
+|LF_STANDARD|
+|LF_DB|
+|?TREE=&raquo; <a class=tree href="/CMD_SHOW_DOMAIN?domain=`DOMAIN`">`DOMAIN`</a> &raquo; <a class=tree href="/CMD_DB?DOMAIN=`DOMAIN`">`LANG_MYSQL_SETUP`</a> &raquo; <a class=tree href="/CMD_DB_CREATE?DOMAIN=`DOMAIN`">`LANG_CREATE_DB`</a>|
+|?HELP_SECTION=`USER_HELPER`/mysql.html#create|
+|HTM_USER_TOP|
+
+<script language="javascript">
+
+|HTM_JAVASCRIPT|
+
+function setGreyout(value)
+{
+	if (document.reseller)
+	{
+		with (document.reseller)
+		{
+			if (value == '...')
+			{
+				user.disabled = false;
+				user.value = '';
+				passwd.disabled = false;
+				passwd.value = '';
+				passwd2.disabled = false;
+				passwd2.value = '';
+
+			}
+			else
+			{
+				user.value = value;
+				user.disabled = true;
+				passwd.value = '********';
+				passwd.disabled = true;
+				passwd2.value = '********';
+				passwd2.disabled = true;
+			}
+		}
+	}
+}
+</script>
+
+<table class=list cellpadding=3 cellspacing=1>
+	<form name=reseller action="CMD_DB" method="post">
+		<input type=hidden name=action value=create>
+		<input type=hidden name=domain value="|DOMAIN|">
+
+		<tr><td class=listtitle colspan=2>|LANG_CREATE_DB|</td></tr>
+
+		<tr><td class=list>|LANG_DB_NAME|</td><td class=list><b>|USERNAME|_</b><input type=text name=name size=12></td></tr>
+		<tr><td class=list>|LANG_DB_USERNAME|</td><td class=list><b>|USERNAME|_</b><input type=text name=user size=12>
+|*if DB_USER_LIST|
+		|LANG_DB_USE_EXISTING|
+		|DB_USER_LIST|
+|*endif|</td></tr>
+		<tr><td class=list>|LANG_DB_PASS|</td><td class=list><input type=password name=passwd size=20> <input type=button value="|LANG_RANDOM|" onClick="randomPass()"></td></tr>
+		<tr><td class=list>|LANG_DB_PASS_AGAIN|</td><td class=list><input type=password name=passwd2 size=20></td></tr>
+
+		<tr><td class=listtitle colspan=3 align=right>
+			<input type=submit name=create value="|LANG_CREATE|">
+		</td></tr>
+	</form>
+</table>
+
+|HTM_USER_BOTTOM|

@@ -1,0 +1,42 @@
+|LF_STANDARD|
+|LF_SITE_BACKUP|
+|?TREE=&raquo; <a class=tree href="/CMD_SHOW_DOMAIN?domain=`domain`">`domain`</a> &raquo; <a class=tree href="/CMD_SITE_BACKUP?domain=`domain`">`LANG_SITE_BACKUP`</a> &raquo; `LANG_RESTORE_FROM_FILE`|
+|?HELP_SECTION=`USER_HELPER`/backup.html#restore|
+|HTM_USER_TOP|
+
+<b>|LANG_RESTORE_FROM_FILE|</b><br>
+
+<table class=list cellpadding=3 cellspacing=1>
+<form action="/CMD_SITE_BACKUP" method="POST">
+<input type=hidden name=domain value="|domain|">
+<input type=hidden name=file value="|file|">
+<input type=hidden name=action value="restore">
+<input type=hidden name="form_version" value="2">
+<tr><td class=listtitle colspan=2>|LANG_SELECT_ITEMS_TO_REST| |file|</td></tr>
+<tr><td class=list colspan=2><b>|LANG_WEB_DATA|</b></td></tr>
+<tr><td class=list>|LANG_DOMAINS_DIR|</td>		<td class=list><input type=checkbox name=select0 value="domain" |DOMAINON|></td></tr>
+<tr><td class=list>|LANG_SUBDOMAIN_LIST|</td>	<td class=list><input type=checkbox name=select1 value="subdomain" |SUBDOMAINON|></td></tr>
+
+<tr><td class=list colspan=2><b>|LANG_EMAIL|</b></td></tr>
+<tr><td class=list>|LANG_POP_ACCOUNTS|</td>									<td class=list><input type=checkbox name=select2 value="email" |EMAILON|></td></tr>
+<tr><td class=list>|LANG_FOWARDERS|</td>					<td class=list><input type=checkbox name=select3 value="forwarder" |FORWARDERON|></td></tr>
+<tr><td class=list>|LANG_AUTORESPONDERS|</td>		<td class=list><input type=checkbox name=select4 value="autoresponder" |AUTORESPONDERON|></td></tr>
+<tr><td class=list>|LANG_VAC_MESSAGES|</td>	<td class=list><input type=checkbox name=select5 value="vacation" |VACATIONON|></td></tr>
+<tr><td class=list>|LANG_MAILING_LISTS_INCLUDE|</td>													<td class=list><input type=checkbox name=select6 value="list" |LISTON|></td></tr>
+<tr><td class=list>|LANG_EMAIL_SETTINGS|</td>	<td class=list><input type=checkbox name=select7 value="emailsettings" |EMAILSETTINGSON|></td></tr>
+
+<tr><td class=list colspan=2><b>|LANG_FTP|</b></td></tr>
+<tr><td class=list>|LANG_FTP_ACCOUNTS|</td>													<td class=list><input type=checkbox name=select8 value="ftp" |FTPON|></td></tr>
+<tr><td class=list>|LANG_FTP_SETTINGS|</td>													<td class=list><input type=checkbox name=select9 value="ftpsettings" |FTPSETTINGSON|></td></tr>
+<tr><td class=list colspan=2><b>|LANG_DATABASES|</b></td></tr>
+<tr><td class=list>|LANG_DBS_INCLUDE|</td>							<td class=list><input type=checkbox name=select10 value="database" |DATABASEON|></td></tr>
+<tr><td class=list>|LANG_DB_DATA|</td>								<td class=list><input type=checkbox name=select11 value="database_data" |DATABASEDATAON|></td></tr>
+
+<tr><td class=list colspan=2><b>|LANG_DNS_ZONES|</b></td></tr>
+<tr><td class=list>|LANG_DNS_INCLUDE|</td>                                                      <td class=list><input type=checkbox name=select12 value="dns" |DNSON|></td></tr>
+
+<tr><td class=listtitle colspan=2 align=right><input type=submit value="|LANG_RESOTRE_SELECTED_ITEMS|"></td></tr>
+</form>
+</table>
+
+|HTM_USER_BOTTOM|

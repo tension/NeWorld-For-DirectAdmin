@@ -1,0 +1,303 @@
+var badUserName='|LANG_INVALID_USERNAME|';
+var shortUserName='|LANG_SHORT_USERNAME|';
+var longUserName='|LANG_USERNAME_NO_MORE| |MAX_USERNAME_LENGTH| |LANG_CHARACTERS|';
+var noPassMatch='|LANG_PASS_NO_MATCH|';
+var shortPass='|LANG_SHORT_PASS|';
+var shortDomain='|LANG_SHORT_DOMAIN|';
+var domainNeedsDot='|LANG_DOMAIN_DOT|';
+var invalidDomain='|LANG_INVALID_DOMAIN|';
+var badIP='|LANG_INVALID_IP|';
+var badEmail='|LANG_INVALID_EMAIL|';
+
+function nameOK(name)
+{
+	var ch;
+	var i;
+
+	if (name.length < 2) return false;
+	if (name.length > |MAX_USERNAME_LENGTH|) return false;
+
+	for (i=0; i<name.length; i++)
+	{
+		ch=name.charAt(i);
+		if ( i==0 && !((ch >= 'a' && ch <= 'z') || (ch >= '0' && ch <= '9')) || ch==' ' ) return false;
+		else if (!((ch >= 'a' && ch <= 'z') || (ch >= '0' && ch <= '9') || (ch=='_') || (ch=='-')) || ch==' ') return false;
+	}
+
+	return true;
+}
+
+function checkName()
+{
+	with (document.reseller)
+	{
+		if (username.value.length < 2)
+		{
+			username.focus();
+			username.select();
+			alert(shortUserName);
+			return false;
+		}
+		else
+		if (username.value.length > |MAX_USERNAME_LENGTH|)
+		{
+			username.focus();
+			username.select();
+			alert(longUserName);
+			return false;
+		}
+		else
+		if (nameOK(username.value)) return true;
+		else
+		{
+			username.focus();
+			username.select();
+			alert(badUserName);
+			return false;
+		}
+	}
+	return false;
+}
+
+function passOK() {
+	with (document.reseller) {
+		if (passwd.value.length < 5)
+		{
+			alert(shortPass);
+			return 0;
+		}
+
+		if (passwd.value != passwd2.value) {
+			alert(noPassMatch);
+			return 0;
+		}
+	}
+	return 1;
+}
+
+function checkPass() {
+	with (document.reseller) {
+		if (passOK()) return true;
+		else {
+			passwd2.value="";
+			passwd.focus();
+			passwd.select();
+		}
+	}
+}
+
+function ipOK(ip)
+{
+	var ch;
+	var i;
+	var dotCount = 0;
+	if (ip.length < 7) return 0;
+	if (ip.charAt(0) == '.' || ip.charAt(ip.length-1) == '.') return 0;
+	for (i=0; i<ip.length; i++)
+	{
+		ch = ip.charAt(i);
+		if (ch == '.') dotCount++;
+		else if ( !(ch >= 0 && ch <= 9) )
+			return 0;
+	}
+	if (dotCount < 3) return 0;
+	return 1;
+}
+
+function checkDomainIP()
+{
+	with (document.reseller)
+	{
+		if (sharedip.checked) return 1;
+		if (!ipOK(ip.value))
+		{
+			alert(badIP)
+			ip.focus();
+			ip.select();
+			return 0;
+		}
+	}
+	return 1;
+}
+
+function domainOK(domain) {
+	var ch;
+	var i;
+	var dotCount = 0;
+
+	if (domain.length < 3) {
+		alert(shortDomain);
+		return 0;
+	}
+
+	if (domain.charAt(domain.length-1) == '.') {
+		alert(invalidDomain);
+		return 0;
+	}
+
+	for (i=0; i<domain.length; i++)	{
+		if ((ch = domain.charAt(i)) == '.') dotCount++;
+	}
+
+	if (dotCount == 0) {
+		alert(domainNeedsDot);
+		return 0;
+	}
+
+	return 1;
+}
+
+function checkDNSIP1() {
+	with (document.reseller) {
+		if (!ipOK(dns1ip.value)) {
+			alert(badIP);
+			dns1ip.focus();
+			dns1ip.select();
+			return 0;
+		}
+	}
+	return 1;
+}
+
+function checkDNSIP2() {
+	with (document.reseller) {
+		if (!ipOK(dns2ip.value)) {
+			alert(badIP);
+			dns2ip.focus();
+			dns2ip.select();
+			return 0;
+		}
+	}
+	return 1;
+}
+
+function checkDomain() {
+	with (document.reseller) {
+		if (!domainOK(domain.value)) {
+			domain.focus();
+			domain.select();
+			return 0;
+		}
+	}
+	return 1;
+}
+
+function emailOK(email) {
+
+	//var filter=/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i
+	//original: var filter  = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+	var filter  = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+(,\s?([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+)*$/;
+
+
+	if (filter.test(email))
+		return 1;
+	else
+		return 0;
+}
+
+function checkEmail() {
+	with (document.reseller) {
+		if (!emailOK(email.value)) {
+			email.focus();
+			email.select();
+			alert(badEmail);
+
+			return 0;
+		}
+	}
+	return 1;
+}
+
+
+function random_char(charlist)
+{
+	var now = new Date();
+	var seed = now.getSeconds();
+	var num = Math.floor(Math.random(seed) * charlist.length);
+	return charlist.charAt(num);
+}
+
+function has_number(pass)
+{
+	var num_count = 0;
+
+	for (i=0; i<pass.length; i++)
+	{
+		ch=pass.charAt(i);
+		if ('0' <= ch && ch <= '9')
+		{
+			num_count++;
+		}
+	}
+
+	return num_count;
+}
+
+function has_lower_case(pass)
+{
+	var num_count = 0;
+
+	for (i=0; i<pass.length; i++)
+	{
+		ch=pass.charAt(i);
+		if ('a' <= ch && ch <= 'z')
+		{
+			num_count++;
+		}
+	}
+
+	return num_count;
+}
+
+function has_upper_case(pass)
+{
+	var num_count = 0;
+
+	for (i=0; i<pass.length; i++)
+	{
+		ch=pass.charAt(i);
+		if ('A' <= ch && ch <= 'Z')
+		{
+			num_count++;
+		}
+	}
+
+	return num_count;
+}
+
+var num_pass_tries = 0;
+
+function random_pass() {
+	num_pass_tries++;
+
+	if (num_pass_tries >= 20) {
+		alert("Unable to generate a password with a number, upper and lower case characters in it. Tried 20 times");
+		return "error1";
+	}
+
+	var length = 8;
+	var chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+
+	var pass = "";
+	var i=0;
+
+	for (i=0; i<length; i++) {
+		pass = pass + random_char(chars);
+	}
+
+	//this basically just says "ok, we need a number" so it recursivly tries again.
+	if (!has_number(pass) || !has_lower_case(pass) || !has_upper_case(pass)) {
+		return random_pass();
+	}
+
+	return pass;
+}
+
+function randomPass() {
+	with (document.reseller) {
+		passwd.value = random_pass();
+		passwd2.value= passwd.value;
+	}
+
+	num_pass_tries = 0;
+}

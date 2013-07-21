@@ -1,0 +1,36 @@
+|LF_STANDARD|
+|LF_DB|
+|?TREE=&raquo; <a class=tree href="/CMD_SHOW_DOMAIN?domain=`DOMAIN`">`DOMAIN`</a> &raquo; <a class=tree href="/CMD_DB?DOMAIN=`DOMAIN`">`LANG_MYSQL_SETUP`</a> &raquo; <a class=tree href="/CMD_DB_VIEW?DOMAIN=`DOMAIN`&name=`name`">`LANG_VIEW` `name`</a> &raquo; <a class=tree href="/CMD_DB_USER_PRIV?DOMAIN=`DOMAIN`&name=`name`&user=`user`">`LANG_USER_PRIVS`</a>|
+|?HELP_SECTION=`USER_HELPER`/mysql.html|
+|HTM_USER_TOP|
+
+<table class=list cellpadding=3 cellspacing=1>
+	<form name=info action="CMD_DB_USER_PRIVS" method="post">
+		<input type=hidden name=action value=save>
+		<input type=hidden name=domain value="|DOMAIN|">
+		<input type=hidden name=name value="|name|">
+		<input type=hidden name=user value="|user|">
+
+		<tr><td class=listtitle colspan=4>|LANG_PRIVS_1| |user| |LANG_PRIVS_2| |name|</td></tr>
+
+		<tr><td class=list align=right width=25%>|LANG_SELECT|</td><td class=list width=25%>|SELECT|</td>
+		<td class=list align=right width=25%>|LANG_INSERT|</td><td class=list width=25%>|INSERT|</td></tr>
+		<tr><td class=list align=right>|LANG_UPDATE|</td><td class=list>|UPDATE|</td>
+		<td class=list align=right>|LANG_DELETE|</td><td class=list>|DELETE|</td></tr>
+		<tr><td class=list align=right>|LANG_CREATE|</td><td class=list>|CREATE|</td>
+		<td class=list align=right>|LANG_DROP|</td><td class=list>|DROP|</td></tr>
+		<tr><td class=list align=right>|LANG_ALTER|</td><td class=list>|ALTER|</td>
+		<td class=list align=right>|LANG_INDEX|</td><td class=list>|INDEX|</td></tr>
+
+                <tr><td class=list align=right>|LANG_GRANT|</td><td class=list>|GRANT|</td>
+                <td class=list align=right>|LANG_REFERENCE|</td><td class=list>|REFERENCE|</td></tr>
+                <tr><td class=list align=right>|LANG_TMP_TABLE|</td><td class=list>|CREATE_TMP_TABLE|</td>
+                <td class=list align=right>|LANG_LOCK|</td><td class=list>|LOCK_TABLE|</td></tr>
+
+		<tr><td class=listtitle colspan=4 align=right>
+			<input type=submit value="|LANG_SAVE|">
+		</td></tr>
+	</form>
+</table>
+
+|HTM_USER_BOTTOM|

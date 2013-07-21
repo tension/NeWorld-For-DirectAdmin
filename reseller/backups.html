@@ -1,0 +1,340 @@
+|LF_STANDARD|
+|LF_BACKUPS|
+|?TREE=&raquo; <a class=tree href="/CMD_USER_BACKUP">`LANG_MANAGE_USER_BACKUPS`</a>|
+|?HELP_SECTION=`RESELLER_HELPER`|
+|HTM_HEADER_FULL|
+
+<style>
+.step { white-space: nowrap; border: 1px solid light gray;}
+</style>
+
+
+
+<script language="Javascript">
+<!--
+function submitBackup()
+{
+	document.tableform1.backup_submit.disabled = true;
+	document.tableform1.submit();
+
+}
+//-->
+</script>
+
+<table class=list cellspacing=6 cellpadding=8>
+<tr><td align=center colspan=3><b>|LANG_CREATE_BACKUP|</b></td></tr>
+<form name=tableform1 action="/CMD_USER_BACKUP" method="POST">
+<input type=hidden name=action value="create">
+<tr>
+	<td class=step valign=top>
+			<div>|LANG_STEP_1|: <b>|LANG_WHO|</b></div>
+			<table width=100% cellspacing=1 cellpadding=0>
+				<tr><td bgcolor="#C0C0C0"> </td></tr>
+				<tr><td height=5> </td></tr>
+			</table>
+
+			<table cellpadding=0 cellspacing=1>
+			<tr>
+				<td class=listtitle align=center>
+					<input type=radio name=who value="all">
+				</td>
+				<td class=listtitle>
+					- |LANG_ALL_USERS|
+				</td>
+			</tr>
+			<tr>
+				<td class=listtitle align=center>
+					<input type=radio name=who value="except" |WHO_EXCEPT_CHECKED|>
+				</td>
+				<td class=listtitle>
+					- |LANG_ALL_USERS| |LANG_EXCEPT_USERS|
+				</td>
+			</tr>
+			<tr>
+				<td class=listtitle align=center>
+					<input type=radio name=who value="selected" checked>
+				</td>
+				<td class=listtitle>
+					- |LANG_SELECTED_USERS|
+				</td>
+			</tr>
+			<tr><td></td>
+				<td>
+					<div style="overflow: auto; height: 160px; width: 200px;">
+					|USERS|
+					</div>
+				</td>
+			</tr>
+			<tr><td class=listtitle><input type=checkbox name="skip_suspended" value="yes"></td>
+				<td class=listtitle>
+					- |LANG_SKIP_SUSPENDED|
+				</td>
+			</tr>
+			</table>
+	</td>
+	<td class=step valign=top>
+			<div>|LANG_STEP_2|: <b>|LANG_WHEN|</b></div>
+			<table width=100% cellspacing=1 cellpadding=0>
+				<tr><td bgcolor="#C0C0C0"> </td></tr>
+				<tr><td height=5> </td></tr>
+			</table>
+			<table cellpadding=0 cellspacing=1>
+			<tr>
+				<td class=listtitle>
+					<input type=radio name=when value="now" checked>
+				</td>
+				<td class=listtitle>
+					- |LANG_NOW|
+				</td>
+			</tr>
+			<tr>
+				<td class=listtitle>
+					<input type=radio name=when value="cron">
+				</td>
+				<td class=listtitle>
+					- |LANG_CRON_SCHED|
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>
+					<table class=list cellpadding=0 cellspacing=1>
+					<tr><td class=list align=right>|LANG_MINUTE|: </td><td class=list><input type=text size=2 name=minute value="0"></td><td class=list>0-59</td></tr>
+					<tr><td class=list align=right>|LANG_HOUR|: </td><td class=list><input type=text size=2 name=hour value="5"></td><td class=list>0-23</td></tr>
+					<tr><td class=list align=right>|LANG_DAY_OF_MONTH|: </td><td class=list><input type=text size=2 name=dayofmonth value=*></td><td class=list>1-31</td></tr>
+					<tr><td class=list align=right>|LANG_MONTH|: </td><td class=list><input type=text size=2 name=month value=*></td><td class=list>1-12</td></tr>
+					<tr><td class=list align=right>|LANG_DAY_OF_WEEK|: </td><td class=list><input type=text size=2 name=dayofweek value=*></td><td class=list>0-7</td></tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+
+
+	</td>
+	<td class=step valign=top>
+			<div>|LANG_STEP_3|: <b>|LANG_WHERE|</b></div>
+			<table width=100% cellspacing=1 cellpadding=0>
+				<tr><td bgcolor="#C0C0C0"> </td></tr>
+				<tr><td height=5> </td></tr>
+			</table>
+				<table cellpadding=0 cellspacing=1>
+				<tr>
+					<td class=listtitle><input type=radio name=where value="local" |LOCAL_CHECKED|></td>
+					<td class=listtitle> - |LANG_LOCAL|: ~|USERNAME|/|USER_BACKUPS_DIR|/</td>
+				</tr>
+				<tr>
+					<td class=listtitle>
+						<input type=radio name=where value="ftp" |FTP_CHECKED|>
+					</td>
+					<td class=listtitle>
+						- |LANG_FTP|
+					</tr>
+				</tr>
+				<tr><td></td>
+					<td>
+						<table cellpadding=0 cellspacing=1>
+							<tr><td class=list align=right>|LANG_IP|:</td><td class=list><input type=text name=ftp_ip value="|ftp_ip|"></td></tr>
+							<tr><td class=list align=right>|LANG_USERNAME|:</td><td class=list><input type=text name=ftp_username value="|ftp_username|"></td></tr>
+							<tr><td class=list align=right>|LANG_PASSWORD|:</td><td class=list><input type=password name=ftp_password value="|ftp_password|"></td></tr>
+							<tr><td class=list align=right>|LANG_REMOTE_PATH|:</td><td class=list><input type=text name=ftp_path value="|ftp_path|"></td></tr>
+							<tr><td class=list align=right>|LANG_REMOTE_PORT|:</td><td class=list><input type=text name=ftp_port value="|ftp_port|"></td></tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+
+
+	</td>
+</tr>
+<tr>
+<td colspan=3 align=right>|LANG_STEP_4|: <input type=button name=backup_submit value="|LANG_SUBMIT|" onClick="submitBackup();"></td>
+</tr>
+</form>
+</table>
+
+<table width=100% cellspacing=1 cellpadding=0>
+	<tr><td bgcolor="#C0C0C0"> </td></tr>
+	<tr><td height=5> </td></tr>
+</table>
+
+
+
+
+
+
+<hr width=50%>
+
+
+
+
+<script language="Javascript">
+<!--
+function submitRestore()
+{
+	document.tableform2.restore_submit.disabled = true;
+	document.tableform2.submit();
+}
+//-->
+</script>
+
+<table class=list cellspacing=6 cellpadding=12>
+<tr><td align=center colspan=3><b>|LANG_RESTORE_BACKUP|</b></td></tr>
+<form action="/CMD_USER_BACKUP" method="POST">
+<input type=hidden name=action value="update_files">
+<tr>
+	<td class=step valign=top>
+			<div>|LANG_STEP_1|: <b>|LANG_FROM_WHERE|</b></div>
+			<table width=100% cellspacing=1 cellpadding=0>
+				<tr><td bgcolor="#C0C0C0"> </td></tr>
+				<tr><td height=5> </td></tr>
+			</table>
+				<table cellpadding=0 cellspacing=1>
+				<tr>
+					<td class=listtitle><input type=radio name=where value="local" |LOCAL_CHECKED|></td>
+					<td class=listtitle> - |LANG_LOCAL|: ~/|USERNAME|/|USER_BACKUPS_DIR|/</td>
+				</tr>
+				<tr>
+					<td class=listtitle>
+						<input type=radio name=where value="ftp" |FTP_CHECKED|>
+					</td>
+					<td class=listtitle>
+						- |LANG_FTP|
+					</tr>
+				</tr>
+				<tr><td></td>
+					<td>
+						<table cellpadding=0 cellspacing=1>
+							<tr><td class=list align=right>|LANG_IP|:</td><td class=list><input type=text name=ftp_ip value="|ftp_ip|"></td></tr>
+							<tr><td class=list align=right>|LANG_USERNAME|:</td><td class=list><input type=text name=ftp_username value="|ftp_username|"></td></tr>
+							<tr><td class=list align=right>|LANG_PASSWORD|:</td><td class=list><input type=password name=ftp_password value="|ftp_password|"></td></tr>
+							<tr><td class=list align=right>|LANG_REMOTE_PATH|:</td><td class=list><input type=text name=ftp_path value="|ftp_path|"></td></tr>
+							<tr><td class=list align=right>|LANG_REMOTE_PORT|:</td><td class=list><input type=text name=ftp_port value="|ftp_port|"></td></tr>
+							<tr><td class=list align=right> </td><td class=list><input type=submit value="|LANG_UPDATE_FILES|"></td></tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+
+
+	</td>
+</form>
+<form name=tableform2 action="/CMD_USER_BACKUP" method="POST">
+<input type=hidden name=action value="restore">
+<input type=hidden name=where value="|where|">
+<input type=hidden name=ftp_ip value="|ftp_ip|">
+<input type=hidden name=ftp_username value="|ftp_username|">
+<input type=hidden name=ftp_password value="|ftp_password|">
+<input type=hidden name=ftp_path value="|ftp_path|">
+<input type=hidden name=ftp_port value="|ftp_port|">
+	<td class=step valign=top>
+			<div>|LANG_STEP_2|: <b>|LANG_SELECT_IP|</b></div>
+			<table width=100% cellspacing=1 cellpadding=0>
+				<tr><td bgcolor="#C0C0C0"> </td></tr>
+				<tr><td height=5> </td></tr>
+			</table><br>
+			<table cellpadding=0 cellspacing=1>
+				<script language="Javascript">
+				<!--
+				function doIP(which)
+				{
+					if (which == "file")
+						document.tableform2.ip.disabled = true;
+					else
+						document.tableform2.ip.disabled = false;
+				}
+				//-->
+				</script>
+				<tr>
+					<td class=listtitle><input type=radio name=ip_choice value="file" checked onClick='doIP("file");')></td>
+					<td class=listtitle> - |LANG_USE_STORED_IP|</td>
+				</tr>
+				<tr>
+					<td class=listtitle><input type=radio name=ip_choice value="select" onClick='doIP("ip_choice");'></td>
+					<td class=listtitle> - |LANG_USE_IP_FROM_LIST|:</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td class=list>|IPLIST|</td>
+				</tr>
+			</table>
+			<br>
+			|LANG_NOTE|
+
+	</td>
+	<td class=step valign=top>
+			<div>|LANG_STEP_3|: <b>|LANG_SELECT_FILES|</b></div>
+			<table width=100% cellspacing=1 cellpadding=0>
+				<tr><td bgcolor="#C0C0C0"> </td></tr>
+				<tr><td height=5> </td></tr>
+			</table><br>
+
+			<div>|LANG_LOCATION|: <b>|FILES_LOCATION|</b></div><br>
+
+			<div style="overflow: auto; height: 160px;">
+			|FILES|
+			</div>
+
+
+
+
+	</td>
+
+</tr>
+<tr>
+<td colspan=3 align=right>|LANG_STEP_4|: <input type=button name=restore_submit value="|LANG_SUBMIT|" onClick="submitRestore();"></td>
+</tr>
+</form>
+</table>
+
+<hr width=50%>
+
+<table width=100% cellspacing=1 cellpadding=0>
+	<tr><td bgcolor="#C0C0C0"> </td></tr>
+	<tr><td height=5> </td></tr>
+</table>
+
+<table class=list cellspacing=6 cellpadding=12>
+<tr><td align=center colspan=3><b>|LANG_CURRENT_BACKUP_CRONS|</b></td></tr>
+<tr><td align=center colspan=3 class=step>|CRONS|</td></tr>
+</table>
+
+<br><br>
+
+<hr width=50%>
+
+<table width=100% cellspacing=1 cellpadding=0>
+	<tr><td bgcolor="#C0C0C0"> </td></tr>
+	<tr><td height=5> </td></tr>
+</table>
+
+<table class=list cellspacing=6 cellpadding=12>
+<tr><td align=center colspan=3><b>|LANG_BACKUP_SETTINGS|</b></td></tr>
+<tr><td align=center class=step colspan=3>
+	<table class=list cellspacing=1 cellpadding=3>
+	<tr>
+		<td class=listtitle colspan=2>&nbsp;</td>
+	</tr>
+	<form action="/CMD_USER_BACKUP" method="POST">
+	<input type=hidden name=action value="setting">
+	<tr>
+		<td class=list align=center>
+			<input type=checkbox name=message value="yes" |SEND_MESSAGE|>
+		</td>
+		<td class=list>
+			|LANG_SEND_MESSAGE|
+		</td>
+	</tr>
+	<tr>
+		<td class=list align=center>
+			<input type=checkbox name="local_ns" value="yes" |LOCAL_NS|>
+		</td>
+		<td class=list>
+			|LANG_LOCAL_NS|
+		</td>
+	</tr>
+	<tr><td class=listtitle align=right colspan=2><input type=submit value="|LANG_SAVE|"></td></tr>
+	</table>
+</td></tr>
+</table>
+
+|HTM_FOOTER_FULL|

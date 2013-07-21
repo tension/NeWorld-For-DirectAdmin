@@ -1,0 +1,18 @@
+|LF_STANDARD|
+|?TREE=&raquo; <a class=tree href="/CMD_SHOW_DOMAIN?domain=`DOMAIN`">`DOMAIN`</a> &raquo; <a class=tree href="/CMD_DOMAIN_POINTER?DOMAIN=`DOMAIN`">`LANG_DOMAIN_POINTERS`</a>|
+|?HELP_SECTION=`USER_HELPER`/misc.html#pointers|
+|HTM_HEADER_FULL|
+
+<table class=list cellpadding=3 cellspacing=1>
+<form name=info action='/CMD_DOMAIN_POINTER' method='POST'>
+<input type=hidden name=domain value="|DOMAIN|">
+<input type=hidden name=action value="add">
+<tr><td class=listtitle colspan=2>|LANG_ADD_NEW_DOMAIN_POINTER|</td></tr>
+<tr><td class=list>|LANG_SOURCE_DOMAIN|</td><td class=list>http://www.<input type=text name=from> --> |DOMAIN| &nbsp;&nbsp;|LANG_EG|</td></tr>
+<tr><td class=listtitle align=right colspan=2><input type=checkbox name=alias value="yes" checked>|LANG_CREATE_ALIAS| &nbsp;&nbsp; <input type=submit value="|LANG_ADD|"></td></tr>
+</form>
+</table>
+
+|DOMAINPOINTERS|
+
+|HTM_FOOTER_FULL|

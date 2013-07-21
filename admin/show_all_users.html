@@ -1,0 +1,62 @@
+|?TREE=&raquo; <a class=tree href="/CMD_ALL_USER_SHOW">`LANG_SHOW_ALL_USERS`</a>|
+|?HELP_SECTION=`ADMIN_HELPER`/showall.html|
+|HTM_HEADER|
+|HTM_HEADER_WIDE|
+<a href="HTM_ACCOUNT_USER_DELETE">|LANG_DELETE_USER|</a><br>
+
+<script language="Javascript">
+<!--
+
+function trimit(strobj)
+{
+	var str = strobj.value
+	while (str.substring(0,1) == ' ')
+	{
+		str = str.substring(1, str.length);
+	}
+	while (str.substring(str.length-1, str.length) == ' ')
+	{
+		str = str.substring(0,str.length-1);
+	}
+
+	strobj.value = str;
+
+	return true;
+}
+
+// -->
+</script>
+
+<form action="" method="GET" name="searchform" onSubmit="trimit(value8);" style="margin: 10px 0;">
+	<div class="input-append">
+		<input type="text" class="inputclass" name="value8"
+		|*if value8|
+		value='|value8|'
+		|*endif|
+		>
+		<input type="hidden" name="comparison8" value="contains">
+		<input type="hidden" name="sort1" value="8">
+		<input type="hidden" name="sort1dir" value="1">
+		<input type="hidden" name="sort2dir" value="1">
+		<input type="hidden" name="ipp" value="50">
+		<button class="btn" type="submit">|LANG_SEARCH|</button>
+		<button class="btn" type="button" onClick="document.searchform.value8.value=''; document.searchform.submit();">|LANG_CLEAR_SEARCH|</button>
+	</div>
+</form>
+
+<script language="javascript">
+document.searchform.value8.focus();
+document.searchform.value8.select();
+</script>
+|$|PHP|
+<?php 
+include |ROOT|."inc/functions.php";
+$tabla = <<< EOF
+|TABLE|
+EOF;
+
+echo CMD_ALL_USER_SHOW($tabla);
+?>
+DONE|
+|HTM_FOOTER_WIDE|
+|HTM_FOOTER|

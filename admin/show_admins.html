@@ -1,0 +1,23 @@
+|?TREE=&raquo; <a class=tree href="/CMD_ADMIN_SHOW">`LANG_SHOW_ADMINS`</a>|
+|?HELP_SECTION=`ADMIN_HELPER`/createa.html|
+
+|HTM_HEADER|
+|HTM_HEADER_WIDE|
+
+<a href="HTM_ACCOUNT_ADMIN_CREATE">|LANG_CREATE_ADMIN|</a><br>
+<a href="HTM_ACCOUNT_ADMIN_DELETE">|LANG_DELETE_ADMIN|</a><br>
+
+|$|PHP|
+<?php 
+include |ROOT|."inc/functions.php";
+$tabla = <<< EOF
+|TABLE|
+EOF;
+
+echo CMD_RESELLER_SHOW($tabla);
+?>
+DONE|
+
+
+|HTM_FOOTER_WIDE|
+|HTM_FOOTER|

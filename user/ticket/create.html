@@ -1,0 +1,33 @@
+|LF_STANDARD|
+|LF_TICKET|
+|?TREE=&raquo; <a class=tree href="/CMD_TICKET">`LANG_MESS_SYS`</a> &raquo; <a class=tree href="/CMD_TICKET_CREATE?TYPE=`TYPE`">`LANG_CREATE_A` `TYPE`</a>|
+|?HELP_SECTION=`USER_HELPER`/gettingstarted.html#ticket|
+|HTM_USER_TOP|
+
+<table class=list cellpadding=3 cellspacing=1>
+	<tr><td class=listtitle colspan=4>|LANG_CREATE| |TYPE|</td></tr>
+
+	<form name=info action="CMD_TICKET_CREATE" method="post">
+		<input type=hidden name=action value="create">
+		<input type=hidden name=type value="|TCKTTYPE|">
+
+	<tr><td class=list>|LANG_TO|</td><td class=list>|TCKTTO|</td><td class=list>|LANG_PRIORITY|
+															<select name=priority>
+																<option value="10">|LANG_LOW|</option>
+																<option value="20">|LANG_MED|</option>
+																<option value="30">|LANG_HIGH|</option>
+															</select></td></tr>
+	<tr><td class=list>|LANG_SUBJECT|</td><td class=list colspan=3><input type=text name=subject size=65></td></tr>
+	<tr><td class=list>|LANG_MESSAGE|</td><td class=list colspan=3><textarea name=message rows=16 cols=65></textarea></td></tr>
+
+	<tr><td class=listtitle colspan=4 align=right>
+|*if SHOW_EML_ONLY="yes"|
+   <input type=checkbox name=email_only value='yes' |EML_ONLY_CHEKCED|> |LANG_EMAIL_ONLY|&nbsp;
+|*endif|
+		<input type=submit name=submit value="|LANG_SAVE|">
+	</td></tr>
+	</form>
+
+</table>
+
+|HTM_USER_BOTTOM|
