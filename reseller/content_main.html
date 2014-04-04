@@ -16,19 +16,23 @@ function doSearch(type) {
 		}
 }
 </script>
+
 <div class="search">
 	<form action="/CMD_USER_SHOW" method="GET" name="searchform" onSubmit="doSearch('default');">
 		<input type="hidden" name="comparison1" value="contains">
 		<input type="hidden" name="comparison7" value="contains">
 		<input type="hidden" name="value1" value="">
 		<input type="hidden" name="value7" value="">
-		<div class="input-append">
-			<input class="span3" type="text" name="value" value="|LANG_CONTAINS|" onClick="this.select()">
-			<button class="btn" type="button" onClick="doSearch('domain')">|LANG_DOMAIN|</button>
-			<button class="btn" type="button" onClick="doSearch('user')">|LANG_USER|</button>
+		<div class="input-group">
+			<input class="form-control" type="text" name="value" onClick="this.select()" placeholder="|LANG_CONTAINS|">
+			<span class="input-group-btn">
+				<button class="btn btn-warning" type="button" onClick="doSearch('domain')">|LANG_DOMAIN|</button>
+				<button class="btn btn-success" type="button" onClick="doSearch('user')">|LANG_USER|</button>
+			</span>
 		</div>
 	</form>
 </div>
+
 <script language="javascript">
 if (document.searchform) {
 	with (document.searchform) {
@@ -41,9 +45,9 @@ function showUserMessage() {
 }
 </script>
 
-
-			<div class="span12 listbox">
-				<h5>基本设置</h5>
+<div class="pure-g">
+      	<div class="pure-u-1-1 listbox">
+				<h3>基本设置</h3>
 				<ul>
 					<li><a href="/CMD_USER_SHOW"><img src="IMG_SKIN_ADMIN_004" alt="" />|LANG_LIST_USERS|</a></li>
 					<li><a href="/HTM_ACCOUNT_USER_CREATE"><img src="IMG_SKIN_ADMIN_001" alt="" />|LANG_ADD_NEW_USER|</a></li>
@@ -53,9 +57,10 @@ function showUserMessage() {
 					<li><a href="/HTM_USER_PASSWD"><img src="IMG_SKIN_ADMIN_007" alt="" />|LANG_CHANGE_PASSWORDS|</a></li>
 				</ul>
 			</div>
-			
-			<div class="span12 listbox">
-				<h5>扩展功能</h5>
+			<div class="clearfix"></div>
+
+      	<div class="pure-u-1-1 listbox">
+				<h3>扩展功能</h3>
 				<ul>
 					<li><a href="/CMD_TICKET_MANAGE"><img src="IMG_SKIN_ADMIN_013" alt="" />|LANG_MANAGE_TICKETS| (|NEWTICKETS| |LANG_NEW|)</a></li>
 					<li><a href="/CMD_TICKET_CREATE?TYPE=Message&amp;who=all"><img src="IMG_SKIN_ADMIN_036" alt="" />|LANG_MESSSAGE_ALL_USERS|</a></li>
@@ -64,9 +69,10 @@ function showUserMessage() {
 					<li><a href="/CMD_NAME_SERVER"><img src="IMG_SKIN_ADMIN_032" alt="" />|LANG_NAMESERVERS|</a></li>
 				</ul>
 			</div>
+			<div class="clearfix"></div>
 			
-			<div class="span12 listbox">
-				<h5>代理商工具</h5>
+      	<div class="pure-u-1-1 listbox">
+				<h3>代理商工具</h3>
 				<ul>
 					<li><a href="/CMD_RESELLER_STATS"><img src="IMG_SKIN_ADMIN_005" alt="" />|LANG_RESELLER_STATS|</a></li>
 					<li><a href="/CMD_IP_CONFIG"><img src="IMG_SKIN_ADMIN_022" alt="" />|LANG_IP_MANAGER|</a></li>
@@ -101,3 +107,4 @@ END;
 DONE|
 		</ul>
 			</div>
+		</div>

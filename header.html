@@ -9,13 +9,13 @@ _/_/_/_/_/  _/_/_/_/  _/      _/    _/_/_/  _/_/_/    _/_/    _/      _/
  _/      _/        _/    _/_/        _/    _/    _/    _/  _/    _/_/      
 _/      _/_/_/_/  _/      _/  _/_/_/    _/_/_/    _/_/    _/      _/
 -->
-<html lang="en">
+<html>
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=|LANG_ENCODING|">
+		<meta charset="|LANG_ENCODING|" />
 		<meta name="author" content="tension,tension{at}me.com" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>|HOSTNAME| - ELINKHOST - |DEAMONNAME| v|VERSION|</title>
-		<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"></script>
-		<script type="text/javascript" src="/HTM_JS_BOOT"></script>
+		<script type="text/javascript" src="//libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
 		<script language="JavaScript">
 		<!--
 		//timer for auto-logout
@@ -23,56 +23,36 @@ _/      _/_/_/_/  _/      _/  _/_/_/    _/_/_/    _/_/    _/      _/
 				location.href = '/CMD_LOGOUT';
 			}
 			setTimeout('log_me_out();', |SESSION_MINUTES|*60*1000);
-	
 		// done with preload code -->
 		</script>
-		<link rel="stylesheet" type="text/css" media="screen"  href="/CSS_BOOT_STYLE" />
+		<link rel="stylesheet" type="text/css" media="screen"  href="/CSS_STYLE_PURE" />
+		<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 		<style type="text/css">
 		|CSS_STYLE|
 		</style>
 	</head>
-
 <body |BODY|>
-<div class="navbar navbar-inverse navbar-fixed-top">
-	<div class="navbar-inner">
-		<div class="container-fluid">
-			<a href="/" class="logo">ELINKHOST</a>
-			<ul class="nav">
-				<li>
-	                <a href="/CMD_FILE_MANAGER">文件管理</a>
-				</li>
-				<li>
-	                <a href="/HTM_PASSWD">密码管理</a>
-				</li>
-				<li>
-	                <a href="">最新公告</a>
-				</li>
-				<li>
-	                <a href="">反馈问题</a>
-				</li>
-			</ul>
-			<ul class="nav pull-right">
+<!-- Header START -->
+<header>
+	<div class="wrapper-full">
+		<h1><a class="logo" href="/">ELINKHOST</a></h1>
+		<nav class="navbar">
+			<ul class="nav navbar-nav">
+				<li><a href="/CMD_FILE_MANAGER">文件管理</a></li>
+				<li><a href="/HTM_PASSWD">密码管理</a></li>
+				<li><a href="">最新公告</a></li>
+				<li><a href="">反馈问题</a></li>
 				<li class="dropdown">
-					<a data-toggle="dropdown" class="dropdown-toggle" href="#">账户管理 <b class="caret"></b></a>
-					<ul class="dropdown-menu">
-						<li><a href="#">修改密码</a></li>
-						<li><a href="#">到期时间</a></li>
-|$|PHP|
-<li class="nav-header"><?php
-include |ROOT|."inc/functions.php";
-echo getDateCreated();
-?></li>
-DONE|
-						<li class="divider"></li>
-						<li><a href="/CMD_LOGOUT">注销登录</a></li>
+					<a href="#">切换身份</a>
+					<ul class="dropdown">
 						|HTM_MENU_USER|
 					</ul>
-	            </li>
-	        </ul>
-		</div>
+				</li>
+	            <li><a href="/CMD_LOGOUT">注销登录</a></li>
+	          </ul>
+		</nav>
 	</div>
-</div>
-
+</header>
 
 
 

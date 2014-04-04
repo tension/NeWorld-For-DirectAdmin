@@ -1,0 +1,67 @@
+|HTM_ADMIN_TOP|
+|LF_STANDARD|
+|?TREE=&raquo; <a class=tree href="/HOME_MEMORY">`LANG_HOME`</a> &raquo; <a class=tree href="/HTM_ALL_DOMAINS">`LANG_ALL_DOMAINS_LIST`</a>|
+<div class="span8 offset2">
+|$|PHP|
+<?php  
+include |ROOT|."inc/functions.php";
+
+
+//echo pagetit($pagetit, $tree);
+$domains=getDomainsList();
+
+parse_str($_SERVER['QUERY_STRING'], $GET);
+
+if($GET['sort']==1) {
+  @asort($domains);
+$t1=<<<EOF
+<a class="listtitle" href="/HTM_ALL_DOMAINS">|LANG_DOMAIN|</a>
+EOF;
+$t2=<<<EOF
+<b><a class="listtitle" href="/HTM_ALL_DOMAINS?sort=1">|LANG_OWNER|</a></b>
+EOF;
+} else {
+  @ksort($domains);
+$t1=<<<EOF
+<b><a class="listtitle" href="/HTM_ALL_DOMAINS">|LANG_DOMAIN|</a></b>
+EOF;
+$t2=<<<EOF
+<a class="listtitle" href="/HTM_ALL_DOMAINS?sort=1">|LANG_OWNER|</a>
+EOF;
+}
+
+if($GET['raw']==1) {
+
+?>
+      <div style="line-height:16px;">
+        <textarea style="width:100%; height: 335px;" readonly readonly="readonly">
+<?php  if(is_array($domains) && count($domains)>0) {
+     foreach($domains as $domain => $ouwner) {
+       echo $domain."\n";
+  }} ?>
+        </textarea>
+      </div>
+<?php
+
+} else {
+?>
+      <table class="table table-bordered">
+      	<thead>
+        <tr>
+          <th class="listtitle"><?php  echo  $t1?></th>
+          <th class="listtitle"><?php  echo  $t2?></a></th>
+        </tr>
+        </thead>
+<?php  if(is_array($domains) && count($domains)>0) {
+     foreach($domains as $domain => $ouwner) {
+?>
+        <tr>
+          <td><a href="http://<?php  echo  $domain?>" target="_blank"><?php  echo  $domain?></a></td>
+          <td><a href="/CMD_SHOW_USER?user=<?php  echo  $ouwner?>"><?php  echo  $ouwner?></a></td>
+        </tr>
+<?php  }} ?>
+      </table>
+<?php  } /* enf if raw list */ ?>
+    </div>
+DONE|
+|HTM_ADMIN_BOTTOM|

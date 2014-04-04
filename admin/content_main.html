@@ -38,17 +38,15 @@ function doSearch(type) {
 </script>
 
 <div class="search">
-	<form action="/CMD_ALL_USER_SHOW" method="GET" name="searchform" onSubmit="doSearch('default');">
+	<form class="pure-form" action="/CMD_ALL_USER_SHOW" method="GET" name="searchform" onSubmit="doSearch('default');">
 		<input type="hidden" name="comparison1" value="contains">
 		<input type="hidden" name="comparison8" value="contains">
 		<input type="hidden" name="sort1" value="1">
 		<input type="hidden" name="value1" value="">
 		<input type="hidden" name="value8" value="">
-		<div class="input-append">
-			<input class="span3" type="text" name="value" value="|LANG_CONTAINS|" size=14 onClick="this.select()">
-			<button class="btn" type="button" onClick="doSearch('domain')">|LANG_DOMAIN|</button>
-			<button class="btn" type="button" onClick="doSearch('user')">|LANG_USER|</button>
-		</div>
+		<input class="pure-input-rounded" type="text" name="value" size="14" onClick="this.select()" placeholder="|LANG_CONTAINS|">
+		<button class="pure-button button-warning" type="button" onClick="doSearch('domain')"><i class="fa fa-globe"></i> |LANG_DOMAIN|</button>
+		<button class="pure-button button-error" type="button" onClick="doSearch('user')"><i class="fa fa-user"></i> |LANG_USER|</button>
 	</form>
 </div>
 
@@ -60,9 +58,9 @@ if (document.searchform) {
 	}
 }
 </script>
-
-	<div class="span5 listbox">
-		<h5>用户管理</h5>
+<div class="pure-g">
+      <div class="pure-u-1-2 listbox">
+		<h3>用户管理</h3>
 		<ul>
 			<li><a href="/CMD_ALL_USER_SHOW"><img src="IMG_SKIN_ADMIN_004" alt="" />|LANG_SHOW_ALL_USERS|</a></li>
 			<li><a href="/CMD_USER_SHOW"><img src="IMG_SKIN_ADMIN_006" alt="" />|LANG_ADM_USERS|</a></li>
@@ -76,8 +74,8 @@ if (document.searchform) {
 		</ul>
 	</div>
 			
-	<div class="span5 offset1 listbox">
-		<h5>管理工具</h5>
+      <div class="pure-u-1-2 listbox">
+		<h3>管理工具</h3>
 		<ul>
 			<li><a href="/CMD_ADMIN_BACKUP"><img src="IMG_SKIN_ADMIN_010" alt="" />|LANG_ADMIN_BACKUPS|</a></li>
 			<li><a href="/CMD_SYSTEM_BACKUP"><img src="IMG_SKIN_ADMIN_011" alt="" />|LANG_SYS_BACKUP|</a></li>
@@ -91,8 +89,8 @@ if (document.searchform) {
 		</ul>
 	</div>
 			
-	<div class="span5 listbox">
-		<h5>扩展功能</h5>
+      <div class="pure-u-1-2 listbox">
+		<h3>扩展功能</h3>
 		<ul>
 			<li><a href="/CMD_SYSTEM_INFO"><img src="IMG_SKIN_ADMIN_019" alt="" />|LANG_SYSTEM_INFO|</a></li>
 			<li><a href="/CMD_SHOW_SERVICES"><img src="IMG_SKIN_ADMIN_020" alt="" />|LANG_SERVICE_MONITOR|</a></li>
@@ -106,14 +104,15 @@ if (document.searchform) {
 		</ul>
 	</div>
 			
-	<div class="span5 offset1 listbox">
-		<h5>服务器管理</h5>
+      <div class="pure-u-1-2 listbox">
+		<h3>服务器管理</h3>
 		<ul>
 			<li><a href="/CMD_PLUGIN_MANAGER"><img src="IMG_SKIN_ADMIN_027" alt="" />|LANG_PLUGIN_MANAGER|</a></li>
 			<li><a href="/CMD_SKINS"><img src="IMG_SKIN_ADMIN_028" alt="" />|LANG_SKIN_MANAGER|</a></li>
 			<li><a href="/CMD_CUSTOM_HTTPD"><img src="IMG_SKIN_ADMIN_029" alt="" />|LANG_CUSTOM_HTTPD|</a></li>
 			<li><a href="/CMD_PHP_SAFE_MODE"><img src="IMG_SKIN_ADMIN_030" alt="" />|LANG_PHP_SAFEMODE|</a></li>
 			<li><a href="/CMD_BRUTE_FORCE_MONITOR?sort1=-1"><img src="IMG_SKIN_ADMIN_031" alt="" />|LANG_BRUTE_FORCE_MONITOR|</a></li>
+			<li class="hidden"><a href="/HTM_ALL_DOMAINS"><img src="IMG_SKIN_ADMIN_032" alt="" />|LANG_SHOW_ALL_DOMAINS|</a></li>
 |$|PHP|
 <?php
 $data = <<<END
@@ -141,7 +140,7 @@ END;
 DONE|
 		</ul>
 	</div>
-
+</div>
 
 
 

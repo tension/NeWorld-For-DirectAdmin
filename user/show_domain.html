@@ -5,9 +5,9 @@
 	<ul class="alert">
 		<script src="http://www.elinkhost.com/notice/?num=3"></script>
 	</ul>
-
-      	<div class="span5 listbox">
-      		<h5>站点管理</h5>
+	<div class="pure-g">
+      <div class="pure-u-1-2 listbox">
+      		<h3>站点管理</h3>
 			<ul>
           		<li><a href="/CMD_ADDITIONAL_DOMAINS?domain=|domain|"><img src="IMG_SKIN_ADMIN_032" alt="" />|LANG_DOMAIN_SETUP|</a></li>
 |*if NUSERSUBDOMAINSMAX!="0"|
@@ -33,8 +33,8 @@
 			</ul>
         </div>
 	
-		<div class="span5 offset1 listbox">
-      		<h5>账户管理</h5>
+      <div class="pure-u-1-2 listbox">
+      		<h3>账户管理</h3>
 			<ul>
 				<li><a href="/CMD_USER_STATS?domain=|domain|"><img src="IMG_SKIN_ADMIN_021" alt="" />|LANG_SITE_SUM_STATS_LOGS|</a></li>
 				<li><a href="/CMD_FILE_MANAGER?domain=|domain|"><img src="IMG_SKIN_ADMIN_047" alt="" />|LANG_FILE_MANAGER|</a></li>
@@ -50,8 +50,8 @@
 			</ul>
         </div>
 
-        <div class="span5 listbox">
-        	<h5>其他管理</h5>
+      <div class="pure-u-1-2 listbox">
+        	<h3>其他管理</h3>
 			<ul>
 |*if USERCRON="ON"|
 				<li><a href="/CMD_CRON_JOBS?domain=|domain|"><img src="IMG_SKIN_ADMIN_018" alt="" />|LANG_CRONJOBS|</a></li>
@@ -66,8 +66,8 @@
 			</ul>
         </div>
 
-		<div class="span5 offset1 listbox">
-        	<h5>邮件管理</h5>
+      <div class="pure-u-1-2 listbox">
+        	<h3>邮件管理</h3>
 			<ul>
 |*if USEREMAILMAX!="0"|
 				<li><a href="/CMD_EMAIL_POP?domain=|domain|"><img src="IMG_SKIN_ADMIN_052" alt="" />|LANG_POP_EMAIL_ACCOUNTS|</a></li>
@@ -110,4 +110,5 @@ if ("|SHOW_LINKS|" == "yes") {
 DONE|
             </ul>
 		</div>
+	</div>
 |HTM_USER_BOTTOM|

@@ -1,13 +1,12 @@
 |LF_STANDARD|
 |HTM_FOOTER_BAR_1|
-		<div class="rightView">
 			
 			<div class="module">
 				<h5>您的信息</h5>
 				<ul>
 					|*if domain|<li class="bold">当前域名：|domain|</li>|*endif|
 
-					<li><a href="/CMD_TICKET">|LANG_MESSAGE_SYSTEM|</a> <span class="badge badge-info">|NEWMESSAGES|</span></li>
+					<li><a href="/CMD_TICKET">|LANG_MESSAGE_SYSTEM|</a> <span class="label pull-right label-info">|NEWMESSAGES|</span></li>
 
 |$|PHP|
 <?php
@@ -121,9 +120,9 @@ function show_bar($text, $used, $limit, $id) {
 }
 ?>
 DONE|
-		<li>|LANG_EMAILS| <span class="badge badge-info">|USEREMAIL|</span></li>
-		<li>|LANG_FTP_ACCOUNTS| <span class="badge badge-info">|USERFTP|</span></li>
-		<li class="noshadow">|LANG_DATABASES| <span class="badge badge-info">|USERDATABASE|</span></li>
+		<li>|LANG_EMAILS| <span class="label pull-right label-info">|USEREMAIL|</span></li>
+		<li>|LANG_FTP_ACCOUNTS| <span class="label pull-right label-info">|USERFTP|</span></li>
+		<li class="noshadow">|LANG_DATABASES| <span class="label pull-right label-info">|USERDATABASE|</span></li>
 	</ul>
 </div><!-- /module -->
 			
@@ -137,10 +136,10 @@ include |ROOT|."inc/functions.php";
 					<li>Apache：<?php echo getPortStatus('|HOSTNAME|','80'); ?></li>
 					<li>MySQL：<?php echo getPortStatus('|HOSTNAME|','3306'); ?></li>
 					<li>FTP：<?php echo getPortStatus('|HOSTNAME|','21'); ?></li>
-					<li>PHP：<span class="badge badge-info"><?php echo PHP_VERSION; ?></span></li>
-					<li>Zend：<span class="badge badge-info"><?php echo zend_version(); ?></span></li>
-					<li>MySQL：<span class="badge badge-info"><?php echo mysql_get_client_info(); ?></span></li>
-					<li>upTime：<span class="badge badge-info"><?php echo $sysInfo['uptime']; ?></span></li>
+					<li>PHP：<span class="label pull-right label-info"><?php echo PHP_VERSION; ?></span></li>
+					<li>Zend：<span class="label pull-right label-info"><?php echo zend_version(); ?></span></li>
+					<li>MySQL：<span class="label pull-right label-info"><?php echo mysql_get_client_info(); ?></span></li>
+					<li>upTime：<span class="label pull-right label-info"><?php echo $sysInfo['uptime']; ?></span></li>
 DONE|
 				</ul>
 			</div><!-- /module -->
@@ -148,11 +147,10 @@ DONE|
 			<div class="module footer">
 				<h5>联系我们</h5>
 				<ul>
-					<li><a onclick="javascript:window.open('http://b.qq.com/webc.htm?new=0&amp;sid=4006222346&amp;eid=218808P8z8p8R8x8K8x8y&amp;o=&amp;q=7', '_blank', 'height=405, width=506,toolbar=no,scrollbars=no,menubar=no,status=no');; return false;" href="#" title="有问题?咨询在线客服!"><img border="0" src="https://id.b.qq.com/static/account/bizqq/images/wpa/wpa_preview_a02.png" alt="点击这里给我发消息" title="点击这里给我发消息"></a></li>
-					<li>&copy; <a target="_blank" href="http://www.DirectAdmin.com">DirectAdmin</a></li>
+					<li><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=97515362&amp;site=qq&amp;menu=yes"><img border="0" src="https://www.elinkvps.com/qqonline.php?qq=97515362" alt="易联-售后" title="易联-售后"/></a> 易联-售后</li>
+					<li><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=97515365&amp;site=qq&amp;menu=yes"><img border="0" src="https://www.elinkvps.com/qqonline.php?qq=97515365" alt="易联-投诉建议" title="易联-投诉建议"/></a> 投诉建议</li>
+					<li>客服热线 4006222346</li>
 				</ul>
 			</div>
-	
-		</div>
 |HTM_FOOTER_BAR_2|
 |HTM_FOOTER|
