@@ -1,2 +1,2 @@
-1=Error Executing Perl
-2=Installed Perl Modules
+1=错误-执行Perl
+2=安装Perl模块
