@@ -22,6 +22,10 @@ images/logo.png
 
 使用 [font-awesome](http://fortawesome.github.io/Font-Awesome/) 开源图标系列
 
+```html
+<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.4.2/pure-min.css">
+```
+
 使用 [Pure](http://purecss.io/) CSS 框架
 
 ```html
