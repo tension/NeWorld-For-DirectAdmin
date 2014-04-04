@@ -19,6 +19,7 @@ images/logo.png
 ```html
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 ```
+## 使用开源框架 ##
 
 使用 [font-awesome](http://fortawesome.github.io/Font-Awesome/) 开源图标系列
 
