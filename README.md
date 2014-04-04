@@ -8,9 +8,9 @@
 ## 自定义客服 ##
 -------------
 
-custom.html > 用户界面联系我们信息
+```custom.html``` 用户界面联系我们信息
 
-images/logo.png 为左上角 LOGO
+```images/logo.png``` 为左上角 LOGO
 
 ```html
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
