@@ -1,0 +1,10 @@
+1=You required a password
+2=That is not your system password
+3=is a symbolic link.<br>Enabling frontpage on this domain would be a security risk
+4=Domain and password are required
+5=Frontpage Successfully installed on
+6=Enabled
+7=Disabled
+8=Enable
+9=Disable
+10=Frontpage Not Installed

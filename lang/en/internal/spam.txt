@@ -1,0 +1,5 @@
+1=Spamd is not running on your system.
+2=Click Here
+3=to learn how to enable it
+4=Error setting the spam filter
+5=Script output

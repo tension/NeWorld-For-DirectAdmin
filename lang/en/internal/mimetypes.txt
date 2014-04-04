@@ -1,0 +1,12 @@
+1=Must provide a mime type or handler name and a single extention. eg: <b>text/html</b> or <b>cgi-script</b> and <b>html</b>
+2=Only provide one extension at a time. eg: <b>jpg</b> and NOT <b>jpg jpeg jpe</b>
+3=Invalid name or extension
+4=Handler
+5=Extensions
+6=MimeType
+7=Select
+8=With Selected
+9=Delete Extension
+10=Delete Handler
+11=Delete MimeType
+12=or
