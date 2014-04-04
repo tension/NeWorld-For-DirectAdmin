@@ -20,7 +20,12 @@ images/logo.png
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 ```
 
-
 使用 [font-awesome](http://fortawesome.github.io/Font-Awesome/) 开源图标系列
 
 使用 [Pure](http://purecss.io/) CSS 框架
+
+```html
+<script type="text/javascript" src="//libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+```
+
+使用 [jQuery](http://jquery.com/) JS 框架 由 [百度开放云](http://libs.baidu.com/) 提供CDN加速
