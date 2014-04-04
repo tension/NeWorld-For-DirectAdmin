@@ -19,16 +19,12 @@ _/      _/_/_/_/  _/      _/  _/_/_/    _/_/_/    _/_/    _/      _/
 		<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 		<link href="//yui.yahooapis.com/pure/0.4.2/pure-min.css" rel="stylesheet">
 		<script type="text/javascript">
-		//timer for auto-logout
+		<!--//timer for auto-logout
 		function log_me_out() {
 			location.href = '/CMD_LOGOUT';
 		}
 		setTimeout('log_me_out();', |SESSION_MINUTES|*60*1000);
-		// done with preload code -->\
-		$(document).ready(function() {
-		  	// this refers to window.document
-		  	$("select").wrap("<div class='select'></div>");
-		});
+		// done with preload code -->
 		</script>
 		<style type="text/css">
 		|CSS_STYLE|
