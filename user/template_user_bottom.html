@@ -20,16 +20,16 @@ function show_bar($text, $used, $limit, $id) {
 	$right=100-$left;
 
 	switch(TRUE) {
-		case ($left > 80)	: $color = "progress-danger";		break;
-		case ($left > 60)	: $color = "progress-warning";		break;
-		default				: $color = "progress-success";		break;
+		case ($left > 80)	: $color = "progress-red";			break;
+		case ($left > 60)	: $color = "progress-orange";		break;
+		default				: $color = "progress-green";		break;
 	}
 
 	echo $text;
 ?>
 	<li>|LANG_DISK_SPACE|
-	    <div class="progress <?php echo $color;?> progress-striped active">
-		    <div id=<?php echo $id?> class="bar" style="width: 50%"></div>
+	    <div class="progress <?php echo $color;?>">
+		    <div id=<?php echo $id?> class="bar" style="width: 10%"></div>
 			<span>|USERQUOTA| / |USERQUOTAMAX| |LANG_MB|</span>
         </div>
 	</li>
@@ -76,16 +76,16 @@ function show_bar($text, $used, $limit, $id) {
 	$right=100-$left;
 
 	switch(TRUE) {
-		case ($left > 80)	: $color = "progress-danger";		break;
-		case ($left > 60)	: $color = "progress-warning";		break;
-		default				: $color = "progress-success";		break;
+		case ($left > 80)	: $color = "progress-red";			break;
+		case ($left > 60)	: $color = "progress-orange";		break;
+		default				: $color = "progress-green";		break;
 	}
 
 	echo $text;
 ?>
 	<li>|LANG_BANDWIDTH|
-	    <div class="progress <?php echo $color;?> progress-striped active">
-		    <div id=<?php echo $id?> class="bar" style="width: 50%"></div>
+	    <div class="progress <?php echo $color;?>">
+		    <div id=<?php echo $id?> class="bar" style="width: 10%"></div>
 			<span>|USERBANDWIDTHGIG| / |USERBANDWIDTHMAXGIG| |LANG_GB|</span>
         </div>
 	</li>
@@ -147,9 +147,10 @@ DONE|
 			<div class="module footer">
 				<h5>联系我们</h5>
 				<ul>
-					<li><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=97515362&amp;site=qq&amp;menu=yes"><img border="0" src="https://www.elinkvps.com/qqonline.php?qq=97515362" alt="易联-售后" title="易联-售后"/></a> 易联-售后</li>
-					<li><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=97515365&amp;site=qq&amp;menu=yes"><img border="0" src="https://www.elinkvps.com/qqonline.php?qq=97515365" alt="易联-投诉建议" title="易联-投诉建议"/></a> 投诉建议</li>
-					<li>客服热线 4006222346</li>
+					<li><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=97515362&amp;site=qq&amp;menu=yes"><img style="width: 23px; border: 0;" src="https://www.elinkvps.com/qqonline.php?qq=97515362" alt="易联-售后" title="易联-售后"/> 易联-售后</a></li>
+					<li><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=97515365&amp;site=qq&amp;menu=yes"><img style="width: 23px; border: 0;" src="https://www.elinkvps.com/qqonline.php?qq=97515365" alt="易联-投诉建议" title="易联-投诉建议"/> 投诉建议</a></li>
+					<li class="weixin"><img src="IMG_WX" alt="" style="width: 22px;margin:1px;"/> <strong>ELINKHOST <i class="fa fa-hand-o-left" style="font-size: 16px;"></i><span class="weixincode">二维码</span></strong></li>
+					<li><i class="fa fa-phone-square" style="margin: 1px;vertical-align: sub;font-size: 24px;color: skyblue;"></i> <strong style="font-size: 16px;">4006222346</strong></li>
 				</ul>
 			</div>
 |HTM_FOOTER_BAR_2|

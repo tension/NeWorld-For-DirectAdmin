@@ -11,16 +11,16 @@
 		<form action="CMD_LOGIN" method="POST">
 		<td align="center">
 			<input type="hidden" name="username" value="|USERNAME|\||user|">
-			<button class="pure-button btn-default" type="submit">|LANG_LOGIN_AS| |user|</button>
+			<button class="btn" type="submit">|LANG_LOGIN_AS| |user|</button>
 		</td>
 		</form>
 		<td align="center">
-			<a href="#" class="pure-button button-secondary" onClick="location.href='CMD_MODIFY_USER?user=|user|'">|LANG_MODIFY_USER| |user|</a>
+			<a href="#" class="btn btn-dark-blue" onClick="location.href='CMD_MODIFY_USER?user=|user|'">|LANG_MODIFY_USER| |user|</a>
 		</td>
 		<form name="tableform" action="CMD_SELECT_USERS" method="GET">
 		<td align="center">
 				<input type="hidden" name="select0" value="|user|">
-				<button type="submit" name="delete" class="pure-button button-error">|LANG_DELETE_USER| |user|</button>
+				<button type="submit" name="delete" class="btn btn-red">|LANG_DELETE_USER| |user|</button>
 		</td>
 		</form>
 	</tr>
@@ -29,14 +29,14 @@
 		<td align="center">
 				<input type="hidden" name="select0" value="|user|">
 				<input type="hidden" name="location" value="CMD_SHOW_USER?user=|user|">
-				<button type="submit" name="dosuspend" class="pure-button button-warning">|LANG_SUSPEND|</button>
+				<button type="submit" name="dosuspend" class="btn btn-orange">|LANG_SUSPEND|</button>
 		</td>
 		</form>
 		<form action="CMD_SELECT_USERS" method="GET">
 		<td align="center">
 				<input type="hidden" name="select0" value="|user|">
 				<input type="hidden" name="location" value="CMD_SHOW_USER?user=|user|">
-				<button type="submit" name="dounsuspend" class="pure-button button-success">|LANG_UNSUSPEND|</button>
+				<button type="submit" name="dounsuspend" class="btn btn-green">|LANG_UNSUSPEND|</button>
 		</td>
 		</form>
 	</tr>

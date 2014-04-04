@@ -15,15 +15,18 @@ _/      _/_/_/_/  _/      _/  _/_/_/    _/_/_/    _/_/    _/      _/
 		<meta name="author" content="tension,tension{at}me.com" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>|HOSTNAME| - ELINKHOST - |DEAMONNAME| v|VERSION|</title>
-		<script type="text/javascript" src="//libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
-		<script language="JavaScript">
-		<!--
+		<script type="text/javascript" src="//libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+		<script type="text/javascript">
 		//timer for auto-logout
-			function log_me_out() {
-				location.href = '/CMD_LOGOUT';
-			}
-			setTimeout('log_me_out();', |SESSION_MINUTES|*60*1000);
-		// done with preload code -->
+		function log_me_out() {
+			location.href = '/CMD_LOGOUT';
+		}
+		setTimeout('log_me_out();', |SESSION_MINUTES|*60*1000);
+		// done with preload code -->\
+		$(document).ready(function() {
+		  	// this refers to window.document
+		  	$("select").wrap("<div class='select'></div>");
+		});
 		</script>
 		<link rel="stylesheet" type="text/css" media="screen"  href="/CSS_STYLE_PURE" />
 		<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
@@ -42,12 +45,7 @@ _/      _/_/_/_/  _/      _/  _/_/_/    _/_/_/    _/_/    _/      _/
 				<li><a href="/HTM_PASSWD">密码管理</a></li>
 				<li><a href="">最新公告</a></li>
 				<li><a href="">反馈问题</a></li>
-				<li class="dropdown">
-					<a href="#">切换身份</a>
-					<ul class="dropdown">
-						|HTM_MENU_USER|
-					</ul>
-				</li>
+				|HTM_MENU_USER|
 	            <li><a href="/CMD_LOGOUT">注销登录</a></li>
 	          </ul>
 		</nav>

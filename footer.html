@@ -2,10 +2,15 @@
 	<div class="wrapper-full">
 		<p>
 			Copyright &copy; 2014 <a target="_blank" href="http://www.DirectAdmin.com">DirectAdmin</a>
-			Themes by <a target="_blank" href="http://tension.name">tension</a>
+			Designed by <a target="_blank" href="http://tension.name">tension</a>
 		</p>
 	</div>
 </footer>
+<script type="text/javascript">
+window.onload = function() {
+	$("select").wrap("<div class='select'></div>");
+};
+</script>
 |*if TABLE_HIGHLIGHTING="1"|
 	<script type="text/javascript">
 		make_tables_highlightable();

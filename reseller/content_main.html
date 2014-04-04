@@ -23,13 +23,11 @@ function doSearch(type) {
 		<input type="hidden" name="comparison7" value="contains">
 		<input type="hidden" name="value1" value="">
 		<input type="hidden" name="value7" value="">
-		<div class="input-group">
-			<input class="form-control" type="text" name="value" onClick="this.select()" placeholder="|LANG_CONTAINS|">
-			<span class="input-group-btn">
-				<button class="btn btn-warning" type="button" onClick="doSearch('domain')">|LANG_DOMAIN|</button>
-				<button class="btn btn-success" type="button" onClick="doSearch('user')">|LANG_USER|</button>
-			</span>
-		</div>
+		<p class="search">
+			<input type="text" name="value" size="14" onClick="this.select()" placeholder="|LANG_CONTAINS|">
+		</p>
+		<button class="btn btn-blue" type="button" onClick="doSearch('domain')"><i class="fa fa-globe"></i> |LANG_DOMAIN|</button>
+		<button class="btn btn-dark-blue" type="button" onClick="doSearch('user')"><i class="fa fa-user"></i> |LANG_USER|</button>
 	</form>
 </div>
 
