@@ -1,0 +1,12 @@
+1=必须提供一个 mime type 或者程序名称以及一个唯一的扩展 . 例如: <b>text/html</b> 或 <b>cgi-script</b> 和 <b>html</b>
+2=只能够同时提供一个扩展. 例如: <b>jpg</b> 而不是 <b>jpg jpeg jpe</b>
+3=无效名称或扩展
+4=程序
+5=扩展
+6=MimeType
+7=选择
+8=选中状态
+9=删除扩展
+10=删除程序
+11=删除 MimeType
+12=或
