@@ -3,50 +3,48 @@
 |?HELP_SECTION=`USER_HELPER`/gettingstarted.html#password|
 |HTM_USER_TOP|
 <div class="pure-g">
-<div class="pure-u-1-2" style="margin: 12% auto;">
-	<form action="CMD_PASSWD" method="post" class="pure-form pure-form-aligned">
-		<input type="hidden" name="options" value="yes">
-	
-		<div class="pure-control-group">
-			<label for="oldpass">|LANG_ENTER_OLD_PASS|</label>
-				<input class="form-control" type="password" name="oldpass" id="oldpass" placeholder="|LANG_ENTER_OLD_PASS|">
-		</div>
-	
-		<div class="pure-control-group">
-			<label for="passwd">|LANG_ENTER_PASS|</label>
-				<input class="form-control" type="password" name="passwd" id="passwd" placeholder="|LANG_ENTER_PASS|" onkeyup="CreateRatePasswdReq(this,'3');">
-		</div>
+	<div class="pure-u-1-2" style="margin: 15% auto;">
+		<form action="CMD_PASSWD" method="post" class="pure-form pure-form-aligned">
+			<input type="hidden" name="options" value="yes">
 		
-		<div class="pure-control-group clearfix" style="margin: 10px 0;">
-			<script type="text/javascript" src="/IMG_SKIN_JS"></script>
-			<div style="margin-left: 80px;">
-				<table width="232" cellspacing="0" cellpadding="0" border="0" style="margin: 8px 5px 5px 0;float: left;" id="passwdBar">
-					<tr>
-						<td id="posBar" style="width:135px;padding:0;border-right:0;height:5px;background:#e5e9eb;"></td>
-						<td id="negBar" style="padding:0;border-right:0;height:5px;background:#e5e9eb;"></td>
-					</tr>
-				</table>
-				<p id="passwdRating" style="float: left;margin: 0;">&nbsp;</p>
+			<div class="pure-control-group">
+				<label for="oldpass">|LANG_ENTER_OLD_PASS|</label>
+				<input type="password" name="oldpass" id="oldpass" placeholder="|LANG_ENTER_OLD_PASS|">
 			</div>
-		</div>
-	
-		<div class="pure-control-group clearfix">
-			<label for="passwd2">|LANG_RE-ENTER_PASS|</label>
-				<input class="form-control" type="password" name="passwd2" id="passwd2" placeholder="|LANG_RE-ENTER_PASS|">
-		</div>
 		
-		<div class="pure-control-group">
-			<label><input type="checkbox" name="system" value="yes" checked></label>
-			|LANG_PASS_DA|<br/><br/>
-			<label><input type="checkbox" name="ftp" value="yes" checked></label>
-			|LANG_PASS_FTP|<br/><br/>
-			<label><input type="checkbox" name="database" value="yes"></label>
-			|LANG_PASS_DB|
-		</div>
-		<hr />
-		<p style="float: right;"><button type="submit" class="btn btn-success" data-loading-text="Loading...">确认更改</button></p>
-		<div class="clear"></div><!-- /clear -->
-	</form>
+			<div class="pure-control-group">
+				<label for="passwd">|LANG_ENTER_PASS|</label>
+				<input type="password" name="passwd" id="passwd" placeholder="|LANG_ENTER_PASS|" onkeyup="CreateRatePasswdReq(this,'3');">
+			</div>
+			
+			<div class="pure-control-group clearfix" style="margin: 10px 0;">
+				<script type="text/javascript" src="/IMG_SKIN_JS"></script>
+				<div style="margin:20px 0 10px 145px;">
+					<table width="200" cellspacing="0" cellpadding="0" border="0" style="margin: 8px 5px 5px 0;" id="passwdBar">
+						<tr>
+							<td id="posBar" style="width:135px;padding:0;border-right:0;height:5px;background:#e5e9eb;"></td>
+							<td id="negBar" style="padding:0;border-right:0;height:5px;background:#e5e9eb;"></td>
+						</tr>
+					</table>
+					<p id="passwdRating" style="margin: 0;color: #CCC;">|LANG_PASS_STRENGTH|</p>
+				</div>
+			</div>
+		
+			<div class="pure-control-group clearfix">
+				<label for="passwd2">|LANG_RE-ENTER_PASS|</label>
+				<input type="password" name="passwd2" id="passwd2" placeholder="|LANG_RE-ENTER_PASS|">
+			</div>
+			
+			<div class="pure-control" style="margin:20px 0 0 145px;">
+				<label for="system"><input id="system" type="checkbox" name="system" value="yes" checked> |LANG_PASS_DA|</label><br/><br/>
+				<label for="ftp"><input id="ftp" type="checkbox" name="ftp" value="yes" checked> |LANG_PASS_FTP|</label><br/><br/>
+				<label for="database"><input id="database" type="checkbox" name="database" value="yes"> |LANG_PASS_DB|</label>
+				
+			</div>
+			<hr />
+			<p style="text-align: right;"><button type="submit" class="btn btn-green" data-loading-text="Loading...">确认更改</button></p>
+			<div class="clear"></div><!-- /clear -->
+		</form>
 	</div>
 </div>
 

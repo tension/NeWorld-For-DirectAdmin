@@ -40,49 +40,50 @@ function showUserMessage() {
 
 // -->
 </script>
-
-	<div class="col-md-8 col-sm-8 col-md-offset-2">
-		<form name="reseller" action="CMD_ACCOUNT_USER" method="post" onSubmit="return formOK()">
+<div class="pure-g">
+	<div class="pure-u-2-3" style="margin: 15% auto;">
+		<form class="pure-form pure-form-aligned" name="reseller" action="CMD_ACCOUNT_USER" method="post" onSubmit="return formOK()">
 			<input type="hidden" name="action" value="create">
-			<h5>|LANG_CREATE_USER|</h5>
-		    <div class="form-group">
+			<h3>|LANG_CREATE_USER|</h3>
+		    <div class="pure-control-group">
 			    <label for="username">|LANG_USERNAME|</label>
 			    <input type="text" id="username" placeholder="|LANG_USERNAME|" name="username" maxlength="|MAX_USERNAME_LENGTH|" onChange="checkName()">
 		    </div>
-		    <div class="form-group">
+		    <div class="pure-control-group">
 			    <label for="email">|LANG_EMAIL|</label>
 			    <input type="text" id="email" placeholder="|LANG_EMAIL|" name="email" onChange="checkEmail()">
 		    </div>
-		    <div class="form-group">
+		    <div class="pure-control-group">
 			    <label for="passwd">|LANG_ENTER_PASS|</label>
-			    <input type="password" id="passwd" placeholder="|LANG_ENTER_PASS|" name="passwd"> <button type="button" class="btn btn-default" onClick="randomPass()">|LANG_RANDOM|</button>
+			    <input type="password" id="passwd" placeholder="|LANG_ENTER_PASS|" name="passwd"> <button type="button" class="btn btn-purple" onClick="randomPass()">|LANG_RANDOM|</button>
 		    </div>
-		    <div class="form-group">
+		    <div class="pure-control-group">
 			    <label for="passwd2">|LANG_RE-ENTER_PASS|</label>
 			    <input type="password" id="passwd2" placeholder="|LANG_RE-ENTER_PASS|" name="passwd2" onChange="checkPass()">
 		    </div>
-		    <div class="form-group">
+		    <div class="pure-control-group">
 			    <label for="domain">|LANG_DOMAIN|</label>
 			    <input type="text" id="domain" placeholder="|LANG_DOMAIN|" name="domain" onChange="checkDomain()">
 		    </div>
-		    <div class="form-group">
+		    <div class="pure-control-group">
 			    <label for="package">|LANG_USE_USER_PACK|</label>
 			    |PACKAGES|
 		    </div>
-		    <div class="form-group">
+		    <div class="pure-control-group">
 			    <label for="ip">|LANG_IP|</label>
 			    |IPSELECT|
 		    </div>
-		    <div class="form-group">
+		    <div class="pure-control-group">
 			    <label for="notify">|LANG_EMAIL_NOTIFY|</label>
 			    <input type="checkbox" value="yes" name="notify" checked="checked">
 			    <a href="javascript:showUserMessage();">|LANG_EDIT_USER_MESS|</a>
 		    </div>
-		    <div class="form-group" style="text-align: right;">
-				<button type="submit" class="btn btn-info" name="customize">|LANG_CUSTOMIZE|</button>
-				<button type="submit" class="btn btn-default" name="add">|LANG_SUBMIT|</button>
+		    <hr />
+		    <div class="pure-control-group" style="text-align: right;">
+				<button type="submit" class="btn btn-dark-blue" name="customize">|LANG_CUSTOMIZE|</button>
+				<button type="submit" class="btn btn-blue" name="add">|LANG_SUBMIT|</button>
 		    </div>
 	    </form>
 	</div>
-
+</div>
 |HTM_RESELLER_BOTTOM|

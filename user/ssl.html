@@ -76,18 +76,18 @@ function setRequest(onoff)
 	<tr><td class=list>&nbsp;</td><td class=list colspan=2>|LANG_USE_SHARED|</td></tr>
 
 	<tr><td class=list align=center><input type=radio name=type value="create" onClick="setRequest('on');"></td><td class=listtitle colspan=2><input type=radio name=request value="no" checked disabled>|LANG_CREATE_SELF_SIGNED| &nbsp;&nbsp; <input type=radio name=request value="yes" disabled>|LANG_CREATE_CSR|</td></tr>
-	<tr><td class=list>&nbsp;</td><td class=list>|LANG_COUNTRY|</td><td class=list><input type=input name=country size=2 maxlength=2></td></tr>
-	<tr><td class=list>&nbsp;</td><td class=list>|LANG_STATE|</td><td class=list><input type=input name=province></td></tr>
-	<tr><td class=list>&nbsp;</td><td class=list>|LANG_CITY|</td><td class=list><input type=input name=city></td></tr>
-	<tr><td class=list>&nbsp;</td><td class=list>|LANG_COMPANY|</td><td class=list><input type=input name=company></td></tr>
-	<tr><td class=list>&nbsp;</td><td class=list>|LANG_COMPANY_DIV|</td><td class=list><input type=input name=division></td></tr>
-	<tr><td class=list>&nbsp;</td><td class=list>|LANG_COMMON_NAME|</td><td class=list><input type=input name=name value="www.|DOMAIN|"></td></tr>
-	<tr><td class=list>&nbsp;</td><td class=list>|LANG_EMAIL|</td><td class=list><input type=input name=email></td></tr>
+	<tr><td class=list>&nbsp;</td><td class=list>|LANG_COUNTRY|</td><td class=list><input type=text name=country size=2 maxlength=2></td></tr>
+	<tr><td class=list>&nbsp;</td><td class=list>|LANG_STATE|</td><td class=list><input type=text name=province></td></tr>
+	<tr><td class=list>&nbsp;</td><td class=list>|LANG_CITY|</td><td class=list><input type=text name=city></td></tr>
+	<tr><td class=list>&nbsp;</td><td class=list>|LANG_COMPANY|</td><td class=list><input type=text name=company></td></tr>
+	<tr><td class=list>&nbsp;</td><td class=list>|LANG_COMPANY_DIV|</td><td class=list><input type=text name=division></td></tr>
+	<tr><td class=list>&nbsp;</td><td class=list>|LANG_COMMON_NAME|</td><td class=list><input type=text name=name value="www.|DOMAIN|"></td></tr>
+	<tr><td class=list>&nbsp;</td><td class=list>|LANG_EMAIL|</td><td class=list><input type=text name=email></td></tr>
 	<tr><td class=list>&nbsp;</td><td class=list>|LANG_KEYSIZE|</td><td class=list><select class=selectclass name=keysize><option selected>1024</option><option selected>2048</option></select></td></tr>
 	<tr><td class=list align=center><input type=radio name=type value="paste" |PASTECHECKED| onClick="setRequest('off');"></td><td class=listtitle colspan=2>|LANG_PASTE|</td></tr>
 	<tr><td class=list>&nbsp;</td>
 		<td class=list align=center colspan=2>
-			<textarea style="font-family: courier new; width: 480px;" name=certificate rows=16>|KEY||CERTIFICATE|</textarea><br>
+			<textarea style="font-family: courier new; width: 532px; margin-bottom: 10px;" name=certificate rows=10>|KEY||CERTIFICATE|</textarea><br/>
 			<input type=button value="|LANG_PASTE_FROM|" onClick="pasteCertificate(document.info.certificate)">
 			<input type=button value="|LANG_COPY_TO|" onClick="copyCertificate(document.info.certificate)"> |LANG_IE_ONLY|
 		</td>
@@ -98,8 +98,9 @@ function setRequest(onoff)
 	</form>
 
 </table>
-<br>
-<a href="/CMD_SSL?DOMAIN=|DOMAIN|&view=cacert">|LANG_CLICK_HERE|<br><br>
+<br/>
+<a href="/CMD_SSL?DOMAIN=|DOMAIN|&view=cacert">|LANG_CLICK_HERE|
+<br/><br/>
 
 |LANG_NOTE|
 |HTM_USER_BOTTOM|

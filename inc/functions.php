@@ -111,6 +111,21 @@ function getPortStatus($ip,$port) {
  	return $string;
 }
 
+// 语言切换
+function getLanguages($root) {
+    $langdir = $root . "lang/";
+    $languages = array();
+    if ($handle = opendir($langdir)) {
+        while (false !== ($file = readdir($handle))) {
+            if ($file != "." && $file != ".." && is_dir($langdir . $file)) {
+                $languages[] = $file;
+            }
+        }
+        closedir($handle);
+    }
+    return $languages;
+}
+
 // 获取域名列表
 function getDomainsList() {
     global $ts;

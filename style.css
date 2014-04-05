@@ -248,6 +248,12 @@ h1,h2,h3,h4 {
 p {
 	margin: 0
 }
+hr {
+	border: 0 none;
+	height: 1px;
+	background: #EEE;
+	margin: 20px 0;
+}
 .clearfix:after {
 	visibility: hidden;
 	display: block;
@@ -531,9 +537,9 @@ a.btn { line-height:33px;text-decoration:none}
 .btn-#000:active,.btn-#000.active{color:white;background:#232323}
 
 
-.select{display:inline-block;vertical-align:top;position:relative;width:200px;height:33px;background:#f4f6fb;border:2px solid #d3dae7;border-radius:2px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}
+.select{display:inline-block;vertical-align:top;position:relative;width: 240px;height:33px;background:#f4f6fb;border:2px solid #d3dae7;border-radius:2px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}
 .select:hover{border-color:#c5cddf}
-.select>select{display:block;width:100%;height:29px;line-height:17px;margin:0;padding:6px;padding-left:9px;color:#626262;background:#f4f6fb;border:0;-webkit-appearance:none}
+.select>select{box-shadow: none;display:block;width:100%;height:29px;line-height:17px;margin:0;padding:6px;padding-left:9px;color:#626262;background:#f4f6fb;border:0;-webkit-appearance:none}
 .select>select:focus{color:#3c3c3c;outline:2px solid #3fb6f2;outline-offset:0;-moz-outline-radius:2px}
 .select>select::-ms-expand{display:none}
 .select:before,.select:after{content:'';position:absolute;pointer-events:none}
@@ -545,22 +551,29 @@ input[type=text],
 input[type=password] {
 	width: 200px;
 }
+.pure-form input[type=text],
+.pure-form input[type=password],
 input[type=text],
 input[type=password],
 textarea {
 	display:inline-block;
-	vertical-align:top;
+	vertical-align: middle;
 	padding:0 8px;
 	height: 33px;
 	line-height:19px;
 	color:#626262;
 	background:white;
+	box-shadow: none;
 	border:2px solid #d9d9d9;
 	border-radius:2px
 }
 input[type=text]:hover,input[type=password]:hover,textarea:hover{border-color:#ccc}
 input[type=text]:focus,input[type=password]:focus,textarea:focus{color:#3c3c3c;background:white;border-color:#3fb6f2;outline:none}
 textarea{padding:4px 8px;height: 360px;line-height:19px;overflow:auto;resize:none}
+input[name=chmod],
+input[name=extension] {
+	margin: 0 10px;
+}
 
 footer {
 	color: #747474;
