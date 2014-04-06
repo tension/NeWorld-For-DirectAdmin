@@ -20,12 +20,18 @@ _/      _/_/_/_/  _/      _/  _/_/_/    _/_/_/    _/_/    _/      _/
 		<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 		<link href="//yui.yahooapis.com/pure/0.4.2/pure-min.css" rel="stylesheet">
 		<script type="text/javascript">
-		<!--//timer for auto-logout
+		window.onload = function() {
+			$("input[type=checkbox]").wrap("<label class=\"option\"></label>");
+			$("label.option").append("<span class=\"checkbox\"></span>");
+			$("input[type=checkbox]").addClass("focus");
+			$("select").wrap("<div class=\"select\"></div>");
+		};
+		//timer for auto-logout
 		function log_me_out() {
 			location.href = '/CMD_LOGOUT';
 		}
 		setTimeout('log_me_out();', |SESSION_MINUTES|*60*1000);
-		// done with preload code -->
+		// done with preload code
 		</script>
 		<style type="text/css">
 		|CSS_STYLE|
@@ -35,13 +41,13 @@ _/      _/_/_/_/  _/      _/  _/_/_/    _/_/_/    _/_/    _/      _/
 <!-- Header START -->
 <header>
 	<div class="wrapper-full">
-		<h1><a class="logo" href="/">ELINKHOST</a></h1>
+		<h1><a class="logo" href="/|HOME_MEMORY|" title="HOME">ELINKHOST</a></h1>
 		<nav class="navbar">
 			<ul class="nav navbar-nav">
 				<li><a href="/CMD_FILE_MANAGER">|LANG_FILES|</a></li>
 				<li><a href="/HTM_PASSWD">|LANG_PASSWORD|</a></li>
-				<li><a href="#">|LANG_NEWANN|</a></li>
-				<li><a href="#">|LANG_FEEDBACK|</a></li>
+				<li class="hidden"><a href="#">|LANG_NEWANN|</a></li>
+				<li class="hidden"><a href="#">|LANG_FEEDBACK|</a></li>
 				|HTM_MENU_USER|
 	            <li><a href="/CMD_LOGOUT">|LANG_LOGOUT|</a></li>
 	          </ul>

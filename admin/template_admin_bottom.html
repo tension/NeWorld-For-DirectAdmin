@@ -1,7 +1,7 @@
 |HTM_FOOTER_BAR_1|
 	
 	<div class="module">
-		<h5>基本信息</h5>
+		<h3>|LANG_BASIC_INFO|</h3>
 		<ul>
 			<li>|LANG_DISK_SPACE| |ADMINQUOTA|</li>
 			<li>|LANG_BANDWIDTH| |ADMINBANDWIDTHGIG|</li>
@@ -12,17 +12,17 @@
 	</div>
 			
 	<div class="module">
-		<h5>服务器状态</h5>
+		<h3>|LANG_SERVER_STATUS|</h3>
 		<ul>
 |$|PHP|
 <?php
 include |ROOT|."inc/functions.php";
 ?>
-<li>系统负载：<span class="label pull-right label-info"><?php echo $sysInfo['loadAvg'];?></span></li>
-<li>共有内存：<span class="label pull-right label-info"><?php echo $sysInfo['memTotal'];?>M</span></li>
-<li>已用内存：<span class="label pull-right label-info"><?php echo $sysInfo['memUsed'];?>M</span></li>
-<li>空闲内存：<span class="label pull-right label-info"><?php echo $sysInfo['memFree'];?>M</span></li>
-<li>运行时间：<span class="label pull-right label-info"><?php echo $sysInfo['uptime']; ?></span></li>
+<li>|LANG_SYSTEM_LOAD|：<span class="label pull-right label-info"><?php echo $sysInfo['loadAvg'];?></span></li>
+<li>|LANG_TOTAL_MEMORY|：<span class="label pull-right label-info"><?php echo $sysInfo['memTotal'];?>M</span></li>
+<li>|LANG_TOTAL_MEMORY|：<span class="label pull-right label-info"><?php echo $sysInfo['memUsed'];?>M</span></li>
+<li>|LANG_FREE_MEMORY|：<span class="label pull-right label-info"><?php echo $sysInfo['memFree'];?>M</span></li>
+<li>|LANG_UPTIME|：<span class="label pull-right label-info"><?php echo $sysInfo['uptime']; ?></span></li>
 DONE|
 		</ul>
 	</div><!-- /module -->
