@@ -1,5 +1,4 @@
 |LF_STANDARD|
-|LF_IMAGES|
 |HTM_CONFIG|
 <!DOCTYPE html>
 <!--
@@ -25,6 +24,9 @@ _/      _/_/_/_/  _/      _/  _/_/_/    _/_/_/    _/_/    _/      _/
 			$("label.option").append("<span class=\"checkbox\"></span>");
 			$("input[type=checkbox]").addClass("focus");
 			$("select").wrap("<div class=\"select\"></div>");
+			$(".navbar-toggle").click(function() {
+				$("nav").slideToggle("5000");
+			});
 		};
 		//timer for auto-logout
 		function log_me_out() {
@@ -42,8 +44,14 @@ _/      _/_/_/_/  _/      _/  _/_/_/    _/_/_/    _/_/    _/      _/
 <header>
 	<div class="wrapper-full">
 		<h1><a class="logo" href="/|HOME_MEMORY|" title="HOME">ELINKHOST</a></h1>
-		<nav class="navbar">
-			<ul class="nav navbar-nav">
+		<button class="navbar-toggle" type="button">
+	        <span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+		</button>
+		<nav>
+			<ul>
 				<li><a href="/CMD_FILE_MANAGER">|LANG_FILES|</a></li>
 				<li><a href="/HTM_PASSWD">|LANG_PASSWORD|</a></li>
 				<li class="hidden"><a href="#">|LANG_NEWANN|</a></li>
