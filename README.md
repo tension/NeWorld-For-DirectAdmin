@@ -1,6 +1,10 @@
 # NewWorld For DirectAdmin #
 
-#### 这个主题是由tension制作,使用在DirectAdmin的主题!
+*这个主题是由tension制作,使用在DirectAdmin的主题!*
+
+- - - - 
+** QQ 群 : 286348 **
+- - - - 
 
 演示地址: [http://www.elinkhost.com/webhostdemo.html](http://www.elinkhost.com/webhostdemo.html)
 
@@ -41,9 +45,14 @@ custom.html
 用户界面联系我们信息
 
 ```html
+notice.html
+```
+为用户界面新闻调用,如不需要可直接删除内容即可.
+
+```html
 images/logo.png
 ```
-为左上角 LOGO
+为左上角 LOGO, 尺寸 390x62
 
 ```html
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
