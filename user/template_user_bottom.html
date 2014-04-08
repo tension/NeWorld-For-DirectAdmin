@@ -4,7 +4,7 @@
 			<div class="module">
 				<h3>|LANG_YOUER_INFO|</h3>
 				<ul>
-					|*if domain|<li class="bold">当前域名：|domain|</li>|*endif|
+					|*if domain|<li class="bold">|LANG_DQDOMAIN|: |domain|</li>|*endif|
 
 					<li><a href="/CMD_TICKET">|LANG_MESSAGE_SYSTEM|</a> <span class="label pull-right label-info">|NEWMESSAGES|</span></li>
 
@@ -12,7 +12,7 @@
 <?php
 show_bar("", "|USERQUOTA|", "|USERQUOTAMAX|", "quota_bar");
 
-// 调用用户数据
+// 璋冪敤鐢ㄦ埛鏁版嵁
 function show_bar($text, $used, $limit, $id) {
 	if($limit==0) return;
 
@@ -68,7 +68,7 @@ DONE|
 <?php
 show_bar("", "|USERBANDWIDTH|", "|USERBANDWIDTHMAX|", "bandwidth_bar");
 
-// 调用用户数据
+// 璋冪敤鐢ㄦ埛鏁版嵁
 function show_bar($text, $used, $limit, $id) {
 	if($limit==0) return;
 
@@ -133,13 +133,13 @@ DONE|
 <?php
 include |ROOT|."inc/functions.php";
 ?>
-					<li>Apache：<?php echo getPortStatus('|HOSTNAME|','80'); ?></li>
-					<li>MySQL：<?php echo getPortStatus('|HOSTNAME|','3306'); ?></li>
-					<li>FTP：<?php echo getPortStatus('|HOSTNAME|','21'); ?></li>
-					<li>PHP：<span class="label pull-right label-info"><?php echo PHP_VERSION; ?></span></li>
-					<li>Zend：<span class="label pull-right label-info"><?php echo zend_version(); ?></span></li>
-					<li>MySQL：<span class="label pull-right label-info"><?php echo mysql_get_client_info(); ?></span></li>
-					<li>upTime：<span class="label pull-right label-info"><?php echo $sysInfo['uptime']; ?></span></li>
+					<li>Apache: <?php echo getPortStatus('|HOSTNAME|','80'); ?></li>
+					<li>MySQL: <?php echo getPortStatus('|HOSTNAME|','3306'); ?></li>
+					<li>FTP: <?php echo getPortStatus('|HOSTNAME|','21'); ?></li>
+					<li>PHP: <span class="label pull-right label-info"><?php echo PHP_VERSION; ?></span></li>
+					<li>Zend: <span class="label pull-right label-info"><?php echo zend_version(); ?></span></li>
+					<li>MySQL: <span class="label pull-right label-info"><?php echo mysql_get_client_info(); ?></span></li>
+					<li>upTime: <span class="label pull-right label-info"><?php echo $sysInfo['uptime']; ?></span></li>
 DONE|
 				</ul>
 			</div><!-- /module -->
