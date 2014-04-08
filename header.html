@@ -19,15 +19,6 @@ _/      _/_/_/_/  _/      _/  _/_/_/    _/_/_/    _/_/    _/      _/
 		<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 		<link href="//yui.yahooapis.com/pure/0.4.2/pure-min.css" rel="stylesheet">
 		<script type="text/javascript">
-		window.onload = function() {
-			$("input[type=checkbox]").wrap("<label class=\"option\"></label>");
-			$("label.option").append("<span class=\"checkbox\"></span>");
-			$("input[type=checkbox]").addClass("focus");
-			$("select").wrap("<div class=\"select\"></div>");
-			$(".navbar-toggle").click(function() {
-				$("nav").slideToggle("5000");
-			});
-		};
 		//timer for auto-logout
 		function log_me_out() {
 			location.href = '/CMD_LOGOUT';
@@ -35,9 +26,7 @@ _/      _/_/_/_/  _/      _/  _/_/_/    _/_/_/    _/_/    _/      _/
 		setTimeout('log_me_out();', |SESSION_MINUTES|*60*1000);
 		// done with preload code
 		</script>
-		<style type="text/css">
-		|CSS_STYLE|
-		</style>
+		<link href="/CSS_STYLE" type="text/css" rel="stylesheet" />
 	</head>
 <body |BODY|>
 <!-- Header START -->
