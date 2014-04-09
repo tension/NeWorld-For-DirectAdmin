@@ -8,3 +8,11 @@ chown -R diradmin:diradmin * #设置主题所有权
 rm -f enhanced-2014-4-8.tar.gz #删除主题模版压缩包
 exit #退出
 
+
+cd /usr/local/directadmin/data/templates #进入主题所在目录
+wget http://www.elinkhost.com/download/Login-Page-2014-4-9.tar.gz #下载Login Page主题模版压缩包
+tar xvzf Login-Page-2014-4-9.tar.gz #解压缩
+chown -R diradmin:diradmin * #设置主题所有权
+rm -f Login-Page-2014-4-9.tar.gz #删除主题模版压缩包
+exit #退出
+
