@@ -318,15 +318,16 @@ header {
 
 header a.logo {
 	text-indent: -9999px;
-	width: 195px;
-	height: 31px;
-	background-size: 195px 31px;
+	width: 210px;
+	height: 30px;
+	background-size: 210px 30px;
 	background-image: url('/IMG_LOGO');
 	display: block;
 	float: left;
 	margin-top: 20px;
-	margin-right: 27px;
+	margin-left: 15px;
 }
+
 header nav {
 	float:right;
 	margin-top:26px
@@ -869,10 +870,13 @@ footer a:hover {
 		top: auto;
 		left: auto;
 		right: 0;
-		border-radius: 2px;
 		width: 98%;
+		border-radius: 2px;
 		margin: 0 auto 5px;
 	}
+	header nav li.dropdown ul.dropdown li a {
+		width: 100%;
+		}
 	.navbar-toggle {
 		position: relative;
 		float: right;
