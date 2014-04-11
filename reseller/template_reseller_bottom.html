@@ -10,16 +10,16 @@
 $d="|domain|";
 if ($d == "" || $d[0] == '|') { exit(0);}
 ?>
-<li class="bold">µ±Ç°ÓòÃû: |domain|</li>
+<li class="bold">|LANG_DQDOMAIN|: |domain|</li>
 DONE|
-					<li><a href="/CMD_TICKET">¼¼ÊõÏûÏ¢</a> <span class="label pull-right label-info">|NEWMESSAGES|</span></li>
+					<li><a href="/CMD_TICKET">|LANG_YOUER_INFO|</a> <span class="label pull-right label-info">|NEWMESSAGES|</span></li>
 					<li>|LANG_DISK_SPACE| |RESELLERQUOTA| |LANG_MB| / |RESELLERQUOTAMAX|</li>
 					<li>|LANG_BANDWIDTH| |RESELLERBANDWIDTHGIG| |LANG_GB| / |RESELLERBANDWIDTHMAXGIG|</li>
-					<li>ÓÊ¼þ |RESELLEREMAIL| / |RESELLEREMAILMAX|</li>
-					<li>FTP |USERFTP| / |RESELLERFTPMAX|</li>
-					<li>Êý¾Ý¿â |RESELLERDATABASE| / |RESELLERDATABASEMAX|</li>
-					<li>Õ¾µã |RESELLERDOMAINS| / |RESELLERDOMAINSMAX|</li>
-					<li>ÓÃ»§ |RESELLERUSERS|</li>
+					<li>|LANG_MAIL| |RESELLEREMAIL| / |RESELLEREMAILMAX|</li>
+					<li>|LANG_FTP| |USERFTP| / |RESELLERFTPMAX|</li>
+					<li>|LANG_DB| |RESELLERDATABASE| / |RESELLERDATABASEMAX|</li>
+					<li>|LANG_SITE| |RESELLERDOMAINS| / |RESELLERDOMAINSMAX|</li>
+					<li>|LANG_USER| |RESELLERUSERS|</li>
 				</ul>
 			</div><!-- /module -->
 			
@@ -30,13 +30,13 @@ DONE|
 <?php
 include |ROOT|."inc/functions.php";
 ?>
-					<li>Apache£º<?php echo getPortStatus('|HOSTNAME|','80'); ?></li>
-					<li>MySQL£º<?php echo getPortStatus('|HOSTNAME|','3306'); ?></li>
-					<li>FTP£º<?php echo getPortStatus('|HOSTNAME|','21'); ?></li>
-					<li>PHP£º<span class="label pull-right label-info"><?php echo PHP_VERSION; ?></span></li>
-					<li>Zend£º<span class="label pull-right label-info"><?php echo zend_version(); ?></span></li>
-					<li>MySQL£º<span class="label pull-right label-info"><?php echo mysql_get_client_info(); ?></span></li>
-					<li>upTime£º<span class="label pull-right label-info"><?php echo $sysInfo['uptime']; ?></span></li>
+					<li>Apacheï¼š<?php echo getPortStatus('|HOSTNAME|','80'); ?></li>
+					<li>MySQLï¼š<?php echo getPortStatus('|HOSTNAME|','3306'); ?></li>
+					<li>FTPï¼š<?php echo getPortStatus('|HOSTNAME|','21'); ?></li>
+					<li>PHPï¼š<span class="label pull-right label-info"><?php echo PHP_VERSION; ?></span></li>
+					<li>Zendï¼š<span class="label pull-right label-info"><?php echo zend_version(); ?></span></li>
+					<li>MySQLï¼š<span class="label pull-right label-info"><?php echo mysql_get_client_info(); ?></span></li>
+					<li>upTimeï¼š<span class="label pull-right label-info"><?php echo $sysInfo['uptime']; ?></span></li>
 DONE|
 
 				</ul>
