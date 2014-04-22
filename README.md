@@ -27,6 +27,21 @@
 
 ## 如何安装 ##
 
+
+#### 主题安装 ####
+```sh
+cd /usr/local/directadmin/data/skins/ #进入主题所在目录
+wget https://github.com/tension/NewWorld/archive/master.zip #下载NewWorld主题模版压缩包
+unzip master #解压缩主题压缩包
+mv NewWorld-master NewWorld #修改主题文件夹名称
+chown -R diradmin:diradmin NewWorld/ #设置主题所有权
+rm -f master #删除主题模版压缩包
+exit #退出
+```
+
+##### 安装完成 登陆后台 选择皮肤管理 选择主题应用所有用户
+
+#### 登陆界面安装 ####
 ```sh
 cd /usr/local/directadmin/data/skins/ #进入主题所在目录
 wget https://github.com/tension/NewWorld/archive/master.zip #下载NewWorld主题模版压缩包
