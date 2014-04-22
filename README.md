@@ -41,6 +41,18 @@ exit #退出
 ## 自定义页面 ##
 
 ```html
+/data/templates/custom/login.html
+```
+注销后跳转页面修改
+登录页模版位置
+
+```html
+<input type="hidden" value="http://www.elinkhost.com" name="LOGOUT_URL"/>
+```
+网址改为您的网址
+
+
+```html
 custom.html
 ```
 用户界面联系我们信息
