@@ -80,10 +80,11 @@ images/logo.png
 ```
 为左上角 LOGO, 尺寸 390x62
 
+## 使用开源框架 ##
+
 ```html
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 ```
-## 使用开源框架 ##
 
 使用 [font-awesome](http://fortawesome.github.io/Font-Awesome/) 开源图标系列
 
@@ -98,3 +99,11 @@ images/logo.png
 ```
 
 使用 [jQuery](http://jquery.com/) JS 框架 由 [百度开放云](http://libs.baidu.com/) 提供CDN加速
+
+## 支持我 ##
+
+如果你觉得这个东西确实不错，可以通过支付宝支付我
+
+我的二维码
+
+![我的收款](http://ww1.sinaimg.cn/large/6211b300gw1efs74kpta6j205y05y74x.jpg)
