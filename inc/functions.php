@@ -11,22 +11,6 @@ define('ROOT', $root);
 
 $ts = new tsclass();
 
-// 调用用户数据
-function show_bar($text, $used, $limit, $id) {
-	if($limit==0) return;
-
-	$left=round(($used/$limit)*100);
-	$right=100-$left;
-
-	switch(TRUE) {
-		case ($left > 80)	: $color = "progress-danger";		break;
-		case ($left > 60)	: $color = "progress-warning";		break;
-		default				: $color = "progress-success";		break;
-	}
-
-	echo $text;
-}
-
 function CMD_ALL_USER_SHOW($tabla){
 	$tabla = str_replace(' / unlimited', '', $tabla);
 	$tabla = preg_replace("/<tr\s*><td align=right colspan=(.+)><a class=toptext href=\'\?view=advanced\'>(.+)<\/a><\/td ><\/tr >/", '', $tabla);
@@ -102,7 +86,7 @@ function sys_linux() {
 
 // 服务器端口状态
 function getPortStatus($ip,$port) {
-	$fp = @fsockopen($ip, $port, &$errno, &$errstr, 10);
+	$fp = @fsockopen($ip, $port, $errno, $errstr, 10);
 	if (!$fp) {
 		$string = " <span class=\"label pull-right label-important\"><i class=\"fa fa-ban\"></i></span>";
 	} else {
@@ -185,7 +169,7 @@ class tsclass {
         } else {
             $sIP = '127.0.0.1';
         }
-        $res = @fsockopen($sIP, $_SERVER['SERVER_PORT'], &$sock_errno, &$sock_errstr, 2);
+        $res = @fsockopen($sIP, $_SERVER['SERVER_PORT'], $sock_errno, $sock_errstr, 2);
         if ($sock_errno || $sock_errstr)
             return false;
         fputs($res, $send, strlen($send));
