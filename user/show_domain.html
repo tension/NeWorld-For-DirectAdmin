@@ -97,15 +97,9 @@
 |*if HIDE_WEBMAIL_LINKS="yes"|
 	|?SHOW_LINKS=no|
 |*endif|
-|$|PHP|
-<?
-if ("|SHOW_LINKS|" == "yes") {
-	if (file_exists("/var/www/html/webmail")) {
-		echo "<li><a href=\"http://|HOSTNAME|/webmail\" target=\"_blank\">|LANG_WEBMAIL_UEBI|</a></li>\n";
-	}
-}
-?>
-DONE|
+|*if HAVE_WEBMAIL="yes"|
+<a href="|WEBAPPS_SSL|://|HOSTNAME|/webmail" target="_blank">|LANG_WEBMAIL_UEBI|</a><br>
+|*endif|
             </ul>
 		</div>
 	</div>

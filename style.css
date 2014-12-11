@@ -37,11 +37,11 @@ tr {
 	border-color: inherit;
 }
 td {
-	padding: 12px 15px;
+	padding: 10px 12px;
 }
 td, th {
 	display: table-cell;
-	vertical-align: inherit;
+	vertical-align: top;
 }
 table.list {
 	border-collapse: separate;
