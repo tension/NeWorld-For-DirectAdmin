@@ -84,6 +84,7 @@ a.listtitle {
 
 td.listtitle {
 	height: 21px;
+	vertical-align: middle;
 	border-top: 1px solid #E0E2E6;
 	border-bottom: 1px solid #E0E2E6;
 }
