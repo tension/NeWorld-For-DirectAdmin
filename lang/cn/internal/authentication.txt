@@ -57,3 +57,4 @@
 57=All
 58=Cannot find key value in %s
 59=Key value must differ from your DirectAdmin password
+60=Script output

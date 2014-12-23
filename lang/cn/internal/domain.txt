@@ -26,3 +26,11 @@
 26=Unable to find %s
 27=The owner of %s is not %s
 28=Related: http://www.directadmin.com/features.php?id=925
+29=php1_select and php2_select must be either 1 or 2
+30=PHP Version Selector
+31=Handler
+32=Extension
+33=Save
+34=First PHP
+35=Second PHP
+36=The subdomain '%s' already exists under the %s domain.

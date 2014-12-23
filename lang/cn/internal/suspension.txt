@@ -20,3 +20,4 @@
 20=Spam
 21=Other
 22=-- Reason:
+23=Inactive
