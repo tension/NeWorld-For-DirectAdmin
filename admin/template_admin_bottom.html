@@ -1,30 +1,29 @@
 |HTM_FOOTER_BAR_1|
-	
-	<div class="module">
-		<h3>|LANG_BASIC_INFO|</h3>
-		<ul>
-			<li>|LANG_DISK_SPACE| |ADMINQUOTA|</li>
-			<li>|LANG_BANDWIDTH| |ADMINBANDWIDTHGIG|</li>
-       		<li>|LANG_DOMAINS| |ADMINDOMAINS|</li>
-       		<li>|LANG_USERS| |ADMINUSERS|</li>
-       		<li>|LANG_RESELLERS| |ADMINRESELLERS|</li>
-		</ul>
-	</div>
-			
-	<div class="module">
-		<h3>|LANG_SERVER_STATUS|</h3>
-		<ul>
+			<div class="module">
+				<h3>|LANG_BASIC_INFO|</h3>
+				<ul>
+					<li>|LANG_DISK_SPACE| |ADMINQUOTA|</li>
+					<li>|LANG_BANDWIDTH| |ADMINBANDWIDTHGIG|</li>
+		       		<li>|LANG_DOMAINS| |ADMINDOMAINS|</li>
+		       		<li>|LANG_USERS| |ADMINUSERS|</li>
+		       		<li>|LANG_RESELLERS| |ADMINRESELLERS|</li>
+				</ul>
+			</div>
+					
+			<div class="module">
+				<h3>|LANG_SERVER_STATUS|</h3>
+<ul>
 |$|PHP|
 <?php
 include |ROOT|."inc/functions.php";
 ?>
-<li>|LANG_SYSTEM_LOAD|:<span class="label pull-right label-info"><?php echo $sysInfo['loadAvg'];?></span></li>
-<li>|LANG_TOTAL_MEMORY|:<span class="label pull-right label-info"><?php echo $sysInfo['memTotal'];?>M</span></li>
-<li>|LANG_TOTAL_MEMORY|:<span class="label pull-right label-info"><?php echo $sysInfo['memUsed'];?>M</span></li>
-<li>|LANG_FREE_MEMORY|:<span class="label pull-right label-info"><?php echo $sysInfo['memFree'];?>M</span></li>
-<li>|LANG_UPTIME|:<span class="label pull-right label-info"><?php echo $sysInfo['uptime']; ?></span></li>
+	<li>|LANG_SYSTEM_LOAD|:<span class="label pull-right label-info"><?php echo $sysInfo['loadAvg'];?></span></li>
+	<li>|LANG_TOTAL_MEMORY|:<span class="label pull-right label-info"><?php echo $sysInfo['memTotal'];?>M</span></li>
+	<li>|LANG_TOTAL_MEMORY|:<span class="label pull-right label-info"><?php echo $sysInfo['memUsed'];?>M</span></li>
+	<li>|LANG_FREE_MEMORY|:<span class="label pull-right label-info"><?php echo $sysInfo['memFree'];?>M</span></li>
+	<li>|LANG_UPTIME|:<span class="label pull-right label-info"><?php echo $sysInfo['uptime']; ?></span></li>
 DONE|
-		</ul>
-	</div><!-- /module -->
+</ul>
+</div><!-- /module -->
 |HTM_FOOTER_BAR_2|
 |HTM_FOOTER|
