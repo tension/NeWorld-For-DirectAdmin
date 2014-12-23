@@ -1,3 +1,16 @@
 LANG_IP_MANAGER=IP管理
 LANG_ADD_IP=增加IP
 LANG_NETMASK=子网掩码
+LANG_IPV6_MASK=For IPv6 IPs, use a /mask, eg: /64
+LANG_DETAILS_FOR=Details for
+LANG_STATUS=Status
+LANG_NETMASK=Netmask
+LANG_USER_VALUE=User(s)
+LANG_NAMESERVER=Nameserver
+LANG_IP_PURPOSE=The main purpose for this feature is to link LAN IPs to external IPs,<br>and/or to link IPv6 IPs to IPv4 IPs.
+LANG_LAN_EXPLANATION=<b>LAN</b>: View the details of the external IP. Link the internal IP to the external IP.<br>Only select Apache, do not select DNS. Add Users to external IP
+LANG_IPV6_EXPLANATION=<b>IPv6</b>: View the details of the IPv4 IP. Link the IPv6 to the IPv4. Check both DNS and Apache.
+LANG_LINK_OPTIONS_EXPLANATION=Adding a linked IP to the current IP will add the linked IP to the areas where current IP exists.<br>Linking an IP with dns will duplicate the A/AAAA records for the current IP with the linked IP.<br>Linking an IP with apache will add the linked IP into the VirtualHost with the current IP.
+LANG_MULTI_IP_RELATION=This feature is independant of the Multi-IP system, but they can be used together.<br>For example a User can have 2 IPs with the Multi-IP system, and each of those IPs can have linked IPs.
+LANG_LINK_NOT_RECURSIVE=Links are not recursive, so you don't need to worry about infinite loops.
+LANG_APPLY_TO_DOMAINS=The "Apply to existing Domains" option will trigger the httpd.conf rewrites and insert A/AAAA records into the local dns zones.<br>Disabling this checkbox won't touch the dns or httpd.conf files, but future httpd.cont rewrites will have the linked IP added.
