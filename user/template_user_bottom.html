@@ -138,7 +138,9 @@ include |ROOT|."inc/functions.php";
 					<li>FTP: <?php echo getPortStatus('|HOSTNAME|','21'); ?></li>
 					<li>PHP: <span class="label pull-right label-info"><?php echo PHP_VERSION; ?></span></li>
 					<li>Zend: <span class="label pull-right label-info"><?php echo zend_version(); ?></span></li>
+					<?php if !ionCube_Loader_version() {?>
 					<li>ionCube: <span class="label pull-right label-info"><?php echo ionCube_Loader_version(); ?></span></li>
+					<?php}?>
 					<li>upTime: <span class="label pull-right label-info"><?php echo $sysInfo['uptime']; ?></span></li>
 DONE|
 				</ul>
