@@ -17,20 +17,6 @@ function doSearch(type) {
 }
 </script>
 
-<div class="search">
-	<form action="/CMD_USER_SHOW" method="GET" name="searchform" onSubmit="doSearch('default');">
-		<input type="hidden" name="comparison1" value="contains">
-		<input type="hidden" name="comparison7" value="contains">
-		<input type="hidden" name="value1" value="">
-		<input type="hidden" name="value7" value="">
-		<p class="search">
-			<input type="text" name="value" size="14" onClick="this.select()" placeholder="|LANG_CONTAINS|">
-		</p>
-		<button class="btn btn-blue" type="button" onClick="doSearch('domain')"><i class="fa fa-globe"></i> |LANG_DOMAIN|</button>
-		<button class="btn btn-dark-blue" type="button" onClick="doSearch('user')"><i class="fa fa-user"></i> |LANG_USER|</button>
-	</form>
-</div>
-
 <script language="javascript">
 if (document.searchform) {
 	with (document.searchform) {
@@ -44,6 +30,25 @@ function showUserMessage() {
 </script>
 
 <div class="pure-g">
+	<div class="pure-u-1-2">
+	</div>
+	<div class="pure-u-1-2">
+
+		<div class="search">
+			<form action="/CMD_USER_SHOW" method="GET" name="searchform" onSubmit="doSearch('default');">
+				<input type="hidden" name="comparison1" value="contains">
+				<input type="hidden" name="comparison7" value="contains">
+				<input type="hidden" name="value1" value="">
+				<input type="hidden" name="value7" value="">
+				<p class="search">
+					<input type="text" name="value" size="14" onClick="this.select()" placeholder="|LANG_CONTAINS|">
+				</p>
+				<button class="btn btn-blue" type="button" onClick="doSearch('domain')"><i class="fa fa-globe"></i> |LANG_DOMAIN|</button>
+				<button class="btn btn-dark-blue" type="button" onClick="doSearch('user')"><i class="fa fa-user"></i> |LANG_USER|</button>
+			</form>
+		</div>
+		
+	</div>
       	<div class="pure-u-1-1 listbox">
 				<h3>|LANG_BASIC_SETTINGS|</h3>
 				<ul>
