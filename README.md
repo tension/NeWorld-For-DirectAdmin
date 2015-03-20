@@ -25,6 +25,7 @@ exit #退出
 
 ##### 安装完成 登陆后台 选择皮肤管理 选择主题应用所有用户
 
+
 #### 登陆界面安装 ####
 
 https://github.com/tension/NewWorld-For-DirectAdmin-Login-Page
@@ -44,20 +45,13 @@ https://github.com/tension/NewWorld-For-DirectAdmin-Login-Page
 网址改为您的网址
 
 
+
 ```html
 custom.html
 ```
-用户界面联系我们信息
 
-```html
-notice.html
-```
-为用户界面新闻调用,如不需要可直接删除内容即可.
+用户界面联系我们信息 内容在 inc/config.html 设置
 
-```html
-images/logo.png
-```
-为左上角 LOGO, 尺寸 390x62
 
 ## 使用开源框架 ##
 
