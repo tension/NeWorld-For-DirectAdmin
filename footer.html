@@ -1,15 +1,80 @@
-<footer>
-	<div class="wrapper-full">
-		<p>
-			Copyright &copy; 2014 <a target="_blank" href="http://www.DirectAdmin.com">DirectAdmin</a>
-			Designed by <a target="_blank" href="http://tension.name">tension</a>
-		</p>
+<div class="bread">
+	<div class="container">
+		<div class="ui breadcrumb">
+			<a class="section">Home</a>
+			<div class="section">|TREE|</div>
+		</div>
+	</div>
+</div>
+<footer class="ui inverted black footer vertical segment">
+	<div class="container">
+		<div class="ui stackable inverted divided relaxed grid">
+	    	<div class="eight wide column">
+		        <h3 class="ui inverted header">NewWorld</h3>
+		        <p>该主题由 <a target="_blank" href="http://tension.name">tension</a> 制作并开发，我们期待更多的开源人士加盟 NewWorld 团队。</p>
+		        <a class="ui teal button alipay">现在捐赠</a>
+	    	</div>
+	    	<div class="four wide column">
+		        <h5 class="ui teal inverted header">贡献</h5>
+		        <div class="ui inverted link list">
+		          <a class="item" href="#" target="_blank">翻译中心</a>
+		          <a class="item" href="#" target="_blank">问题追踪</a>
+		          <a class="item" href="#" target="_blank">CLA</a>
+		          <a class="disabled item">创建主题</a>
+		        </div>
+	    	</div>
+	    	<div class="four wide column">
+		        <h5 class="ui teal inverted header">特别感谢</h5>
+		        <div class="ui inverted link list">
+		          <a class="item" href="https://github.com/zchjoe" target="_blank">zchjoe</a>
+		          <a class="item" href="http://zcw.me/" target="_blank">zcw</a>
+		          <a class="disabled item">某某某</a>
+		          <a class="disabled item">某某某</a>
+		    	</div>
+	    	</div>
+	    </div>
 	</div>
 </footer>
-|*if TABLE_HIGHLIGHTING="1"|
-	<script type="text/javascript">
-		make_tables_highlightable();
-	</script>
-|*endif|
+<div class="ui small modal" style="display: none;">
+    <i class="close icon"></i>
+    <div class="header">
+        捐赠我们
+    </div>
+    <div class="content">
+	    <div class="ui small image">
+		    <img src="https://mobilecodec.alipay.com/show.htm?code=ap4b82jm0feebqul02&picSize=S" style="width: 100%;" alt="" />
+	    </div>
+        <div class="description">
+            <div class="ui header">我们成功离不开您的支持。</div>
+            <p>如果您对我们的项目有兴趣，可以捐赠我们一些您认为合适的资金，以便我们做的更好。点击按钮跳转至支付宝，捐赠我们团队。</p>
+        </div>
+    </div>
+	<form action="https://shenghuo.alipay.com/send/payment/fill.htm" method="POST" target="_blank" accept-charset="GBK">
+	<input name="optEmail" type="hidden" value="tension@me.com" />
+	<input name="payAmount" type="hidden" value="" />
+	<input name="title" type="hidden" value="Donate NewWorld" />
+    <div class="actions">
+        <div class="ui black button">
+            不了
+        </div>
+        <button class="ui positive right labeled icon button" type="submit">
+	        我要捐赠
+			<i class="checkmark icon"></i>
+		</button>
+    </div>
+    </form>
+</div>
+<div class="ui black big launch left attached fixed button">
+    <i class="content icon"></i>
+    <span class="text">Menu</span>
+</div>
+<script language="JavaScript">
+//timer for auto-logout
+	function log_me_out() {
+		location.href = '/CMD_LOGOUT';
+	}
+	var logout_timeout = setTimeout('log_me_out();', |SESSION_MINUTES|*60*1000);
+// done with preload code -->
+</script>
 </body>
 </html>

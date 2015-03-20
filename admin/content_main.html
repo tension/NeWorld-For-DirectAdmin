@@ -1,12 +1,20 @@
 |LF_STANDARD|
+
+|*if AJAX="1"|
+	<script type="text/javascript" src="JS_CREATION_CHECK"></script>
+|*endif|
 <script language="Javascript">
 <!--
-function trimit(strobj) {
+
+function trimit(strobj)
+{
 	var str = strobj.value
-	while (str.substring(0,1) == ' ') {
+	while (str.substring(0,1) == ' ')
+	{
 		str = str.substring(1, str.length);
 	}
-	while (str.substring(str.length-1, str.length) == ' ') {
+	while (str.substring(str.length-1, str.length) == ' ')
+	{
 		str = str.substring(0,str.length-1);
 	}
 
@@ -15,15 +23,20 @@ function trimit(strobj) {
 	return true;
 }
 
-function doSearch(type) {
+function doSearch(type)
+{
 	if (document.searchform)
-		with (document.searchform) {
+		with (document.searchform)
+		{
 			trimit(value);
 
-			if (type == 'user') {
+			if (type == 'user')
+			{
 				value1.value=value.value
 				value8.value='';
-			} else {
+			}
+			else
+			{
 				value8.value=value.value.toLowerCase();
 				value1.value='';
 			}
@@ -31,8 +44,27 @@ function doSearch(type) {
 			submit();
 		}
 }
+
 // -->
 </script>
+
+<div class="ui grid">
+	
+	<div class="sixteen wide column">
+		<div class="ui input search">
+			<form action="/CMD_ALL_USER_SHOW" method="GET" name="searchform" onSubmit="doSearch('default');">
+				<input type="hidden" name="comparison1" value="contains">
+				<input type="hidden" name="comparison8" value="contains">
+				<input type="hidden" name="sort1" value="1">
+				<input type="hidden" name="value1" value="">
+				<input type="hidden" name="value8" value="">
+				<input type="text" name="value" onClick="this.select()" placeholder="|LANG_CONTAINS|">
+				<div class="ui blue button" onClick="doSearch('user')"><i class="icon user"></i> |LANG_USER|</div>
+				<div class="ui green button" onClick="doSearch('domain')"><i class="icon globe"></i> |LANG_DOMAIN|</div>
+			</form>
+		</div>
+	</div>
+
 <script language="javascript">
 if (document.searchform) {
 	with (document.searchform) {
@@ -41,83 +73,277 @@ if (document.searchform) {
 	}
 }
 </script>
-
-<div class="pure-g">
-	<div class="pure-u-1-2">
-	</div>
-	<div class="pure-u-1-2">
-
-		<div class="search">
-			<form action="/CMD_ALL_USER_SHOW" method="GET" name="searchform" onSubmit="doSearch('default');">
-				<input type="hidden" name="comparison1" value="contains">
-				<input type="hidden" name="comparison8" value="contains">
-				<input type="hidden" name="sort1" value="1">
-				<input type="hidden" name="value1" value="">
-				<input type="hidden" name="value8" value="">
-				<p class="search">
-					<input type="text" name="value" size="14" onClick="this.select()" placeholder="|LANG_CONTAINS|">
-				</p>
-				<button class="btn btn-blue" type="button" onClick="doSearch('domain')"><i class="fa fa-globe"></i> |LANG_DOMAIN|</button>
-				<button class="btn btn-dark-blue" type="button" onClick="doSearch('user')"><i class="fa fa-user"></i> |LANG_USER|</button>
-			</form>
+	
+	    <div class="sixteen wide column listbox">
+			<h3><i class="user icon"></i> |LANG_ACCOUNTMAG|</h3>
+			<ul class="ui horizontal selection list">
+				<li class="item">
+					<a href="/CMD_ALL_USER_SHOW">
+						<img class="ui image" src="IMG_SKIN_ADMIN_004" alt="" />
+						<div class="content">
+							<div class="header">|LANG_SHOW_ALL_USERS|</div>
+        				</div>
+        			</a>
+        		</li>
+				<li class="item">
+					<a href="/CMD_USER_SHOW">
+						<img class="ui image" src="IMG_SKIN_ADMIN_006" alt="" />
+						<div class="content">
+							<div class="header">|LANG_ADM_USERS|</div>
+        				</div>
+        			</a>
+        		</li>
+				<li class="item">
+					<a href="/CMD_RESELLER_SHOW">
+						<img class="ui image" src="IMG_SKIN_ADMIN_005" alt="" />
+						<div class="content">
+							<div class="header">|LANG_LIST_RESELLERS|</div>
+        				</div>
+        			</a>
+        		</li>
+				<li class="item">
+					<a href="/HTM_ACCOUNT_USER_CREATE">
+						<img class="ui image" src="IMG_SKIN_ADMIN_001" alt="" />
+						<div class="content">
+							<div class="header">|LANG_ADD_USER|</div>
+        				</div>
+        			</a>
+        		</li>
+				<li class="item">
+					<a href="/HTM_ACCOUNT_ADMIN_CREATE">
+						<img class="ui image" src="IMG_SKIN_ADMIN_003" alt="" />
+						<div class="content">
+							<div class="header">|LANG_CREATE_ADMIN|</div>
+        				</div>
+        			</a>
+        		</li>
+				<li class="item">
+					<a href="/HTM_ACCOUNT_RESELLER_CREATE">
+						<img class="ui image" src="IMG_SKIN_ADMIN_002" alt="" />
+						<div class="content">
+							<div class="header">|LANG_CREATE_RESELLER|</div>
+        				</div>
+        			</a>
+        		</li>
+				<li class="item">
+					<a href="/CMD_MANAGE_RESELLER_PACKAGES">
+						<img class="ui image" src="IMG_SKIN_ADMIN_009" alt="" />
+						<div class="content">
+							<div class="header">|LANG_RESELLER_PACKAGES|</div>
+        				</div>
+        			</a>
+        		</li>
+				<li class="item">
+					<a href="/CMD_ADMIN_SHOW">
+						<img class="ui image" src="IMG_SKIN_ADMIN_008" alt="" />
+						<div class="content">
+							<div class="header">|LANG_LIST_ADMINS|</div>
+        				</div>
+        			</a>
+        		</li>
+				<li class="item">
+					<a href="/HTM_USER_PASSWD">
+						<img class="ui image" src="IMG_SKIN_ADMIN_007" alt="" />
+						<div class="content">
+							<div class="header">|LANG_CHANGE_PASS|</div>
+        				</div>
+        			</a>
+        		</li>
+			</ul>
 		</div>
-		
-	</div>
-		
-      <div class="pure-u-1-2 listbox">
-		<h3>|LANG_ACCOUNTMAG|</h3>
-		<ul>
-			<li><a href="/CMD_ALL_USER_SHOW"><img src="IMG_SKIN_ADMIN_004" alt="" />|LANG_SHOW_ALL_USERS|</a></li>
-			<li><a href="/CMD_USER_SHOW"><img src="IMG_SKIN_ADMIN_006" alt="" />|LANG_ADM_USERS|</a></li>
-			<li><a href="/CMD_RESELLER_SHOW"><img src="IMG_SKIN_ADMIN_005" alt="" />|LANG_LIST_RESELLERS|</a></li>
-			<li><a href="/HTM_ACCOUNT_USER_CREATE"><img src="IMG_SKIN_ADMIN_001" alt="" />|LANG_ADD_USER|</a></li>
-			<li><a href="/HTM_ACCOUNT_ADMIN_CREATE"><img src="IMG_SKIN_ADMIN_003" alt="" />|LANG_CREATE_ADMIN|</a></li>
-			<li><a href="/HTM_ACCOUNT_RESELLER_CREATE"><img src="IMG_SKIN_ADMIN_002" alt="" />|LANG_CREATE_RESELLER|</a></li>
-			<li><a href="/CMD_MANAGE_RESELLER_PACKAGES"><img src="IMG_SKIN_ADMIN_009" alt="" />|LANG_RESELLER_PACKAGES|</a></li>
-			<li><a href="/CMD_ADMIN_SHOW"><img src="IMG_SKIN_ADMIN_008" alt="" />|LANG_LIST_ADMINS|</a></li>
-			<li><a href="/HTM_USER_PASSWD"><img src="IMG_SKIN_ADMIN_007" alt="" />|LANG_CHANGE_PASS|</a></li>
-		</ul>
-	</div>
-			
-      <div class="pure-u-1-2 listbox">
-		<h3>|LANG_MAG_TOOLS|</h3>
-		<ul>
-			<li><a href="/CMD_ADMIN_BACKUP"><img src="IMG_SKIN_ADMIN_010" alt="" />|LANG_ADMIN_BACKUPS|</a></li>
-			<li><a href="/CMD_SYSTEM_BACKUP"><img src="IMG_SKIN_ADMIN_011" alt="" />|LANG_SYS_BACKUP|</a></li>
-			<li><a href="/CMD_MOVE_USERS"><img src="IMG_SKIN_ADMIN_012" alt="" />|LANG_MOVE_USERS|</a></li>
-			<li><a href="/CMD_ADMIN_FILE_EDITOR"><img src="IMG_SKIN_ADMIN_013" alt="" />|LANG_FILE_EDITOR|</a></li>
-			<li><a href="/CMD_DNS_ADMIN"><img src="IMG_SKIN_ADMIN_014" alt="" />|LANG_DNS_ADMIN|</a></li>
-			<li><a href="/CMD_TICKET_MANAGE"><img src="IMG_SKIN_ADMIN_015" alt="" />|LANG_MANAGE_TICKETS|</a></li>
-			<li><a href="/CMD_ADMIN_SETTINGS"><img src="IMG_SKIN_ADMIN_016" alt="" />|LANG_ADMIN_SETTINGS|</a></li>
-			<li><a href="/CMD_LICENSE"><img src="IMG_SKIN_ADMIN_017" alt="" />|LANG_LICENSE_UPDATES|</a></li>
-			<li><a href="/CMD_ADMIN_CRON_JOBS"><img src="IMG_SKIN_ADMIN_018" alt="" />|LANG_ADMIN_CRON_JOBS|</a></li>
-		</ul>
-	</div>
-			
-      <div class="pure-u-1-2 listbox">
-		<h3>|LANG_EXTENSIONS|</h3>
-		<ul>
-			<li><a href="/CMD_SYSTEM_INFO"><img src="IMG_SKIN_ADMIN_019" alt="" />|LANG_SYSTEM_INFO|</a></li>
-			<li><a href="/CMD_SHOW_SERVICES"><img src="IMG_SKIN_ADMIN_020" alt="" />|LANG_SERVICE_MONITOR|</a></li>
-			<li><a href="/CMD_LOG_VIEWER"><img src="IMG_SKIN_ADMIN_021" alt="" />|LANG_LOG_VIEWER|</a></li>
-			<li><a href="/CMD_IP_MANAGER"><img src="IMG_SKIN_ADMIN_022" alt="" />|LANG_IP_MANAGEMENT|</a></li>
-			<li><a href="/CMD_MAIL_QUEUE?sort1=2"><img src="IMG_SKIN_ADMIN_023" alt="" />|LANG_MAIL_Q_ADMIN|</a></li>
-			<li><a href="/CMD_MULTI_SERVER"><img src="IMG_SKIN_ADMIN_024" alt="" />|LANG_MULTI_SERVER|</a></li>
-			<li><a href="/CMD_ADMIN_STATS"><img src="IMG_SKIN_ADMIN_025" alt="" />|LANG_COMPLETE_USAGE_STATS|</a></li>
-			|?PMSORT=-9||*if OS_TYPE="FreeBSD"||?PMSORT=-10||*endif|
-			<li><a href="/CMD_PROCESS_MONITOR?sort1=|PMSORT|"><img src="IMG_SKIN_ADMIN_026" alt="" />|LANG_PROCESS_MONITOR|</a></li>
-		</ul>
-	</div>
-			
-      <div class="pure-u-1-2 listbox">
-		<h3>|LANG_SERVER_MAG|</h3>
-		<ul>
-			<li><a href="/CMD_PLUGIN_MANAGER"><img src="IMG_SKIN_ADMIN_027" alt="" />|LANG_PLUGIN_MANAGER|</a></li>
-			<li><a href="/CMD_SKINS"><img src="IMG_SKIN_ADMIN_028" alt="" />|LANG_SKIN_MANAGER|</a></li>
-			<li><a href="/CMD_CUSTOM_HTTPD"><img src="IMG_SKIN_ADMIN_029" alt="" />|LANG_CUSTOM_HTTPD|</a></li>
-			<li><a href="/CMD_PHP_SAFE_MODE"><img src="IMG_SKIN_ADMIN_030" alt="" />|LANG_PHP_SAFEMODE|</a></li>
-			<li><a href="/CMD_BRUTE_FORCE_MONITOR?sort1=-1"><img src="IMG_SKIN_ADMIN_031" alt="" />|LANG_BRUTE_FORCE_MONITOR|</a></li>
-			<li class="hidden"><a href="/HTM_ALL_DOMAINS"><img src="IMG_SKIN_ADMIN_032" alt="" />|LANG_SHOW_ALL_DOMAINS|</a></li>
+				
+	    <div class="sixteen wide column listbox">
+			<h3><i class="settings icon"></i> |LANG_MAG_TOOLS|</h3>
+			<ul class="ui horizontal selection list">
+				<li class="item">
+					<a href="/CMD_ADMIN_BACKUP">
+						<img class="ui image" src="IMG_SKIN_ADMIN_010" alt="" />
+						<div class="content">
+							<div class="header">|LANG_ADMIN_BACKUPS|</div>
+        				</div>
+        			</a>
+        		</li>
+				<li class="item">
+					<a href="/CMD_SYSTEM_BACKUP">
+						<img class="ui image" src="IMG_SKIN_ADMIN_011" alt="" />
+						<div class="content">
+							<div class="header">|LANG_SYS_BACKUP|</div>
+        				</div>
+        			</a>
+        		</li>
+				<li class="item">
+					<a href="/CMD_MOVE_USERS">
+						<img class="ui image" src="IMG_SKIN_ADMIN_012" alt="" />
+						<div class="content">
+							<div class="header">|LANG_MOVE_USERS|</div>
+        				</div>
+        			</a>
+        		</li>
+				<li class="item">
+					<a href="/CMD_ADMIN_FILE_EDITOR">
+						<img class="ui image" src="IMG_SKIN_ADMIN_013" alt="" />
+						<div class="content">
+							<div class="header">|LANG_FILE_EDITOR|</div>
+        				</div>
+        			</a>
+        		</li>
+				<li class="item">
+					<a href="/CMD_DNS_ADMIN">
+						<img class="ui image" src="IMG_SKIN_ADMIN_014" alt="" />
+						<div class="content">
+							<div class="header">|LANG_DNS_ADMIN|</div>
+        				</div>
+        			</a>
+        		</li>
+				<li class="item">
+					<a href="/CMD_TICKET_MANAGE">
+						<img class="ui image" src="IMG_SKIN_ADMIN_015" alt="" />
+						<div class="content">
+							<div class="header">|LANG_MANAGE_TICKETS||*if NEWTICKETS!="0"|<span class=count_notice>|NEWTICKETS|</span>|*endif|</div>
+        				</div>
+        			</a>
+        		</li>
+				<li class="item">
+					<a href="/CMD_ADMIN_SETTINGS">
+						<img class="ui image" src="IMG_SKIN_ADMIN_016" alt="" />
+						<div class="content">
+							<div class="header">|LANG_ADMIN_SETTINGS|</div>
+        				</div>
+        			</a>
+        		</li>
+				<li class="item">
+					<a href="/CMD_LICENSE">
+						<img class="ui image" src="IMG_SKIN_ADMIN_017" alt="" />
+						<div class="content">
+							<div class="header">|LANG_LICENSE_UPDATES|</div>
+        				</div>
+        			</a>
+        		</li>
+				<li class="item">
+					<a href="/CMD_ADMIN_CRON_JOBS">
+						<img class="ui image" src="IMG_SKIN_ADMIN_018" alt="" />
+						<div class="content">
+							<div class="header">|LANG_ADMIN_CRON_JOBS|</div>
+        				</div>
+        			</a>
+        		</li>
+			</ul>
+		</div>
+				
+	    <div class="sixteen wide column listbox">
+			<h3><i class="cubes icon"></i> |LANG_EXTENSIONS|</h3>
+			<ul class="ui horizontal selection list">
+				<li class="item">
+					<a href="/CMD_SYSTEM_INFO">
+						<img class="ui image" src="IMG_SKIN_ADMIN_019" alt="" />
+						<div class="content">
+							<div class="header">|LANG_SYSTEM_INFO|</div>
+        				</div>
+        			</a>
+        		</li>
+				<li class="item">
+					<a href="/CMD_SHOW_SERVICES">
+						<img class="ui image" src="IMG_SKIN_ADMIN_020" alt="" />
+						<div class="content">
+							<div class="header">|LANG_SERVICE_MONITOR|</div>
+        				</div>
+        			</a>
+        		</li>
+				<li class="item">
+					<a href="/CMD_LOG_VIEWER">
+						<img class="ui image" src="IMG_SKIN_ADMIN_021" alt="" />
+						<div class="content">
+							<div class="header">|LANG_LOG_VIEWER|</div>
+        				</div>
+        			</a>
+        		</li>
+				<li class="item">
+					<a href="/CMD_IP_MANAGER">
+						<img class="ui image" src="IMG_SKIN_ADMIN_022" alt="" />
+						<div class="content">
+							<div class="header">|LANG_IP_MANAGEMENT|</div>
+        				</div>
+        			</a>
+        		</li>
+				<li class="item">
+					<a href="/CMD_MAIL_QUEUE?sort1=2">
+						<img class="ui image" src="IMG_SKIN_ADMIN_023" alt="" />
+						<div class="content">
+							<div class="header">|LANG_MAIL_Q_ADMIN|</div>
+        				</div>
+        			</a>
+        		</li>
+				<li class="item">
+					<a href="/CMD_MULTI_SERVER">
+						<img class="ui image" src="IMG_SKIN_ADMIN_024" alt="" />
+						<div class="content">
+							<div class="header">|LANG_MULTI_SERVER|</div>
+        				</div>
+        			</a>
+        		</li>
+				<li class="item">
+					<a href="/CMD_ADMIN_STATS">
+						<img class="ui image" src="IMG_SKIN_ADMIN_025" alt="" />
+						<div class="content">
+							<div class="header">|LANG_COMPLETE_USAGE_STATS|</div>
+        				</div>
+        			</a>
+        		</li>
+|?PMSORT=-9||*if OS_TYPE="FreeBSD"||?PMSORT=-10||*endif|
+				<li class="item">
+					<a href="/CMD_PROCESS_MONITOR?sort1=|PMSORT|">
+						<img class="ui image" src="IMG_SKIN_ADMIN_026" alt="" />
+						<div class="content">
+							<div class="header">|LANG_PROCESS_MONITOR|</div>
+        				</div>
+        			</a>
+        		</li>
+			</ul>
+		</div>
+				
+	    <div class="sixteen wide column listbox">
+			<h3><i class="tasks icon"></i> |LANG_SERVER_MAG|</h3>
+			<ul class="ui horizontal selection list">
+				<li class="item">
+					<a href="/CMD_PLUGIN_MANAGER">
+						<img class="ui image" src="IMG_SKIN_ADMIN_027" alt="" />
+						<div class="content">
+							<div class="header">|LANG_PLUGIN_MANAGER|</div>
+        				</div>
+        			</a>
+        		</li>
+				<li class="item">
+					<a href="/CMD_SKINS">
+						<img class="ui image" src="IMG_SKIN_ADMIN_028" alt="" />
+						<div class="content">
+							<div class="header">|LANG_SKIN_MANAGER|</div>
+        				</div>
+        			</a>
+        		</li>
+				<li class="item">
+					<a href="/CMD_CUSTOM_HTTPD">
+						<img class="ui image" src="IMG_SKIN_ADMIN_029" alt="" />
+						<div class="content">
+							<div class="header">|LANG_CUSTOM_HTTPD|</div>
+        				</div>
+        			</a>
+        		</li>
+				<li class="item">
+					<a href="/CMD_PHP_SAFE_MODE">
+						<img class="ui image" src="IMG_SKIN_ADMIN_030" alt="" />
+						<div class="content">
+							<div class="header">|LANG_PHP_SAFEMODE|</div>
+        				</div>
+        			</a>
+        		</li>
+				<li class="item">
+					<a href="/CMD_BRUTE_FORCE_MONITOR?sort1=-1">
+						<img class="ui image" src="IMG_SKIN_ADMIN_031" alt="" />
+						<div class="content">
+							<div class="header">|LANG_BRUTE_FORCE_MONITOR|</div>
+        				</div>
+        			</a>
+        		</li>
 |$|PHP|
 <?php
 $data = <<<END
@@ -125,7 +351,7 @@ $data = <<<END
 END;
 if (strlen($data) > 1) {
 echo <<<END
-<li>|PLUGIN_0_ADMIN_TXT|</li>
+<li class="item">|PLUGIN_0_ADMIN_TXT|</li>
 |PLUGIN_2_ADMIN_TXT|
 |PLUGIN_4_ADMIN_TXT|
 END;
@@ -136,16 +362,25 @@ $data = <<<END
 END;
 if (strlen($data) > 1) {
 echo <<<END
-<li>|PLUGIN_1_ADMIN_TXT|</li>
+<li class="item">|PLUGIN_1_ADMIN_TXT|</li>
 |PLUGIN_3_ADMIN_TXT|
 |PLUGIN_5_ADMIN_TXT|
 END;
 }
 ?>
 DONE|
-		</ul>
-	</div>
+			</ul>
+		</div>
 </div>
+|*if AJAX="1"|
+	<script type="text/javascript">
+		set_admin_level_updates();
+	</script>
+|*endif|
+
+
+
+
 
 
 

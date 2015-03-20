@@ -19,8 +19,7 @@
 
 var timer_on=false;
 
-function do_reload(remaining)
-{
+function do_reload(remaining) {
 	timer_on=false;
 
 	document.reloadform.remaining.value="reloading ...";
@@ -35,16 +34,13 @@ function do_reload(remaining)
 |*else|
 		window.location.href=command[0] + '?|OLDURL|&timer=' + remaining + "&scrollpos=" + document.body.scrollTop;
 |*endif|
-	}
-	else
-	{
+	} else {
 		//called by refresh button, timer shut off
 		window.location.href=command[0] + '?|OLDURL|';
 	}
 }
 
-function print_option(val, selected)
-{
+function print_option(val, selected) {
 	var select_text="";
 
 |*if timer>"0"|
@@ -59,14 +55,11 @@ function print_option(val, selected)
 	document.write('<option value="' + val + '" ' + select_text + '>' + val + '</option>\n');
 }
 
-function tick_down()
-{
+function tick_down() {
 	if (!timer_on) return;
 
-	with (document.reloadform)
-	{
-		if (remaining.value <= 0)
-		{
+	with (document.reloadform) {
+		if (remaining.value <= 0) {
 			do_reload(delay.value);
 			return;
 		}
@@ -78,13 +71,11 @@ function tick_down()
 
 }
 
-function stop_timer()
-{
+function stop_timer() {
 	timer_on=false;
 }
 
-function start_timer(autoloaded)
-{
+function start_timer(autoloaded) {
 	//its already on, ignore.
 	//else we end up counting faster for each click.
 	if (timer_on)
@@ -102,12 +93,9 @@ function start_timer(autoloaded)
 	}
 
 |*if scrollpos>="0"|
-	if (!autoloaded)
-	{
+	if (!autoloaded) {
 		document.body.scrollTop = 297;
-	}
-	else
-	{
+	} else {
 		document.body.scrollTop = |scrollpos|;
 	}
 |*else|
@@ -119,7 +107,7 @@ function start_timer(autoloaded)
 <table class=list cellpadding=3 cellspacing=1>
 <form name="reloadform" action="/CMD_PROCESS_MONITOR" method=POST>
 <tr><td class=listtitle colspan=4>|LANG_PROCESS_MONITOR|</td></tr>
-<tr><td class=list align=right>Ë¢ÐÂÊ±¼ä (Ãë)</td><td class=list>
+<tr><td class=list align=right>Reload Delay (Seconds)</td><td class=list>
 <select class=selectclass name="delay">
 <option value=0>--</option>
 <script type="text/javascript">
@@ -135,14 +123,14 @@ print_option("60", 0);
 </script>
 </select>
 </td>
-<td class="list2" align="center"><input type="button" value="|LANG_START|" onClick="start_timer(0)";> <input type="button" value="|LANG_STOP|" onClick="stop_timer()"></td>
-<td class="list2" align="center"><input type="text" name="remaining" value="0" readonly size="12"></td></tr>
-<tr><td class="listtitle" colspan="4" align="right"><input type="button" value="|LANG_REFRESH|" onClick='do_reload(0);'</td></tr>
+<td class=list2 align=center><input type=button value="|LANG_START|" onClick="start_timer(0)";> <input type=button value="|LANG_STOP|" onClick="stop_timer()"></td>
+<td class=list2 align=center><input type=text name="remaining" value="0" readonly size=12></td></tr>
+<tr><td class=listtitle colspan=4 align=right><input type=button value="|LANG_REFRESH|" onClick='do_reload(0);'</td></tr>
 </form>
 </table>
 <br>
 
-<div class="config">|BOXINFO|</div>
+<div class="terminal">|BOXINFO|</div>
 
 |PROCESSES|
 

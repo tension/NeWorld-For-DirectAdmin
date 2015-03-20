@@ -1,9 +1,9 @@
 |LF_STANDARD|
 |LF_DNS|
 |*if ptr|
-|?TREE=&raquo; <a class=tree href="/CMD_SHOW_DOMAIN?domain=`domain`">`domain`</a> &raquo; <a class=tree href="/CMD_DOMAIN_POINTER?domain=`domain`">`LANG_PTR`</a> &raquo;<a class=tree href="/CMD_DNS_CONTROL?domain=`domain`&ptr=`DOMAIN`">`LANG_DNS_SETTINGS` (`DOMAIN`)</a>|
+|?TREE=&raquo; <a class=tree href="/CMD_SHOW_DOMAIN?domain=`domain`">`domain`</a> &raquo; <a class=tree href="/CMD_DOMAIN_POINTER?domain=`domain`">`LANG_PTR`</a> &raquo;<a class=tree href="/CMD_DNS_CONTROL?domain=`domain`&ptr=`ptr`">`LANG_DNS_SETTINGS` (`ptr`)</a>|
 |*else|
-|?TREE=&raquo; <a class=tree href="/CMD_SHOW_DOMAIN?domain=`DOMAIN`">`DOMAIN`</a> &raquo; <a class=tree href="/CMD_DNS_CONTROL?domain=`DOMAIN`">`LANG_DNS_SETTINGS`</a>|
+|?TREE=&raquo; `ALL_DOMAINS_SELECT` &raquo; <a class=tree href="/CMD_DNS_CONTROL?domain=`DOMAIN`">`LANG_DNS_SETTINGS`</a>|
 |*endif|
 
 |?HELP_SECTION=`USER_HELPER`/dns.html|
@@ -33,6 +33,10 @@ function selectAllDNS()
 // -->
 </script>
 
+|*if LOGIN_AS_DNSCONTROL="ON"|
+<span class="warning">|LANG_LOGIN_AS_DNS_CONTROL|</span>
+|*endif|
+
 <table class='list table-highlight' cellpadding=3 cellspacing=1>
 <form name=tableform action='/CMD_DNS_CONTROL' method='POST'>
 <tr>
@@ -49,6 +53,13 @@ function selectAllDNS()
 |?DOMAINFIELD=`domain`|
 |*if ptr_val!=""|
 |?DOMAINFIELD=`ptr_val`|
+|*endif|
+
+|?FULL_MX_NAME=|
+|?FULL_MX_VALUE=|
+|*if HAVE_FULL_MX_RECORDS="1"|
+|?FULL_MX_NAME=`DOMAINFIELD`.|
+|?FULL_MX_VALUE=<input type=text name=mx_value size=18>|
 |*endif|
 
 |*if USERDNSCONTROL="ON"|
@@ -81,7 +92,7 @@ function selectAllDNS()
 	<input type=hidden name=domain value="|domain|">
 	<input type=hidden name=ptr_val value="|ptr_val|">
 	<input type=hidden name=type value="MX">
-	<tr><td class=list2><input type=text name=name |DNS_DISABLED|></td><td class=list2 align=center>MX</td><td class=list2>
+	<tr><td class=list2><input type=text name=name value="|FULL_MX_NAME|" |DNS_DISABLED|></td><td class=list2 align=center>MX</td><td class=list2>
 	<select name=value |DNS_DISABLED|>
 		<option>0</option>
 		<option selected>10</option>
@@ -94,6 +105,7 @@ function selectAllDNS()
 		<option>80</option>
 		<option>90</option>
 	</select>
+	|FULL_MX_VALUE|
 	</td>
 	<td class=list2 align=center><input type=submit name=add value="|LANG_ADD|" |DNS_DISABLED|></td></tr>
 </form>
@@ -142,7 +154,29 @@ function selectAllDNS()
 	<tr><td class=list><input type=text name=name |DNS_DISABLED|></td><td class=list align=center>SRV</td><td class=list><input type=text name=value size=26 |DNS_DISABLED|></td>
 	<td class=list align=center><input type=submit name=add value="|LANG_ADD|" |DNS_DISABLED|></td></tr>
 </form>
+|*else|
+|?DNS_SPF="no"|
+|*endif|
 
+|*if DNS_SPF="yes"|
+<form action='/CMD_DNS_CONTROL' method='POST'>
+	<input type=hidden name=action value=add>
+	<input type=hidden name=domain value="|domain|">
+	<input type=hidden name=ptr_val value="|ptr_val|">
+	<input type=hidden name=type value="SPF">
+	<tr><td class=list2><input type=text name=name |DNS_DISABLED|></td><td class=list2 align=center>SPF</td><td class=list2><input type=text name=value size=26 |DNS_DISABLED|></td>
+	<td class=list2 align=center><input type=submit name=add value="|LANG_ADD|" |DNS_DISABLED|></td></tr>
+</form>
+|*endif|
+|*if DNS_DS="yes"|
+<form action='/CMD_DNS_CONTROL' method='POST'>
+	<input type=hidden name=action value=add>
+	<input type=hidden name=domain value="|domain|">
+	<input type=hidden name=ptr_val value="|ptr_val|">
+	<input type=hidden name=type value="DS">
+	<tr title="|LANG_DS_ONLY_FOR_DELEGATION|"><td class=list><input type=text name=name |DNS_DISABLED| placeholder="subdomain.|DOMAINFIELD|."></td><td class=list align=center>DS</td><td class=list><input type=text name=value size=26 |DNS_DISABLED|></td>
+	<td class=list align=center><input type=submit name=add value="|LANG_ADD|" |DNS_DISABLED|></td></tr>
+</form>
 |*endif|
 
 |*if ALLOW_TTL_OVERRIDE="yes"|
@@ -159,6 +193,8 @@ function selectAllDNS()
 |*endif|
 
 </table >
+
+|DNSSEC_TABLE|
 
 <br>
 |*if !ptr|

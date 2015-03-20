@@ -54,7 +54,24 @@
 
 |LOGINFAILURES|
 
-<br><br>
+<script language="Javascript">
+<!--
+function validate_seek()
+{
+	var val = document.getElementById('seek_value').value;
+	if (isNaN(val) || val > 0)
+	{
+		return false;
+	}
+	return true;
+}
+//-->
+</script>
+<form onsubmit="return validate_seek();">
+<input type=hidden name="sort1" value="-1">
+|LANG_BLE_IS| |BRUTE_LOG_SIZE|. &nbsp;&nbsp;
+|LANG_ONLY_READ| <input size=6 type=text placeholder="|LANG_ZERO_OR_NEG|" title="|LANG_ZERO_OR_NEG|" id="seek_value" name="seek_value" value="|*if seek_value||seek_value||*else|0|*endif|" onchange="if (!validate_seek()) { this.value=0; } else { location.href='CMD_BRUTE_FORCE_MONITOR?sort1=-1&seek_value='+this.value; }"> |LANG_BYTES_FROM_THE_END|</form>
+<br>
 <hr width=50%>
 
 <br>
@@ -100,6 +117,13 @@ sizeTheDiv();
 // -->
 </script>
 |*endif|
+<br>
+<hr width=50%>
+<br>
+|CLEAR_MESSAGES_TABLE|
+<br>
+<hr width=50%>
+
 
 
 <br>

@@ -11,7 +11,8 @@
 <script language="Javascript">
 <!--
 
-function trimit(strobj) {
+function trimit(strobj)
+{
 	var str = strobj.value
 	while (str.substring(0,1) == ' ')
 	{
@@ -29,37 +30,34 @@ function trimit(strobj) {
 
 // -->
 </script>
-<form action="" method="GET" name="searchform" onSubmit="trimit(value7);" style="margin: 10px 0;">
-	<div class="input-append">
-		<input type="text" size="12" class="inputclass" name="value7"
-		|*if value7|
-		value='|value7|'
-		|*endif|
-		>
-		<input type="hidden" name="comparison7" value="contains">
-		<input type="hidden" name="sort1" value="7">
-		<input type="hidden" name="sort1dir" value="1">
-		<input type="hidden" name="sort2dir" value="1">
-		<input type="hidden" name="ipp" value="50">
-		<button class="btn btn-default" type="submit">|LANG_SEARCH|</button>
-		<button class="btn btn-default" type="button" onClick="document.searchform.value7.value=''; document.searchform.submit();">|LANG_CLEAR_SEARCH|</button>
-	</div>
+
+<table class=list cellpadding=3 cellspacing=1>
+<form action="" method="GET" name=searchform onSubmit="trimit(value7);">
+<tr><td class=listtitle>
+|LANG_SHOW_DOMAINS_THAT_CONTAIN| <input type=text size=12 class=inputclass name=value7
+|*if value7|
+value='|value7|'
+|*endif|
+>
+<input type=hidden name=comparison7 value="contains">
+<input type=hidden name=sort1 value="7">
+<input type=hidden name=sort1dir value="1">
+<input type=hidden name=sort2dir value="1">
+<input type=hidden name=ipp value="50">
+<input type=submit value="|LANG_SEARCH|">
+&nbsp;&nbsp;&nbsp;&nbsp;
+<input type=button value="|LANG_CLEAR_SEARCH|" onClick="document.searchform.value7.value=''; document.searchform.submit();">
+</td></tr>
 </form>
+</table>
 
 <script language="javascript">
 document.searchform.value7.focus();
 document.searchform.value7.select();
 </script>
-|$|PHP|
-<?php 
-include |ROOT|."inc/functions.php";
-$tabla = <<< EOF
-|TABLE|
-EOF;
 
-echo CMD_ALL_USER_SHOW($tabla);
-?>
-DONE|
+	|TABLE|
+
 |LANG_CLICK_USERNAME|
 |HTM_FOOTER_FULL|
 

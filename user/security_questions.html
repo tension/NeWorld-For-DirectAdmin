@@ -1,0 +1,49 @@
+|?TREE=&raquo; <a class=tree href="/CMD_SECURITY_QUESTIONS">`LANG_SECURITY_QUESTIONS`</a>|
+|HTM_HEADER_FULL|
+
+<b>|LANG_SECURITY_QUESTIONS|</b><br>
+
+|?SQ_BOLD_OPEN=|
+|?SQ_BOLD_CLOSE=|
+|*if SECURITY_QUESTIONS_CHECKED=""|
+<br><b>|LANG_FEATURE_OFF|</b><br>
+|LANG_ADD_A_SECURITY_QUESTION|
+|?SQ_BOLD_OPEN=<b>|
+|?SQ_BOLD_CLOSE=</b>|
+|*endif|
+
+|USER_QUESTIONS|
+
+<br><br>
+
+|SECURITY_QUESTIONS|
+
+<br><br>
+
+<table class='list table-highlight' cellpadding=3 cellspacing=1>
+<form name="tableform3" action='CMD_SECURITY_QUESTIONS' method='POST'>
+<input type='hidden' name="action" value="settings" />
+<input type='hidden' name="version" value="1" />
+<tr>
+	<td colspan=2 class=listtitle><b>|LANG_SECURITY_QUESTION_OPTIONS|</b></td >
+</tr>
+<tr>
+	<td class=list align=center><input type=checkbox name="security_questions" value="yes" |SECURITY_QUESTIONS_CHECKED| |SECURITY_QUESTIONS_DISABLED|></td>
+	<td class=list>|SQ_BOLD_OPEN||LANG_REQUIRE_VALID_ANSWER||SQ_BOLD_CLOSE|</td>
+</tr>
+<tr>
+	<td class=list2 align=center><input type=checkbox name="api_with_password" value="yes" |SECURITY_QUESTIONS_ON_API_CHECKED|></td>
+	<td class=list2>|LANG_ALLOW_AP_LOGIN|</td>
+</tr>
+<tr>
+	<td class=list align=center><input type=checkbox name="notify_on_all_question_failures" value="yes" |NOTIFY_ON_ALL_FAILURES_CHECKED|></td>
+	<td class=list>|LANG_NOTIFY_ME| |MAX_ATTEMPTS| |LANG_FAILED_ATTEMPTS|</td>
+</tr>
+<tr>
+	<td colspan=2 class=listtitle align=right><input type=submit name=save value="Save"></td >
+</tr>
+</table>
+
+<br>
+|LANG_SECURITY_QUESTION_NOTES|
+|HTM_FOOTER_FULL|

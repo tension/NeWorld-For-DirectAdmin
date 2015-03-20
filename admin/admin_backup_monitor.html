@@ -1,0 +1,177 @@
+|LF_STANDARD|
+|LF_BACKUPS|
+|LF_SITE_BACKUP|
+|?TREE=&raquo; <a class=tree href="/CMD_ADMIN_BACKUP">Admin Backup/Transfer</a> &raquo; Backup Monitor|
+|?HELP_SECTION=`ADMIN_HELPER`|
+|HTM_HEADER_FULL|
+
+<style>
+.step { white-space: nowrap; }
+</style>
+
+<script type="text/javascript">
+<!--
+
+var xhr = new XMLHttpRequest();
+var track_data_position=0;
+var lines_to_keep=200;
+var reconnects=0;
+var max_reconnects=20;
+
+function add_process_info(str) {
+	if (str == '') return;
+
+	//because we don't want the textarea to get overly full, keep shrinking it.
+	var dpl = document.getElementById('dynamic_process_location');
+	var dpl_len = dpl.innerHTML.length;
+
+	if (dpl_len < lines_to_keep*100)
+	{
+		dpl.innerHTML=str+'\n'+dpl.innerHTML;
+		return;
+	}
+
+
+	var end = dpl_len;
+	if (end > lines_to_keep*100)
+	{
+		end = (lines_to_keep)*100;
+	}
+
+	var newline_index = dpl.innerHTML.lastIndexOf('\n', end);
+
+	dpl.innerHTML=str+'\n'+dpl.innerHTML.substring(0, newline_index);
+
+	//var textarea = document.getElementById('dynamic_process_location');
+	//textarea.scrollTop = textarea.scrollHeight;
+}
+
+var progress_text='';
+function set_percent(str) {
+	document.getElementById('dynamic_progress').value=str;
+
+	if (progress_text=='')
+		progress_text = document.getElementById('dynamic_percent_text').innerHTML;
+
+	document.getElementById('dynamic_percent_text').innerHTML = progress_text + ' - ' + str + '%';
+}
+
+var comment_timeout_id=0;
+function clear_comments() {
+	document.getElementById('dynamic_comments').innerHTML = '&nbsp;';
+}
+
+function set_comments(str) {
+	document.getElementById('dynamic_comments').innerHTML = str;
+	clearTimeout(comment_timeout_id);
+	comment_timeout_id = setTimeout('clear_comments();', 10*1000);
+}
+
+function set_filesize(str) {
+	//set_comments(str);
+
+	var details = document.getElementById('dynamic_details');
+
+	var index = details.innerHTML.indexOf(' - ');
+	if (index == -1)
+	{
+		details.innerHTML = details.innerHTML + ' - ' + str;
+	}
+	else
+	{
+		details.innerHTML = details.innerHTML.substr(0, index) + ' - ' + str;
+	}
+}
+
+
+function run_js(str)
+{
+	if (str == '')
+		return;
+
+	eval(str);
+}
+
+function error_event(event)
+{
+	set_comments('Error Event');
+}
+
+function load_event(event)
+{
+	run_js(xhr.responseText.substr(track_data_position));
+
+	//this happens when the pipe closes.
+	if (document.getElementById('dynamic_progress').value != 100)
+	{
+		set_comments('Lost connection to tracker. Re-connecting.');
+		trigger_tracker();
+	}
+	else
+	{
+		set_comments('Tracker stream has closed.');
+	}
+}
+
+function progress_event(event)
+{
+	var js_response = xhr.responseText;
+
+	var new_code = '';
+	if (track_data_position == 0)
+		new_code = js_response;
+	else
+		new_code = js_response.substr(track_data_position);
+
+	//we're likely going to need to look for a \n .. if not, ignore this run, and wait for more.
+
+	run_js(new_code);
+
+	//document.getElementById('dynamic_process_location').innerHTML=new_code;
+
+	track_data_position=js_response.length;
+}
+
+function trigger_tracker()
+{
+	if (reconnects >= max_reconnects)
+	{
+		set_comments('We have already reconnected '+max_reconnects+' times.  Refresh the page if you want to try again.');
+		return;
+	}
+
+	reconnects++;
+	xhr.open('GET', 'CMD_ADMIN_BACKUP?action=monitor&pid=|pid|&get=tracking_data&rand='+Math.random(), true);
+	xhr.send();
+}
+
+xhr.addEventListener('load', load_event, false);
+xhr.addEventListener('progress', progress_event, false);
+xhr.addEventListener('error', error_event, false);
+
+//-->
+</script>
+<center>
+
+<table class=list cellspacing=6 cellpadding=8>
+<tr><td align=center colspan=2><b>Backup Monitor</b></td></tr>
+<tr>
+	<td class=step valign=top colspan=2>
+		|BACKUP_INFO|
+	</td>
+</tr>
+
+<tr>
+	<td class=step valign=top colspan=2>
+		|DYNAMIC_TABLE|
+	</td>
+</tr>
+</table>
+
+<script type="text/javascript">
+<!--
+trigger_tracker();
+//-->
+</script>
+
+|HTM_FOOTER_FULL|

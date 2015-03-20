@@ -4,6 +4,14 @@
 |?HELP_SECTION=`USER_HELPER`/email.html#pop3|
 |HTM_USER_TOP|
 
+|?CHECK_PASS=|
+|?RANDOM_PASS=randomPass()|
+|*if AJAX="1"|
+	|?CHECK_PASS=onChange="ajax_checkPass()"|
+	|?RANDOM_PASS=ajax_randomPass('')|
+	<script type="text/javascript" src="JS_CREATION_CHECK"></script>
+|*endif|
+
 <script language="Javascript">
 <!--
 
@@ -19,15 +27,21 @@
 
 <table class=list cellpadding=3 cellspacing=1>
 	<form name=reseller action="CMD_EMAIL_POP" method="post">
+
+|HTM_PREVENT_AUTOFILL|
+
 		<input type=hidden name=action value=create>
 		<input type=hidden name=domain value="|DOMAIN|">
 
 		<tr><td class=listtitle colspan=2>|LANG_POP_CREATE|</td></tr>
 
 		<tr><td class=list>|LANG_POP_USERNAME|</td><td class=list><input type=text name=user size=16>@|DOMAIN|</td></tr>
-		<tr><td class=list>|LANG_ENTER_PASS|:</td><td class=list><input type=password name=passwd size=16> <input type=button value="|LANG_RANDOM|" onClick="randomPass()"></td></tr>
-		<tr><td class=list>|LANG_RE-ENTER_PASS|:</td><td class=list><input type=password name=passwd2 size=16></td></tr>
-		<tr><td class=list>|LANG_EMAIL_QUOTA|</td><td class=list><input type=text name=quota size=16 value="|POP_QUOTA|">|LANG_ZERO_UNLIMITED|</td></tr>
+		<tr><td class=list>|LANG_ENTER_PASS|:</td><td class=list><input type=password id=passwd name=passwd size=16 |CHECK_PASS|> <input type=button value="|LANG_RANDOM|" onClick="|RANDOM_PASS|"><div id=passwd_result class=warning></div></td></tr>
+		<tr><td class=list>|LANG_RE-ENTER_PASS|:</td><td class=list><input type=password id=passwd2 name=passwd2 size=16></td></tr>
+		<tr><td class=list>|LANG_EMAIL_QUOTA|</td><td class=list><input type=text name=quota size=16 value="|POP_QUOTA|"> |LANG_ZERO_UNLIMITED|</td></tr>
+	|*if USER_CAN_SET_SEND_LIMIT="yes"|
+		<tr><td class=list>|LANG_SEND_LIMIT|</td><td class=list><input type=text name=limit size=16 value=""> |LANG_SEND_LIMIT_DESC| |GLOBAL_PER_EMAIL_LIMIT|</td></tr>
+	|*endif|
 		<tr><td class=listtitle colspan=3 align=right>
 			<input type=submit name=create value="|LANG_CREATE|">
 		</td></tr>

@@ -1,4 +1,4 @@
-|?TREE=&raquo; <a class=tree href="/CMD_SHOW_DOMAIN?domain=`DOMAIN`">`DOMAIN`</a> &raquo; <a class=tree href="/CMD_SPAMASSASSIN?domain=`DOMAIN`">`LANG_SPAM_SETUP`</a>|
+|?TREE=&raquo; `ALL_DOMAINS_SELECT` &raquo; <a class=tree href="/CMD_SPAMASSASSIN?domain=`DOMAIN`">`LANG_SPAM_SETUP`</a>|
 |?HELP_SECTION=`USER_HELPER`/email.html#spamassassin|
 |HTM_USER_TOP|
 
@@ -54,19 +54,37 @@
 <tr><td class=list2 align=center><input type=radio name=report_safe value="2" |report_safe_2|></td><td class=list2>|LANG_ATTACH_3|</td></tr>
 <tr><td colspan=2>&nbsp;</td></tr>
 
-<tr><td class=listtitle colspan=2>|LANG_EMAIL_BL|</td></tr>
-<tr><td class=list colspan=2>|LANG_LIST_OF_BLOCKED|
-|LANG_TAGGED_AS_SPAM|
-|LANG_ONE_EMAIL|
-|LANG_EG_DOMAIN|</td></tr>
-<tr><td class=list>&nbsp;</td><td class=list><textarea name=blacklist_from cols=40 rows=10>|blacklist_from|</textarea></td></tr>
+<script type="text/javascript" src="JS_VISIBILITY"></script>
+
+<tr><td class=listtitle colspan=2><span class=expand_toggle_plus id=blacklist_toggle onclick="toggle_expand('blacklist_toggle', 'blacklist_visibility');">+</span> |LANG_EMAIL_BL|</td></tr>
+<tr id=blacklist_visibility style="display: none;"><td class=list colspan=2>
+	|LANG_LIST_OF_BLOCKED|
+	|LANG_TAGGED_AS_SPAM|
+	|LANG_ONE_EMAIL|
+	|LANG_EG_DOMAIN|
+	<br>
+	&nbsp;&nbsp;<textarea name=blacklist_from cols=40 rows=10>|blacklist_from|</textarea>
+</td></tr>
 <tr><td colspan=2>&nbsp;</td></tr>
 
-<tr><td class=listtitle colspan=2>|LANG_EMAIL_WL|</td></tr>
-<tr><td class=list colspan=2>|LANG_THROUGH|
-|LANG_SAME_FORMAT|</td></tr>
-<tr><td class=list>&nbsp;</td><td class=list><textarea name=whitelist_from cols=40 rows=10>|whitelist_from|</textarea></td></tr>
+<tr><td class=listtitle colspan=2><span class=expand_toggle_plus id=whitelist_toggle onclick="toggle_expand('whitelist_toggle', 'whitelist_visibility');">+</span> |LANG_EMAIL_WL|</td></tr>
+<tr id=whitelist_visibility style="display: none;"><td class=list colspan=2>|LANG_THROUGH|
+	|LANG_SAME_FORMAT|
+	<br>
+	&nbsp;&nbsp;<textarea name=whitelist_from cols=40 rows=10>|whitelist_from|</textarea>
+</td></tr>
 <tr><td colspan=2>&nbsp;</td></tr>
+
+<script language="Javascript">
+<!--
+|*if blacklist_from!=""|
+	set_expand_visible('blacklist_toggle', 'blacklist_visibility');
+|*endif|
+|*if whitelist_from!=""|
+	set_expand_visible('whitelist_toggle', 'whitelist_visibility');
+|*endif|
+//-->
+</script>
 
 <tr><td colspan=2 align=center><input type=submit value="|LANG_SAVE|"></td></tr>
 </table>

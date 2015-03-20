@@ -1,53 +1,80 @@
 |LF_STANDARD|
 |LF_CREATE|
-|?TREE=&raquo; <a class=tree href="/CMD_USER_SHOW">`LANG_SHOW_USERS`</a> &raquo; <a class=tree href="/CMD_SHOW_USER?user=`user`">`LANG_USER` `user`</a>|
+|?TREE=&raquo; <a class=tree href="/`USER_REFERER`">`LANG_SHOW_USERS`</a> &raquo; <a class=tree href="/CMD_SHOW_USER?user=`user`">`LANG_USER` `user`</a>|
 |?HELP_SECTION=`RESELLER_HELPER`/modify.html|
 |HTM_HEADER_FULL|
 
-<b>|LANG_DETAILS| &raquo; |user|</b><br>
+<b>|LANG_DETAILS| |user|</b><br>
 <br>
-<table width="100%" cellpadding="5" cellspacing="0">
-	<tr>
-		<form action="CMD_LOGIN" method="POST">
-		<td align="center">
-			<input type="hidden" name="username" value="|USERNAME|\||user|">
-			<button class="btn" type="submit">|LANG_LOGIN_AS| |user|</button>
-		</td>
-		</form>
-		<td align="center">
-			<a href="#" class="btn btn-dark-blue" onClick="location.href='CMD_MODIFY_USER?user=|user|'">|LANG_MODIFY_USER| |user|</a>
-		</td>
-		<form name="tableform" action="CMD_SELECT_USERS" method="GET">
-		<td align="center">
-				<input type="hidden" name="select0" value="|user|">
-				<button type="submit" name="delete" class="btn btn-red">|LANG_DELETE_USER| |user|</button>
-		</td>
-		</form>
-	</tr>
-	<tr>
-		<form action="CMD_SELECT_USERS" method="GET">
-		<td align="center">
-				<input type="hidden" name="select0" value="|user|">
-				<input type="hidden" name="location" value="CMD_SHOW_USER?user=|user|">
-				<button type="submit" name="dosuspend" class="btn btn-orange">|LANG_SUSPEND|</button>
-		</td>
-		</form>
-		<form action="CMD_SELECT_USERS" method="GET">
-		<td align="center">
-				<input type="hidden" name="select0" value="|user|">
-				<input type="hidden" name="location" value="CMD_SHOW_USER?user=|user|">
-				<button type="submit" name="dounsuspend" class="btn btn-green">|LANG_UNSUSPEND|</button>
-		</td>
-		</form>
-	</tr>
+<table width=100% cellpadding=5 cellspacing=0>
+<tr>
+	<form action="CMD_LOGIN" method="POST">
+	<td align=center>
+
+		<input type="hidden" name="username" value="|LOGIN_AS_MASTER_NAME|\||user|">
+		<input type="submit" class="ui blue button" value="|LANG_LOGIN_AS| |user|"><br>
+	</td>
+	</form>
+	<form>
+	<td align=center>
+
+		<input type=button class="ui teal button" value="|LANG_MODIFY_USER| |user|" onClick="location.href='CMD_MODIFY_USER?user=|user|'">
+	</td>
+	</form>
+	<form name=tableform action='CMD_SELECT_USERS' method='GET'>
+	<td align=center>
+			<input type=hidden name=select0 value="|user|">
+			<input type=submit class="ui red button" value='|LANG_DELETE_USER| |user|' name=delete>
+	</td>
+	</form>
+</tr>
+<tr>
+	<form action="CMD_SELECT_USERS" method='GET'>
+	<td align=center>
+			<input type=hidden name=select0 value="|user|">
+			<input type=hidden name=location value="CMD_SHOW_USER?user=|user|">
+			<input type=submit class="ui orange button" value="|LANG_SUSPEND|" name=dosuspend>
+	</td>
+	</form>
+	<form action="CMD_SELECT_USERS" method='GET'>
+	<td align=center>
+			<input type=hidden name=select0 value="|user|">
+			<input type=hidden name=location value="CMD_SHOW_USER?user=|user|">
+			<input type=submit class="ui green button" value="|LANG_UNSUSPEND|" name=dounsuspend>
+	</td>
+	<td></td>
+	</form>
+</tr>
+
 </table>
+
 |DOMAINS|
 |STATS|
 
 <script language="Javascript">
 <!--
-function showUserMessage() {
+|?SHOW_MESSAGE=showUserMessage()|
+|?EDIT_MESSAGE=`LANG_EDIT_USER_MESS`|
+|*if ACCOUNT_USERTYPE="reseller"|
+|?SHOW_MESSAGE=showResellerMessage()|
+|?EDIT_MESSAGE=`LANG_EDIT_RES_MESS`|
+|*endif|
+|*if ACCOUNT_USERTYPE="admin"|
+|?SHOW_MESSAGE=showAdminMessage()|
+|?EDIT_MESSAGE=`LANG_EDIT_RES_MESS`|
+|*endif|
+
+function showUserMessage()
+{
 	var message = window.open("CMD_EDIT_USER_MESSAGE","message","width=740,height=480,scrollbars=no,resizable=yes");
+}
+function showResellerMessage()
+{
+	var message = window.open("CMD_EDIT_RESELLER_MESSAGE","message","width=740,height=520,scrollbars=no,resizable=yes");
+}
+function showAdminMessage()
+{
+	var message = window.open("CMD_EDIT_ADMIN_MESSAGE","message","width=740,height=520,scrollbars=no,resizable=yes");
 }
 // -->
 </script>
@@ -59,11 +86,10 @@ function showUserMessage() {
 <tr><td class=list align=center>|LANG_SEND_TO|: <input type=text name=email value="|USER_EMAIL|">
 	<input type=checkbox name=newpass value="yes">|LANG_RANDOM_PASS|
 	<input type=submit value="|LANG_SEND|">&nbsp;&nbsp;&nbsp;&nbsp;
-	<a href="javascript:showUserMessage();">|LANG_EDIT_USER_MESS|</a>
+	<a href="javascript:|SHOW_MESSAGE|;">|EDIT_MESSAGE|</a>
 </td></tr>
 </form>
 </table>
-
 <table class=list cellpadding=3 cellspacing=1>
 <tr><td class=listtitle>|LANG_USER_COMMENTS|</td></tr>
 <form action="CMD_COMMENTS" method="POST">

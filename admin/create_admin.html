@@ -3,6 +3,18 @@
 |?HELP_SECTION=`ADMIN_HELPER`/createa.html|
 |HTM_ADMIN_TOP|
 
+|?CHECK_NAME=checkName()|
+|?CHECK_PASS=|
+|?RANDOM_PASS=randomPass()|
+
+|*if AJAX="1"|
+	|?CHECK_NAME=ajax_checkName()|
+	|?CHECK_PASS=onChange="ajax_checkPass()"|
+	|?RANDOM_PASS=ajax_randomPass('')|
+
+	<script type="text/javascript" src="JS_CREATION_CHECK"></script>
+|*endif|
+
 <script language="Javascript">
 <!--
 
@@ -30,11 +42,15 @@ function formOK()
       		<table class=list style="width: 50%" cellpadding=3 cellspacing=1>
       		<tr><td class=listtitle colspan=2 align=center>|LANG_CREATE_ADMIN_ACCOUNT|</td></tr>
       		<form name=reseller action="CMD_ACCOUNT_ADMIN" method="post" onSubmit="return formOK()">
+
+|HTM_PREVENT_AUTOFILL|
+
       		<input type=hidden name=action value=create>
-      		<tr><td class=list>|LANG_USERNAME|:</td><td class=list><input type=text name=username maxlength=|MAX_USERNAME_LENGTH| onChange="checkName()"></td></tr>
+
+      		<tr><td class=list>|LANG_USERNAME|:</td><td class=list id=username_td2><input type=text id=username name=username maxlength=|MAX_USERNAME_LENGTH| onChange="|CHECK_NAME|"><div id=username_result class=warning></div></td></tr>
       		<tr><td class=list>|LANG_EMAIL|:</td><td class=list><input type=text name=email onChange="checkEmail()"></td></tr>
-      		<tr><td class=list>|LANG_ENTER_PASS|:</td><td class=list><input type=password name=passwd> <input type=button value="|LANG_RANDOM|" onClick="randomPass()"></td></tr>
-			<tr><td class=list>|LANG_RE-ENTER_PASS|:</td><td class=list><input type=password name=passwd2 onChange="checkPass()"></td></tr>
+      		<tr><td class=list>|LANG_ENTER_PASS|:</td><td class=list><input type=password id=passwd name=passwd |CHECK_PASS|> <input type=button value="|LANG_RANDOM|" onClick="|RANDOM_PASS|"><div id=passwd_result class=warning></div></td></tr>
+			<tr><td class=list>|LANG_RE-ENTER_PASS|:</td><td class=list><input type=password id=passwd2 name=passwd2 onChange="checkPass()"></td></tr>
 			<tr><td class=list>|LANG_EMAIL_NOTIFICATION|:</td><td class=list><input type=checkbox value="yes" name=notify checked> <a href="javascript:showAdminMessage();">|LANG_EDIT_ADMIN_MESSAGE|</a></td></tr>
 
 			<tr><td td class=listtitle colspan=3 align=right>

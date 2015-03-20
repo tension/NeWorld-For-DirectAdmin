@@ -100,7 +100,7 @@
         <input type=hidden name=action value="config">
         <tr>
                 <td class=list>
-                        |LANG_SERVER_HOSTNAME|
+                        |LANG_SERVER_HOSTNAME| <a target=_blank href="http://help.directadmin.com/item.php?id=405">(?)</a>
                 </td>
                 <td class=list>
                         <input type=text name=servername value="|SERVERNAME|" size=32>
@@ -162,16 +162,6 @@
                         <input type=text name=demodocsroot value="|DEMODOCSROOT|" size=32>
                 </td>
         </tr>
-|*if USE_DOVECOT="yes"|
-		<tr>
-				<td class=list>
-						|LANG_PURGE_SPAMBOX|
-				</td>
-				<td class=list>
-						|LANG_PURGE_AFTER| <input type=text name=purge_spam_days value="|PURGE_SPAM_DAYS|" size=2 maxlength=3> |LANG_PURGE_DAYS|
-				</td>
-		</tr>
-|*endif|
 		<tr>
 				<td class=list>
 						|LANG_WARN_ADMINS_AT| <input type=text name=partition_usage_threshold size=2 value="|PART_THRESH|">|LANG_PERC_PARTITION_USAGE|
@@ -234,7 +224,7 @@
 
 		<tr>
 				<td class="list top-border">
-						Parse service logs for brute force attacks
+						|LANG_PARSE_FOR_BFA|
 				</td>
 				<td class="list top-border">
 						<input type=radio name=brute_force_log_scanner value="yes" |BRUTEFORCELOGSCANNER_YES|>|LANG_YES|&nbsp;&nbsp;&nbsp;<input type=radio name=brute_force_log_scanner value="no" |BRUTEFORCELOGSCANNER_NO|>|LANG_NO|
@@ -244,7 +234,7 @@
 		</tr>
 		<tr>
 				<td class=list>
-						Notify Admins after an IP has
+						|LANG_NOTIFY_AFTER_IP|
 				</td>
 				<td class=list>
 						<input type=text name=ip_brutecount value="|IP_LOGIN_FAILURE_THRESHOLD|" size=4> login failures on any account.
@@ -252,15 +242,25 @@
 		</tr>
 		<tr>
 				<td class=list>
-						Notify Admins after a User has
+						|LANG_NOTIFY_ADMIN_USER|
 				</td>
 				<td class=list>
 						<input type=text name=user_brutecount value="|USER_LOGIN_FAILURE_THRESHOLD|" size=4> login failures from any IP.
 				</td>
 		</tr>
+|*if HAVE_BF_UNBLOCK_AFTER_TIME="1"|
 		<tr>
 				<td class=list>
-						Reset count of IP/User failed attempts
+						|LANG_BF_REMOVE_IP_AFTER|
+				</td>
+				<td class=list>
+						<input type=text name=unblock_brute_ip_time value="|UNBLOCK_BRUTE_IP_TIME|" size=4> |LANG_BF_REMOTE_IP_MINUTE|
+				</td>
+		</tr>
+|*endif|
+		<tr>
+				<td class=list>
+						|LANG_RESET_COUNT_AFTER|
 				</td>
 				<td class=list>
 						<input type=text name=clear_brute_log_time value="|CLEAR_BRUTE_LOG_TIME|" size=4> hours after last attempt.
@@ -268,12 +268,24 @@
 		</tr>
 		<tr>
 				<td class=list>
-						Clear failed login attempts from log
+						|LANG_CLEAR_BF_FROM_LOG|
 				</td>
 				<td class=list>
 						<input type=text name=clear_brute_log_entry_time value="|CLEAR_BRUTE_LOG_ENTRY_TIME|" size=4> days after entry was made.
 				</td>
 		</tr>
+		<tr>
+				<td class=list>
+						|LANG_SCAN_APACHE_LOGS|
+				</td>
+				<td class=list>
+					<input type=radio name=brute_force_scan_apache_logs value="2" |BF_SCAN_APACHE_LOGS_2|>|LANG_ALL_LOGS|&nbsp;&nbsp;
+					<input type=radio name=brute_force_scan_apache_logs value="1" |BF_SCAN_APACHE_LOGS_1|>|LANG_MANUAL|&nbsp;&nbsp;
+					<input type=radio name=brute_force_scan_apache_logs value="0" |BF_SCAN_APACHE_LOGS_0|>|LANG_NO|
+					&nbsp;&nbsp;<a target=_blank href="http://www.directadmin.com/features.php?id=1695">(?)</a>
+				</td>
+		</tr>
+
 
 
 
@@ -313,12 +325,49 @@
 		</tr>
 		<tr>
 				<td class=list>
-						|LANG_RBL_BLOCKING|
+						|LANG_PER_EMAIL_LIMIT|
 				</td>
 				<td class=list>
+						<input type=text name=per_email_limit value="|PER_EMAIL_LIMIT|" size=4> &nbsp;&nbsp;<a target=_blank href="http://help.directadmin.com/item.php?id=514">(?)</a>
+				</td>
+		</tr>
+		<tr>
+				<td class="list">
+						|LANG_USER_CAN_SET_PER_EMAIL_LIMIT|
+				</td>
+				<td class="list">
+						<input type=radio name=user_can_set_email_limit value="yes" |USER_CAN_SET_EMAIL_LIMIT_YES| onclick="document.getElementById('max_per_email_sent_limit_visibility').style.display='';">|LANG_YES|&nbsp;&nbsp;&nbsp;<input type=radio name=user_can_set_email_limit value="no" |USER_CAN_SET_EMAIL_LIMIT_NO| onclick="document.getElementById('max_per_email_sent_limit_visibility').style.display='none';">|LANG_NO| &nbsp;&nbsp;<a target=_blank href="http://help.directadmin.com/item.php?id=514">(?)</a>
+				</td>
+		</tr>
+		<tr id=max_per_email_sent_limit_visibility |*if USER_CAN_SET_EMAIL_LIMIT_NO!=""|style="display: none;"|*endif|>
+				<td class=list>
+						|LANG_MAX_PER_EMAIL|
+				</td>
+				<td class=list>
+						<input type=text name=max_per_email_send_limit value="|MAX_PER_EMAIL_LIMIT|" size=4> &nbsp;&nbsp;-1=|PER_EMAIL_LIMIT|, 0=|LANG_UNLIMITED| &nbsp;&nbsp;<a target=_blank href="http://www.directadmin.com/features.php?id=1373">(?)</a>
+				</td>
+		</tr>
+
+		<tr>
+				<td class="list top-border">
+						|LANG_RBL_BLOCKING|
+				</td>
+				<td class="list top-border">
 						<input type=radio name=rbl_enabled value="yes" |CHECK_RBL_YES|>|LANG_YES|&nbsp;&nbsp;&nbsp;<input type=radio name=rbl_enabled value="no" |CHECK_RBL_NO|>|LANG_NO| &nbsp;&nbsp;<a target=_blank href="http://www.directadmin.com/features.php?id=1181">(?)</a>
 				</td>
 		</tr>
+
+|*if USE_DOVECOT="yes"|
+		<tr>
+				<td class="list top-border">
+						|LANG_PURGE_SPAMBOX|
+				</td>
+				<td class="list top-border">
+						|LANG_PURGE_AFTER| <input type=text name=purge_spam_days value="|PURGE_SPAM_DAYS|" size=2 maxlength=3> |LANG_PURGE_DAYS|
+				</td>
+		</tr>
+|*endif|
+
 
 
         <tr>

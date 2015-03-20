@@ -9,6 +9,45 @@ var invalidDomain='|LANG_INVALID_DOMAIN|';
 var badIP='|LANG_INVALID_IP|';
 var badEmail='|LANG_INVALID_EMAIL|';
 
+
+
+function show_alert(str, field, message)
+{
+	|*if AJAX="1"|
+		if (document.getElementById(field))
+		{
+			document.getElementById(field).style.backgroundColor="|BAD_COLOR|";
+		}
+
+		if (document.getElementById(message))
+		{
+			document.getElementById(message).innerHTML=str;
+		}
+		else
+		{
+			alert(str);
+		}
+	|*else|
+		alert(str);
+	|*endif|
+}
+
+function set_ok(field, message)
+{
+	|*if AJAX="1"|
+		if (document.getElementById(field))
+		{
+			document.getElementById(field).style.backgroundColor="|GOOD_COLOR|";
+		}
+
+		if (document.getElementById(message))
+		{
+			document.getElementById(message).innerHTML='';
+		}
+	|*endif|
+}
+
+
 function nameOK(name)
 {
 	var ch;
@@ -59,29 +98,42 @@ function checkName()
 	return false;
 }
 
-function passOK() {
-	with (document.reseller) {
+function passOK()
+{
+	with (document.reseller)
+	{
 		if (passwd.value.length < 5)
 		{
-			alert(shortPass);
+			//alert(shortPass);
+			show_alert(shortPass, 'passwd', 'passwd_result');
+
+			passwd2.value="";
+			passwd.focus();
+			passwd.select();
 			return 0;
 		}
 
-		if (passwd.value != passwd2.value) {
-			alert(noPassMatch);
+		if (passwd.value != passwd2.value)
+		{
+			//alert(noPassMatch);
+			show_alert(noPassMatch, 'passwd2', 'passwd_result');
+
+			passwd2.focus();
+			passwd2.select();
 			return 0;
 		}
 	}
 	return 1;
 }
 
-function checkPass() {
-	with (document.reseller) {
-		if (passOK()) return true;
-		else {
-			passwd2.value="";
-			passwd.focus();
-			passwd.select();
+function checkPass()
+{
+	with (document.reseller)
+	{
+		if (passOK())
+		{
+			set_ok('passwd2', 'passwd_result')
+			return true;
 		}
 	}
 }
@@ -120,26 +172,31 @@ function checkDomainIP()
 	return 1;
 }
 
-function domainOK(domain) {
+function domainOK(domain)
+{
 	var ch;
 	var i;
 	var dotCount = 0;
 
-	if (domain.length < 3) {
+	if (domain.length < 3)
+	{
 		alert(shortDomain);
 		return 0;
 	}
 
-	if (domain.charAt(domain.length-1) == '.') {
+	if (domain.charAt(domain.length-1) == '.')
+	{
 		alert(invalidDomain);
 		return 0;
 	}
 
-	for (i=0; i<domain.length; i++)	{
+	for (i=0; i<domain.length; i++)
+	{
 		if ((ch = domain.charAt(i)) == '.') dotCount++;
 	}
 
-	if (dotCount == 0) {
+	if (dotCount == 0)
+	{
 		alert(domainNeedsDot);
 		return 0;
 	}
@@ -147,9 +204,12 @@ function domainOK(domain) {
 	return 1;
 }
 
-function checkDNSIP1() {
-	with (document.reseller) {
-		if (!ipOK(dns1ip.value)) {
+function checkDNSIP1()
+{
+	with (document.reseller)
+	{
+		if (!ipOK(dns1ip.value))
+		{
 			alert(badIP);
 			dns1ip.focus();
 			dns1ip.select();
@@ -159,9 +219,12 @@ function checkDNSIP1() {
 	return 1;
 }
 
-function checkDNSIP2() {
-	with (document.reseller) {
-		if (!ipOK(dns2ip.value)) {
+function checkDNSIP2()
+{
+	with (document.reseller)
+	{
+		if (!ipOK(dns2ip.value))
+		{
 			alert(badIP);
 			dns2ip.focus();
 			dns2ip.select();
@@ -171,9 +234,12 @@ function checkDNSIP2() {
 	return 1;
 }
 
-function checkDomain() {
-	with (document.reseller) {
-		if (!domainOK(domain.value)) {
+function checkDomain()
+{
+	with (document.reseller)
+	{
+		if (!domainOK(domain.value))
+		{
 			domain.focus();
 			domain.select();
 			return 0;
@@ -182,7 +248,8 @@ function checkDomain() {
 	return 1;
 }
 
-function emailOK(email) {
+function emailOK(email)
+{
 
 	//var filter=/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i
 	//original: var filter  = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
@@ -195,9 +262,12 @@ function emailOK(email) {
 		return 0;
 }
 
-function checkEmail() {
-	with (document.reseller) {
-		if (!emailOK(email.value)) {
+function checkEmail()
+{
+	with (document.reseller)
+	{
+		if (!emailOK(email.value))
+		{
 			email.focus();
 			email.select();
 			alert(badEmail);
@@ -215,6 +285,34 @@ function random_char(charlist)
 	var seed = now.getSeconds();
 	var num = Math.floor(Math.random(seed) * charlist.length);
 	return charlist.charAt(num);
+}
+
+function has_special_chars(pass)
+{
+	var num_count = 0;
+
+	for (i=0; i<pass.length; i++)
+	{
+		ch=pass.charAt(i);
+		if ('!' <= ch && ch <= '/')
+		{
+			num_count++;
+		}
+		if (':' <= ch && ch <= '@')
+		{
+			num_count++;
+		}
+		if ('[' <= ch && ch <= '`')
+		{
+			num_count++;
+		}
+		if ('{' <= ch && ch <= '~')
+		{
+			num_count++;
+		}
+	}
+
+	return num_count;
 }
 
 function has_number(pass)
@@ -267,34 +365,61 @@ function has_upper_case(pass)
 
 var num_pass_tries = 0;
 
-function random_pass() {
+function random_pass()
+{
 	num_pass_tries++;
 
-	if (num_pass_tries >= 20) {
+	if (num_pass_tries >= 20)
+	{
 		alert("Unable to generate a password with a number, upper and lower case characters in it. Tried 20 times");
 		return "error1";
 	}
 
-	var length = 8;
+	var length_min = |RANDOM_PASSWORD_LENGTH|;
+	var length_max = |RANDOM_PASSWORD_LENGTH_MAX|;
+
+	var length = Math.floor(Math.random() * (1 + length_max - length_min)) + length_min;
+
+|*if SPECIAL_CHARACTERS_IN_RANDOM_PASSWORDS="1"|
+	var chars = '';
+	for (i=33; i<=126; i++)
+	{
+		if (i == 47) continue;
+		if (i == 92) continue;
+		chars = chars + String.fromCharCode(i);
+	}
+|*else|
 	var chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+|*endif|
 
 	var pass = "";
 	var i=0;
 
-	for (i=0; i<length; i++) {
+	for (i=0; i<length; i++)
+	{
 		pass = pass + random_char(chars);
 	}
 
 	//this basically just says "ok, we need a number" so it recursivly tries again.
-	if (!has_number(pass) || !has_lower_case(pass) || !has_upper_case(pass)) {
+	if (!has_number(pass) || !has_lower_case(pass) || !has_upper_case(pass))
+	{
 		return random_pass();
 	}
+
+|*if SPECIAL_CHARACTERS_IN_RANDOM_PASSWORDS="1"|
+	if (!has_special_chars(pass))
+	{
+		return random_pass();
+	}
+|*endif|
 
 	return pass;
 }
 
-function randomPass() {
-	with (document.reseller) {
+function randomPass()
+{
+	with (document.reseller)
+	{
 		passwd.value = random_pass();
 		passwd2.value= passwd.value;
 	}

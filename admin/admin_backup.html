@@ -5,24 +5,18 @@
 |?HELP_SECTION=`ADMIN_HELPER`|
 |HTM_HEADER_FULL|
 
-<style>
-.step { white-space: nowrap; border: 1px solid light gray;}
-</style>
-
 <script language="Javascript">
 <!--
 
 |DATALIST|
 
-function submitBackup()
-{
+function submitBackup() {
 	document.tableform1.backup_submit.disabled = true;
 	document.tableform1.submit();
 
 }
 
-function addReseller(reseller)
-{
+function addReseller(reseller) {
 
 	var select="select";
 
@@ -47,29 +41,40 @@ function addReseller(reseller)
 	}
 }
 
-function setSelectedData()
-{
+function setSelectedData() {
 	document.getElementById('what_all').checked = false;
 	document.getElementById('what_select').checked = true;
+}
+
+function set_custom_path() {
+	if (document.getElementById('append_path').value == 'custom')
+		document.getElementById('custom_path').className = 'path_visible';
+	else
+		document.getElementById('custom_path').className = 'path_hidden';
 }
 
 //-->
 </script>
 <center>
-<b><a href="http://www.directadmin.com/features.php?id=709">Read this document first</a></b></center>
+
+|*if CURRENT_BACKUPS|
+
+<center><b>Active Backups</b></center>
+|CURRENT_BACKUPS|
+
+|*endif|
+
+
+
 
 <table class=list cellspacing=6 cellpadding=8>
 <tr><td align=center colspan=3><b>|LANG_CREATE_BACKUP|</b></td></tr>
 <form name=tableform1 action="/CMD_ADMIN_BACKUP" method="POST">
 <input type=hidden name="action" value="create">
-<input type=hidden name="form_version" value="2">
+<input type=hidden name="form_version" value="3">
 <tr>
 	<td class=step valign=top rowspan=2>
 			<div>|LANG_STEP_1|: <b>|LANG_WHO|</b></div>
-			<table width=100% cellspacing=1 cellpadding=0>
-				<tr><td bgcolor="#C0C0C0"> </td></tr>
-				<tr><td height=5> </td></tr>
-			</table>
 
 			<table cellpadding=0 cellspacing=1>
 			<tr>
@@ -102,9 +107,9 @@ function setSelectedData()
 				</td>
 			</tr>
 
-			<tr><td></td>
-				<td>
-					<div style="overflow: auto; height: 270px; width: 250px;">
+			<tr>
+				<td colspan="2">
+					<div style="overflow: auto; height: 592px;">
 					|USERS|
 					</div>
 				</td>
@@ -118,10 +123,6 @@ function setSelectedData()
 	</td>
 	<td class=step valign=top>
 			<div>|LANG_STEP_2|: <b>|LANG_WHEN|</b></div>
-			<table width=100% cellspacing=1 cellpadding=0>
-				<tr><td bgcolor="#C0C0C0"> </td></tr>
-				<tr><td height=5> </td></tr>
-			</table>
 			<table cellpadding=0 cellspacing=1>
 			<tr>
 				<td class=listtitle>
@@ -140,8 +141,7 @@ function setSelectedData()
 				</td>
 			</tr>
 			<tr>
-				<td></td>
-				<td>
+				<td colspan="2">
 					<table class=list cellpadding=0 cellspacing=1>
 					<tr><td class=list align=right>|LANG_MINUTE|: </td><td class=list><input type=text size=2 name=minute value="0"></td><td class=list>0-59</td></tr>
 					<tr><td class=list align=right>|LANG_HOUR|: </td><td class=list><input type=text size=2 name=hour value="5"></td><td class=list>0-23</td></tr>
@@ -157,10 +157,6 @@ function setSelectedData()
 	</td>
 	<td class=step valign=top>
 			<div>|LANG_STEP_3|: <b>|LANG_WHERE|</b></div>
-			<table width=100% cellspacing=1 cellpadding=0>
-				<tr><td bgcolor="#C0C0C0"> </td></tr>
-				<tr><td height=5> </td></tr>
-			</table>
 			<table cellpadding=0 cellspacing=1>
 				<tr>
 					<td class=listtitle><input type=radio name=where value="local" |LOCAL_CHECKED|></td>
@@ -174,8 +170,8 @@ function setSelectedData()
 						- |LANG_FTP|
 					</td>
 				</tr>
-				<tr><td></td>
-					<td>
+				<tr>
+					<td colspan="2">
 						<table cellpadding=0 cellspacing=1 width=100%>
 							<tr><td class=list align=right>|LANG_IP|:</td><td class=list><input type=text name=ftp_ip value="|ftp_ip|"></td></tr>
 							<tr><td class=list align=right>|LANG_USERNAME|:</td><td class=list><input type=text name=ftp_username value="|ftp_username|"></td></tr>
@@ -185,45 +181,73 @@ function setSelectedData()
 						</table>
 					</td>
 				</tr>
+				<tr><td class=listtitle>&nbsp;</td>
+					<td class=listtitle>
+						- |LANG_APPEND_TO_PATH| |PATH_APPEND|
+					</td>
+				</tr>
+				<tr class="|CUSTOM_PATH_CLASS|" id="custom_path"><td></td>
+					<td class=list>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						|LANG_APPEND|: /<input type=text name="custom_append" value="|CUSTOM_APPEND_VALUE|" size=21>
+						<a target=_blank href="http://help.directadmin.com/item.php?id=539">(?)</a>&nbsp;
+					</td>
+				</tr>
 			</table>
 	</td>
 </tr>
-<tr>
-	<td class=step valign=top colspan=2>
+<tr style="background-color: transparent;">
+	<td valign=top colspan=2>
 			<div>|LANG_STEP_4|: <b>|LANG_WHAT|</b></div>
-			<table width=100% cellspacing=1 cellpadding=0>
-				<tr><td bgcolor="#C0C0C0"> </td></tr>
-				<tr><td height=5> </td></tr>
-			</table>
 			<table cellpadding=0 cellspacing=1 >
 				<tr>
 					<td class=listtitle><input type=radio name=what id="what_all" value="all" checked></td>
 					<td class=listtitle> - |LANG_ALL_DATA|</td>
 				</tr>
+<script language="Javascript">
+<!--
+
+function select_none(do_select)
+{
+	setSelectedData();
+	with (document.tableform1)
+	{
+		var i=0;
+		for (i=0; i < elements.length; i++)
+			if (elements[i].type == 'checkbox' && elements[i].className == 'backup_option')
+				elements[i].checked = do_select;
+	}
+}
+//-->
+</script>
 				<tr>
 					<td class=listtitle><input type=radio name=what id="what_select" value="select"></td>
-					<td class=listtitle> - |LANG_SELECTED_DATA|</td>
+					<td class=listtitle> - |LANG_SELECTED_DATA| &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; |LANG_SELECT|: <a class="listtitle" href="javascript:void(0);" onClick="select_none(false);">|LANG_NONE|</a> or <a class="listtitle" href="javascript:void(0);" onClick="select_none(true);">|LANG_ALL|</a></td>
 				</tr>
-				<tr><td></td>
-					<td>
+				<tr style="background-color: transparent;">
+					<td colspan="2">
 						<table cellpadding=0 cellspacing=1 width=100%>
-							<tr><td class=list align=right><input type=checkbox name=option0 value="domain" checked onClick='setSelectedData()'></td><td class=list style="padding-right: 20px;" title="|LANG_DOMAINS_DIR|">|LANG_OPT_DOMAINS_DIR|</td>
-								<td class=list align=right><input type=checkbox name=option2 value="email" checked onClick='setSelectedData()'></td><td class=list title="|LANG_POP_ACCOUNTS|">|LANG_OPT_EMAIL_ACCOUNTS|</td></tr>
+							<tr><td class=list align=right><input class=backup_option type=checkbox name=option0 value="domain" checked onClick='setSelectedData()'></td><td class=list style="padding-right: 20px;" title="|LANG_DOMAINS_DIR|">|LANG_OPT_DOMAINS_DIR|</td>
+								<td class=list align=right><input class=backup_option type=checkbox name=option2 value="email" checked onClick='setSelectedData(); document.tableform1.option12.checked = this.checked;'></td><td class=list title="|LANG_POP_ACCOUNTS|">|LANG_OPT_EMAIL_ACCOUNTS|</td></tr>
 
-							<tr><td class=list2 align=right><input type=checkbox name=option1 value="subdomain" checked onClick='setSelectedData()'></td><td class=list2 title="|LANG_SUBDOMAIN_LIST|">|LANG_OPT_SUB_LISTS|</td>
-								<td class=list2 align=right><input type=checkbox name=option3 value="forwarder" checked onClick='setSelectedData()'></td><td class=list2 title="|LANG_FOWARDERS|">|LANG_OPT_FORWARDERS|</td></tr>
+							<tr><td class=list2 align=right><input class=backup_option type=checkbox name=option1 value="subdomain" checked onClick='setSelectedData()'></td><td class=list2 title="|LANG_SUBDOMAIN_LIST|">|LANG_OPT_SUB_LISTS|</td>
+								<td class=list2 align=right><input class=backup_option type=checkbox name=option12 value="email_data" checked onClick='setSelectedData(); if (this.checked == true) { document.tableform1.option2.checked = true; }'></td><td class=list2 title="|LANG_EMAIL_DATA|">|LANG_OPT_EMAIL_DATA|</td></tr>
 
-							<tr><td class=list align=right><input type=checkbox name=option8 value="ftp" checked onClick='setSelectedData()'></td><td class=list title="|LANG_FTP_ACCOUNTS|">|LANG_OPT_FTP_ACCOUNTS|</td>
-								<td class=list align=right><input type=checkbox name=option4 value="autoresponder" checked onClick='setSelectedData()'></td><td class=list title="|LANG_AUTORESPONDERS|">|LANG_OPT_AUTORESPONDERS|</td></tr>
+							<tr><td class=list align=right><input class=backup_option type=checkbox name=option8 value="ftp" checked onClick='setSelectedData()'></td><td class=list title="|LANG_FTP_ACCOUNTS|">|LANG_OPT_FTP_ACCOUNTS|</td>
+								<td class=list align=right><input class=backup_option type=checkbox name=option7 value="emailsettings" checked onClick='setSelectedData()'></td><td class=list title="|LANG_EMAIL_SETTINGS|">|LANG_OPT_EMAIL_SETTINGS|</td></tr>
 
-							<tr><td class=list2 align=right><input type=checkbox name=option9 value="ftpsettings" checked onClick='setSelectedData()'></td><td class=list2 title="|LANG_FTP_SETTINGS|">|LANG_OPT_FTP_SETTINGS|</td>
-								<td class=list2 align=right><input type=checkbox name=option5 value="vacation" checked onClick='setSelectedData()'></td><td class=list2 style="padding-right: 20px;" title="|LANG_VAC_MESSAGES|">|LANG_OPT_VACATION_MESSAGES|</td></tr>
+							<tr><td class=list2 align=right><input class=backup_option type=checkbox name=option9 value="ftpsettings" checked onClick='setSelectedData()'></td><td class=list2 title="|LANG_FTP_SETTINGS|">|LANG_OPT_FTP_SETTINGS|</td>
+								<td class=list2 align=right><input class=backup_option type=checkbox name=option5 value="vacation" checked onClick='setSelectedData()'></td><td class=list2 style="padding-right: 20px;" title="|LANG_VAC_MESSAGES|">|LANG_OPT_VACATION_MESSAGES|</td></tr>
 
-							<tr><td class=list align=right><input type=checkbox name=option10 value="database" checked onClick='setSelectedData(); document.tableform1.option11.checked = this.checked;'></td><td class=list title="|LANG_DBS_INCLUDE|">|LANG_OPT_DATABASES|</td>
-								<td class=list align=right><input type=checkbox name=option7 value="emailsettings" checked onClick='setSelectedData()'></td><td class=list title="|LANG_EMAIL_SETTINGS|">|LANG_OPT_EMAIL_SETTINGS|</td></tr>
+							<tr><td class=list align=right><input class=backup_option type=checkbox name=option10 value="database" checked onClick='setSelectedData(); document.tableform1.option11.checked = this.checked;'></td><td class=list title="|LANG_DBS_INCLUDE|">|LANG_OPT_DATABASES|</td>
+								<td class=list align=right><input class=backup_option type=checkbox name=option4 value="autoresponder" checked onClick='setSelectedData()'></td><td class=list title="|LANG_AUTORESPONDERS|">|LANG_OPT_AUTORESPONDERS|</td></tr>
 
-							<tr><td class=list2 align=right><input type=checkbox name=option11 value="database_data" checked onClick='setSelectedData(); if (this.checked == true) { document.tableform1.option10.checked = true; }'></td><td class=list2 title="|LANG_DB_DATA|">|LANG_OPT_DATABASE_DATA|</td>
-								<td class=list2 align=right><input type=checkbox name=option6 value="list" checked onClick='setSelectedData()'></td><td class=list2 title="|LANG_MAILING_LISTS_INCLUDE|">|LANG_OPT_MAILING_LISTS|</td></tr>
+
+							<tr><td class=list2 align=right><input class=backup_option type=checkbox name=option11 value="database_data" checked onClick='setSelectedData(); if (this.checked == true) { document.tableform1.option10.checked = true; }'></td><td class=list2 title="|LANG_DB_DATA|">|LANG_OPT_DATABASE_DATA|</td>
+								<td class=list2 align=right><input class=backup_option type=checkbox name=option6 value="list" checked onClick='setSelectedData()'></td><td class=list2 title="|LANG_MAILING_LISTS_INCLUDE|">|LANG_OPT_MAILING_LISTS|</td></tr>
+
+							<tr><td class=list align=right colspan=2>&nbsp;</td>
+								<td class=list align=right><input class=backup_option type=checkbox name=option3 value="forwarder" checked onClick='setSelectedData()'></td><td class=list title="|LANG_FOWARDERS|">|LANG_OPT_FORWARDERS|</td></tr>
 						</table>
 					</td>
 				</tr>
@@ -238,21 +262,7 @@ function setSelectedData()
 </form>
 </table>
 
-<table width=100% cellspacing=1 cellpadding=0>
-	<tr><td bgcolor="#C0C0C0"> </td></tr>
-	<tr><td height=5> </td></tr>
-</table>
-
-
-
-
-<hr width=50%>
-
-
-
-
-
-
+<hr width=80%>
 
 <script language="Javascript">
 <!--
@@ -271,10 +281,6 @@ function submitRestore()
 <tr>
 	<td class=step valign=top>
 			<div>|LANG_STEP_1|: <b>|LANG_FROM_WHERE|</b></div>
-			<table width=100% cellspacing=1 cellpadding=0>
-				<tr><td bgcolor="#C0C0C0"> </td></tr>
-				<tr><td height=5> </td></tr>
-			</table>
 				<table cellpadding=0 cellspacing=1>
 				<tr>
 					<td class=listtitle><input type=radio name=where value="local" |LOCAL_CHECKED|></td>
@@ -288,8 +294,8 @@ function submitRestore()
 						- |LANG_FTP|
 					</tr>
 				</tr>
-				<tr><td></td>
-					<td>
+				<tr>
+					<td colspan=2>
 						<table cellpadding=0 cellspacing=1>
 							<tr><td class=list align=right>|LANG_IP|:</td><td class=list><input type=text name=ftp_ip value="|ftp_ip|"></td></tr>
 							<tr><td class=list align=right>|LANG_USERNAME|:</td><td class=list><input type=text name=ftp_username value="|ftp_username|"></td></tr>
@@ -317,10 +323,6 @@ function submitRestore()
 <input type=hidden name=ftp_port value="|ftp_port|">
 	<td class=step valign=top>
 			<div>|LANG_STEP_2|: <b>|LANG_SELECT_IP|</b></div>
-			<table width=100% cellspacing=1 cellpadding=0>
-				<tr><td bgcolor="#C0C0C0"> </td></tr>
-				<tr><td height=5> </td></tr>
-			</table><br>
 			<table cellpadding=0 cellspacing=1>
 				<script language="Javascript">
 				<!--
@@ -353,10 +355,6 @@ function submitRestore()
 	</td>
 	<td class=step valign=top>
 			<div>|LANG_STEP_3|: <b>|LANG_SELECT_FILES|</b></div>
-			<table width=100% cellspacing=1 cellpadding=0>
-				<tr><td bgcolor="#C0C0C0"> </td></tr>
-				<tr><td height=5> </td></tr>
-			</table><br>
 
 			<div>|LANG_LOCATION|: <b>|FILES_LOCATION|</b></div><br>
 
@@ -372,22 +370,7 @@ function submitRestore()
 </form>
 </table>
 
-
-
-
-
-
-
-<hr width=50%>
-
-
-
-
-
-<table width=100% cellspacing=1 cellpadding=0>
-	<tr><td bgcolor="#C0C0C0"> </td></tr>
-	<tr><td height=5> </td></tr>
-</table>
+<hr width=80%>
 
 <table class=list cellspacing=6 cellpadding=12>
 <tr><td align=center colspan=3><b>|LANG_CURRENT_BACKUP_CRONS|</b></td></tr>
@@ -395,16 +378,7 @@ function submitRestore()
 </table>
 
 
-
-
-<br><br>
-
-<hr width=50%>
-
-<table width=100% cellspacing=1 cellpadding=0>
-	<tr><td bgcolor="#C0C0C0"> </td></tr>
-	<tr><td height=5> </td></tr>
-</table>
+<hr width=80%>
 
 <table class=list cellspacing=6 cellpadding=12>
 <tr><td align=center colspan=3><b>|LANG_BACKUP_SETTINGS|</b></td></tr>
@@ -424,13 +398,23 @@ function submitRestore()
 		</td>
 	</tr>
 	<tr>
-		<td class=list align=center>
+		<td class=list2 align=center>
 			<input type=checkbox name="local_ns" value="yes" |LOCAL_NS|>
 		</td>
-		<td class=list>
+		<td class=list2>
 			|LANG_LOCAL_NS|
 		</td>
 	</tr>
+|*if CLUSTER_ENABLED="1"|
+	<tr>
+		<td class=list align=center>
+			<input type=checkbox name=confirm_with_domainowners value="yes" |CONFIRM_WITH_DOMAINOWNERS|>
+		</td>
+		<td class=list>
+			|LANG_CONFIRM_WITH_DOMAINOWNERS|
+		</td>
+	</tr>
+|*endif|
 	<tr><td class=listtitle align=right colspan=2><input type=submit value="|LANG_SAVE|"></td></tr>
 	</table>
 </td></tr>

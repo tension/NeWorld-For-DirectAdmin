@@ -1,6 +1,6 @@
 |LF_STANDARD|
 |LF_DNS|
-|?TREE=&raquo; <a class=tree href="/CMD_SHOW_DOMAIN?domain=`DOMAIN`">`DOMAIN`</a> &raquo; <a class=tree href="/CMD_DNS_MX?domain=`domain`">`LANG_MAIL_SERVER_SETTINGS`</a>|
+|?TREE=&raquo; `ALL_DOMAINS_SELECT` &raquo; <a class=tree href="/CMD_DNS_MX?domain=`domain`">`LANG_MAIL_SERVER_SETTINGS`</a>|
 |?HELP_SECTION=`USER_HELPER`/email.html#mx|
 |HTM_USER_TOP|
 
@@ -46,7 +46,7 @@ function selectAllDNS()
 <form action='/CMD_DNS_MX' method='POST'>
 	<input type=hidden name=action value=add>
 	<input type=hidden name=domain value="|DOMAIN|">
-	<tr><td class=list><input type=text name=name></td><td class=list align=center>MX</td><td class=list>
+	<tr><td class=list><input type=text name=name |*if HAVE_FULL_MX_RECORDS="1"|value='|domain|.'|*endif|></td><td class=list align=center>MX</td><td class=list>
 	<select name=value |DNS_DISABLED|>
 		<option>0</option>
 		<option selected>10</option>
@@ -59,6 +59,9 @@ function selectAllDNS()
 		<option>80</option>
 		<option>90</option>
 	</select>
+	|*if HAVE_FULL_MX_RECORDS="1"|
+	<input type=text name=mx_value>
+	|*endif|
 	</td>
 	<td class=list align=center><input type=submit name=add value="|LANG_ADD|"></td></tr>
 </form>

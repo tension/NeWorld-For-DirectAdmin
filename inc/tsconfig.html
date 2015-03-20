@@ -6,5 +6,9 @@ include |ROOT| . "inc/functions.php";
 
 $username = $_SERVER["USER"];
 
+$iPs=$_SERVER["REMOTE_ADDR"];
+
+$local = GetiP($iPs,0,1,0);
+
 ?>
 DONE|

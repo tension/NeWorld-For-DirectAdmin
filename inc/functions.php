@@ -11,26 +11,6 @@ define('ROOT', $root);
 
 $ts = new tsclass();
 
-function CMD_ALL_USER_SHOW($tabla){
-	$tabla = str_replace(' / unlimited', '', $tabla);
-	$tabla = preg_replace("/<tr\s*><td align=right colspan=(.+)><a class=toptext href=\'\?view=advanced\'>(.+)<\/a><\/td ><\/tr >/", '', $tabla);
-	$tabla = preg_replace("/<tr\s*><td align=right colspan=(.+)><a class=toptext href=\'\?\'>Clear Search Filter<\/a><\/td ><\/tr >/", '', $tabla);
-	$tabla = preg_replace("/<(script|SCRIPT)[\s\S]*?>[\s|\S]*?<\/(script|SCRIPT)>/", "", $tabla);
-	//$tabla = preg_replace("/(.*)<a(.+)href=\"javascript:selectAll\(\'select\'\);\">Select<\/a>(.*)/", "$1<input type=\"checkbox\" class=\"checkAll\">$3", $tabla);
-	$tabla = str_replace("<a class=listtitle href=\"javascript:selectAll('select');\">Select</a>", "<input type=\"checkbox\" class=\"checkAll\">", $tabla);
-	return $tabla;
-}
-
-function CMD_RESELLER_SHOW($tabla){
-	$tabla = str_replace(' / unlimited', '', $tabla);
-	$tabla = preg_replace("/<tr\s*><td align=right colspan=(.+)><a class=toptext href=\'\?view=advanced\'>(.+)<\/a><\/td ><\/tr >/", '', $tabla);
-	$tabla = preg_replace("/<tr\s*><td align=right colspan=(.+)><a class=toptext href=\'\?\'>Clear Search Filter<\/a><\/td ><\/tr >/", '', $tabla);
-	$tabla = preg_replace("/<(script|SCRIPT)[\s\S]*?>[\s|\S]*?<\/(script|SCRIPT)>/", "", $tabla);
-	//$tabla = preg_replace("/(.*)<a(.+)href=\"javascript:selectAll\(\'select\'\);\">Select<\/a>(.*)/", "$1<input type=\"checkbox\" class=\"checkAll\">$3", $tabla);
-	$tabla = str_replace("<a class=listtitle href=\"javascript:selectAll('select');\">Select</a>", "<input type=\"checkbox\" class=\"checkAll\">", $tabla);
-	return $tabla;
-}
-
 // 根据不同系统取得CPU相关信息
 switch(PHP_OS) {
 	case "Linux":
@@ -84,13 +64,70 @@ function sys_linux() {
 	return $res;
 }
 
+// 淘宝归属地查询
+function GetiP($ip,$lid = 0,$cid = 0,$num = 0) {
+	$ipapi = @file_get_contents("http://ip.taobao.com/service/getIpInfo.php?ip=".$ip);
+	$ipinfo = json_decode($ipapi, true);
+	
+	$country = $ipinfo['data']['country'];  //国家
+	$country_id = $ipinfo['data']['country_id'];  //简称
+	$area = $ipinfo['data']['area'];  //区域
+	$region = $ipinfo['data']['region'];  //省份
+	$city = $ipinfo['data']['city'];  //城市
+	$isp = $ipinfo['data']['isp'];  //运营商
+	$isp_id = $ipinfo['data']['isp_id'];  //运营商ID
+	$ips = $ipinfo['data']['ip'];  //IP
+	
+	if ($region == $city) {
+		$address = $region;
+	} else {
+		$address = $region . '' . $city;
+	}
+	
+	if ($lid == '1') {
+		$add = $country_id;
+	}
+
+	if ($cid == '1') {
+		$add = '<i class=" ' . strtolower($country_id) . ' flag"></i>';
+	}
+
+	if ($num == '1') {
+		$add = $country . '' . $address;
+	} else if ($num == '2') {
+		$add = $country . '' . $address . '' . $isp;
+	}
+	return $add;
+}
+
+//QQ在线状态
+function get_qq_status($string) {
+	$ch = curl_init();
+	$timeout = 20;
+	curl_setopt ($ch, CURLOPT_URL, "http://webpresence.qq.com/getonline?type=1&{$string}:");
+	curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);
+	curl_setopt ($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
+	$data = curl_exec($ch);
+	curl_close($ch);
+		
+	if(!$data) { return 0; }
+	switch($data) {
+		case 'online[0]=0;': 
+			echo("off");
+			break;
+		case 'online[0]=1;':
+			echo("blue");
+			break;
+	}
+}
+
 // 服务器端口状态
 function getPortStatus($ip,$port) {
 	$fp = @fsockopen($ip, $port, $errno, $errstr, 10);
 	if (!$fp) {
-		$string = " <span class=\"label pull-right label-important\"><i class=\"fa fa-ban\"></i></span>";
+		$string = " <div class=\"ui red label\"><i class=\"icon remove\"></i></div>";
 	} else {
-		$string = " <span class=\"label pull-right label-success\"><i class=\"fa fa-check\"></i></span>";
+		$string = " <div class=\"ui green label\"><i class=\"icon checkmark\"></i></div>";
 	}
  	return $string;
 }

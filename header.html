@@ -9,48 +9,91 @@ _/_/_/_/_/  _/_/_/_/  _/      _/    _/_/_/  _/_/_/    _/_/    _/      _/
 _/      _/_/_/_/  _/      _/  _/_/_/    _/_/_/    _/_/    _/      _/
 -->
 <html>
-	<head>
-		<meta charset="|LANG_ENCODING|" />
-		<meta name="author" content="tension,tension{at}me.com" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>|HOSTNAME| - ELINKHOST - |DEAMONNAME| v|VERSION|</title>
-		<script type="text/javascript" src="//cdn.staticfile.org/jquery/1.9.0/jquery.min.js"></script>
-		<script type="text/javascript" src="/IMG_MAINJS"></script>
-		<link href="//cdn.staticfile.org/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
-		<link href="//cdn.staticfile.org/pure/0.4.2/pure-min.css" rel="stylesheet">
-		<script type="text/javascript">
-		//timer for auto-logout
-		function log_me_out() {
-			location.href = '/CMD_LOGOUT';
-		}
-		setTimeout('log_me_out();', |SESSION_MINUTES|*60*1000);
-		// done with preload code
-		</script>
-		<link href="/CSS_STYLE" type="text/css" rel="stylesheet" />
-	</head>
+<head>
+<!-- Standard Meta -->
+<meta charset="|LANG_ENCODING|" />
+<meta name="author" content="tension,tension{at}me.com" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<!-- Site Properities -->
+<title>|HOSTNAME| - |DEAMONNAME| v|VERSION|</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.min.js?v=|VERSION|"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.4/semantic.min.js?v=|VERSION|"></script>
+<link rel="stylesheet" type="text/css" class="ui" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.4/semantic.min.css?v=|VERSION|">
+
+<script src="HTM_MAINJS"></script>
+<link rel="stylesheet" type="text/css" href="/CSS_STYLE?v=|VERSION|" />
+
+</head>
 <body |BODY|>
-<!-- Header START -->
-<header>
-	<div class="wrapper-full">
-		<h1><a class="logo" href="/|HOME_MEMORY|" title="HOME">ELINKHOST</a></h1>
-		<button class="navbar-toggle" type="button">
-	        <span class="sr-only">Toggle navigation</span>
-	        <span class="icon-bar"></span>
-	        <span class="icon-bar"></span>
-	        <span class="icon-bar"></span>
-		</button>
-		<nav>
-			<ul>
-				<li><a href="/CMD_FILE_MANAGER"><i class="fa fa-tasks"></i> |LANG_FILES|</a></li>
-				<li><a href="/HTM_PASSWD"><i class="fa fa-cog"></i> |LANG_PASSWORD|</a></li>
-				<li class="hidden"><a href="#">|LANG_NEWANN|</a></li>
-				<li class="hidden"><a href="#">|LANG_FEEDBACK|</a></li>
-				|HTM_MENU_USER|
-	            <li><a href="/CMD_LOGOUT"><i class="fa fa-sign-out"></i> |LANG_LOGOUT|</a></li>
-	          </ul>
-		</nav>
+<header class="ui inverted menu">
+	<div class="container">
+		<h1><a href="/" title="|SITENAME|">|SITENAME|</a></h1>
+		<a class="right menus">
+			<i class="content icon"></i>
+		</a>
+		<div class="right menu">
+			<a class="item" href="/CMD_FILE_MANAGER">
+				<i class="file text icon"></i> |LANG_FILES|
+			</a>
+			<a class="item" href="/HTM_PASSWD">
+				<i class="configure icon"></i> |LANG_PASSWD|
+			</a>
+			<a class="item" href="/CMD_TICKET">
+				<i class="mail icon|*if NEWMESSAGES!="0"| new|*endif|"></i> |LANG_MESSAGE_SYSTEM|
+				
+			</a>
+		    <div class="ui dropdown item select-language">
+			  	<i class="world icon"></i>
+			  	<div class="default text">|LANG_LANGUAGE|</div>
+			  	<div class="menu">
+		        	<div class="item" data-value="cn">
+			        	简体中文
+			        </div>
+		        	<div class="item" data-value="en">
+			        	EngLish
+			        </div>
+		      	</div>
+		    </div>
+			<a class="item" href="/CMD_LOGOUT">
+				<i class="sign out icon"></i> |LANG_LOGOUT|
+			</a>
+		    <div class="ui dropdown item select-ui none">
+			  	<i class="world icon"></i>
+			  	<div class="default text">更换配色</div>
+			  	<div class="menu">
+		        	<div class="item" data-value="red">
+			        	<div class="ui red empty circular label"></div>
+			        	Red
+			        </div>
+		        	<div class="item" data-value="orange">
+			        	<div class="ui orange empty circular label"></div>
+			        	Orange
+			        </div>
+		        	<div class="item" data-value="yellow">
+			        	<div class="ui yellow empty circular label"></div>
+			        	Yellow
+			        </div>
+		        	<div class="item" data-value="green">
+			        	<div class="ui green empty circular label"></div>
+			        	Green
+			        </div>
+		        	<div class="item" data-value="teal">
+			        	<div class="ui teal empty circular label"></div>
+			        	Teal
+			        </div>
+		        	<div class="item" data-value="blue">
+			        	<div class="ui blue empty circular label"></div>
+			        	Blue
+			        </div>
+		        	<div class="item" data-value="purple">
+			        	<div class="ui purple empty circular label"></div>
+			        	Purple
+			        </div>
+		      	</div>
+		    </div>
+    	</div>
 	</div>
 </header>
-
-
 

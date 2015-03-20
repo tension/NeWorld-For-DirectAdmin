@@ -1,9 +1,15 @@
-|?TREE=&raquo; <a class=tree href="/CMD_SHOW_DOMAIN?domain=`DOMAIN`">`DOMAIN`</a> &raquo; <a class=tree href="/CMD_EMAIL_USAGE?DOMAIN=`DOMAIN`">`LANG_EMAIL_USAGE`</a>|
+|?TREE=&raquo; `ALL_DOMAINS_SELECT` &raquo; <a class=tree href="/CMD_EMAIL_USAGE?DOMAIN=`DOMAIN`">`LANG_EMAIL_USAGE`</a>|
 |?HELP_SECTION=`USER_HELPER`/email.html#email_usage|
 |HTM_HEADER_FULL|
 
 <b>|LANG_EMAIL_USAGE|</b>
 <br><br>
+
+|*if BLOCK_CRACKING_PATHS="yes"|
+|BLOCK_CRACKING_PATHS_TABLE|
+
+<br><br>
+|*endif|
 
 |LANG_SHOW_USAGE|:
 <form name=whichfile action=? method=GET>
@@ -22,6 +28,9 @@
 <br>
 |LANG_SENDER_NOTE|<br>
 |LANG_AUTH_NOTE|<br>
+|LANG_SENDER_HOST_NOTE|<br>
 |LANG_PATH_NOTE|<br>
+
+|SENDING_PHP_SCRIPTS|
 
 |HTM_FOOTER_FULL|

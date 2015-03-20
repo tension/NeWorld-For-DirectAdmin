@@ -70,7 +70,7 @@ function selectAllDNS()
 	<input type=hidden name=action value=add>
 	<input type=hidden name=domain value="|DOMAIN|">
 	<input type=hidden name=type value="MX">
-	<tr><td class=list2><input type=text name=name ></td><td class=list2 align=center>MX</td><td class=list2>
+	<tr><td class=list2><input type=text name=name |*if HAVE_FULL_MX_RECORDS="1"|value='|DOMAIN|.'|*endif|></td><td class=list2 align=center>MX</td><td class=list2>
 	<select name=value >
 		<option>0</option>
 		<option selected>10</option>
@@ -83,6 +83,9 @@ function selectAllDNS()
 		<option>80</option>
 		<option>90</option>
 	</select>
+	|*if HAVE_FULL_MX_RECORDS="1"|
+	<input type=text name=mx_value size=18>
+	|*endif|
 	</td>
 	<td class=list2 align=center><input type=submit name=add value="|LANG_ADD|" ></td></tr>
 </form>
@@ -127,9 +130,42 @@ function selectAllDNS()
 	<td class=list align=center><input type=submit name=add value="|LANG_ADD|" ></td></tr>
 </form>
 
+|*if DNS_SPF="yes"|
+<form action='/CMD_DNS_ADMIN' method='POST'>
+	<input type=hidden name=action value=add>
+	<input type=hidden name=domain value="|DOMAIN|">
+	<input type=hidden name=type value="SPF">
+	<tr><td class=list2><input type=text name=name value=""></td><td class=list2 align=center>SPF</td><td class=list2><input type=text name=value size=26 ></td>
+	<td class=list2 align=center><input type=submit name=add value="|LANG_ADD|" ></td></tr>
+</form>
+|*endif|
+|*if DNS_DS="yes"|
+<form action='/CMD_DNS_ADMIN' method='POST'>
+	<input type=hidden name=action value=add>
+	<input type=hidden name=domain value="|DOMAIN|">
+	<input type=hidden name=type value="DS">
+	<tr title="|LANG_DS_ONLY_FOR_DELEGATION|"><td class=list2><input type=text name=name value="" placeholder="subdomain.|DOMAIN|."></td><td class=list2 align=center>DS</td><td class=list2><input type=text name=value size=26 ></td>
+	<td class=list2 align=center><input type=submit name=add value="|LANG_ADD|" ></td></tr>
+</form>
+|*endif|
+
+|*if ALLOW_TTL_OVERRIDE="yes"|
+<form action='/CMD_DNS_ADMIN' method='POST'>
+	<input type=hidden name=action value=ttl>
+	<input type=hidden name=domain value="|domain|">
+	<input type=hidden name=user value="|ZONE_USER|">
+	<tr>
+	<td class=list>|LANG_OVERRIDE_TTL_VAL|</td>
+	<td class=list align=center>TTL</td>
+	<td class=list><input type=radio name=ttl_select value="custom" |TTL_CUSTOM_SELECTED|><input type=text name=ttl size=6 value="|TTL_VALUE|">&nbsp; <input type=radio name=ttl_select value="default" |TTL_DEFAULT_SELECTED|>|LANG_USE_DEFAULT|</td>
+	<td class=list align=center><input type=submit value="|LANG_SAVE|"></td>
+	</tr>
+</form>
+|*endif|
+
 </table >
 
-
+|DNSSEC_TABLE|
 
 |HTM_FOOTER_FULL|
 

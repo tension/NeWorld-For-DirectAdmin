@@ -1,53 +1,74 @@
 |LF_STANDARD|
 |HTM_FOOTER_BAR_1|
-		<div class="rightView">
-			
-			<div class="module">
-				<h3>|LANG_BASIC_INFO|</h3>
-				<ul>
-|$|PHP|
+<div class="ui vertical menu">
+	|HTM_MENU_RESELLER|
+		
+	<div class="header item">
+		<i class="globe icon"></i>
+		|LANG_BASIC_SETTINGS|
+	</div>
+|$/usr/local/bin/php
 <?php
 $d="|domain|";
 if ($d == "" || $d[0] == '|') { exit(0);}
 ?>
-<li class="bold">|LANG_DQDOMAIN|: |domain|</li>
+	<a class="item">
+		|domain|
+	</a>
 DONE|
-					<li><a href="/CMD_TICKET">|LANG_YOUER_INFO|</a> <span class="label pull-right label-info">|NEWMESSAGES|</span></li>
-					<li>|LANG_DISK_SPACE| |RESELLERQUOTA| |LANG_MB| / |RESELLERQUOTAMAX|</li>
-					<li>|LANG_BANDWIDTH| |RESELLERBANDWIDTHGIG| |LANG_GB| / |RESELLERBANDWIDTHMAXGIG|</li>
-					<li>|LANG_MAIL| |RESELLEREMAIL| / |RESELLEREMAILMAX|</li>
-					<li>|LANG_FTP| |USERFTP| / |RESELLERFTPMAX|</li>
-					<li>|LANG_DB| |RESELLERDATABASE| / |RESELLERDATABASEMAX|</li>
-					<li>|LANG_SITE| |RESELLERDOMAINS| / |RESELLERDOMAINSMAX|</li>
-					<li>|LANG_USER| |RESELLERUSERS|</li>
-				</ul>
-			</div><!-- /module -->
-			
-			<div class="module">
-				<h3>|LANG_SERVER_STATUS|</h3>
-				<ul>
+	<a class="item">
+		<div class="ui teal label" data-content="|RESELLERQUOTAMAX|" data-variation="small">|RESELLERQUOTA|</div>
+		|LANG_DISK_SPACE| |LANG_MB|
+	</a>
+	<a class="item">
+		<div class="ui teal label" data-content="|RESELLERBANDWIDTHMAXGIG|" data-variation="small">|RESELLERBANDWIDTHGIG|</div>
+		|LANG_BANDWIDTH| |LANG_GB|
+	</a>
+	<a class="item">
+		<div class="ui teal label" data-content="|RESELLEREMAILMAX|" data-variation="small">|RESELLEREMAIL|</div>
+  		|LANG_EMAILS|
+	</a>
+	<a class="item">
+		<div class="ui teal label" data-content="|RESELLERFTPMAX|" data-variation="small">|RESELLERFTP|</div>
+  		|LANG_FTP_ACCOUNTS|
+	</a>
+	<a class="item">
+		<div class="ui teal label" data-content="|RESELLERDATABASEMAX|" data-variation="small">|RESELLERDATABASE|</div>
+  		|LANG_DATABASES|
+	</a>
+	<a class="item">
+		<div class="ui teal label" data-content="|RESELLERDOMAINSMAX|" data-variation="small">|RESELLERDOMAINS|</div>
+  		|LANG_DOMAINS|
+	</a>
+	<a class="item">
+		<div class="ui teal label">|RESELLERUSERS|</div>
+  		|LANG_USERS|
+	</a>
+</div>
+<div class="ui vertical menu">
+	<div class="header item">
+		<i class="icon info circle"></i>
+		|LANG_SERVER_STATUS|
+	</div>
 |$|PHP|
 <?php
 include |ROOT|."inc/functions.php";
 ?>
-					<li>Apache: <?php echo getPortStatus('|HOSTNAME|','80'); ?></li>
-					<li>MySQL: <?php echo getPortStatus('|HOSTNAME|','3306'); ?></li>
-					<li>FTP: <?php echo getPortStatus('|HOSTNAME|','21'); ?></li>
-					<li>PHP: <span class="label pull-right label-info"><?php echo PHP_VERSION; ?></span></li>
-					<li>Zend: <span class="label pull-right label-info"><?php echo zend_version(); ?></span></li>
-					<?php
-						if(extension_loaded('ionCube Loader')){
-					?>
-					<li>ionCube: <span class="label pull-right label-info"><?php echo ionCube_Loader_version(); ?></span></li>
-					<?php
-						}
-					?>
-					<li>upTime: <span class="label pull-right label-info"><?php echo $sysInfo['uptime']; ?></span></li>
+	<a class="item"><?php echo getPortStatus('|HOSTNAME|','80'); ?>Apache: </a>
+	<a class="item"><?php echo getPortStatus('|HOSTNAME|','3306'); ?>MySQL: </a>
+	<a class="item"><?php echo getPortStatus('|HOSTNAME|','21'); ?>FTP: </a>
+	<a class="item"><div class="ui blue label"><?php echo PHP_VERSION; ?></div>PHP: </a>
+	<a class="item"><div class="ui blue label"><?php echo zend_version(); ?></div>Zend: </a>
+	<?php
+	if(extension_loaded('ionCube Loader')){
+	?>
+	<a class="item"><div class="ui blue label"><?php echo ionCube_Loader_version(); ?></div>ionCube: </a>
+	<?php
+	}
+	?>
+	<a class="item"><div class="ui blue label"><?php echo $sysInfo['uptime']; ?></div>upTime: </a>
 DONE|
+</div>
 
-				</ul>
-			</div><!-- /module -->
-	
-		</div>
 |HTM_FOOTER_BAR_2|
 |HTM_FOOTER|

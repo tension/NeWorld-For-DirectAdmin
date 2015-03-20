@@ -1,21 +1,58 @@
 |LF_STANDARD|
+|LF_CREATE|
 
 <script language="javascript">
+<!--
+
+function trimit(strobj) {
+	var str = strobj.value
+	while (str.substring(0,1) == ' ') {
+		str = str.substring(1, str.length);
+	}
+	while (str.substring(str.length-1, str.length) == ' ') {
+		str = str.substring(0,str.length-1);
+	}
+
+	strobj.value = str;
+
+	return true;
+}
+
 function doSearch(type) {
 	if (document.searchform)
 		with (document.searchform) {
+			trimit(value);
+
 			if (type == 'user') {
 				value1.value=value.value
 				value7.value='';
 			} else {
-				value7.value=value.value
+				value7.value=value.value.toLowerCase();
 				value1.value='';
 			}
 
 			submit();
 		}
 }
+
+// -->
 </script>
+
+<div class="ui grid">
+	
+	<div class="sixteen wide column">
+		<div class="ui input search">
+			<form action="/CMD_ALL_USER_SHOW" method="GET" name="searchform" onSubmit="doSearch('default');">
+				<input type="hidden" name="comparison1" value="contains">
+				<input type="hidden" name="comparison7" value="contains">
+				<input type="hidden" name="value1" value="">
+				<input type="hidden" name="value7" value="">
+				<input type="text" name="value" onClick="this.select()" placeholder="|LANG_CONTAINS|">
+				<div class="ui blue button" onClick="doSearch('user')"><i class="icon user"></i> |LANG_USER|</div>
+				<div class="ui green button" onClick="doSearch('domain')"><i class="icon globe"></i> |LANG_DOMAIN|</div>
+			</form>
+		</div>
+	</div>
 
 <script language="javascript">
 if (document.searchform) {
@@ -29,58 +66,141 @@ function showUserMessage() {
 }
 </script>
 
-<div class="pure-g">
-	<div class="pure-u-1-2">
-	</div>
-	<div class="pure-u-1-2">
-
-		<div class="search">
-			<form action="/CMD_USER_SHOW" method="GET" name="searchform" onSubmit="doSearch('default');">
-				<input type="hidden" name="comparison1" value="contains">
-				<input type="hidden" name="comparison7" value="contains">
-				<input type="hidden" name="value1" value="">
-				<input type="hidden" name="value7" value="">
-				<p class="search">
-					<input type="text" name="value" size="14" onClick="this.select()" placeholder="|LANG_CONTAINS|">
-				</p>
-				<button class="btn btn-blue" type="button" onClick="doSearch('domain')"><i class="fa fa-globe"></i> |LANG_DOMAIN|</button>
-				<button class="btn btn-dark-blue" type="button" onClick="doSearch('user')"><i class="fa fa-user"></i> |LANG_USER|</button>
-			</form>
+    	<div class="sixteen wide column listbox">
+			<h3>|LANG_BASIC_SETTINGS|</h3>
+			<ul class="ui horizontal selection list">
+				<li class="item">
+					<a href="/CMD_USER_SHOW">
+						<img class="ui image" src="IMG_SKIN_ADMIN_004" alt="" />
+						<div class="content">
+							<div class="header">|LANG_LIST_USERS|</div>
+        				</div>
+        			</a>
+        		</li>
+				<li class="item">
+					<a href="/HTM_ACCOUNT_USER_CREATE">
+						<img class="ui image" src="IMG_SKIN_ADMIN_001" alt="" />
+						<div class="content">
+							<div class="header">|LANG_ADD_NEW_USER|</div>
+        				</div>
+        			</a>
+        		</li>
+				<li class="item">
+					<a href="/CMD_SHOW_USER_PACKAGE">
+						<img class="ui image" src="IMG_SKIN_ADMIN_033" alt="" />
+						<div class="content">
+							<div class="header">|LANG_ADD_PACKAGE|</div>
+        				</div>
+        			</a>
+        		</li>
+				<li class="item">
+					<a href="/CMD_MANAGE_USER_PACKAGES">
+						<img class="ui image" src="IMG_SKIN_ADMIN_009" alt="" />
+						<div class="content">
+							<div class="header">|LANG_LIST_PACKAGES|</div>
+        				</div>
+        			</a>
+        		</li>
+				<li class="item">
+					<a href="javascript:showUserMessage();">
+						<img class="ui image" src="IMG_SKIN_ADMIN_015" alt="" />
+						<div class="content">
+							<div class="header">|LANG_EDIT_USER_MESS|</div>
+        				</div>
+					</a>
+				</li>
+				<li class="item">
+					<a href="/HTM_USER_PASSWD">
+						<img class="ui image" src="IMG_SKIN_ADMIN_007" alt="" />
+						<div class="content">
+							<div class="header">|LANG_CHANGE_PASSWORDS|</div>
+        				</div>
+        			</a>
+        		</li>
+        	</ul>
 		</div>
-		
-	</div>
-      	<div class="pure-u-1-1 listbox">
-				<h3>|LANG_BASIC_SETTINGS|</h3>
-				<ul>
-					<li><a href="/CMD_USER_SHOW"><img src="IMG_SKIN_ADMIN_004" alt="" />|LANG_LIST_USERS|</a></li>
-					<li><a href="/HTM_ACCOUNT_USER_CREATE"><img src="IMG_SKIN_ADMIN_001" alt="" />|LANG_ADD_NEW_USER|</a></li>
-					<li><a href="/CMD_SHOW_USER_PACKAGE"><img src="IMG_SKIN_ADMIN_033" alt="" />|LANG_ADD_PACKAGE|</a></li>
-					<li><a href="/CMD_MANAGE_USER_PACKAGES"><img src="IMG_SKIN_ADMIN_009" alt="" />|LANG_LIST_PACKAGES|</a></li>
-					<li><a href="javascript:showUserMessage();"><img src="IMG_SKIN_ADMIN_015" alt="" />|LANG_EDIT_USER_MESS|</a></li>
-					<li><a href="/HTM_USER_PASSWD"><img src="IMG_SKIN_ADMIN_007" alt="" />|LANG_CHANGE_PASSWORDS|</a></li>
-				</ul>
-			</div>
-			<div class="clearfix"></div>
 
-      	<div class="pure-u-1-1 listbox">
-				<h3>|LANG_EXTENSIONS|</h3>
-				<ul>
-					<li><a href="/CMD_TICKET_MANAGE"><img src="IMG_SKIN_ADMIN_013" alt="" />|LANG_MANAGE_TICKETS| (|NEWTICKETS| |LANG_NEW|)</a></li>
-					<li><a href="/CMD_TICKET_CREATE?TYPE=Message&amp;who=all"><img src="IMG_SKIN_ADMIN_036" alt="" />|LANG_MESSSAGE_ALL_USERS|</a></li>
-					<li><a href="/CMD_TICKET_CREATE?TYPE=Ticket"><img src="IMG_SKIN_ADMIN_037" alt="" />|LANG_CONTACT_ADMIN|</a></li>
-					<li><a href="/CMD_SYSTEM_INFO"><img src="IMG_SKIN_ADMIN_019" alt="" />|LANG_SYSTEM_INFO|</a></li>
-					<li><a href="/CMD_NAME_SERVER"><img src="IMG_SKIN_ADMIN_032" alt="" />|LANG_NAMESERVERS|</a></li>
-				</ul>
-			</div>
-			<div class="clearfix"></div>
+		<div class="sixteen wide column listbox">
+			<h3>|LANG_EXTENSIONS|</h3>
+			<ul class="ui horizontal selection list">
+				<li class="item">
+					<a href="/CMD_TICKET_MANAGE">
+						<img class="ui image" src="IMG_SKIN_ADMIN_013" alt="" />
+						<div class="content">
+							<div class="header">|LANG_MANAGE_TICKETS| (|NEWTICKETS| |LANG_NEW|)</div>
+        				</div>	
+					</a>
+				</li>
+				<li class="item">
+					<a href="/CMD_TICKET_CREATE?TYPE=Message&amp;who=all">
+						<img class="ui image" src="IMG_SKIN_ADMIN_036" alt="" />
+						<div class="content">
+							<div class="header">|LANG_MESSSAGE_ALL_USERS|</div>
+        				</div>
+        			</a>
+        		</li>
+				<li class="item">
+					<a href="/CMD_TICKET_CREATE?TYPE=Ticket">
+						<img class="ui image" src="IMG_SKIN_ADMIN_037" alt="" />
+						<div class="content">
+							<div class="header">|LANG_CONTACT_ADMIN|</div>
+        				</div>
+        			</a>
+        		</li>
+				<li class="item">
+					<a href="/CMD_SYSTEM_INFO">
+						<img class="ui image" src="IMG_SKIN_ADMIN_019" alt="" />
+						<div class="content">
+							<div class="header">|LANG_SYSTEM_INFO|</div>
+        				</div>
+        			</a>
+        		</li>
+				<li class="item">
+					<a href="/CMD_NAME_SERVER">
+						<img class="ui image" src="IMG_SKIN_ADMIN_032" alt="" />
+						<div class="content">
+							<div class="header">|LANG_NAMESERVERS|</div>
+        				</div>
+        			</a>
+        		</li>
+			</ul>
+		</div>
 			
-      	<div class="pure-u-1-1 listbox">
-				<h3>|LANG_AGENTS_TOOLS|</h3>
-				<ul>
-					<li><a href="/CMD_RESELLER_STATS"><img src="IMG_SKIN_ADMIN_005" alt="" />|LANG_RESELLER_STATS|</a></li>
-					<li><a href="/CMD_IP_CONFIG"><img src="IMG_SKIN_ADMIN_022" alt="" />|LANG_IP_MANAGER|</a></li>
-					<li><a href="/CMD_SKINS"><img src="IMG_SKIN_ADMIN_028" alt="" />|LANG_SKIN_MANAGER|</a></li>
-					<li><a href="/CMD_USER_BACKUP"><img src="IMG_SKIN_ADMIN_011" alt="" />|LANG_USER_BACKUPS|</a></li>
+		<div class="sixteen wide column listbox">
+			<h3>|LANG_AGENTS_TOOLS|</h3>
+			<ul class="ui horizontal selection list">
+				<li class="item">
+					<a href="/CMD_RESELLER_STATS">
+						<img class="ui image" src="IMG_SKIN_ADMIN_005" alt="" />
+						<div class="content">
+							<div class="header">|LANG_RESELLER_STATS|</div>
+        				</div>
+        			</a>
+        		</li>
+				<li class="item">
+					<a href="/CMD_IP_CONFIG">
+						<img class="ui image" src="IMG_SKIN_ADMIN_022" alt="" />
+						<div class="content">
+							<div class="header">|LANG_IP_MANAGER|</div>
+        				</div>
+        			</a>
+        		</li>
+				<li class="item">
+					<a href="/CMD_SKINS">
+						<img class="ui image" src="IMG_SKIN_ADMIN_028" alt="" />
+						<div class="content">
+							<div class="header">|LANG_SKIN_MANAGER|</div>
+        				</div>
+        			</a>
+        		</li>
+				<li class="item">
+					<a href="/CMD_USER_BACKUP">
+						<img class="ui image" src="IMG_SKIN_ADMIN_011" alt="" />
+						<div class="content">
+							<div class="header">|LANG_USER_BACKUPS|</div>
+        				</div>
+        			</a>
+        		</li>
 |$|PHP|
 <?php
 $data = <<<END
@@ -108,6 +228,6 @@ END;
 }
 ?>
 DONE|
-		</ul>
-			</div>
+			</ul>
 		</div>
+</div>

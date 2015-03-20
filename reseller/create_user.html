@@ -4,6 +4,20 @@
 |?HELP_SECTION=`RESELLER_HELPER`/create.html|
 |HTM_RESELLER_TOP|
 
+|?CHECK_NAME=checkName()|
+|?CHECK_PASS=|
+|?RANDOM_PASS=randomPass()|
+|?CHECK_DOMAIN=checkDomain()|
+
+|*if AJAX="1"|
+	|?CHECK_NAME=ajax_checkName()|
+	|?CHECK_PASS=onChange="ajax_checkPass()"|
+	|?RANDOM_PASS=ajax_randomPass('')|
+	|?CHECK_DOMAIN=ajax_checkDomain()|
+
+	<script type="text/javascript" src="JS_CREATION_CHECK"></script>
+|*endif|
+
 <script language="Javascript">
 <!--
 
@@ -40,50 +54,30 @@ function showUserMessage() {
 
 // -->
 </script>
-<div class="pure-g">
-	<div class="pure-u-2-3" style="margin: 15% auto;">
-		<form class="pure-form pure-form-aligned" name="reseller" action="CMD_ACCOUNT_USER" method="post" onSubmit="return formOK()">
-			<input type="hidden" name="action" value="create">
-			<h3>|LANG_CREATE_USER|</h3>
-		    <div class="pure-control-group">
-			    <label for="username">|LANG_USERNAME|</label>
-			    <input type="text" id="username" placeholder="|LANG_USERNAME|" name="username" maxlength="|MAX_USERNAME_LENGTH|" onChange="checkName()">
-		    </div>
-		    <div class="pure-control-group">
-			    <label for="email">|LANG_EMAIL|</label>
-			    <input type="text" id="email" placeholder="|LANG_EMAIL|" name="email" onChange="checkEmail()">
-		    </div>
-		    <div class="pure-control-group">
-			    <label for="passwd">|LANG_ENTER_PASS|</label>
-			    <input type="password" id="passwd" placeholder="|LANG_ENTER_PASS|" name="passwd"> <button type="button" class="btn btn-purple" onClick="randomPass()">|LANG_RANDOM|</button>
-		    </div>
-		    <div class="pure-control-group">
-			    <label for="passwd2">|LANG_RE-ENTER_PASS|</label>
-			    <input type="password" id="passwd2" placeholder="|LANG_RE-ENTER_PASS|" name="passwd2" onChange="checkPass()">
-		    </div>
-		    <div class="pure-control-group">
-			    <label for="domain">|LANG_DOMAIN|</label>
-			    <input type="text" id="domain" placeholder="|LANG_DOMAIN|" name="domain" onChange="checkDomain()">
-		    </div>
-		    <div class="pure-control-group">
-			    <label for="package">|LANG_USE_USER_PACK|</label>
-			    |PACKAGES|
-		    </div>
-		    <div class="pure-control-group">
-			    <label for="ip">|LANG_IP|</label>
-			    |IPSELECT|
-		    </div>
-		    <div class="pure-control-group">
-			    <label for="notify">|LANG_EMAIL_NOTIFY|</label>
-			    <input type="checkbox" value="yes" name="notify" checked="checked">
-			    <a href="javascript:showUserMessage();">|LANG_EDIT_USER_MESS|</a>
-		    </div>
-		    <hr />
-		    <div class="pure-control-group" style="text-align: right;">
-				<button type="submit" class="btn btn-dark-blue" name="customize">|LANG_CUSTOMIZE|</button>
-				<button type="submit" class="btn btn-blue" name="add">|LANG_SUBMIT|</button>
-		    </div>
-	    </form>
-	</div>
-</div>
+
+	<table class=list cellpadding=3 cellspacing=1>
+		<form name=reseller action="CMD_ACCOUNT_USER" method="post" onSubmit="return formOK()">
+
+|HTM_PREVENT_AUTOFILL|
+
+			<input type=hidden name=action value=create>
+
+			<tr ><td class=listtitle colspan=3>|LANG_CREATE_USER|</td ></tr >
+
+			<tr><td class=list>|LANG_USERNAME|:</td><td class=list><input type=text id=username name=username size=32 maxlength=|MAX_USERNAME_LENGTH| onChange="|CHECK_NAME|"><div id=username_result class=warning></div></td></tr>
+			<tr><td class=list>|LANG_EMAIL|:</td><td class=list><input type=text name=email size=32 onChange="checkEmail()"></td></tr>
+			<tr><td class=list>|LANG_ENTER_PASS|:</td><td class=list><input type=password id=passwd name=passwd size=32 |CHECK_PASS|> <input type=button value="|LANG_RANDOM|" onClick="|RANDOM_PASS|"><div id=passwd_result class=warning></div></td></tr>
+			<tr><td class=list>|LANG_RE-ENTER_PASS|:</td><td class=list><input type=password id=passwd2 name=passwd2 size=32 onChange="checkPass()"></td></tr>
+			<tr><td class=list>|LANG_DOMAIN|:</td><td class=list><input type=text id=domain name=domain size=32 onChange="|CHECK_DOMAIN|"><div id=domain_result class=warning></td></tr>
+			<tr><td class=list>|LANG_USE_USER_PACK|:</td><td class=list>|PACKAGES|</td></tr>
+			<tr><td class=list>|LANG_IP|:</td><td class=list>|IPSELECT|</td></tr>
+			<tr><td class=list>|LANG_EMAIL_NOTIFY|:</td><td class=list><input type=checkbox value="yes" name=notify checked> <a href="javascript:showUserMessage();">|LANG_EDIT_USER_MESS|</a></td></tr>
+
+			<tr><td class=listtitle colspan=2 align=right>
+				<input type=submit name=customize value="|LANG_CUSTOMIZE|">
+				<input type=submit name=add value="|LANG_SUBMIT|">
+			  </td></tr>
+		</form>
+	</table>
+
 |HTM_RESELLER_BOTTOM|

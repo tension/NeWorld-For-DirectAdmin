@@ -1,0 +1,32 @@
+|LF_STANDARD|
+|?TREE=&raquo; `ALL_DOMAINS_SELECT` &raquo; <a class=tree href="/CMD_NGINX_TEMPLATES?DOMAIN=`DOMAIN`">Nginx Templates</a>|
+|?HELP_SECTION=`USER_HELPER`|
+|HTM_HEADER_FULL|
+
+<script language="Javascript">
+<!--
+function load_template(name)
+{
+	location.href='?domain=|domain|&action=view&template_id='+name;
+}
+
+// -->
+</script>
+
+
+<table class=list cellpadding=3 cellspacing=1>
+<form name=info action='/CMD_NGINX_TEMPLATES' method='POST'>
+<input type=hidden name=domain value="|DOMAIN|">
+<input type=hidden name=action value="add">
+<tr><td class=listtitle>Add new Nginx template</td></tr>
+<tr>
+	<td class=list>|TEMPLATE_SELECT|</td>
+</tr>
+</form>
+</table>
+
+
+<br>
+|CURRENT_TEMPLATES|
+
+|HTM_FOOTER_FULL|

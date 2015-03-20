@@ -1,33 +1,35 @@
-			<div class="module footer">
-				<h3>|LANG_CONTACTUS|</h3>
-				<ul>
 |$|PHP|
 <?php
-//QQ在线状态
-function get_qq_status($string) {
-	$ch = curl_init();
-	$timeout = 20;
-	curl_setopt ($ch, CURLOPT_URL, "http://webpresence.qq.com/getonline?type=1&{$string}:");
-	curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);
-	curl_setopt ($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
-	$data = curl_exec($ch);
-	curl_close($ch);
-		
-	if(!$data) { return 0; }
-	switch($data) {
-		case 'online[0]=0;': 
-			echo("off");
-			break;
-		case 'online[0]=1;':
-			echo("on");
-			break;
-	}
-}
+include |ROOT|."inc/functions.php";
 ?>
-<li><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=97515362&amp;site=qq&amp;menu=yes" class="<?php get_qq_status('97515362');?>" title="售后服务">售后服务</a>售后服务</li>
-<li><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=97515365&amp;site=qq&amp;menu=yes" class="<?php get_qq_status('97515365');?>" title="投诉建议">投诉建议</a>投诉建议</li>
+	<div class="ui vertical menu contact">
+		<div class="header item">
+			<i class="globe icon"></i>
+			|LANG_CONTACTUS|
+		</div>
+		|*if QQ1!=""|
+		<a class="item" href="http://wpa.qq.com/msgrd?v=3&amp;uin=|QQ1|&amp;site=qq&amp;menu=yes" target="_blank">
+			<i class="qq icon <?php get_qq_status('|QQ1|');?>"></i>
+			|QD1|
+		</a>
+		|*endif|
+		|*if QQ2!=""|
+		<a class="item" href="http://wpa.qq.com/msgrd?v=3&amp;uin=|QQ2|&amp;site=qq&amp;menu=yes" target="_blank">
+			<i class="qq icon <?php get_qq_status('|QQ2|');?>"></i>
+			|QD2|
+		</a>
+		|*endif|
+		|*if CMAIL!=""|
+		<a class="item" href="mailto:|CMAIL|?subject=|USERNAME|-|DEAMONNAME|" target="_blank">
+			<i class="mail icon"></i>
+			|CMAIL|
+		</a>
+		|*endif|
+		|*if TEL!=""|
+		<a class="item">
+			<i class="call square icon"></i>
+			|TEL|
+		</a>
+		|*endif|
+	</div>
 DONE|
-<li><i class="fa fa-phone-square" style="margin: 1px;vertical-align: sub;font-size: 24px;color: skyblue;"></i> <strong style="font-size: 16px;">4006222346</strong></li>
-
-				</ul>
-			</div>

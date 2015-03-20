@@ -2,17 +2,20 @@
 |?HELP_SECTION=`USER_HELPER`/mysql.html|
 |HTM_USER_TOP|
 
-<a href="CMD_DB_CREATE?DOMAIN=|DOMAIN|">|LANG_CREATE_DB|</a><br>
+<a href="CMD_DB_CREATE?DOMAIN=|DOMAIN|" style="line-height: 1.5;font-size: 1.1em;"><i class="database icon"></i>|LANG_CREATE_DB|</a>
+<br/>
 
 |*if USERDATABASE="0"|
-<br><b>|LANG_DB_BEFORE_PMA|</b><br>
+<br><b>|LANG_DB_BEFORE_PMA|</b>
+<br/>
 |*endif|
-<a target="_blank" href="|HTTP|://|HOSTNAME|/phpmyadmin">|LANG_PMA|</a>
-<br>
+<a target="_blank" href="|HTTP|://|HOSTNAME|/phpmyadmin" style="line-height: 1.5;font-size: 1.1em;"><i class="large check circle icon"></i>|LANG_PMA|</a>
+<br/><br/>
 
 |DATABASES|
 
 <form name=backupform action="/CMD_DB" enctype="multipart/form-data" method="POST">
+<input type="hidden" name="MAX_FILE_SIZE" value="|MAX_FILE_SIZE|">
 <input type=hidden name=action value="restore">
 <input type=hidden name=domain value="|DOMAIN|">
 <table class=list cellpadding=3 cellspacing=1>

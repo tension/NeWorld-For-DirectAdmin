@@ -1,0 +1,31 @@
+|LF_STANDARD|
+|?TREE=&raquo; `ALL_DOMAINS_SELECT` &raquo; <a class=tree href="/CMD_NGINX_TEMPLATES?DOMAIN=`DOMAIN`">Nginx Templates</a>|
+|?HELP_SECTION=`USER_HELPER`|
+|HTM_HEADER_FULL|
+
+<table class=list cellpadding=3 cellspacing=1>
+<form name=info action='/CMD_NGINX_TEMPLATES' method='POST'>
+<input type=hidden name=domain value="|DOMAIN|">
+<input type=hidden name=action value="add">
+<tr><td class=listtitle colspan=2>Add |TEMPLATE_NAME| Nginx template</td></tr>
+|*if USES_LOCATION="1"|
+<tr>
+	<td class=list>Location</td>
+	<td><input type=text name="location" placeholder="/your/path" value="|LOCATION|"></td></tr>
+</tr>
+|*endif|
+<tr>
+	<td class=list>SSL</td>
+	<td class=list><input type=radio name=ssl value="no" checked>http &nbsp;&nbsp;&nbsp;<input type=radio name=ssl value="yes">https &nbsp;&nbsp;&nbsp;<input type=radio name=ssl value="both">http & https</td>
+</tr>
+</tr>
+	<td class=list2>Domain & Subdomains</td>
+	<td class=list2><input type=radio name=subs value="no" checked>|domain| &nbsp;&nbsp;&nbsp;<input type=radio name=subs value="yes">only subdomains &nbsp;&nbsp;&nbsp;<input type=radio name=subs value="both">both |domain| and subdomains</td>
+</tr>
+
+<tr><td class=listtitle align=right colspan=2><input type=submit value="|LANG_ADD|"></td></tr>
+
+</form>
+</table>
+
+|HTM_FOOTER_FULL|

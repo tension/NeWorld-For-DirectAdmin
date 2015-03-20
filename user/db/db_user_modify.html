@@ -4,6 +4,14 @@
 |?HELP_SECTION=`USER_HELPER`/mysql.html#password|
 |HTM_USER_TOP|
 
+|?CHECK_PASS=|
+|?RANDOM_PASS=randomPass()|
+|*if AJAX="1"|
+	|?CHECK_PASS=onChange="ajax_checkPass()"|
+	|?RANDOM_PASS=ajax_randomPass('')|
+	<script type="text/javascript" src="JS_CREATION_CHECK"></script>
+|*endif|
+
 <script language="javascript">
 
 |HTM_JAVASCRIPT|
@@ -18,8 +26,8 @@
 		<input type=hidden name=user value="|USER|">
 
 		<tr><td class=listtitle colspan=2>|LANG_MODIFY_1| |USER| |LANG_MODIFY_2| |NAME|</td></tr>
-		<tr><td class=list>|LANG_DB_PASS|</td><td class=list><input type=password name=passwd size=20> <input type=button value="|LANG_RANDOM|" onClick="randomPass()"></td></tr>
-		<tr><td class=list>|LANG_DB_PASS_AGAIN|</td><td class=list><input type=password name=passwd2 size=20></td></tr>
+		<tr><td class=list>|LANG_DB_PASS|</td><td class=list><input type=password id=passwd name=passwd size=20 |CHECK_PASS|> <input type=button value="|LANG_RANDOM|" onClick="|RANDOM_PASS|"><div id=passwd_result class=warning></div></td></tr>
+		<tr><td class=list>|LANG_DB_PASS_AGAIN|</td><td class=list><input type=password id=passwd2 name=passwd2 size=20 onChange="checkPass()"></td></tr>
 
 		<tr><td class=listtitle colspan=3 align=right>
 			<input type=submit name=create value="|LANG_SAVE|">

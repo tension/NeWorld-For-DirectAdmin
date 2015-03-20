@@ -4,6 +4,14 @@
 |?HELP_SECTION=`USER_HELPER`/misc.html#domains|
 |HTM_USER_TOP|
 
+
+|?CHECK_DOMAIN=checkDomain()|
+|*if AJAX="1"|
+	|?CHECK_DOMAIN=ajax_checkDomain()|
+	<script type="text/javascript" src="JS_CREATION_CHECK"></script>
+|*endif|
+
+
 <script language="Javascript">
 <!--
 
@@ -90,12 +98,18 @@ function submitForm()
 
 		<tr ><td class=listtitle colspan=2>|LANG_CREATE_DOMAIN|</td ></tr >
 
-		<tr><td class=list>|LANG_DOMAIN|:</td><td class=list><input type=text name=domain size=32 value="domain.com" onFocus="this.select();" onChange="checkDomain()"></td></tr>
+		<tr><td class=list>|LANG_DOMAIN|:</td><td class=list><input type=text id=domain name=domain size=32 value="domain.com" onFocus="this.select();" onChange="|CHECK_DOMAIN|"><div id=domain_result class=warning></div></td></tr>
 		<tr><td class=list>|LANG_BANDWIDTH|</td><td class=list><input type=text name=bandwidth value="1000" disabled><input type="checkbox" name="ubandwidth" value="unlimited" checked onClick='setText( document.info.bandwidth,this)' >|LANG_SAME_AS_MAIN|</td ></tr>
 		<tr><td class=list>|LANG_DISK_SPACE|</td><td class=list><input type=text name=quota value="0" disabled><input type="checkbox" name="uquota" value="unlimited" checked onClick='setText( document.info.quota,this)' >|LANG_SAME_AS_MAIN|</td ></tr>
+|*if USERSSL="ON"|
 		<tr><td class=list>|LANG_SECURE_SSL|</td><td class=list><input type="checkbox" name=ssl value="ON"> |LANG_IGNORED|</td></tr>
+|*endif|
+|*if USERCGI="ON"|
 		<tr><td class=list>|LANG_CGI| |LANG_ACCESS|</td><td class=list><input type="checkbox" name=cgi value="ON" checked> |LANG_IGNORED|</td></tr>
+|*endif|
+|*if USERPHP="ON"|
 		<tr><td class=list>|LANG_PHP| |LANG_ACCESS|</td><td class=list><input type="checkbox" name=php value="ON" checked> |LANG_IGNORED|</td></tr>
+|*endif|
 		<tr><td class=listtitle colspan=3 align=right>
 			<input type=button name=create value="|LANG_CREATE|" onClick="if (formOK()) {submitForm();}">
 		</td></tr>

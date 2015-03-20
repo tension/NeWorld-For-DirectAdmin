@@ -23,9 +23,15 @@ function setText( textfld, checkbx)
 		<tr ><td class=listtitle colspan=2>|LANG_MODIFY| |domain|</td></tr>
 		<tr><td class=list>|LANG_BANDWIDTH| |LANG_MB|</td><td class=list><input type=text name=bandwidth value="|BANDWIDTH|" |BANDWIDTHDISABLED|><input type="checkbox" name="ubandwidth" value="unlimited" onClick='setText( document.info.bandwidth,this)' |BANDWIDTHCHECKED|>|LANG_SAME_AS_MAIN|</td ></tr>
 		<tr><td class=list2>|LANG_DISK_SPACE| |LANG_MB|</td><td class=list2><input type=text name=quota value="|QUOTA|" |QUOTADISABLED|><input type="checkbox" name="uquota" value="unlimited" onClick='setText( document.info.quota,this)' |QUOTACHECKED|>|LANG_SAME_AS_MAIN|</td ></tr>
-		<tr><td class=list>|LANG_SECURE_SSL|</td><td class=list><input type="checkbox" name=ssl value="ON" |SSLCHECKED|> |LANG_IGNORED|</td></tr>
-		<tr><td class=list2>|LANG_CGI| |LANG_ACCESS|</td><td class=list2><input type="checkbox" name=cgi value="ON" |CGICHECKED|> |LANG_IGNORED|</td></tr>
-		<tr><td class=list>|LANG_PHP| |LANG_ACCESS|</td><td class=list><input type="checkbox" name=php value="ON" |PHPCHECKED|> |LANG_IGNORED|</td></tr>
+|*if USERSSL="ON"|
+		<tr><td class=list>|LANG_SECURE_SSL|</td><td class=list><input type="checkbox" name=ssl value="ON" |SSLCHECKED|></td></tr>
+|*endif|
+|*if USERCGI="ON"|
+		<tr><td class=list2>|LANG_CGI| |LANG_ACCESS|</td><td class=list2><input type="checkbox" name=cgi value="ON" |CGICHECKED|></td></tr>
+|*endif|
+|*if USERPHP="ON"|
+		<tr><td class=list>|LANG_PHP| |LANG_ACCESS|</td><td class=list><input type="checkbox" name=php value="ON" |PHPCHECKED|></td></tr>
+|*endif|
 		<tr><td class=listtitle colspan=3 align=right>
 			<input type=submit name=modify value="|LANG_SAVE|">
 		</td></tr>
@@ -99,9 +105,14 @@ function confirmit()
 	<tr><td class=list align=right>|LANG_SELECT_IP_TO_ADD|</td><td class=list>|MULTI_IP_SELECT|</td></tr>
 	<tr><td class=list2 align=right>|LANG_ADD_DNS_RECORDS|</td><td class=list2><input type=checkbox name="dns" value="yes" checked></td></tr>
 	<tr><td class=listtitle colspan=2 align=right><input type=submit value="|LANG_ADD_IP|" name="add"></td></tr>
+	</form>
 </table>
 
 |*endif|
 
+|*if HAS_PHP_SELECTOR="yes"|
+<br>
+|PHP_SELECTOR_TABLE|
+|*endif|
 
 |HTM_USER_BOTTOM|

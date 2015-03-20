@@ -4,7 +4,6 @@
 |?HELP_SECTION=`ADMIN_HELPER`/creater.html|
 |HTM_ADMIN_TOP|
 
-
 <script language="Javascript">
 <!--
 
@@ -39,6 +38,9 @@ function showResellerMessage()
 
 		<tr ><td class=list>|LANG_BANDWIDTH|</td ><td class=list><input type=text id="bandwidth" name=bandwidth value="|BANDWIDTH|"></td ><td class=list style="width: 65%"><input type="checkbox" name="ubandwidth" value="ON" onClick='setText("bandwidth",this)' |BANDWIDTHCHECKED|>|LANG_UNLIMITED|</td></tr>
 		<tr ><td class=list>|LANG_DISK_SPACE|</td ><td class=list><input type=text id="quota" name=quota value="|QUOTA|"></td ><td class=list><input type="checkbox" name="uquota" value="ON" onClick='setText("quota",this)' |QUOTACHECKED|>|LANG_UNLIMITED|</td></tr >
+|*if HAVE_INODE="yes"|
+		<tr ><td class=list>|LANG_INODES|</td ><td class=list><input type=text id="inode" name=inode value="|INODE|"></td ><td class=list><input type="checkbox" name="uinode" value="ON" onClick='setText("inode",this)' |INODECHECKED|>|LANG_UNLIMITED|</td></tr >
+|*endif|
 		<tr ><td class=list>|LANG_DOMAINS|</td ><td class=list><input type=text id="vdomains" name=vdomains value="|VDOMAINS|"></td ><td class=list><input type="checkbox" name="uvdomains" value="ON" onClick='setText("vdomains",this)' |VDOMAINSCHECKED|>|LANG_UNLIMITED|</td></tr >
 		<tr ><td class=list>|LANG_SUBDOMAINS|</td ><td class=list><input type=text id="nsubdomains" name=nsubdomains value="|NSUBDOMAINS|"></td ><td class=list><input type="checkbox" name="unsubdomains" value="ON" onClick='setText("nsubdomains",this)' |NSUBDOMAINSCHECKED|>|LANG_UNLIMITED|</td></tr >
 		<tr ><td class=list>|LANG_IPS|</td ><td class=list><input type=text name=ips value="|IPS|"></td ><td class=list></td></tr >

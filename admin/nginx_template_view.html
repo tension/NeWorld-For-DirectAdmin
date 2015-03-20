@@ -1,0 +1,24 @@
+|?TREE=&raquo; <a class=tree href="/CMD_NGINX_TEMPLATES_ADMIN">Nginx Templates</a>|
+|?HELP_SECTION=`ADMIN_HELPER`|
+|HTM_HEADER_FULL|
+
+|TEMPLATE_NAME|
+<br><br>
+
+
+|TEMPLATE_OPTIONS_TABLE|
+
+<textarea class=code_edit cols=120 rows=20>|TEMPLATE_TXT|</textarea>
+
+<br>
+
+|*if IS_CUSTOM_TEMPLATE="0"|
+This is a default template. To edit it, convert it to a custom copy.<br>
+<form action="CMD_NGINX_TEMPLATES_ADMIN" method="POST">
+<input type=hidden name="action" value="custom">
+<input type=hidden name="template_id" value="|TEMPLATE_ID|">
+<input type=submit value="Convert">
+</form>
+|*endif|
+
+|HTM_FOOTER_FULL|

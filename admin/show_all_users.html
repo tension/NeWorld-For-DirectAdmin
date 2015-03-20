@@ -27,36 +27,33 @@ function trimit(strobj)
 // -->
 </script>
 
-<form action="" method="GET" name="searchform" onSubmit="trimit(value8);" style="margin: 10px 0;">
-	<div class="input-append">
-		<input type="text" class="inputclass" name="value8"
-		|*if value8|
-		value='|value8|'
-		|*endif|
-		>
-		<input type="hidden" name="comparison8" value="contains">
-		<input type="hidden" name="sort1" value="8">
-		<input type="hidden" name="sort1dir" value="1">
-		<input type="hidden" name="sort2dir" value="1">
-		<input type="hidden" name="ipp" value="50">
-		<button class="btn btn-default" type="submit">|LANG_SEARCH|</button>
-		<button class="btn btn-default" type="button" onClick="document.searchform.value8.value=''; document.searchform.submit();">|LANG_CLEAR_SEARCH|</button>
-	</div>
+<br>
+<table class=list cellpadding=3 cellspacing=1>
+<form action="" method="GET" name=searchform onSubmit="trimit(value8);">
+<tr><td class=listtitle>
+|LANG_SHOW_DOMAINS_THAT_CONTAIN| <input type=text size=12 class=inputclass name=value8
+|*if value8|
+value='|value8|'
+|*endif|
+>
+<input type=hidden name=comparison8 value="contains">
+<input type=hidden name=sort1 value="8">
+<input type=hidden name=sort1dir value="1">
+<input type=hidden name=sort2dir value="1">
+<input type=hidden name=ipp value="50">
+<input type=submit value="|LANG_SEARCH|">
+&nbsp;&nbsp;&nbsp;&nbsp;
+<input type=button value="|LANG_CLEAR_SEARCH|" onClick="document.searchform.value8.value=''; document.searchform.submit();">
+</td></tr>
 </form>
+</table>
 
 <script language="javascript">
 document.searchform.value8.focus();
 document.searchform.value8.select();
 </script>
-|$|PHP|
-<?php 
-include |ROOT|."inc/functions.php";
-$tabla = <<< EOF
-|TABLE|
-EOF;
 
-echo CMD_ALL_USER_SHOW($tabla);
-?>
-DONE|
+	|TABLE|
+
 |HTM_FOOTER_WIDE|
 |HTM_FOOTER|

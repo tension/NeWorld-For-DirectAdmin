@@ -1,0 +1,8 @@
+1=8
+2=-- anything --
+3=Brute-Force Attack detected in service log
+4=is currently down
+5=Your backups are now ready
+6=An error occurred during the backup
+7=emails have just been sent by
+8=Warning: The system load average is

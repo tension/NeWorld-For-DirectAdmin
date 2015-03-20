@@ -3,15 +3,73 @@
 |?HELP_SECTION=`RESELLER_HELPER`/userpass.html|
 |HTM_RESELLER_TOP|
 
+<script type="text/javascript">
+$(document).ready(function(){
+	$(".randpass").click(function(){
+		$("input[name='passwd'],input[name='passwd2'],.visiblepass").val(randPass());
+	    $('#passwdRating').css('color','orange');
+		$('#passwdRating').html('|LANG_MEDIUM|');
+	});
+	$("#passwd").keyup(function () {
+		if ($(this).val() != "") {
+			var strongRegex = new RegExp("^(?=.{12,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$", "g");
+			var mediumRegex = new RegExp("^(?=.{8,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$", "g");
+			var enoughRegex = new RegExp("(?=.{6,}).*", "g");
+			if (false == enoughRegex.test($(this).val())) {
+				//密码小于六位的时候，密码强度图片都为灰色
+	        	$('#passwdRating').css('color','#666');
+				$('#passwdRating').html('|LANG_MORE|');
+			} else if (strongRegex.test($(this).val())) {
+				//强,密码为八位及以上并且字母数字特殊字符三项都包括
+	        	$('#passwdRating').css('color','green');
+	        	$('#passwdRating').html('|LANG_STRONG|');
+			} else if (mediumRegex.test($(this).val())) {
+				//中等,密码为七位及以上并且字母、数字、特殊字符三项中有两项，强度是中等
+	        	$('#passwdRating').css('color','orange');
+				$('#passwdRating').html('|LANG_MEDIUM|');
+			} else {
+				//弱,如果密码为6为及以下，就算字母、数字、特殊字符三项都包括，强度也是弱的
+	        	$('#passwdRating').css('color','red');
+				$('#passwdRating').html('|LANG_WEAK|');
+			}      
+		}
+	});
+});
+
+function randPass(){
+	charsl="abcdefghijklmnopqrstuvwxyz";
+	charsu="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	nums="1234567890";
+	simb="!.-_@#$+/";
+	pass="";
+	i=Math.floor(Math.random()*26); pass += charsl.charAt(i);
+	i=Math.floor(Math.random()*26); pass += charsu.charAt(i);
+	i=Math.floor(Math.random()*26); pass += charsu.charAt(i);
+	i=Math.floor(Math.random()*10); pass += nums.charAt(i);
+	i=Math.floor(Math.random()*10); pass += nums.charAt(i);
+	i=Math.floor(Math.random()*9); pass += simb.charAt(i);
+	i=Math.floor(Math.random()*26); pass += charsl.charAt(i);
+	i=Math.floor(Math.random()*10); pass += nums.charAt(i);
+	return pass;
+}
+</script>
+
+|?CHECK_PASS=|
 |*if AJAX="1"|
-<script language="Javascript" src="HTM_LIVESEARCH"></script>
+	|?CHECK_PASS=onChange="ajax_checkPass()"|
+	<script type="text/javascript" src="JS_CREATION_CHECK"></script>
+	<script type="text/javascript" src="JS_LIVESEARCH"></script>
+	<script type="text/javascript" src="JS_JAVASCRIPT"></script>
 |*endif|
 
 <br><br><br>
 	<center>
 			<table class=list style="width: 50%" cellpadding=3 cellspacing=1>
 			<tr><td class=listtitle colspan=2 align=center>|LANG_CHANGE_PASS|</td></tr>
-      		<form name=reseller action="CMD_USER_PASSWD" method="post">
+      		<form name=reseller action="CMD_USER_PASSWD" method="post" autocomplete="off">
+
+|HTM_PREVENT_AUTOFILL|
+
 |*if AJAX="1"|
       		<tr><td class=list>|LANG_USERNAME|:</td>
       			<td class=list>
@@ -23,8 +81,9 @@
 |*else|
 			<tr><td class=list>|LANG_USERNAME|:</td><td class=list><input type=text name=username></td></tr>
 |*endif|
-      		<tr><td class=list>|LANG_ENTER_PASS|:</td><td class=list><input type=password name=passwd></td></tr>
-			<tr><td class=list>|LANG_RE-ENTER_PASS|:</td><td class=list><input type=password name=passwd2></td></tr>
+      		<tr><td class=list>|LANG_ENTER_PASS|:</td><td class=list><input type=password id=passwd name=passwd |CHECK_PASS|> <input class="randpass" type="button" value="|LANG_RANDOM|">
+				<input style="width: 100px;border: 0 none; background-color: transparent ;" type="text" class="visiblepass" value="" readonly /><div id=passwd_result class=warning></td></tr>
+			<tr><td class=list>|LANG_RE-ENTER_PASS|:</td><td class=list><input type=password id=passwd2 name=passwd2 onChange="checkPass()"></td></tr>
 			<tr><td class=listtitle colspan=2 align=right>
                 <p align="center"><input type=submit value="|LANG_SUBMIT|"></p>
               </td></tr>

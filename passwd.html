@@ -1,51 +1,116 @@
 |LF_STANDARD|
-|?TREE=&raquo; <a class=tree href="/HTM_PASSWD">`LANG_CHANGE_YOUR_PASS`</a>|
+|?TREE=<a class=tree href="/HTM_PASSWD">`LANG_CHANGE_YOUR_PASS`</a>|
 |?HELP_SECTION=`USER_HELPER`/gettingstarted.html#password|
 |HTM_USER_TOP|
-<div class="pure-g">
-	<div class="pure-u-1-2" style="margin: 15% auto;">
-		<form action="CMD_PASSWD" method="post" class="pure-form pure-form-aligned">
+
+<script type="text/javascript">
+$(document).ready(function(){
+	$(".randpass").click(function(){
+		$("input[name='passwd'],input[name='passwd2'],.visiblepass").val(randPass());
+	    $('#passwdRating').css('color','orange');
+		$('#passwdRating').html('|LANG_MEDIUM|');
+	});
+	$("#passwd").keyup(function () {
+		if ($(this).val() != "") {
+			var strongRegex = new RegExp("^(?=.{12,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$", "g");
+			var mediumRegex = new RegExp("^(?=.{8,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$", "g");
+			var enoughRegex = new RegExp("(?=.{6,}).*", "g");
+			if (false == enoughRegex.test($(this).val())) {
+				//密码小于六位的时候，密码强度图片都为灰色
+	        	$('#passwdRating').css('color','#666');
+				$('#passwdRating').html('|LANG_MORE|');
+			} else if (strongRegex.test($(this).val())) {
+				//强,密码为八位及以上并且字母数字特殊字符三项都包括
+	        	$('#passwdRating').css('color','green');
+	        	$('#passwdRating').html('|LANG_STRONG|');
+			} else if (mediumRegex.test($(this).val())) {
+				//中等,密码为七位及以上并且字母、数字、特殊字符三项中有两项，强度是中等
+	        	$('#passwdRating').css('color','orange');
+				$('#passwdRating').html('|LANG_MEDIUM|');
+			} else {
+				//弱,如果密码为6为及以下，就算字母、数字、特殊字符三项都包括，强度也是弱的
+	        	$('#passwdRating').css('color','red');
+				$('#passwdRating').html('|LANG_WEAK|');
+			}      
+		}
+	});
+});
+
+function randPass(){
+	charsl="abcdefghijklmnopqrstuvwxyz";
+	charsu="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	nums="1234567890";
+	simb="!.-_@#$+/";
+	pass="";
+	i=Math.floor(Math.random()*26); pass += charsl.charAt(i);
+	i=Math.floor(Math.random()*26); pass += charsu.charAt(i);
+	i=Math.floor(Math.random()*26); pass += charsu.charAt(i);
+	i=Math.floor(Math.random()*10); pass += nums.charAt(i);
+	i=Math.floor(Math.random()*10); pass += nums.charAt(i);
+	i=Math.floor(Math.random()*9); pass += simb.charAt(i);
+	i=Math.floor(Math.random()*26); pass += charsl.charAt(i);
+	i=Math.floor(Math.random()*10); pass += nums.charAt(i);
+	return pass;
+}
+</script>
+
+<div class="ui two column centered grid passwd">
+	<div class="eleven wide column passwdbox">
+		<h3 class="ui dividing header">|LANG_CHANGE_YOUR_PASS|</h3>
+		<form action="CMD_PASSWD" method="post" class="ui form">
 			<input type="hidden" name="options" value="yes">
 		
-			<div class="pure-control-group">
+			<div class="inline field">
 				<label for="oldpass">|LANG_ENTER_OLD_PASS|</label>
 				<input type="password" name="oldpass" id="oldpass" placeholder="|LANG_ENTER_OLD_PASS|">
 			</div>
 		
-			<div class="pure-control-group">
-				<label for="passwd">|LANG_ENTER_PASS|</label>
-				<input type="password" name="passwd" id="passwd" placeholder="|LANG_ENTER_PASS|" onkeyup="CreateRatePasswdReq(this,'3');">
-			</div>
-			
-			<div class="pure-control-group clearfix" style="margin: 10px 0;">
-				<script type="text/javascript" src="/IMG_SKIN_JS"></script>
-				<div class="passwdline">
-					<table width="100%" cellspacing="0" cellpadding="0" border="0" id="passwdBar">
-						<tr>
-							<td id="posBar" style="width:135px;padding:0;border-right:0;height:5px;background:#e5e9eb;"></td>
-							<td id="negBar" style="padding:0;border-right:0;height:5px;background:#e5e9eb;"></td>
-						</tr>
-					</table>
-					<p id="passwdRating" style="margin: 0;color: #CCC;">|LANG_PASS_STRENGTH|</p>
-				</div>
+			<div class="inline field">
+				<label for="passwd">|LANG_ENTER_OLD_PASS|</label>
+				<input type="password" name="passwd" id="passwd" placeholder="|LANG_ENTER_OLD_PASS|">
+				<input class="randpass" type="button" value="|LANG_RANDOM|">
+				<input type="text" class="visiblepass" value="" readonly />
 			</div>
 		
-			<div class="pure-control-group clearfix">
-				<label for="passwd2">|LANG_RE-ENTER_PASS|</label>
-				<input type="password" name="passwd2" id="passwd2" placeholder="|LANG_RE-ENTER_PASS|">
+			<div class="inline field password">
+				<label for="passwd2">|LANG_ENTER_NEW_PASS|</label>
+				<input type="password" name="passwd2" id="passwd2" placeholder="|LANG_ENTER_NEW_PASS|">
+				<p id="passwdRating"></p>
 			</div>
 			
-			<div class="pure-control passwdline">
-				<label for="system"><input id="system" type="checkbox" name="system" value="yes" checked> |LANG_PASS_DA|</label><br/>
-				<label for="ftp"><input id="ftp" type="checkbox" name="ftp" value="yes" checked> |LANG_PASS_FTP|</label><br/>
-				<label for="database"><input id="database" type="checkbox" name="database" value="yes"> |LANG_PASS_DB|</label>
+			<div class="inline passwdline">
+				<p>
+					<label for="system">
+						<input id="system" type="checkbox" name="system" value="yes" checked> 
+						|LANG_CHANGE_CONTROL_PANEL|
+					</label>
+				</p>
+				<p>
+					<label for="ftp">
+						<input id="ftp" type="checkbox" name="ftp" value="yes" checked> 
+						|LANG_CHANGE_MAIN_FTP|
+					</label>
+				</p>
+				<p>
+					<label for="database">
+						<input id="database" type="checkbox" name="database" value="yes"> 
+						|LANG_CHANGE_MAIN_DB|
+					</label>
+				</p>
 				
 			</div>
-			<hr />
-			<p style="text-align: right;"><button type="submit" class="btn btn-green" data-loading-text="Loading...">ȷ�ϸ���</button></p>
+			<hr style="margin: 30px 0;" />
+			<p style="text-align: right;"><button type="submit" class="btn btn-green" data-loading-text="Loading...">|LANG_SUBMIT|</button></p>
 			<div class="clear"></div><!-- /clear -->
 		</form>
 	</div>
+	<div class="center aligned sixteen wide column">
+		|*if HAVE_SECURITY_QUESTIONS="yes"|
+			<a href="CMD_SECURITY_QUESTIONS">Manage Security Questions</a>
+		|*endif|
+	</div>
 </div>
+
+			</center>
 
 |HTM_USER_BOTTOM|

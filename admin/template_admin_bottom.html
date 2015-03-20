@@ -1,29 +1,45 @@
 |HTM_FOOTER_BAR_1|
-			<div class="module">
-				<h3>|LANG_BASIC_INFO|</h3>
-				<ul>
-					<li>|LANG_DISK_SPACE| |ADMINQUOTA|</li>
-					<li>|LANG_BANDWIDTH| |ADMINBANDWIDTHGIG|</li>
-		       		<li>|LANG_DOMAINS| |ADMINDOMAINS|</li>
-		       		<li>|LANG_USERS| |ADMINUSERS|</li>
-		       		<li>|LANG_RESELLERS| |ADMINRESELLERS|</li>
-				</ul>
-			</div>
-					
-			<div class="module">
-				<h3>|LANG_SERVER_STATUS|</h3>
-<ul>
+
+<div class="ui vertical menu">
+	|HTM_MENU_ADMIN|
+		
+	<div class="header item">
+		<i class="globe icon"></i>
+		|LANG_BASIC_SETTINGS|
+		</div>
+	<a class="item">
+		<div class="ui teal label">|ADMINQUOTA|</div>
+		|LANG_DISK_SPACE|
+		</a>
+	<a class="item">
+		<div class="ui teal label">|ADMINBANDWIDTHGIG|</div>
+		|LANG_BANDWIDTH|
+	</a>
+	<a class="item">
+		<div class="ui teal label">|ADMINDOMAINS|</div>
+  		|LANG_DOMAINS|
+	</a>
+	<a class="item">
+		<div class="ui teal label">|ADMINRESELLERS|</div>
+  		|LANG_RESELLERS|
+	</a>
+</div>
+<div class="ui vertical menu">
+  <div class="header item">
+    <i class="icon info circle"></i>
+    |LANG_SERVER_STATUS|
+  </div>
 |$|PHP|
 <?php
 include |ROOT|."inc/functions.php";
 ?>
-	<li>|LANG_SYSTEM_LOAD|:<span class="label pull-right label-info"><?php echo $sysInfo['loadAvg'];?></span></li>
-	<li>|LANG_TOTAL_MEMORY|:<span class="label pull-right label-info"><?php echo $sysInfo['memTotal'];?>M</span></li>
-	<li>|LANG_TOTAL_MEMORY|:<span class="label pull-right label-info"><?php echo $sysInfo['memUsed'];?>M</span></li>
-	<li>|LANG_FREE_MEMORY|:<span class="label pull-right label-info"><?php echo $sysInfo['memFree'];?>M</span></li>
-	<li>|LANG_UPTIME|:<span class="label pull-right label-info"><?php echo $sysInfo['uptime']; ?></span></li>
+	<a class="item"><div class="ui blue label"><?php echo $sysInfo['loadAvg'];?></div>|LANG_SYSTEM_LOAD|:</a>
+	<a class="item"><div class="ui blue label"><?php echo $sysInfo['memTotal'];?>M</div>|LANG_TOTAL_MEMORY|:</a>
+	<a class="item"><div class="ui blue label"><?php echo $sysInfo['memUsed'];?>M</div>|LANG_USED_MEMORY|:</a>
+	<a class="item"><div class="ui blue label"><?php echo $sysInfo['memFree'];?>M</div>|LANG_FREE_MEMORY|:</a>
+	<a class="item"><div class="ui blue label"><?php echo $sysInfo['uptime']; ?></div>|LANG_UPTIME|:</a>
 DONE|
-</ul>
-</div><!-- /module -->
+</div>
+
 |HTM_FOOTER_BAR_2|
 |HTM_FOOTER|

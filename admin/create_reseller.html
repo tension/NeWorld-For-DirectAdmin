@@ -3,6 +3,20 @@
 |?HELP_SECTION=`ADMIN_HELPER`/creater.html|
 |HTM_ADMIN_TOP|
 
+|?CHECK_NAME=checkName()|
+|?CHECK_PASS=|
+|?RANDOM_PASS=randomPass()|
+|?CHECK_DOMAIN=checkDomain()|
+
+|*if AJAX="1"|
+	|?CHECK_NAME=ajax_checkName()|
+	|?CHECK_PASS=onChange="ajax_checkPass()"|
+	|?RANDOM_PASS=ajax_randomPass('')|
+	|?CHECK_DOMAIN=ajax_checkDomain()|
+
+	<script type="text/javascript" src="JS_CREATION_CHECK"></script>
+|*endif|
+
 <script language="Javascript">
 <!--
 
@@ -49,15 +63,18 @@ function showResellerMessage()
 
 	<table class=list cellpadding=3 cellspacing=1>
 		<form name=reseller action="CMD_ACCOUNT_RESELLER" method="post" onSubmit="return formOK()">
+
+|HTM_PREVENT_AUTOFILL|
+
 			<input type=hidden name=action value=create>
 
 			<tr ><td class=listtitle colspan=3>|LANG_CREATE_RES|</td ></tr >
 
-			<tr><td class=list>|LANG_USERNAME|:</td><td class=list><input type=text name=username size=32 maxlength=|MAX_USERNAME_LENGTH| onChange="checkName()"></td></tr>
+			<tr><td class=list>|LANG_USERNAME|:</td><td class=list><input type=text id=username name=username size=32 maxlength=|MAX_USERNAME_LENGTH| onChange="|CHECK_NAME|"><div id=username_result class=warning></div></td></tr>
 			<tr><td class=list>|LANG_EMAIL|:</td><td class=list><input type=text name=email size=32 onChange="checkEmail()"></td></tr>
-			<tr><td class=list>|LANG_ENTER_PASS|</td><td class=list><input type=password name=passwd size=32> <input type=button value="|LANG_RANDOM|" onClick="randomPass()"></td></tr>
-			<tr><td class=list>|LANG_RE-ENTER_PASS|:</td><td class=list><input type=password name=passwd2 size=32 onChange="checkPass()"></td></tr>
-			<tr><td class=list>|LANG_DOMAIN|:</td><td class=list><input type=text name=domain size=32 onChange="checkDomain()"></td></tr>
+			<tr><td class=list>|LANG_ENTER_PASS|</td><td class=list><input type=password id=passwd name=passwd size=32 |CHECK_PASS|> <input type=button value="|LANG_RANDOM|" onClick="|RANDOM_PASS|"><div id=passwd_result class=warning></div></td></tr>
+			<tr><td class=list>|LANG_RE-ENTER_PASS|:</td><td class=list><input type=password id=passwd2 name=passwd2 size=32 onChange="checkPass()"></td></tr>
+			<tr><td class=list>|LANG_DOMAIN|:</td><td class=list><input type=text id=domain name=domain size=32 onChange="|CHECK_DOMAIN|"><div id=domain_result class=warning></td></tr>
 			<tr><td class=list>|LANG_USE_RES_PACK|:</td><td class=list>|PACKAGES| &nbsp;&nbsp;&nbsp;|FREEIPS| |LANG_FREE_IPS|</td></tr>
 			<tr><td class=list>|LANG_ACCOUNT_IP|:</td><td class=list>
 				<select class=selectclass name=ip>

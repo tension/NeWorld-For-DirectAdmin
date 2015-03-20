@@ -4,6 +4,14 @@
 |?HELP_SECTION=`USER_HELPER`/ftp.html#mod|
 |HTM_USER_TOP|
 
+|?CHECK_PASS=|
+|?RANDOM_PASS=randomPass(); reseller.random.value=reseller.passwd.value|
+|*if AJAX="1"|
+	|?CHECK_PASS=onChange="ajax_checkPass()"|
+	|?RANDOM_PASS=ajax_randomPass('random')|
+	<script type="text/javascript" src="JS_CREATION_CHECK"></script>
+|*endif|
+
 <script language="Javascript">
 <!--
 
@@ -22,8 +30,8 @@
 		<tr><td class=listtitle colspan=3>|LANG_MODIFY_FTP|</td></tr>
 
 		<tr><td class=list>|LANG_FTP_USERNAME|</td><td class=list colspan=2>|FULLUSER|</td></tr>
-		<tr><td class=list>|LANG_ENTER_PASS|:</td><td class=list colspan=2><input type=password name=passwd size=16> <input type=button value="|LANG_RANDOM|" onClick="randomPass(); reseller.random.value=reseller.passwd.value"> <input type=text name=random value="|LANG_FTP_SAVE_PASSWORD|" size=16></td></tr>
-		<tr><td class=list>|LANG_RE-ENTER_PASS|:</td><td class=list colspan=2><input type=password name=passwd2 size=16></td></tr>
+		<tr><td class=list>|LANG_ENTER_PASS|:</td><td class=list colspan=2><input type=password id=passwd name=passwd size=16 |CHECK_PASS|> <input type=button value="|LANG_RANDOM|" onClick="|RANDOM_PASS|"> <input type=text id=random name=random value="|LANG_FTP_SAVE_PASSWORD|" size=16><div id=passwd_result class=warning></div></td></tr>
+		<tr><td class=list>|LANG_RE-ENTER_PASS|:</td><td class=list colspan=2><input type=password id=passwd2 name=passwd2 size=16></td></tr>
 		<tr><td class=list>|LANG_DOMAIN|:</td><td class=list align=center><input type=radio name=type value="domain" |DOMAINCHECKED|></td><td class=listwrap>|LANG_DOMAIN_USER|</td></tr>
 		<tr><td class=list>|LANG_FTP|:</td><td class=list align=center><input type=radio name=type value="ftp" |FTPCHECKED|></td><td class=listwrap>|LANG_FTP_USER|</td></tr>
 		<tr><td class=list>|LANG_USER|:</td><td class=list align=center><input type=radio name=type value="user" |USERCHECKED|></td><td class=listwrap>|LANG_USER_USER|</td></tr>
