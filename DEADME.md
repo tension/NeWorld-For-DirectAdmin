@@ -55,17 +55,21 @@ custom.html
 
 ## 使用开源框架 ##
 
+国外请更换 header.html 头部代码 
+
 ```html
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.4/semantic.min.css">
+<script src="http://cdn.bootcss.com/semantic-ui/1.11.4/semantic.min.js?v=|VERSION|"></script>
+<link rel="stylesheet" type="text/css" class="ui" href="http://cdn.bootcss.com/semantic-ui/1.11.4/semantic.min.css?v=|VERSION|">
 ```
 
 使用 [semantic-ui](http://semantic-ui.com/) CSS 框架
 
 ```html
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js?v=|VERSION|"></script>
 ```
 
 使用 [jQuery](http://jquery.com/) JS 框架 由 [CDNJS](http://www.cdnjs.com/) 提供CDN加速
+
 
 ## 支持我 ##
 

@@ -1,11 +1,11 @@
 $(document).ready(function() {
 	
-	$('table>form').each(function(){
-		var form=$(this).clone();
-		var table=$(this).parent();
-		$(this).remove();
-		table.wrap(form);
-	});
+	//$('table>form').each(function(){
+	//	var form=$(this).clone();
+	//	var table=$(this).parent();
+	//	$(this).remove();
+	//	table.wrap(form);
+	//});
 	
 	$(".item .label")
 		.popup()
@@ -15,7 +15,7 @@ $(document).ready(function() {
 		.fadeOut(10000)
 	;
 	
-	$("select").dropdown();
+	//$("select").dropdown();
 	
 	$(".right.menus").click(function() {
 		$(".right.menu").before("<div class='clearfix'></div>");
