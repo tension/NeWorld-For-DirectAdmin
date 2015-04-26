@@ -9,6 +9,24 @@
 
 演示地址: [http://www.elinkhost.com/webhostdemo.html](http://www.elinkhost.com/webhostdemo.html)
 
+英文版
+
+![admin](http://ww3.sinaimg.cn/large/6211b300gw1erj583g1ifj20yl13hn59.jpg)
+
+![reseller](http://ww1.sinaimg.cn/large/6211b300gw1erj589wqy7j20yl1257aa.jpg)
+
+![user](http://ww1.sinaimg.cn/large/6211b300gw1erj58fjk1fj20yl14hqbd.jpg)
+
+---
+
+中文版
+
+![admin](http://ww1.sinaimg.cn/large/6211b300gw1eq691uqwusj210b13hwlu.jpg)
+
+![reseller](http://ww3.sinaimg.cn/large/6211b300gw1eq691r1s8vj210b11rwk6.jpg)
+
+![user](http://ww1.sinaimg.cn/large/6211b300gw1eq69210hwmj210b11rqai.jpg)
+
 
 ### 如何安装
 ---
