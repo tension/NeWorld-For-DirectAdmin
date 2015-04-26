@@ -319,7 +319,6 @@ table thead {
 table thead th, td.listtitle {
   cursor: auto;
   background: #f0f0f0;
-  text-align: left;
   color: rgba(0, 0, 0, 0.8);
   padding: 0.7em 0.8em;
   vertical-align: middle;
