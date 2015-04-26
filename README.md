@@ -1,5 +1,5 @@
 # NewWorld 4.0 For DirectAdmin 1.47
-===
+---
 
 **这个主题是由tension制作,使用在DirectAdmin的主题!**
 
@@ -36,6 +36,7 @@ https://github.com/tension/NewWorld-For-DirectAdmin-Login-Page
 ## 自定义页面
 ---
 
+
 ```html
 /data/templates/custom/login.html
 ```
@@ -59,6 +60,7 @@ custom.html
 ## 使用开源框架
 ---
 
+
 ```html
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.4/semantic.min.css">
 ```
@@ -73,6 +75,8 @@ custom.html
 
 ## 支持我
 ---
+
+
 
 如果你觉得这个东西确实不错，可以通过支付宝支付我
 
