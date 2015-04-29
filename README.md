@@ -6,13 +6,13 @@
 
 #### 低价转让 DirectAdmin 授权 4 套，有需求请加群！
 
-[官网网站 The official website](http://NeWorld.org)
-
 ##### QQ 群 : 286348
 
-演示地址: [http://www.elinkhost.com/webhostdemo.html](http://www.elinkhost.com/webhostdemo.html)
+[官网网站 The official website](http://NeWorld.org)
 
-英文版
+[演示地址 Demo](http://www.elinkhost.com/webhostdemo.html)
+
+English
 
 ![admin](http://ww3.sinaimg.cn/large/6211b300gw1erj583g1ifj20yl13hn59.jpg)
 
