@@ -1,7 +1,11 @@
 |LF_STANDARD|
 |?TREE=&raquo; `ALL_DOMAINS_SELECT` &raquo; <a class=tree href="/CMD_SUBDOMAIN?domain=`domain`">`LANG_SUBDOMAINS`</a>|
 |?HELP_SECTION=`USER_HELPER`/subdomains.html|
-|HTM_HEADER_FULL|
+|HTM_USER_TOP|
+
+<h3 class="head_title">|LANG_SUBDOMAINS|</h3>
+
+|HTM_BREAD|
 
 |SUBDOMAINS|
 
@@ -10,7 +14,11 @@
 	<input type=hidden name=action value="create">
 	<input type=hidden name=domain value="|DOMAIN|">
 	<tr><td class=list colspan=2>|LANG_ADD_SUB| <input type=text name=subdomain size=8>.|DOMAIN|</td></tr>
-	<tr><td class=listtitle align=right colspan=2><input type=submit value="|LANG_CREATE|"></td></tr>
+	<tr>td class=listtitle align=right colspan=2><input type=submit value="|LANG_CREATE|"></td></tr>
 </form>
 </table>
-|HTM_FOOTER_FULL|
+
+<div class="ui message yellow">
+	<p>|LANG_ADD_SUB_TXT|</p>
+</div>
+|HTM_USER_BOTTOM|

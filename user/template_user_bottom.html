@@ -6,7 +6,6 @@
 
 <div class="ui vertical menu" style="margin-top: 0;">
 		|HTM_MENU_USER|
-
 		<div class="header item">
 			<i class="globe icon"></i>
 			|LANG_BASIC_SETTINGS|
@@ -15,7 +14,7 @@
 <?php
 
 show_bar("|LANG_BANDWIDTH|", "|USERBANDWIDTH|", "|USERBANDWIDTHMAX|", "bandwidth_bar");
-show_bar("<i class=\"repeat icon\"></i>|LANG_DISK_SPACE|", "|USERQUOTA|", "|USERQUOTAMAX|", "quota_bar");
+show_bar("|LANG_DISK_SPACE| <i class=\"repeat icon\"></i>", "|USERQUOTA|", "|USERQUOTAMAX|", "quota_bar");
 |*if HAVE_INODE="yes"|
 show_bar("|LANG_INODES|", "|USERINODE|", "|USERINODEMAX|", "inode_bar");
 |*endif|
@@ -34,11 +33,15 @@ function show_bar($text, $used, $limit, $id) {
 
 		if ($id == "quota_bar") {
 			echo "<a class=\"item\" onClick=\"document.updateform.submit();\" title=\"|LANG_CLICK_TO_UPDATE|\">";
-			echo $text;
+			echo "<div class=\"ui label\">" . number_format($used,1,'.','') . " |LANG_MB| / " . number_format($limit,1,'.','') . " |LANG_MB|</div>" . $text;
+			echo "</a>";
+		} elseif ($id == "inode_bar") {
+			echo "<a class=\"item\">";
+			echo "<div class=\"ui label\">". $used . " / " . $limit . "</div>" . $text;
 			echo "</a>";
 		} else {
 			echo "<a class=\"item\">";
-			echo $text;
+			echo "<div class=\"ui label\">". number_format($used,1,'.','') . " |LANG_GB| / " . number_format($limit,1,'.','') . " |LANG_GB|</div>" . $text;
 			echo "</a>";
 		}
 
@@ -144,7 +147,7 @@ include |ROOT|."inc/functions.php";
 	</div>
 DONE|
 	<!--自定义右下角联系我们 开始-->
-	|HTM_CUSTOM|
+	<!--|HTM_CUSTOM|-->
 	<!--自定义右下角联系我们 结束-->
 </div>
 

@@ -3,12 +3,21 @@
 |?HELP_SECTION=`USER_HELPER`/misc.html#domains|
 |HTM_USER_TOP|
 
+<h3 class="head_title">|LANG_CHANGE_DOMAIN|</h3>
+
+|HTM_BREAD|
+
 <table class=list cellpadding=3 cellspacing=1>
 <form action="/CMD_CHANGE_DOMAIN" method="POST">
 <tr><td class=listtitle>|LANG_ENTER_NEW_VALUE|</td></tr>
-<tr><td class=list>|LANG_CHANGE_1| |DOMAIN_SELECT| |LANG_CHANGE_2| www.<input type=text name=new_domain></td></tr>
-<tr><td class=listtitle align=right><input type=submit value="|LANG_CHANGE|"></td></tr>
+<tr><td class=list>|LANG_CHANGE_1| |DOMAIN_SELECT| |LANG_CHANGE_2| <input type=text name=new_domain></td></tr>
+<tr><td class=listtitle align=right>
+	<input type=submit value="|LANG_CHANGE|"></td></tr>
 </form>
 </table>
+
+<div class="ui message yellow">
+	<p>|LANG_CHANGGE_TXT|</p>
+</div>
 
 |HTM_USER_BOTTOM|

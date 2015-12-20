@@ -3,17 +3,17 @@
 |?HELP_SECTION=`USER_HELPER`/gettingstarted.html#ticket|
 |HTM_HEADER_FULL|
 
-<a href="CMD_TICKET_CREATE?TYPE=Ticket">|LANG_CREATE_TICKET|</a><br>
-<a href="CMD_TICKET?action=closed">|LANG_VIEW_CLOSED_TICKETS||NEWCLOSED|</a><br>
+<h3 class="head_title">|LANG_MESS_SYS|</h3>
 
-|TICKETS|
+|HTM_BREAD|
+
+
 |MESSAGES|
 
 <div class=menu>
 <form action="CMD_TICKET" method="post">
 	<input type=hidden name=action value="email">
 	<input type=checkbox name=ON value="yes" |EMAILCHECKED|> |LANG_EMAIL_TO| <input size=30 type=text name=email value="|EMAIL|"><br>
-	|LANG_DELETE_TICKETS| <input type=text size=1 name=delete_tickets_days maxlength=5 value="|DELETE_TICKETS_DAYS|"> |LANG_DAY_ZERO_NEVER|<br>
 	|LANG_DELETE_MESSAGES| <input type=text size=1 name=delete_messages_days maxlength=5 value="|DELETE_MESSAGES_DAYS|"> |LANG_DAY_ZERO_NEVER|<br>
 	<input type=submit name=save value="|LANG_SAVE|">
 </form></div>

@@ -1,7 +1,11 @@
 |LF_STANDARD|
 |?TREE=&raquo; <a class=tree href="/CMD_CRON_JOBS">`LANG_CRON_JOBS`</a>|
 |?HELP_SECTION=`USER_HELPER`/misc.html#cron|
-|HTM_HEADER_FULL|
+|HTM_USER_TOP|
+
+<h3 class="head_title">|LANG_CRON_JOBS|</h3>
+
+|HTM_BREAD|
 
 <script language="Javascript">
 <!--
@@ -15,14 +19,15 @@ function preventEmail()
 }
 // -->
 </script>
-
-|LANG_VALID_CRON|<br>
+<div class="ui yellow message">
+  <p>|LANG_VALID_CRON|<br>
 |LANG_EXACT_TIMES|<br>
 |LANG_DASH|<br>
 |LANG_INTERVALS|<br>
 |LANG_COMBINE|<br>
-|LANG_NO_SPACES|<br><br>
-|LANG_CURRENT_TIME|: |TIME|
+|LANG_NO_SPACES|</p>
+</div>
+|LANG_CURRENT_TIME|: |TIME|<br/><br/>
 <table class=list  cellpadding=3 cellspacing=1>
 <form name=info action='/CMD_CRON_JOBS' method='POST'>
 <input type=hidden name=action value="create">
@@ -55,9 +60,14 @@ function preventEmail()
 </table>
 |LANG_VALID_EMAIL|: <i>|USERNAME|</i>, |LANG_OR_BLANK_FIELD|.
 <br><br>
-<b>|LANG_SAMPLE_CRON|</b>:<br>
-/usr/local/bin/php /home/|USERNAME|/domains/domain.com/public_html/script.php<br>
+<div class="ui yellow message">
+	<div class="header">
+		|LANG_SAMPLE_CRON|
+	</div>
+	<p>/usr/local/bin/php /home/|USERNAME|/domains/domain.com/public_html/script.php<br>
 /usr/local/bin/curl --silent http://www.domain.com/cron.php > /dev/null<br>
-|*if OS_TYPE="FreeBSD"|/usr/local/bin/wget -O /dev/null http://www.domain.com/cron.php<br>|*else|/usr/bin/wget -O /dev/null http://www.domain.com/cron.php<br>|*endif|
+|*if OS_TYPE="FreeBSD"|/usr/local/bin/wget -O /dev/null http://www.domain.com/cron.php<br>|*else|/usr/bin/wget -O /dev/null http://www.domain.com/cron.php<br>|*endif|</p>
+</div>
 
-|HTM_FOOTER_FULL|
+
+|HTM_USER_BOTTOM|

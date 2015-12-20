@@ -3,6 +3,10 @@
 |?HELP_SECTION=`USER_HELPER`/misc.html#domains|
 |HTM_USER_TOP|
 
+<h3 class="head_title">|LANG_MODIFY|</h3>
+
+|HTM_BREAD|
+
 <script language="Javascript">
 <!--
 function setText( textfld, checkbx)
@@ -32,9 +36,14 @@ function setText( textfld, checkbx)
 |*if USERPHP="ON"|
 		<tr><td class=list>|LANG_PHP| |LANG_ACCESS|</td><td class=list><input type="checkbox" name=php value="ON" |PHPCHECKED|></td></tr>
 |*endif|
-		<tr><td class=listtitle colspan=3 align=right>
-			<input type=submit name=modify value="|LANG_SAVE|">
-		</td></tr>
+		<tr>
+			<td class=listtitle>
+				|LANG_MODIFY_TXT|
+			</td>
+			<td class=listtitle align=right>
+				<input type=submit name=modify value="|LANG_SAVE|">
+			</td>
+		</tr>
 	</form>
 </table>
 <br>

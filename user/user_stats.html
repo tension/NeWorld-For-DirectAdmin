@@ -1,12 +1,13 @@
 |?TREE=&raquo; `ALL_DOMAINS_SELECT` &raquo; <a class=tree href="/CMD_USER_STATS?domain=`domain`">`LANG_STATS_FOR` `USERNAME`</a>|
 |?HELP_SECTION=`USER_HELPER`/stats.html|
-|HTM_HEADER|
-|HTM_HEADER_WIDE|
-<b>|LANG_DETAILS_FOR| |USERNAME|</b><br><br>
-<a href="/CMD_FILE_MANAGER/domains/|domain|/logs">|LANG_APACHE_LOGS|</a><br>
-<a href="/CMD_USER_HISTORY?domain=|domain|">|LANG_USER_HISTORY|</a><br>
+|HTM_USER_TOP|
+<h3 class="head_title">|LANG_STATS_FOR|</h3>
 
-<table class=list cellpadding=3 cellspacing=1>
+|HTM_BREAD|
+
+<b>|LANG_DETAILS_FOR| |USERNAME|</b><br><br>
+
+<table class=list cellpadding=3 cellspacing=1 style="display: none;">
 <tr>
 	<td class=listtitle>|LANG_LOG_TYPE|</td><td class=listtitle>|LANG_FULL_LOG|</td><td class=listtitle>|LANG_LAST_LINES|</td>
 </tr>
@@ -36,6 +37,27 @@
 </tr>
 </table>
 
+<div class="ui message blue icons">
+	<ul>
+		<li>
+			<a href="/CMD_SHOW_LOG?domain=|domain|&type=log">
+			<img class="ui image" src="IMG_SKIN_ADMIN_063" alt="" />|LANG_FULL_USAGE|</a>
+		</li>
+		<li>
+			<a href="/CMD_SHOW_LOG?domain=|domain|&type=log&lines=100">
+			<img class="ui image" src="IMG_SKIN_ADMIN_064" alt="" />|LANG_100_LINES|</a>
+		</li>
+		<li>
+			<a href="/CMD_SHOW_LOG?domain=|domain|&type=error">
+			<img class="ui image" src="IMG_SKIN_ADMIN_063" alt="" />|LANG_FULL_ERROR|</a>
+		</li>
+		<li>
+			<a href="/CMD_SHOW_LOG?domain=|domain|&type=error&lines=100">
+			<img class="ui image" src="IMG_SKIN_ADMIN_064" alt="" />|LANG_100_LINES|</a>
+		</li>
+	</ul>
+</div>
+
 |DOMAINS|
 
 <br>
@@ -46,5 +68,133 @@
 
 |STATS|
 <center><b>|RESULT|</b></center>
-|HTM_FOOTER_WIDE|
-|HTM_FOOTER|
+		</div>
+		<div class="ui four wide column aside right">
+			<div class="ui vertical menu" style="margin-top: 0;">
+				<div class="header item">
+				    <i class="user icon"></i>
+					快捷导航
+				</div>
+				<a href="/CMD_FILE_MANAGER/domains/|domain|/logs" class="item quick"><img class="ui image" src="IMG_SKIN_ADMIN_031" alt="" />|LANG_APACHE_LOGS|</a><a href="/CMD_USER_HISTORY?domain=|domain|" class="item quick"><img class="ui image" src="IMG_SKIN_ADMIN_032" alt="" />|LANG_USER_HISTORY|</a>
+			</div>
+			<div class="ui vertical menu">
+
+		<div class="header item">
+			<i class="globe icon"></i>
+			|LANG_BASIC_SETTINGS|
+		</div>
+|$|PHP|
+<?php
+
+show_bar("|LANG_BANDWIDTH|", "|USERBANDWIDTH|", "|USERBANDWIDTHMAX|", "bandwidth_bar");
+show_bar("|LANG_DISK_SPACE| <i class=\"repeat icon\"></i>", "|USERQUOTA|", "|USERQUOTAMAX|", "quota_bar");
+|*if HAVE_INODE="yes"|
+show_bar("|LANG_INODES|", "|USERINODE|", "|USERINODEMAX|", "inode_bar");
+|*endif|
+
+function show_bar($text, $used, $limit, $id) {
+		if($limit==0) return;
+
+		$left=round(($used/$limit)*100);
+		$right=100-$left;
+
+		switch(TRUE) {
+			case ($left > 80)	: $color = "red";		break;
+			case ($left > 60)	: $color = "yellow";	break;
+			default				: $color = "green";		break;
+		}
+
+		if ($id == "quota_bar") {
+			echo "<a class=\"item\" onClick=\"document.updateform.submit();\" title=\"|LANG_CLICK_TO_UPDATE|\">";
+			echo "<div class=\"ui label\">" . number_format($used,1,'.','') . " |LANG_MB| / " . number_format($limit,1,'.','') . " |LANG_MB|</div>" . $text;
+			echo "</a>";
+		} elseif ($id == "inode_bar") {
+			echo "<a class=\"item\">";
+			echo "<div class=\"ui label\">". $used . " / " . $limit . "</div>" . $text;
+			echo "</a>";
+		} else {
+			echo "<a class=\"item\">";
+			echo "<div class=\"ui label\">". number_format($used,1,'.','') . " |LANG_GB| / " . number_format($limit,1,'.','') . " |LANG_GB|</div>" . $text;
+			echo "</a>";
+		}
+
+		?>
+			<a class="item">
+				<div class="ui tiny <?php echo $color;?> progress active">
+					<div id="<?php echo $id?>" class="bar" <?php echo $bg;?>></div>
+				</div>
+			</a>
+
+					<script language="Javascript">
+					<!--
+
+					<?php echo $id?>_top=<?php echo $left>100?100:$left;?>;
+					<?php echo $id?>_current=0;
+
+					function <?php echo $id?>_scroll() {
+						increase = 10;
+						again = true;
+						<?php echo $id?>_current += increase;
+						if (<?php echo $id?>_current >= <?php echo $id?>_top) {
+							<?php echo $id?>_current = <?php echo $id?>_top;
+							again=false;
+						}
+
+						if (document.getElementById) {
+							my_style = document.getElementById("<?php echo $id?>").style;
+						} else if (document.all) {
+							my_style = document.all["<?php echo $id?>"].style;
+						} else if (document.layers) {
+							my_style = document.layers["<?php echo $id?>"];
+						}
+
+						my_style.width=<?php echo $id?>_current+"%";
+
+						if (again)
+							setTimeout("<?php echo $id?>_scroll();", 50);
+					}
+
+					setTimeout("<?php echo $id?>_scroll();", 1000);
+
+					//-->
+					</script>
+
+<?php
+}
+?>
+DONE|
+	|*if domain|
+		<a class="active teal item">
+			|domain|
+		</a>
+	|*endif|
+		<a class="item" onClick="document.updateform.submit();">
+			<div class="ui teal label" data-content="|USERQUOTAMAX|" data-variation="small">|USERQUOTA|</div>
+			|LANG_DISK_SPACE| |LANG_MB|
+		</a>
+		<a class="item">
+			<div class="ui teal label" data-content="|USERBANDWIDTHMAXGIG|" data-variation="small">|USERBANDWIDTHGIG|</div>
+			|LANG_BANDWIDTH| |LANG_GB|
+		</a>
+		<a class="item">
+			<div class="ui teal label" data-content="|USEREMAILMAX|" data-variation="small">|USEREMAIL|</div>
+	  		|LANG_EMAILS|
+		</a>
+		<a class="item">
+			<div class="ui teal label" data-content="|USERFTPMAX|" data-variation="small">|USERFTP|</div>
+	  		|LANG_FTP_ACCOUNTS|
+		</a>
+		<a class="item">
+			<div class="ui teal label" data-content="|USERDATABASEMAX|" data-variation="small">|USERDATABASE|</div>
+	  		|LANG_DATABASES|
+		</a>
+		|*if HAVE_INODE="yes"|
+		<a class="item">
+			<div class="ui teal label" data-content="|USERINODEMAX|" data-variation="small">|USERINODE|</div>
+	  		|LANG_INODES|
+		</a>
+		|*endif|
+</div>
+		</div>
+
+|HTM_FOOTER_FULL|
