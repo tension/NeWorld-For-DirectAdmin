@@ -1,6 +1,7 @@
 # NewWorld 4.0 For DirectAdmin 1.47
 ---
 
+## 重磅消息，五月将发布最新主题。
 
 **这个主题是由tension制作,使用在DirectAdmin的主题!**
 
