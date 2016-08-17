@@ -1,7 +1,4 @@
-# NewWorld 4.0 For DirectAdmin 1.47
----
-
-## 重磅消息，五月将发布最新主题。
+# NewWorld 4.0 For DirectAdmin
 
 **这个主题是由tension制作,使用在DirectAdmin的主题!**
 
@@ -35,7 +32,7 @@ English
 #### 主题安装
 ```sh
 cd /usr/local/directadmin/data/skins/ #进入主题所在目录
-wget https://github.com/tension/NewWorld/archive/master.zip #下载NewWorld主题模版压缩包
+wget https://github.com/tension/NeWorld-For-DirectAdmin/archive/master.zip #下载NewWorld主题模版压缩包
 unzip master #解压缩主题压缩包
 mv NewWorld-master NewWorld #修改主题文件夹名称
 chown -R diradmin:diradmin NewWorld/ #设置主题所有权
