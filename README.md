@@ -33,10 +33,10 @@ English
 ```sh
 cd /usr/local/directadmin/data/skins/ #进入主题所在目录
 wget https://github.com/tension/NeWorld-For-DirectAdmin/archive/master.zip #下载NewWorld主题模版压缩包
-unzip master #解压缩主题压缩包
+unzip master.zip #解压缩主题压缩包
 mv NeWorld-For-DirectAdmin-master NeWorld #修改主题文件夹名称
 chown -R diradmin:diradmin NeWorld/ #设置主题所有权
-rm -f master #删除主题模版压缩包
+rm -f master.zip #删除主题模版压缩包
 exit #退出
 ```
 
