@@ -40,6 +40,19 @@ rm -f master.zip #删除主题模版压缩包
 exit #退出
 ```
 
+#### 登录界面安装
+```sh
+cd /usr/local/directadmin/data/skins/templates/ #进入主题所在目录
+wget https://github.com/tension/NeWorld-For-DirectAdmin-Login-Page/archive/master.zip #下载NewWorld主题模版压缩包
+unzip master.zip #解压缩主题压缩包
+rm custom -rf
+rm login_images -rf
+mv NeWorld-For-DirectAdmin-Login-Page-master/* ./ #修改主题文件夹名称
+rm -f master.zip #删除主题模版压缩包
+chown -R diradmin:diradmin ./* #设置主题所有权
+exit #退出
+```
+
 ##### 安装完成 登陆后台 选择皮肤管理 选择主题应用所有用户
 
 
