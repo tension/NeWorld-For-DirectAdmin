@@ -42,7 +42,7 @@ exit #退出
 
 #### 登录界面安装
 ```sh
-cd /usr/local/directadmin/data/skins/templates/ #进入主题所在目录
+cd /usr/local/directadmin/data/templates/ #进入主题所在目录
 wget https://github.com/tension/NeWorld-For-DirectAdmin-Login-Page/archive/master.zip #下载NewWorld主题模版压缩包
 unzip master.zip #解压缩主题压缩包
 rm custom -rf
