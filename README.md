@@ -97,11 +97,3 @@ custom.html
 ```
 
 使用 [jQuery](http://jquery.com/) JS 框架 由 [CDNJS](http://www.cdnjs.com/) 提供CDN加速
-
-## 支持我
-
-如果你觉得这个东西确实不错，可以请我喝杯咖啡！
-
-我的二维码
-
-![我的收款](http://ww1.sinaimg.cn/large/6211b300gw1efs74kpta6j205y05y74x.jpg)
