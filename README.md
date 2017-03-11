@@ -26,10 +26,10 @@ English
 
 
 ### 如何安装
----
 
 
 #### 主题安装
+
 ```sh
 cd /usr/local/directadmin/data/skins/ #进入主题所在目录
 wget https://github.com/tension/NeWorld-For-DirectAdmin/archive/master.zip #下载NewWorld主题模版压缩包
@@ -41,6 +41,7 @@ exit #退出
 ```
 
 #### 登录界面安装
+
 ```sh
 cd /usr/local/directadmin/data/templates/ #进入主题所在目录
 wget https://github.com/tension/NeWorld-For-DirectAdmin-Login-Page/archive/master.zip #下载NewWorld主题模版压缩包
@@ -62,8 +63,6 @@ https://github.com/tension/NewWorld-For-DirectAdmin-Login-Page
 
 
 ## 自定义页面
----
-
 
 ```html
 /data/templates/custom/login.html
@@ -86,8 +85,6 @@ custom.html
 
 
 ## 使用开源框架
----
-
 
 ```html
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.4/semantic.min.css">
@@ -102,8 +99,6 @@ custom.html
 使用 [jQuery](http://jquery.com/) JS 框架 由 [CDNJS](http://www.cdnjs.com/) 提供CDN加速
 
 ## 支持我
----
-
 
 如果你觉得这个东西确实不错，可以请我喝杯咖啡！
 
